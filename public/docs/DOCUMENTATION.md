@@ -1253,7 +1253,7 @@ los planes incluyen **cero comisiones por venta**.
 
 | Caracteristica | Inicio | Crecimiento | Empresa |
 |----------------|:------:|:-----------:|:-------:|
-| **Precio mensual** | **S/ 149** | **S/ 299** | **S/ 599** |
+| **Precio mensual** | **S/ 179** | **S/ 349** | **S/ 699** |
 | Tienda online | Si | Si | Si |
 | Productos ilimitados | Si | Si | Si |
 | Pedidos ilimitados | -- | Si | Si |
@@ -1275,7 +1275,7 @@ los planes incluyen **cero comisiones por venta**.
 | Soporte | Email | Email + Chat | Prioritario + Telefono |
 | Facturacion electronica SUNAT | -- | Si | Si |
 
-### 14.2 Plan Inicio - S/ 149/mes
+### 14.2 Plan Inicio - S/ 179/mes
 
 Ideal para negocios que estan empezando en el mundo digital.
 
@@ -1289,7 +1289,7 @@ Ideal para negocios que estan empezando en el mundo digital.
 - 2 usuarios (1 ADMIN + 1 OPERADOR).
 - Soporte por email.
 
-### 14.3 Plan Crecimiento - S/ 299/mes
+### 14.3 Plan Crecimiento - S/ 349/mes
 
 Para negocios que buscan escalar sus ventas con canales digitales.
 
@@ -1304,7 +1304,7 @@ Para negocios que buscan escalar sus ventas con canales digitales.
 - Reportes avanzados de ventas.
 - Soporte por email y chat.
 
-### 14.4 Plan Empresa - S/ 599/mes
+### 14.4 Plan Empresa - S/ 699/mes
 
 Para negocios consolidados que necesitan la solucion multicanal completa.
 

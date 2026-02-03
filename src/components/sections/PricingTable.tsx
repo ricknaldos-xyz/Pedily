@@ -10,8 +10,8 @@ const plans = [
   {
     name: "Inicio",
     description: "Para negocios que empiezan en el mundo digital",
-    monthlyPrice: 149,
-    annualPrice: 119,
+    monthlyPrice: 179,
+    annualPrice: 143,
     icon: Zap,
     popular: false,
     features: [
@@ -31,8 +31,8 @@ const plans = [
   {
     name: "Crecimiento",
     description: "Para negocios establecidos que quieren escalar",
-    monthlyPrice: 299,
-    annualPrice: 239,
+    monthlyPrice: 349,
+    annualPrice: 279,
     icon: Sparkles,
     popular: true,
     features: [
@@ -54,8 +54,8 @@ const plans = [
   {
     name: "Empresa",
     description: "Para cadenas y operaciones de alto volumen",
-    monthlyPrice: 599,
-    annualPrice: 479,
+    monthlyPrice: 699,
+    annualPrice: 559,
     icon: Building2,
     popular: false,
     features: [
