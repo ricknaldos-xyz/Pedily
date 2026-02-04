@@ -28,11 +28,11 @@ export function FinalCTA() {
       <Container className="relative text-center">
         <AnimatedSection>
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-            Empieza a vender online hoy
+            Listo para vender mas?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-primary-100">
-            14 dias gratis, sin tarjeta de credito. Configura tu tienda en
-            minutos y empieza a recibir pedidos.
+            Crea tu tienda gratis, sin tarjeta. En unos minutos estas
+            recibiendo pedidos por web, WhatsApp y kiosko.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -40,7 +40,7 @@ export function FinalCTA() {
               href="#"
               className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-semibold text-primary-700 shadow-lg transition-all hover:bg-primary-50 hover:shadow-xl active:scale-[0.98]"
             >
-              Crear mi tienda gratis
+              Empezar gratis
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
@@ -53,7 +53,7 @@ export function FinalCTA() {
           </div>
 
           <p className="mt-8 text-sm text-primary-200/80">
-            Sin compromisos. Cancela cuando quieras.
+            Sin tarjeta, sin compromiso. Cancelas cuando quieras.
           </p>
         </AnimatedSection>
       </Container>

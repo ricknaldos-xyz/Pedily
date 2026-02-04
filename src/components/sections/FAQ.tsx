@@ -8,44 +8,44 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Que canales de venta incluye Pedily?",
+    question: "Que incluye Pedily exactamente?",
     answer:
-      "Pedily es una plataforma multicanal. Incluye: 1) Tienda web para pedidos online, 2) Bot de WhatsApp con IA para pedidos conversacionales, y 3) Kiosko de autoservicio para que tus clientes ordenen en el local. Los 3 canales llegan al mismo Hub de pedidos.",
+      "Tres canales de venta en uno: tu tienda web, un bot de WhatsApp con IA que atiende solo, y un kiosko de autoservicio para tu local. Todo llega al mismo Hub donde gestionas pedidos, pagos y delivery.",
   },
   {
-    question: "Necesito conocimientos tecnicos para usar Pedily?",
+    question: "Necesito saber de tecnologia?",
     answer:
-      "No. Pedily esta disenado para que cualquier persona pueda configurar su tienda online sin conocimientos de programacion. Nuestra interfaz es intuitiva y ofrecemos guias paso a paso.",
+      "Para nada. Si sabes usar WhatsApp y redes sociales, puedes usar Pedily. Es subir fotos, poner precios y listo. Ademas tenemos guias y soporte si te trabas en algo.",
   },
   {
-    question: "Como funciona el kiosko de autoservicio?",
+    question: "Como funciona el kiosko?",
     answer:
-      "El kiosko es una aplicacion para tablets que tus clientes usan para ordenar en el local sin hacer cola. Muestra tu catalogo, permite personalizar pedidos, y acepta pagos con tarjeta, QR y Yape/Plin via IZIPAY. Los pedidos llegan directo al Hub y a cocina.",
+      "Es una app para tablet. La pones en tu local y tus clientes piden solos: ven el menu, eligen, personalizan, pagan con tarjeta o Yape, y el pedido llega a cocina. Sin cajero, sin colas.",
   },
   {
-    question: "Que metodos de pago soportan?",
+    question: "Que formas de pago aceptan?",
     answer:
-      "Soportamos: tarjetas de credito y debito (Culqi para web/WhatsApp, IZIPAY para kiosko), Yape, Plin con verificacion de comprobante, y pago contra entrega. Todos los canales generan facturacion electronica SUNAT automatica (Boleta/Factura).",
+      "Todas las que necesitas: tarjeta (Culqi en web, IZIPAY en kiosko), Yape, Plin, y efectivo contra entrega. Y lo mejor: la boleta o factura sale automatica, directo a SUNAT.",
   },
   {
-    question: "Tienen periodo de prueba?",
+    question: "Puedo probar antes de pagar?",
     answer:
-      "Si! Todos los planes incluyen 14 dias de prueba gratuita sin necesidad de tarjeta de credito. Puedes probar todas las funcionalidades de tu plan elegido sin compromiso.",
+      "Claro. 14 dias gratis, sin meter tarjeta. Pruebas todo y si no te convence, no pagas nada. Sin letra chica.",
   },
   {
-    question: "Como funciona el bot de WhatsApp con IA?",
+    question: "El bot de WhatsApp realmente funciona?",
     answer:
-      "Nuestro bot usa inteligencia artificial (Claude AI de Anthropic) para entender lo que tus clientes escriben en lenguaje natural. Puede responder preguntas sobre tu menu, recomendar platos, tomar pedidos completos y procesar pagos. Cuando el bot no puede resolver algo, un operador puede tomar el control de la conversacion desde el Hub.",
+      "Si, y bastante bien. Usa Claude AI (la misma IA de Anthropic). Entiende como escriben tus clientes, responde preguntas, recomienda platos y toma pedidos completos. Y si el bot no puede con algo, tu intervienes desde el Hub.",
   },
   {
-    question: "En que paises funciona Pedily?",
+    question: "Solo funciona en Peru?",
     answer:
-      "Actualmente operamos en Peru con soporte completo para pagos locales (Culqi, IZIPAY, Yape, Plin) y facturacion electronica SUNAT. Estamos expandiendonos a Colombia, Chile y Mexico. Contactanos si estas en otro pais de Latam.",
+      "Por ahora si. Tenemos todo integrado para Peru: Culqi, IZIPAY, Yape, Plin y facturacion SUNAT. Estamos trabajando en Colombia, Chile y Mexico. Si estas en otro pais, escribenos.",
   },
   {
-    question: "Cobran comision por cada pedido?",
+    question: "Cuanto me cobran por pedido?",
     answer:
-      "No. A diferencia de los agregadores, cobramos una tarifa fija mensual. No importa si recibes 10 o 10,000 pedidos, tu costo no cambia. Sin comisiones ocultas.",
+      "Cero. Nada. A diferencia de Rappi o PedidosYa que te cobran 25%, nosotros cobramos una tarifa fija al mes. Vendas 10 o 10,000 pedidos, pagas lo mismo.",
   },
 ];
 
@@ -55,10 +55,10 @@ export function FAQ() {
       <Container className="max-w-3xl">
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Preguntas frecuentes
+            Dudas? Aqui las respuestas
           </h2>
           <p className="mt-4 text-lg text-slate-500">
-            Resolvemos tus dudas sobre Pedily.
+            Lo que mas nos preguntan antes de empezar.
           </p>
         </AnimatedSection>
 

@@ -32,21 +32,21 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-1.5 text-sm font-medium text-primary-700"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-accent-500" />
-              Plataforma multicanal para negocios de comida
+              La plataforma que usan los restaurantes top de Peru
             </motion.div>
 
             <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              Tu negocio digital,{" "}
+              Recibe pedidos por{" "}
               <span className="animate-gradient bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-clip-text text-transparent">
-                en 3 canales
+                web, WhatsApp y kiosko
               </span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
-              Vende por <strong>web</strong>, <strong>WhatsApp</strong> y{" "}
-              <strong>kiosko en tienda</strong> con un solo sistema. Bot con IA,
-              pagos integrados, facturacion electronica y gestion de pedidos en
-              tiempo real. Sin comisiones por pedido.
+              Un solo sistema para tus 3 canales de venta. Bot con IA que
+              atiende WhatsApp 24/7, kiosko de autoservicio y tienda web.
+              Pagos, facturacion SUNAT y delivery integrados.{" "}
+              <strong>Sin comisiones.</strong>
             </p>
 
             {/* 3 Channels badges */}
@@ -70,7 +70,7 @@ export function Hero() {
                 href="#cta"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98]"
               >
-                Prueba 14 dias gratis
+                Prueba gratis 14 dias
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
@@ -78,7 +78,7 @@ export function Hero() {
                 className="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50 hover:shadow-md active:scale-[0.98]"
               >
                 <Play className="h-4 w-4 text-primary-500 transition-transform group-hover:scale-110" />
-                Ver como funciona
+                Ver demo
               </a>
             </div>
 
@@ -109,7 +109,7 @@ export function Hero() {
                   ))}
                 </div>
                 <p className="text-sm text-slate-500">
-                  Negocios que ya confian en Pedily
+                  +50 negocios ya venden con Pedily
                 </p>
               </div>
             </div>

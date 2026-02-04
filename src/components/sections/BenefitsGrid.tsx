@@ -10,34 +10,34 @@ const benefits = [
     icon: Ban,
     title: "Cero comisiones",
     description:
-      "A diferencia de Rappi o PedidosYa, no cobramos porcentaje por pedido. Paga una tarifa fija mensual y quedate con todas tus ganancias.",
+      "Nada de 25% por pedido como Rappi. Pagas una tarifa fija y listo, todas las ganancias son tuyas.",
     bg: "bg-red-50",
     iconColor: "text-red-500",
     borderHover: "hover:border-red-200",
   },
   {
     icon: Layers,
-    title: "3 canales, 1 sistema",
+    title: "3 canales, 1 Hub",
     description:
-      "Vende por web, WhatsApp y kiosko en tienda. Los 3 canales llegan al mismo Hub de pedidos. Bot con IA atiende WhatsApp 24/7 y el kiosko funciona sin personal.",
+      "Web, WhatsApp y kiosko llegan al mismo lugar. El bot atiende 24/7 y el kiosko vende solo. Tu solo gestionas desde el Hub.",
     bg: "bg-purple-50",
     iconColor: "text-purple-500",
     borderHover: "hover:border-purple-200",
   },
   {
     icon: Palette,
-    title: "Tu marca, tu control",
+    title: "Tu marca, tus clientes",
     description:
-      "Tu dominio, tu logo, tus colores. Tus clientes ven tu marca, no la nuestra. Accede a todos los datos de tus clientes y construye lealtad directa.",
+      "Tu dominio, tu logo, tus datos. Tus clientes te compran a ti, no a un agregador. Construye lealtad directa.",
     bg: "bg-primary-50",
     iconColor: "text-primary-500",
     borderHover: "hover:border-primary-200",
   },
   {
     icon: Zap,
-    title: "Tiempo real",
+    title: "Al toque",
     description:
-      "Notificaciones instantaneas cuando llega un pedido de cualquier canal. Dashboard en vivo con estados de cocina, despacho y delivery. Tu equipo siempre sincronizado.",
+      "Pedido nuevo? Te llega la notificacion al instante. Cocina, delivery y tu equipo siempre sincronizados en tiempo real.",
     bg: "bg-amber-50",
     iconColor: "text-amber-500",
     borderHover: "hover:border-amber-200",
@@ -50,11 +50,10 @@ export function BenefitsGrid() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Por que elegir Pedily
+            Por que negocios como el tuyo eligen Pedily
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Todo lo que necesitas para llevar tu negocio al mundo digital, sin
-            complicaciones.
+            Vende mas, gestiona menos. Todo lo que necesitas en un solo lugar.
           </p>
         </AnimatedSection>
 

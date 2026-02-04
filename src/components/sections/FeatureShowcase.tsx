@@ -17,105 +17,105 @@ import {
 const features = [
   {
     icon: ShoppingBag,
-    title: "Menu y catalogo digital",
+    title: "Tu menu, siempre actualizado",
     description:
-      "Crea un catalogo atractivo con categorias, variantes de productos, modificadores y precios promocionales. Tus clientes navegan y piden desde cualquier dispositivo.",
+      "Arma tu catalogo con categorias, variantes y personalizaciones. Tus clientes ven fotos, precios y piden desde el celular o la compu.",
     bullets: [
-      "Categorias y subcategorias organizadas",
-      "Variantes de producto (tamanios, sabores)",
-      "Modificadores y personalizaciones",
-      "Control de stock en tiempo real",
-      "Imagenes optimizadas de productos",
+      "Categorias organizadas como tu quieras",
+      "Variantes (tamanos, sabores, presentaciones)",
+      "Modificadores tipo 'sin cebolla', 'extra queso'",
+      "Stock que se actualiza solo",
+      "Fotos que cargan rapido en cualquier conexion",
     ],
     mockup: "catalog",
   },
   {
     icon: LayoutDashboard,
-    title: "Hub de gestion de pedidos",
+    title: "Hub: todos tus pedidos en un lugar",
     description:
-      "Gestiona todos tus pedidos desde un solo lugar. Pedidos de web, WhatsApp y kiosko llegan al mismo dashboard con notificaciones en tiempo real.",
+      "Web, WhatsApp o kiosko, da igual. Todo llega al mismo Hub. Notificacion instantanea, estados claros, tu equipo siempre al dia.",
     bullets: [
-      "Pedidos de 3 canales en un solo dashboard",
-      "Notificaciones en tiempo real (nuevos pedidos al instante)",
-      "9 estados de pedido: revision, cocina, listo, en camino, entregado",
-      "5 roles de equipo: Super Admin, Admin, Operador, Cocina, Cliente",
-      "Historial completo con timeline de cada pedido",
-      "Pre-ordenes con verificacion de comprobantes Yape/Plin",
+      "3 canales, 1 solo dashboard",
+      "Notificacion al toque cuando entra un pedido",
+      "9 estados: nuevo, cocina, listo, en camino, entregado...",
+      "Roles para tu equipo: admin, cocina, operador",
+      "Historial completo de cada pedido",
+      "Verificacion de pagos Yape/Plin con foto",
     ],
     mockup: "dashboard",
   },
   {
     icon: CreditCard,
-    title: "Pagos integrados",
+    title: "Cobra como quieras",
     description:
-      "Acepta pagos con tarjeta (Culqi), POS (IZIPAY), Yape, Plin o efectivo. Facturacion electronica con SUNAT incluida.",
+      "Tarjeta, Yape, Plin, efectivo o POS. Tu eliges. Y la boleta o factura sale automatica, directo a SUNAT.",
     bullets: [
-      "Tarjetas de credito y debito (Culqi)",
-      "POS y QR en kiosko (IZIPAY)",
-      "Yape, Plin con verificacion de comprobante",
-      "Pago contra entrega en efectivo",
-      "Facturacion electronica SUNAT (Boleta/Factura)",
-      "Nubefact para emision automatica de comprobantes",
+      "Tarjetas con Culqi (web y WhatsApp)",
+      "POS y QR con IZIPAY (kiosko)",
+      "Yape y Plin con verificacion de comprobante",
+      "Efectivo contra entrega",
+      "Boleta y Factura electronica automatica",
+      "Integracion con Nubefact y SUNAT",
     ],
     mockup: "payments",
   },
   {
     icon: Monitor,
-    title: "Kiosko de autoservicio",
+    title: "Kiosko: tus clientes piden solos",
     description:
-      "Terminal de autoservicio para que tus clientes ordenen en el local sin hacer cola. Ideal para restaurantes de alto trafico y patios de comida.",
+      "Una tablet en tu local y listo. El cliente ordena, paga y el pedido llega a cocina. Sin cajero, sin colas.",
     bullets: [
-      "Interfaz tactil optimizada para tablets",
-      "Catalogo visual con fotos y precios",
-      "Carrito con personalizaciones y modificadores",
-      "Pago con tarjeta, QR y Yape/Plin (IZIPAY)",
-      "Emision automatica de ticket y boleta",
-      "Pedidos llegan directo al Hub y cocina",
+      "Pantalla tactil facil de usar",
+      "Tu menu completo con fotos",
+      "Personalizaciones y modificadores",
+      "Paga con tarjeta, QR o Yape (IZIPAY)",
+      "Ticket y boleta automaticos",
+      "El pedido aparece en el Hub al instante",
     ],
     mockup: "kiosk",
   },
   {
     icon: MessageCircle,
-    title: "Bot de WhatsApp con IA",
+    title: "Bot WhatsApp que vende por ti",
     description:
-      "Un asistente virtual potenciado por Claude AI que atiende a tus clientes por WhatsApp 24/7. Entiende preguntas, recomienda platos y toma pedidos completos de forma conversacional.",
+      "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Tu solo supervisas.",
     bullets: [
-      "IA conversacional que entiende lenguaje natural",
-      "Responde preguntas sobre el menu y horarios",
-      "Flujo completo: catalogo, carrito, direccion, pago",
-      "Toma de control humano cuando necesites",
-      "Gestion centralizada de todas las conversaciones",
-      "Deteccion automatica de intencion de compra",
+      "Entiende como hablan tus clientes",
+      "Responde dudas sobre menu, horarios, delivery",
+      "Toma el pedido completo por chat",
+      "Tu puedes intervenir cuando quieras",
+      "Todas las conversaciones en un solo lugar",
+      "Detecta cuando el cliente quiere comprar",
     ],
     mockup: "whatsapp",
   },
   {
     icon: MapPin,
-    title: "Delivery inteligente",
+    title: "Delivery bajo control",
     description:
-      "Define tu zona de cobertura en el mapa, calcula costos de delivery automaticamente e integra con PedidosYa para despacho con repartidores externos.",
+      "Dibuja tu zona en el mapa, el sistema calcula el costo. Si necesitas repartidores, conecta con PedidosYa Envios.",
     bullets: [
-      "Mapa de cobertura interactivo con Google Maps",
-      "Calculo automatico de costo por zona/distrito",
-      "Integracion con PedidosYa (tracking en vivo)",
-      "Recojo en tienda como opcion",
-      "Multiples direcciones guardadas por cliente",
-      "Seguimiento del pedido en tiempo real",
+      "Mapa interactivo para definir cobertura",
+      "Costo automatico por zona o distrito",
+      "Tracking en vivo con PedidosYa",
+      "Opcion de recojo en tienda",
+      "Clientes guardan varias direcciones",
+      "Tu cliente sigue su pedido en tiempo real",
     ],
     mockup: "delivery",
   },
   {
     icon: Gift,
-    title: "Fidelizacion y referidos",
+    title: "Clientes que vuelven",
     description:
-      "Fideliza a tus clientes con puntos por cada compra, cupones de descuento y un programa de referidos que crece tu base de clientes organicamente.",
+      "Puntos por cada compra, cupones y referidos. Tus clientes ganan, tu vendes mas. Todos felices.",
     bullets: [
-      "Acumulacion automatica de puntos por compra",
-      "Cupones y codigos de descuento (fijo y porcentaje)",
+      "Puntos automaticos por cada sol gastado",
+      "Cupones de descuento (% o monto fijo)",
       "Descuentos por categoria o producto",
-      "Programa de referidos (cada cliente trae mas clientes)",
-      "Dashboard de beneficios visible para el cliente",
-      "Notificaciones por WhatsApp y email",
+      "Programa de referidos que crece solo",
+      "El cliente ve sus puntos en su perfil",
+      "Le avisas por WhatsApp cuando tiene beneficios",
     ],
     mockup: "loyalty",
   },
@@ -353,11 +353,10 @@ export function FeatureShowcase() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Todo lo que tu negocio necesita
+            Todo integrado, nada extra que instalar
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Desde el catalogo hasta la gestion de pedidos, todo integrado en una
-            sola plataforma.
+            Catalogo, pedidos, pagos, delivery, fidelizacion. Un solo sistema, una sola cuenta.
           </p>
         </AnimatedSection>
 

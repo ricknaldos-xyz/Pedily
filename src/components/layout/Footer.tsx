@@ -29,8 +29,8 @@ export function Footer() {
               Pedily
             </span>
             <p className="mt-3 text-sm text-slate-500">
-              Tu negocio digital, listo en minutos. Plataforma de pedidos online
-              para negocios de comida.
+              Recibe pedidos por web, WhatsApp y kiosko. Todo en un solo lugar,
+              sin comisiones.
             </p>
           </div>
 
@@ -85,11 +85,11 @@ export function Footer() {
 
         <div className="mt-12 border-t border-slate-200 pt-8 text-center text-sm text-slate-400">
           <p>
-            &copy; {new Date().getFullYear()} Pedily. Una plataforma de{" "}
+            &copy; {new Date().getFullYear()} Pedily. Hecho con{" "}
+            <span className="text-red-400">&#9829;</span> en Peru por{" "}
             <span className="font-medium text-slate-500">
               Hub de Innovacion Digital SAC
             </span>
-            . Hecho con amor en Peru.
           </p>
         </div>
       </Container>

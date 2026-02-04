@@ -8,11 +8,11 @@ import { Quote, Star } from "lucide-react";
 const testimonials = [
   {
     name: "Wantan Clan",
-    role: "Restaurante de comida china - Lima",
+    role: "Comida china - Lima",
     initials: "WC",
     color: "bg-indigo-500",
     quote:
-      "Desde que usamos Pedily, nuestros pedidos online crecieron un 40%. Ya no dependemos de agregadores y nuestros clientes nos encuentran directamente.",
+      "Antes dependiamos de Rappi y nos comian las comisiones. Ahora vendemos directo, nuestros clientes nos escriben por WhatsApp y el bot los atiende de una. 40% mas pedidos en 3 meses.",
     metric: "+40% pedidos",
     rating: 5,
   },
@@ -22,8 +22,8 @@ const testimonials = [
     initials: "DT",
     color: "bg-emerald-500",
     quote:
-      "Configurar nuestra tienda fue super facil. En un dia ya teniamos todo listo con nuestro menu de tortas y postres. El bot de WhatsApp con IA es increible.",
-    metric: "Setup en 1 dia",
+      "Pense que iba a ser complicado pero no. En un dia tenia mi tienda lista con todas mis tortas. Y el bot de WhatsApp es genial, mis clientas lo aman.",
+    metric: "Listo en 1 dia",
     rating: 5,
   },
   {
@@ -32,7 +32,7 @@ const testimonials = [
     initials: "CE",
     color: "bg-amber-500",
     quote:
-      "Ahorramos miles de soles al mes al no pagar comisiones por cada pedido. Pedily se paga solo con lo que nos ahorramos versus Rappi.",
+      "Con lo que pagaba de comisiones en Rappi ahora pago Pedily todo el ano y me sobra. Los numeros no mienten, ahorramos mas de 3 mil soles al mes.",
     metric: "-S/ 3,500/mes",
     rating: 5,
   },
@@ -44,11 +44,10 @@ export function Testimonials() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Negocios que ya confian en Pedily
+            Negocios reales, resultados reales
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Restaurantes, pastelerias y cafeterias que transformaron su negocio
-            con nuestra plataforma.
+            Mira lo que dicen los que ya venden con Pedily.
           </p>
         </AnimatedSection>
 
