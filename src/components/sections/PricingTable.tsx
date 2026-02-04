@@ -9,43 +9,41 @@ import { Check, Sparkles, Zap, Building2 } from "lucide-react";
 const plans = [
   {
     name: "Inicio",
-    description: "Para negocios que empiezan en el mundo digital",
+    description: "Ideal si recien empiezas a vender online",
     monthlyPrice: 179,
     annualPrice: 143,
     icon: Zap,
     popular: false,
     features: [
-      "Tienda web con catalogo completo",
-      "Categorias y organizacion",
-      "Carrito y checkout (web)",
-      "Compra como invitado (sin registro)",
-      "Pagos: Yape, Plin, efectivo",
+      "Tu tienda web con tu menu completo",
+      "Carrito y checkout funcionando",
+      "Pagos con Yape, Plin y efectivo",
       "Hub de pedidos en tiempo real",
-      "Notificaciones instantaneas",
+      "Notificaciones al toque",
       "3 zonas de delivery",
-      "Cupones basicos",
-      "2 usuarios (Admin + Operador)",
+      "Cupones de descuento",
+      "2 usuarios para tu equipo",
       "Soporte por email",
     ],
   },
   {
     name: "Crecimiento",
-    description: "Para negocios establecidos que quieren escalar",
+    description: "Para negocios que quieren escalar",
     monthlyPrice: 349,
     annualPrice: 279,
     icon: Sparkles,
     popular: true,
     features: [
       "Todo de Inicio, mas:",
-      "Bot de WhatsApp con IA (Claude AI)",
-      "Toma de control humano en chats",
-      "Pasarela de pagos (tarjetas Culqi)",
-      "Facturacion electronica SUNAT",
+      "Bot WhatsApp con IA (Claude)",
+      "Tu intervienes cuando quieras",
+      "Cobros con tarjeta (Culqi)",
+      "Boleta y Factura SUNAT automatica",
       "Zonas de delivery ilimitadas",
-      "Sistema de puntos de fidelizacion",
-      "Hub con 9 estados y 5 roles",
+      "Puntos de fidelizacion",
+      "Hub completo con 5 roles",
       "Base de datos de clientes",
-      "Reportes avanzados",
+      "Reportes de ventas",
       "5 usuarios con roles",
       "Pedidos ilimitados",
       "Soporte prioritario",
@@ -53,23 +51,23 @@ const plans = [
   },
   {
     name: "Empresa",
-    description: "Para cadenas y operaciones de alto volumen",
+    description: "Para locales con alto volumen",
     monthlyPrice: 699,
     annualPrice: 559,
     icon: Building2,
     popular: false,
     features: [
       "Todo de Crecimiento, mas:",
-      "Kiosko de autoservicio en tienda",
+      "Kiosko de autoservicio",
       "POS con IZIPAY (tarjeta y QR)",
-      "Integracion PedidosYa Envios",
+      "Delivery con PedidosYa Envios",
       "Programa de referidos",
-      "Reportes con exportacion CSV/Excel",
-      "Usuarios y sucursales ilimitadas",
-      "Dominio personalizado",
+      "Exporta reportes a Excel",
+      "Usuarios y locales ilimitados",
+      "Tu propio dominio",
       "Soporte dedicado + onboarding",
-      "Acceso anticipado a nuevas funciones",
-      "API access",
+      "Acceso a funciones nuevas primero",
+      "API para integraciones",
     ],
   },
 ];
@@ -82,11 +80,10 @@ export function PricingTable() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Planes simples, sin sorpresas
+            Elige tu plan, empieza a vender
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Sin comisiones por pedido. Elige el plan que mejor se adapte a tu
-            negocio.
+            Tarifa fija, sin comisiones. Vendas 10 o 10,000 pedidos, pagas lo mismo.
           </p>
 
           <div className="mt-8 inline-flex items-center gap-3 rounded-full bg-slate-200 p-1">
@@ -179,7 +176,7 @@ export function PricingTable() {
                         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                     }`}
                   >
-                    Empieza 14 dias gratis
+                    Probar 14 dias gratis
                   </a>
 
                   <ul className="mt-8 flex-1 space-y-3">

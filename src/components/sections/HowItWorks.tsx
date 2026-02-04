@@ -9,23 +9,23 @@ const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Registrate y configura tu menu",
+    title: "Crea tu cuenta y sube tu menu",
     description:
-      "Crea tu cuenta, sube tus productos con fotos, precios y variantes. Organiza por categorias.",
+      "Registrate gratis, agrega tus productos con fotos y precios. Es como armar un album, bien facil.",
   },
   {
     icon: Paintbrush,
     step: "02",
-    title: "Personaliza tu tienda",
+    title: "Personaliza todo a tu gusto",
     description:
-      "Agrega tu logo, colores y dominio. Define zonas de delivery, horarios y metodos de pago.",
+      "Tu logo, tus colores, tu dominio. Configura zonas de delivery, horarios y como quieres cobrar.",
   },
   {
     icon: ShoppingCart,
     step: "03",
-    title: "Empieza a recibir pedidos",
+    title: "Listo, a vender",
     description:
-      "Comparte el link de tu tienda, recibe pedidos al instante y gestiona todo desde el dashboard.",
+      "Comparte tu link y empieza a recibir pedidos. Los ves todos en el Hub, en tiempo real.",
   },
 ];
 
@@ -35,11 +35,10 @@ export function HowItWorks() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Empieza en 3 simples pasos
+            Tu tienda lista en 3 pasos
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            No necesitas conocimientos tecnicos. Configura tu tienda online y
-            empieza a vender hoy.
+            Sin codigo, sin complicaciones. Si sabes usar WhatsApp, puedes usar Pedily.
           </p>
         </AnimatedSection>
 

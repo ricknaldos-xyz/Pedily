@@ -92,11 +92,10 @@ export function ComparisonTable() {
       <Container>
         <AnimatedSection className="text-center">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-            Pedily vs Agregadores
+            Por que dejar de depender de Rappi?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Compara lo que obtienes con Pedily frente a plataformas como Rappi,
-            PedidosYa o UberEats.
+            Mira lo que obtienes con Pedily vs lo que te dan (y te quitan) los agregadores.
           </p>
         </AnimatedSection>
 
