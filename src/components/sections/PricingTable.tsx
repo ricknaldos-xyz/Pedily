@@ -10,8 +10,8 @@ const plans = [
   {
     name: "Inicio",
     description: "Ideal si recien empiezas a vender online",
-    monthlyPrice: 179,
-    annualPrice: 143,
+    monthlyPrice: 249,
+    annualPrice: 199,
     icon: Zap,
     popular: false,
     features: [
@@ -29,8 +29,8 @@ const plans = [
   {
     name: "Crecimiento",
     description: "Para negocios que quieren escalar",
-    monthlyPrice: 349,
-    annualPrice: 279,
+    monthlyPrice: 499,
+    annualPrice: 399,
     icon: Sparkles,
     popular: true,
     features: [
@@ -52,8 +52,8 @@ const plans = [
   {
     name: "Empresa",
     description: "Para locales con alto volumen",
-    monthlyPrice: 699,
-    annualPrice: 559,
+    monthlyPrice: 999,
+    annualPrice: 799,
     icon: Building2,
     popular: false,
     features: [

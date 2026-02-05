@@ -53,7 +53,7 @@ const comparisons = [
   },
   {
     feature: "Costo mensual fijo",
-    pedily: "Desde S/ 179/mes",
+    pedily: "Desde S/ 249/mes",
     aggregators: "Variable (% de ventas)",
   },
   {
