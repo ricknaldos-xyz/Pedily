@@ -8,12 +8,9 @@ const productLinks = [
 
 const resourceLinks = [
   { href: "/docs", label: "Documentacion" },
-  { href: "#", label: "Centro de ayuda" },
-  { href: "#", label: "Blog" },
 ];
 
 const companyLinks = [
-  { href: "#", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
   { href: "/legal/terminos", label: "Terminos y condiciones" },
   { href: "/legal/privacidad", label: "Politica de privacidad" },
