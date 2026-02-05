@@ -58,8 +58,7 @@ const plans = [
     popular: false,
     features: [
       "Todo de Crecimiento, mas:",
-      "Kiosko de autoservicio",
-      "POS con IZIPAY (tarjeta y QR)",
+      "Kiosko de autoservicio con IZIPAY",
       "Delivery con PedidosYa Envios",
       "Programa de referidos",
       "Exporta reportes a Excel",

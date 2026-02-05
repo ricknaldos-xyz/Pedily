@@ -34,7 +34,7 @@ const costosPorSeparado = [
   },
   {
     nombre: "Kiosko de Autoservicio",
-    descripcion: "Toast Kiosk, Square Kiosk",
+    descripcion: "Con integracion de pagos",
     costoUSD: 70,
     costoPEN: 265,
     icon: Monitor,

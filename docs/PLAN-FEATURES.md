@@ -11,7 +11,7 @@
 | Caracteristica | Inicio (S/ 249) | Crecimiento (S/ 499) | Empresa (S/ 999) |
 |----------------|-----------------|----------------------|------------------|
 | **Canales** | Web | Web + WhatsApp IA | Web + WhatsApp + Kiosko |
-| **Pagos online** | Yape, Plin, efectivo | + Tarjetas (Culqi) | + POS IZIPAY |
+| **Pagos online** | Yape, Plin, efectivo | + Tarjetas (Culqi) | + Kiosko IZIPAY |
 | **Facturacion SUNAT** | No | Si (automatica) | Si (multi-local) |
 | **Usuarios** | 2 | 5 con roles | Ilimitados |
 | **Soporte** | Email | Prioritario | Dedicado |
@@ -58,7 +58,7 @@
 | App para tablet (Android) | ❌ | ❌ | ✅ |
 | Catalogo visual touch-friendly | ❌ | ❌ | ✅ |
 | Carrito y checkout en kiosko | ❌ | ❌ | ✅ |
-| Integracion POS IZIPAY | ❌ | ❌ | ✅ |
+| Pagos en kiosko con IZIPAY | ❌ | ❌ | ✅ |
 | Pago con tarjeta en kiosko | ❌ | ❌ | ✅ |
 | Pago con QR (Yape/Plin) en kiosko | ❌ | ❌ | ✅ |
 | Impresion de ticket | ❌ | ❌ | ✅ |
@@ -84,7 +84,7 @@
 | Culqi - American Express | ❌ | ✅ | ✅ |
 | Culqi - Diners Club | ❌ | ✅ | ✅ |
 
-### Pagos POS (Presencial)
+### Pagos en Kiosko (Presencial via IZIPAY)
 
 | Feature | Inicio | Crecimiento | Empresa |
 |---------|--------|-------------|---------|
@@ -340,7 +340,7 @@ Soporte: Prioritario (24h)
 ### Plan Empresa (S/ 999/mes)
 ```
 Canales: Web + WhatsApp + Kiosko
-Pagos: + POS IZIPAY
+Pagos: + Kiosko con IZIPAY
 Hub: Completo + Reportes Excel
 Usuarios: Ilimitados
 SUNAT: Multi-RUC

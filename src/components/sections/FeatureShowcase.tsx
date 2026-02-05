@@ -48,10 +48,10 @@ const features = [
     icon: CreditCard,
     title: "Cobra como quieras",
     description:
-      "Tarjeta, Yape, Plin, efectivo o POS. Tu eliges. Y la boleta o factura sale automatica, directo a SUNAT.",
+      "Tarjeta, Yape, Plin o efectivo. Tu eliges. Y la boleta o factura sale automatica, directo a SUNAT.",
     bullets: [
       "Tarjetas con Culqi (web y WhatsApp)",
-      "POS y QR con IZIPAY (kiosko)",
+      "Tarjeta y QR en kiosko (IZIPAY)",
       "Yape y Plin con verificacion de comprobante",
       "Efectivo contra entrega",
       "Boleta y Factura electronica automatica",
@@ -196,7 +196,7 @@ function FeatureMockup({ type }: { type: string }) {
         <h4 className="text-sm font-bold text-slate-700">Metodos de pago</h4>
         {[
           { name: "Tarjeta (Culqi)", icon: "💳", status: "Web/Bot" },
-          { name: "POS/QR (IZIPAY)", icon: "🏪", status: "Kiosko" },
+          { name: "Tarjeta/QR (IZIPAY)", icon: "🏪", status: "Kiosko" },
           { name: "Yape / Plin", icon: "📱", status: "Todos" },
           { name: "Efectivo", icon: "💵", status: "Delivery" },
         ].map((method) => (
