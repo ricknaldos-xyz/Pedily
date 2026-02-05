@@ -2,7 +2,7 @@ import { Container } from "./Container";
 
 const productLinks = [
   { href: "#funcionalidades", label: "Funcionalidades" },
-  { href: "#precios", label: "Precios" },
+  { href: "/precios", label: "Precios" },
   { href: "#faq", label: "Preguntas frecuentes" },
 ];
 

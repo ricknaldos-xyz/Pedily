@@ -1,8 +1,12 @@
 import { Hero } from "@/components/sections/Hero";
+import { LogoBar } from "@/components/sections/LogoBar";
 import { BenefitsGrid } from "@/components/sections/BenefitsGrid";
+import { ProductScreenshots } from "@/components/sections/ProductScreenshots";
 import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PricingTable } from "@/components/sections/PricingTable";
+import { ROICalculator } from "@/components/sections/ROICalculator";
+import { CaseStudy } from "@/components/sections/CaseStudy";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ComparisonTable } from "@/components/sections/ComparisonTable";
 import { FAQ } from "@/components/sections/FAQ";
@@ -12,10 +16,14 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <LogoBar />
       <BenefitsGrid />
+      <ProductScreenshots />
       <FeatureShowcase />
       <HowItWorks />
       <PricingTable />
+      <ROICalculator />
+      <CaseStudy />
       <Testimonials />
       <ComparisonTable />
       <FAQ />

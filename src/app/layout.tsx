@@ -21,13 +21,53 @@ export const metadata: Metadata = {
     "delivery",
     "menu digital",
     "SaaS restaurantes",
+    "bot whatsapp restaurante",
+    "kiosko autoservicio",
+    "pedily",
   ],
+  authors: [{ name: "Hub de Innovacion Digital SAC" }],
+  creator: "Pedily",
+  publisher: "Hub de Innovacion Digital SAC",
+  metadataBase: new URL("https://pedily.com"),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
-    title: "Pedily - Tu negocio digital, listo en minutos",
+    title: "Pedily - Recibe pedidos por web, WhatsApp y kiosko",
     description:
-      "Recibe pedidos online, gestiona tu operacion y crece tu negocio. Sin comisiones por pedido.",
+      "Plataforma multicanal para restaurantes. Sin comisiones por pedido. Bot WhatsApp con IA, kiosko de autoservicio, facturacion SUNAT. Desde S/ 249/mes.",
     type: "website",
     locale: "es_PE",
+    url: "https://pedily.com",
+    siteName: "Pedily",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Pedily - Plataforma de pedidos para restaurantes",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pedily - Tu negocio digital, listo en minutos",
+    description:
+      "Recibe pedidos por web, WhatsApp y kiosko. Sin comisiones. Desde S/ 249/mes.",
+    images: ["/og-image.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

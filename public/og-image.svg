@@ -1,0 +1,48 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+
+  <!-- Gradient overlay -->
+  <rect width="1200" height="630" fill="url(#gradient)" opacity="0.5"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="64" height="64" rx="16" fill="#6366F1"/>
+  <path d="M100 96h12c4.4 0 8 3.6 8 8s-3.6 8-8 8h-12V96z" fill="white"/>
+  <path d="M100 112h8v16h-8v-16z" fill="white"/>
+  <circle cx="128" cy="120" r="8" fill="#10B981"/>
+
+  <!-- Brand name -->
+  <text x="160" y="128" font-family="system-ui, sans-serif" font-size="40" font-weight="800" fill="#6366F1">Pedily</text>
+
+  <!-- Main headline -->
+  <text x="80" y="280" font-family="system-ui, sans-serif" font-size="64" font-weight="800" fill="#0F172A">Recibe pedidos por web,</text>
+  <text x="80" y="360" font-family="system-ui, sans-serif" font-size="64" font-weight="800" fill="#0F172A">WhatsApp y kiosko</text>
+
+  <!-- Subheadline -->
+  <text x="80" y="440" font-family="system-ui, sans-serif" font-size="28" fill="#64748B">Sin comisiones. Tu marca, tu control, tus clientes.</text>
+
+  <!-- CTA -->
+  <rect x="80" y="490" width="280" height="56" rx="12" fill="#6366F1"/>
+  <text x="140" y="528" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="white">Desde S/ 249/mes</text>
+
+  <!-- Feature badges -->
+  <rect x="400" y="490" width="140" height="40" rx="8" fill="#E0E7FF"/>
+  <text x="420" y="516" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#4F46E5">0% comision</text>
+
+  <rect x="560" y="490" width="160" height="40" rx="8" fill="#D1FAE5"/>
+  <text x="580" y="516" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#059669">Bot WhatsApp IA</text>
+
+  <rect x="740" y="490" width="120" height="40" rx="8" fill="#FEF3C7"/>
+  <text x="760" y="516" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#D97706">Kiosko POS</text>
+
+  <!-- Decorative elements -->
+  <circle cx="1050" cy="150" r="100" fill="#6366F1" opacity="0.1"/>
+  <circle cx="1100" cy="450" r="150" fill="#10B981" opacity="0.1"/>
+
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+</svg>

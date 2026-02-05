@@ -1,0 +1,13 @@
+# Pedily - robots.txt
+# https://pedily.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pedily.com/sitemap.xml
+
+# Disallow admin/api routes (if any in future)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
