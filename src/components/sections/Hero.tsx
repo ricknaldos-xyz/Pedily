@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { TrustBadges } from "@/components/ui/TrustBadges";
 import { ArrowRight, Play, Globe, MessageCircle, Monitor } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -82,7 +83,9 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-10 flex items-center gap-4">
+            <TrustBadges className="mt-5" />
+
+            <div className="mt-8 flex items-center gap-4">
               <div className="flex -space-x-2">
                 {["bg-indigo-400", "bg-emerald-400", "bg-amber-400", "bg-rose-400"].map(
                   (color, i) => (
