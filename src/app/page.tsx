@@ -12,10 +12,12 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { ComparisonTable } from "@/components/sections/ComparisonTable";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { FAQPageJsonLd } from "@/components/seo/JsonLd";
 
 export default function Home() {
   return (
     <>
+      <FAQPageJsonLd />
       <Hero />
       <LogoBar />
       <BenefitsGrid />
