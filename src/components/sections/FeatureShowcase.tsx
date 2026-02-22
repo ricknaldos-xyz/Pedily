@@ -341,7 +341,7 @@ function FeatureMockup({ type }: { type: string }) {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/50 transition-shadow duration-500 hover:shadow-xl">
       {mockups[type]}
     </div>
   );
@@ -352,7 +352,10 @@ export function FeatureShowcase() {
     <Section id="funcionalidades" className="bg-slate-50">
       <Container>
         <AnimatedSection className="text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            Funcionalidades
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Todo integrado, nada extra que instalar
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
@@ -360,40 +363,52 @@ export function FeatureShowcase() {
           </p>
         </AnimatedSection>
 
-        <div className="mt-16 space-y-20">
-          {features.map((feature, i) => (
-            <AnimatedSection key={feature.title}>
+        <div className="mt-16 space-y-24">
+          {features.map((feature, i) => {
+            const isOdd = i % 2 === 1;
+            return (
               <div
-                className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-16 ${
-                  i % 2 === 1 ? "lg:direction-rtl" : ""
-                }`}
+                key={feature.title}
+                className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-16`}
               >
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="inline-flex rounded-xl bg-primary-50 p-3">
+                <AnimatedSection
+                  variant={isOdd ? "fade-right" : "fade-left"}
+                  className={isOdd ? "lg:order-2" : ""}
+                >
+                  <div className="inline-flex rounded-xl bg-gradient-to-br from-primary-50 to-primary-100/50 p-3">
                     <feature.icon className="h-6 w-6 text-primary-600" />
                   </div>
                   <h3 className="mt-4 text-2xl font-bold text-slate-900">
                     {feature.title}
                   </h3>
-                  <p className="mt-3 text-slate-500">{feature.description}</p>
-                  <ul className="mt-6 space-y-2">
+                  <p className="mt-3 leading-relaxed text-slate-500">{feature.description}</p>
+                  <ul className="mt-6 space-y-2.5">
                     {feature.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-start gap-2 text-sm text-slate-600"
+                        className="flex items-start gap-2.5 text-sm text-slate-600"
                       >
-                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-500" />
+                        <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent-50">
+                          <Check className="h-3 w-3 text-accent-600" />
+                        </span>
                         {bullet}
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <FeatureMockup type={feature.mockup} />
-                </div>
+                </AnimatedSection>
+                <AnimatedSection
+                  variant={isOdd ? "fade-left" : "fade-right"}
+                  delay={0.1}
+                  className={isOdd ? "lg:order-1" : ""}
+                >
+                  <div className="relative">
+                    <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-br from-primary-100/30 to-accent-100/30 blur-xl" />
+                    <FeatureMockup type={feature.mockup} />
+                  </div>
+                </AnimatedSection>
               </div>
-            </AnimatedSection>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </Section>

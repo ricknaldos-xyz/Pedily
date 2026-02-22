@@ -10,6 +10,7 @@ import {
   Monitor,
   LayoutDashboard,
 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const screenshots = [
   {
@@ -252,7 +253,10 @@ export function ProductScreenshots() {
     <Section className="overflow-hidden bg-gradient-to-b from-slate-50 to-white">
       <Container>
         <AnimatedSection className="text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            Demo
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Mira como funciona
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
@@ -261,36 +265,61 @@ export function ProductScreenshots() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            {screenshots.map((screenshot) => {
-              const Icon = screenshot.icon;
-              const isActive = active === screenshot.id;
-              return (
-                <button
-                  key={screenshot.id}
-                  onClick={() => setActive(screenshot.id)}
-                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
-                    isActive
-                      ? "bg-primary-600 text-white shadow-lg shadow-primary-500/25"
-                      : "bg-white text-slate-600 shadow-sm hover:bg-slate-50"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  {screenshot.name}
-                </button>
-              );
-            })}
+          {/* Segmented control tabs */}
+          <div className="mt-10 flex justify-center">
+            <div className="relative inline-flex rounded-2xl bg-slate-100 p-1">
+              {screenshots.map((screenshot) => {
+                const Icon = screenshot.icon;
+                const isActive = active === screenshot.id;
+                return (
+                  <button
+                    key={screenshot.id}
+                    onClick={() => setActive(screenshot.id)}
+                    className={`relative z-10 flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                      isActive
+                        ? "text-white"
+                        : "text-slate-600 hover:text-slate-800"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 rounded-xl bg-primary-600 shadow-lg shadow-primary-500/25"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <Icon className="relative z-10 h-4 w-4" />
+                    <span className="relative z-10 hidden sm:inline">{screenshot.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
-          <div className="mt-10 flex flex-col items-center">
-            <p className="mb-6 text-center text-sm text-slate-500">
-              {activeScreenshot?.description}
-            </p>
-            <div className="w-full max-w-2xl">{activeScreenshot?.mockup}</div>
-          </div>
-        </AnimatedSection>
+        <div className="mt-10 flex flex-col items-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, scale: 0.96, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: -10 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="w-full"
+            >
+              <p className="mb-6 text-center text-sm text-slate-500">
+                {activeScreenshot?.description}
+              </p>
+              {/* Glow behind mockup */}
+              <div className="relative flex justify-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-3/4 w-3/4 rounded-full bg-primary-200/20 blur-3xl" />
+                <div className="relative w-full max-w-2xl">
+                  {activeScreenshot?.mockup}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </Container>
     </Section>
   );
