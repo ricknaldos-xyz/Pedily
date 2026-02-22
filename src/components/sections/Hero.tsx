@@ -3,24 +3,62 @@
 import { Container } from "@/components/layout/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { TrustBadges } from "@/components/ui/TrustBadges";
-import { ArrowRight, Play, Globe, MessageCircle, Monitor } from "lucide-react";
+import { ArrowRight, Play, Globe, MessageCircle, Monitor, Bell } from "lucide-react";
 import { motion } from "framer-motion";
+
+const channels = [
+  {
+    icon: Globe,
+    label: "Tienda Web",
+    bg: "bg-blue-50",
+    text: "text-blue-700",
+    ring: "ring-blue-200",
+  },
+  {
+    icon: MessageCircle,
+    label: "Bot WhatsApp + IA",
+    bg: "bg-green-50",
+    text: "text-green-700",
+    ring: "ring-green-200",
+  },
+  {
+    icon: Monitor,
+    label: "Kiosko Autoservicio",
+    bg: "bg-purple-50",
+    text: "text-purple-700",
+    ring: "ring-purple-200",
+  },
+];
+
+const avatars = [
+  { initials: "WC", gradient: "from-indigo-400 to-indigo-600" },
+  { initials: "DT", gradient: "from-emerald-400 to-emerald-600" },
+  { initials: "CE", gradient: "from-amber-400 to-amber-600" },
+  { initials: "PF", gradient: "from-rose-400 to-rose-600" },
+];
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]" />
+      {/* Dot grid pattern */}
+      <div className="absolute inset-0 dot-grid" />
 
       {/* Decorative floating elements */}
       <motion.div
         animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-10 h-20 w-20 rounded-2xl bg-primary-200/30 blur-xl"
+        className="absolute top-20 left-10 h-24 w-24 rounded-2xl bg-gradient-to-br from-primary-300/30 to-primary-100/20 blur-xl"
       />
       <motion.div
         animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-20 bottom-20 h-32 w-32 rounded-full bg-accent-200/30 blur-xl"
+        className="absolute right-20 bottom-20 h-36 w-36 rounded-full bg-gradient-to-br from-accent-300/30 to-accent-100/20 blur-xl"
+      />
+      <motion.div
+        animate={{ y: [0, 10, 0], x: [0, -8, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 right-1/4 h-20 w-20 rounded-full bg-gradient-to-br from-purple-200/20 to-pink-200/20 blur-xl"
       />
 
       <Container className="relative py-20 sm:py-28 lg:py-36">
@@ -30,7 +68,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-1.5 text-sm font-medium text-primary-700"
+              className="inline-flex items-center gap-2 rounded-full border border-primary-200/60 bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-medium text-primary-700 shadow-sm"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-accent-500" />
               La plataforma que usan los restaurantes top de Peru
@@ -50,26 +88,29 @@ export function Hero() {
               <strong>Sin comisiones.</strong>
             </p>
 
-            {/* 3 Channels badges */}
+            {/* 3 Channels badges with staggered animation */}
             <div className="mt-6 flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 ring-1 ring-blue-200">
-                <Globe className="h-3.5 w-3.5" />
-                Tienda Web
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-3 py-1.5 text-xs font-medium text-green-700 ring-1 ring-green-200">
-                <MessageCircle className="h-3.5 w-3.5" />
-                Bot WhatsApp + IA
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-50 px-3 py-1.5 text-xs font-medium text-purple-700 ring-1 ring-purple-200">
-                <Monitor className="h-3.5 w-3.5" />
-                Kiosko Autoservicio
-              </span>
+              {channels.map((ch, i) => {
+                const Icon = ch.icon;
+                return (
+                  <motion.span
+                    key={ch.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3 + i * 0.1, duration: 0.3, ease: "easeOut" }}
+                    className={`inline-flex items-center gap-1.5 rounded-full ${ch.bg} px-3 py-1.5 text-xs font-medium ${ch.text} ring-1 ${ch.ring}`}
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {ch.label}
+                  </motion.span>
+                );
+              })}
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#cta"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98]"
+                className="btn-shimmer group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98]"
               >
                 Prueba gratis 14 dias
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -87,28 +128,32 @@ export function Hero() {
 
             <div className="mt-8 flex items-center gap-4">
               <div className="flex -space-x-2">
-                {["bg-indigo-400", "bg-emerald-400", "bg-amber-400", "bg-rose-400"].map(
-                  (color, i) => (
-                    <div
-                      key={i}
-                      className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-white ${color} text-xs font-bold text-white shadow-sm`}
-                    >
-                      {["WC", "DT", "CE", "PF"][i]}
-                    </div>
-                  ),
-                )}
+                {avatars.map((a, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + i * 0.08, type: "spring", stiffness: 300, damping: 20 }}
+                    className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br ${a.gradient} text-xs font-bold text-white shadow-md`}
+                  >
+                    {a.initials}
+                  </motion.div>
+                ))}
               </div>
               <div>
                 <div className="flex items-center gap-0.5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <motion.svg
                       key={i}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 + i * 0.1, type: "spring", stiffness: 400, damping: 15 }}
                       className="h-4 w-4 text-yellow-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    </motion.svg>
                   ))}
                 </div>
                 <p className="text-sm text-slate-500">
@@ -120,11 +165,30 @@ export function Hero() {
 
           <AnimatedSection delay={0.2}>
             <div className="relative">
+              {/* Floating notification card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30, y: -10 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
+                className="absolute -right-2 -top-4 z-10 hidden rounded-xl border border-green-200 bg-white p-3 shadow-lg sm:block"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-100">
+                    <MessageCircle className="h-4 w-4 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-slate-700">Nuevo pedido por WhatsApp</p>
+                    <p className="text-[10px] text-slate-400">Ana pidio Pollo a la Brasa x2</p>
+                  </div>
+                  <Bell className="h-3.5 w-3.5 text-green-500" />
+                </div>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative mx-auto max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-300/40 lg:max-w-none"
+                className="animate-float relative mx-auto max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-300/40 lg:max-w-none"
               >
                 <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-4 py-3">
                   <div className="h-3 w-3 rounded-full bg-red-400" />

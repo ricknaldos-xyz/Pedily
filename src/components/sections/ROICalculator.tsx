@@ -15,41 +15,36 @@ import {
   FileText,
   Check,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
-// Costos de mercado para armar una solucion similar (USD convertido a PEN ~3.78)
 const costosPorSeparado = [
   {
     nombre: "Tienda Web con Checkout",
     descripcion: "ChowNow, GloriaFood Pro, etc.",
-    costoUSD: 150,
     costoPEN: 570,
     icon: ShoppingBag,
   },
   {
     nombre: "Bot WhatsApp con IA",
     descripcion: "OrderOnWhats, Botsify, etc.",
-    costoUSD: 100,
     costoPEN: 380,
     icon: MessageCircle,
   },
   {
     nombre: "Kiosko de Autoservicio",
     descripcion: "Con integracion de pagos",
-    costoUSD: 70,
     costoPEN: 265,
     icon: Monitor,
   },
   {
     nombre: "Hub Administrativo",
     descripcion: "Dashboard de operaciones",
-    costoUSD: 75,
     costoPEN: 285,
     icon: LayoutDashboard,
   },
   {
     nombre: "Facturacion SUNAT",
     descripcion: "Nubefact, Efact, etc.",
-    costoUSD: 15,
     costoPEN: 60,
     icon: FileText,
   },
@@ -81,10 +76,10 @@ export function ROICalculator() {
     <Section className="bg-gradient-to-b from-primary-50 to-white">
       <Container>
         <AnimatedSection className="text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-100">
-            <Calculator className="h-7 w-7 text-primary-600" />
-          </div>
-          <h2 className="mt-6 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            Calculadora
+          </span>
+          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Cuanto vale lo que te da Pedily?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
@@ -93,35 +88,37 @@ export function ROICalculator() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          {/* Tabs */}
-          <div className="mx-auto mt-10 flex max-w-md justify-center gap-2 rounded-xl bg-slate-100 p-1">
-            <button
-              onClick={() => setTab("build")}
-              className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
-                tab === "build"
-                  ? "bg-white text-slate-900 shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
-              }`}
-            >
-              vs Armar por separado
-            </button>
-            <button
-              onClick={() => setTab("aggregators")}
-              className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
-                tab === "aggregators"
-                  ? "bg-white text-slate-900 shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
-              }`}
-            >
-              vs Agregadores
-            </button>
+          {/* Segmented control tabs */}
+          <div className="mt-10 flex justify-center">
+            <div className="relative inline-flex rounded-2xl bg-slate-100 p-1">
+              {[
+                { id: "build" as const, label: "vs Armar por separado" },
+                { id: "aggregators" as const, label: "vs Agregadores" },
+              ].map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setTab(t.id)}
+                  className={`relative z-10 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors duration-200 ${
+                    tab === t.id ? "text-white" : "text-slate-600 hover:text-slate-800"
+                  }`}
+                >
+                  {tab === t.id && (
+                    <motion.div
+                      layoutId="roiTab"
+                      className="absolute inset-0 rounded-xl bg-primary-600 shadow-lg shadow-primary-500/25"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{t.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
           <div className="mx-auto mt-8 max-w-5xl">
             {tab === "build" ? (
-              /* Comparacion vs armar por separado */
               <div className="grid gap-6 lg:grid-cols-2">
                 {/* Costos por separado */}
                 <div className="rounded-2xl border border-red-200 bg-white p-6 shadow-lg">
@@ -143,10 +140,10 @@ export function ROICalculator() {
                       return (
                         <div
                           key={item.nombre}
-                          className="flex items-center justify-between rounded-lg bg-slate-50 px-4 py-3"
+                          className="flex items-center justify-between rounded-xl bg-slate-50 px-4 py-3"
                         >
                           <div className="flex items-center gap-3">
-                            <Icon className="h-5 w-5 text-slate-400" />
+                            <Icon className="h-4 w-4 text-slate-400" />
                             <div>
                               <p className="text-sm font-medium text-slate-700">
                                 {item.nombre}
@@ -190,28 +187,31 @@ export function ROICalculator() {
                   </p>
 
                   <div className="mt-4 space-y-2">
-                    {costosPorSeparado.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <div
-                          key={item.nombre}
-                          className="flex items-center gap-3 rounded-lg bg-white/60 px-4 py-2"
-                        >
-                          <Check className="h-5 w-5 text-accent-600" />
-                          <span className="text-sm font-medium text-slate-700">
-                            {item.nombre}
-                          </span>
-                        </div>
-                      );
-                    })}
-                    <div className="flex items-center gap-3 rounded-lg bg-white/60 px-4 py-2">
-                      <Check className="h-5 w-5 text-accent-600" />
+                    {costosPorSeparado.map((item) => (
+                      <div
+                        key={item.nombre}
+                        className="flex items-center gap-3 rounded-xl bg-white/60 px-4 py-2"
+                      >
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent-100">
+                          <Check className="h-3 w-3 text-accent-600" />
+                        </span>
+                        <span className="text-sm font-medium text-slate-700">
+                          {item.nombre}
+                        </span>
+                      </div>
+                    ))}
+                    <div className="flex items-center gap-3 rounded-xl bg-white/60 px-4 py-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent-100">
+                        <Check className="h-3 w-3 text-accent-600" />
+                      </span>
                       <span className="text-sm font-medium text-slate-700">
                         CRM + Fidelizacion + Referidos
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 rounded-lg bg-white/60 px-4 py-2">
-                      <Check className="h-5 w-5 text-accent-600" />
+                    <div className="flex items-center gap-3 rounded-xl bg-white/60 px-4 py-2">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent-100">
+                        <Check className="h-3 w-3 text-accent-600" />
+                      </span>
                       <span className="text-sm font-medium text-slate-700">
                         Soporte dedicado + Onboarding
                       </span>
@@ -225,7 +225,6 @@ export function ROICalculator() {
                     </p>
                   </div>
 
-                  {/* Ahorro */}
                   <div className="mt-4 rounded-xl bg-accent-600 p-4 text-center text-white">
                     <p className="text-sm font-medium opacity-90">
                       Te ahorras cada mes
@@ -240,10 +239,8 @@ export function ROICalculator() {
                 </div>
               </div>
             ) : (
-              /* Comparacion vs agregadores */
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg sm:p-8">
                 <div className="grid gap-8 lg:grid-cols-2">
-                  {/* Input */}
                   <div>
                     <label className="block text-sm font-semibold text-slate-700">
                       Tus ventas mensuales online
@@ -268,7 +265,7 @@ export function ROICalculator() {
                       step="1000"
                       value={ventasMensuales}
                       onChange={(e) => setVentasMensuales(Number(e.target.value))}
-                      className="mt-4 w-full accent-primary-600"
+                      className="mt-4 w-full"
                     />
                     <div className="mt-2 flex justify-between text-xs text-slate-400">
                       <span>S/ 5,000</span>
@@ -276,7 +273,6 @@ export function ROICalculator() {
                     </div>
                   </div>
 
-                  {/* Results */}
                   <div className="space-y-4">
                     <div className="rounded-xl bg-red-50 p-4">
                       <div className="flex items-center gap-2 text-sm font-medium text-red-600">
@@ -304,7 +300,6 @@ export function ROICalculator() {
                   </div>
                 </div>
 
-                {/* Savings */}
                 <div className="mt-8 grid gap-4 border-t border-slate-100 pt-8 sm:grid-cols-3">
                   <div className="rounded-xl bg-accent-50 p-4 text-center">
                     <PiggyBank className="mx-auto h-6 w-6 text-accent-600" />
@@ -348,7 +343,6 @@ export function ROICalculator() {
           </div>
         </AnimatedSection>
 
-        {/* Bottom note */}
         <AnimatedSection delay={0.3}>
           <p className="mt-8 text-center text-sm text-slate-500">
             <strong>Nota:</strong> Pedily te da los 3 canales de venta (Web +

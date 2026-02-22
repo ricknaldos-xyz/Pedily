@@ -34,7 +34,10 @@ export function HowItWorks() {
     <Section className="bg-white">
       <Container>
         <AnimatedSection className="text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            Como funciona
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Tu tienda lista en 3 pasos
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
@@ -43,37 +46,50 @@ export function HowItWorks() {
         </AnimatedSection>
 
         <div className="relative mt-16 grid gap-8 sm:grid-cols-3">
-          {/* Connector line - desktop */}
-          <div className="absolute top-12 right-[16.67%] left-[16.67%] hidden h-0.5 sm:block">
-            <div className="h-full w-full rounded-full bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400" />
+          {/* Connector line - desktop with shimmer */}
+          <div className="absolute top-14 right-[16.67%] left-[16.67%] hidden h-0.5 overflow-hidden sm:block">
+            <div className="h-full w-full rounded-full bg-gradient-to-r from-primary-200 via-primary-300 to-accent-300" />
+            <div className="absolute inset-0 animate-shimmer">
+              <div className="h-full w-1/3 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+            </div>
           </div>
 
           {steps.map((step, i) => (
-            <AnimatedSection key={step.step} delay={i * 0.15}>
+            <AnimatedSection key={step.step} delay={i * 0.2} variant="scale-up">
               <div className="relative flex flex-col items-center text-center">
                 <div className="group relative z-10">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary-500/35">
+                  {/* Gradient ring */}
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary-400 to-accent-400 opacity-20 blur-sm transition-opacity group-hover:opacity-40" />
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary-500/35">
                     <step.icon
                       className="h-10 w-10 text-white"
                       aria-hidden="true"
                     />
                   </div>
-                  <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white shadow-sm">
+                  <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-600 text-xs font-bold text-white shadow-md ring-2 ring-white">
                     {step.step}
                   </span>
                 </div>
-                <h3 className="mt-6 text-lg font-bold text-slate-900">
-                  {step.title}
-                </h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">
-                  {step.description}
-                </p>
+
+                {/* Card body */}
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary-200 hover:shadow-lg">
+                  <h3 className="text-lg font-bold text-slate-900">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                    {step.description}
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
           ))}
 
           {/* Mobile vertical connector */}
-          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary-200 via-primary-300 to-accent-300 sm:hidden" />
+          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 overflow-hidden bg-gradient-to-b from-primary-200 via-primary-300 to-accent-300 sm:hidden">
+            <div className="absolute inset-0 animate-shimmer rotate-90">
+              <div className="h-full w-1/3 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+            </div>
+          </div>
         </div>
       </Container>
     </Section>

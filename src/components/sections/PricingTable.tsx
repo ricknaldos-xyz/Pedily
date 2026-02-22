@@ -5,6 +5,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Check, Sparkles, Zap, Building2 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const plans = [
   {
@@ -78,7 +79,10 @@ export function PricingTable() {
     <Section id="precios" className="bg-slate-50">
       <Container>
         <AnimatedSection className="text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            Precios
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Elige tu plan, empieza a vender
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
@@ -110,18 +114,24 @@ export function PricingTable() {
           </div>
         </AnimatedSection>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="mt-12 grid items-start gap-8 lg:grid-cols-3">
           {plans.map((plan, i) => {
             const Icon = plan.icon;
+            const price = annual ? plan.annualPrice : plan.monthlyPrice;
             return (
               <AnimatedSection key={plan.name} delay={i * 0.1}>
                 <div
-                  className={`group relative flex h-full flex-col rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                     plan.popular
-                      ? "border-primary-300 bg-white shadow-xl shadow-primary-500/10 ring-1 ring-primary-300"
+                      ? "border-primary-300 bg-white shadow-xl shadow-primary-500/10 ring-1 ring-primary-300 lg:scale-[1.03]"
                       : "border-slate-200 bg-white hover:border-slate-300"
                   }`}
                 >
+                  {/* Gradient top bar for popular */}
+                  {plan.popular && (
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500" />
+                  )}
+
                   {plan.popular && (
                     <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 px-4 py-1 text-xs font-semibold text-white shadow-md shadow-primary-500/20">
                       Mas popular
@@ -150,15 +160,29 @@ export function PricingTable() {
 
                   <div className="mt-6 border-t border-slate-100 pt-6">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-extrabold text-slate-900">
-                        S/ {annual ? plan.annualPrice : plan.monthlyPrice}
-                      </span>
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={price}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="text-4xl font-extrabold text-slate-900"
+                        >
+                          S/ {price}
+                        </motion.span>
+                      </AnimatePresence>
                       <span className="text-sm text-slate-500">/mes</span>
                     </div>
                     {annual && (
-                      <p className="mt-1 text-xs text-slate-400">
-                        Facturado anualmente (S/ {plan.annualPrice * 12}/ano)
-                      </p>
+                      <div className="mt-1 flex items-center gap-2">
+                        <span className="text-sm text-slate-400 line-through">
+                          S/ {plan.monthlyPrice}
+                        </span>
+                        <span className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-semibold text-accent-700">
+                          Ahorras {Math.round((1 - plan.annualPrice / plan.monthlyPrice) * 100)}%
+                        </span>
+                      </div>
                     )}
                     {!annual && (
                       <p className="mt-1 text-xs text-accent-600">
@@ -171,7 +195,7 @@ export function PricingTable() {
                     href="#cta"
                     className={`mt-6 block rounded-xl py-3 text-center text-sm font-semibold transition-all active:scale-[0.98] ${
                       plan.popular
-                        ? "bg-primary-600 text-white shadow-md shadow-primary-500/20 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-500/25"
+                        ? "animate-glow-pulse bg-primary-600 text-white shadow-md shadow-primary-500/20 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-500/25"
                         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                     }`}
                   >
@@ -184,7 +208,9 @@ export function PricingTable() {
                         key={feature}
                         className="flex items-start gap-2.5 text-sm text-slate-600"
                       >
-                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-500" />
+                        <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent-50">
+                          <Check className="h-3 w-3 text-accent-600" />
+                        </span>
                         {feature}
                       </li>
                     ))}

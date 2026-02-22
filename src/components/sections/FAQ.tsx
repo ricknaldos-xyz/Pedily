@@ -4,7 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import * as Accordion from "@radix-ui/react-accordion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -54,7 +54,10 @@ export function FAQ() {
     <Section id="faq">
       <Container className="max-w-3xl">
         <AnimatedSection className="text-center">
-          <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+            FAQ
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
             Dudas? Aqui las respuestas
           </h2>
           <p className="mt-4 text-lg text-slate-500">
@@ -68,23 +71,45 @@ export function FAQ() {
               <Accordion.Item
                 key={i}
                 value={`item-${i}`}
-                className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 data-[state=open]:border-primary-200 data-[state=open]:shadow-md data-[state=open]:shadow-primary-500/5"
+                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 data-[state=open]:border-primary-200 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary-50/30 data-[state=open]:to-transparent data-[state=open]:shadow-md data-[state=open]:shadow-primary-500/5"
               >
+                {/* Left accent bar */}
+                <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-xl bg-gradient-to-b from-primary-500 to-accent-500 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
+
                 <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left text-sm font-semibold text-slate-900 transition-colors hover:text-primary-600">
-                  {faq.question}
+                  <div className="flex items-center gap-3">
+                    <span className="flex-shrink-0 text-xs font-medium text-slate-300 group-data-[state=open]:text-primary-400">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {faq.question}
+                  </div>
                   <ChevronDown
                     className="h-4 w-4 flex-shrink-0 text-slate-400 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary-500"
                     aria-hidden="true"
                   />
                 </Accordion.Trigger>
                 <Accordion.Content className="overflow-hidden data-[state=closed]:animate-[accordion-up_300ms_ease-in-out] data-[state=open]:animate-[accordion-down_300ms_ease-in-out]">
-                  <div className="border-t border-slate-100 px-6 py-4 text-sm leading-relaxed text-slate-500">
+                  <div className="border-t border-slate-100 px-6 py-4 pl-14 text-sm leading-relaxed text-slate-500">
                     {faq.answer}
                   </div>
                 </Accordion.Content>
               </Accordion.Item>
             ))}
           </Accordion.Root>
+        </AnimatedSection>
+
+        {/* Bottom CTA */}
+        <AnimatedSection delay={0.2} className="mt-10 text-center">
+          <p className="text-sm text-slate-500">
+            Tienes mas preguntas?{" "}
+            <a
+              href="/contacto"
+              className="inline-flex items-center gap-1 font-semibold text-primary-600 transition-colors hover:text-primary-700"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              Escribenos
+            </a>
+          </p>
         </AnimatedSection>
       </Container>
     </Section>
