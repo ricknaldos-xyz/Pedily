@@ -19,22 +19,22 @@ const screenshots = [
     icon: ShoppingBag,
     description: "Tu menu digital con carrito, checkout y pagos integrados",
     mockup: (
-      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-2xl">
         {/* Browser chrome */}
-        <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3">
+        <div className="flex items-center gap-2 border-b border-sand-100 bg-sand-50 px-4 py-3">
           <div className="flex gap-1.5">
             <div className="h-3 w-3 rounded-full bg-red-400" />
             <div className="h-3 w-3 rounded-full bg-yellow-400" />
             <div className="h-3 w-3 rounded-full bg-green-400" />
           </div>
-          <div className="ml-4 flex-1 rounded-lg bg-white px-3 py-1 text-xs text-slate-400">
+          <div className="ml-4 flex-1 rounded-lg bg-white px-3 py-1 text-xs text-sand-400">
             wantanclan.pedily.com
           </div>
         </div>
         {/* Content */}
         <div className="p-4">
           <div className="flex items-center justify-between">
-            <div className="text-lg font-bold text-slate-800">Wantan Clan</div>
+            <div className="text-lg font-bold text-sand-800">Wantan Clan</div>
             <div className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-700">
               Abierto
             </div>
@@ -44,13 +44,13 @@ const screenshots = [
               (item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-slate-100 bg-slate-50 p-3"
+                  className="rounded-xl border border-sand-100 bg-sand-50 p-3"
                 >
                   <div className="aspect-square rounded-lg bg-gradient-to-br from-orange-100 to-orange-200" />
-                  <p className="mt-2 text-sm font-medium text-slate-700">
+                  <p className="mt-2 text-sm font-medium text-sand-700">
                     {item}
                   </p>
-                  <p className="text-xs text-slate-400">S/ 18.00</p>
+                  <p className="text-xs text-sand-400">S/ 18.00</p>
                 </div>
               )
             )}
@@ -68,9 +68,9 @@ const screenshots = [
     icon: MessageCircle,
     description: "IA que toma pedidos 24/7, tu intervienes cuando quieras",
     mockup: (
-      <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl border-4 border-slate-800 bg-slate-800 shadow-2xl">
+      <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl border-4 border-sand-800 bg-sand-800 shadow-2xl">
         {/* Phone notch */}
-        <div className="absolute left-1/2 top-0 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-slate-800" />
+        <div className="absolute left-1/2 top-0 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-sand-800" />
         {/* WhatsApp header */}
         <div className="bg-green-600 px-4 pb-3 pt-8">
           <div className="flex items-center gap-3">
@@ -111,21 +111,21 @@ const screenshots = [
     icon: Monitor,
     description: "Autoservicio en tu local con pago integrado IZIPAY",
     mockup: (
-      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border-8 border-slate-800 bg-white shadow-2xl">
+      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border-8 border-sand-800 bg-white shadow-2xl">
         {/* Kiosk header */}
-        <div className="bg-slate-900 px-6 py-4 text-center">
+        <div className="bg-sand-900 px-6 py-4 text-center">
           <p className="text-xl font-bold text-white">Wantan Clan</p>
-          <p className="text-sm text-slate-400">Toca para ordenar</p>
+          <p className="text-sm text-sand-400">Toca para ordenar</p>
         </div>
         {/* Categories */}
-        <div className="flex gap-2 overflow-x-auto border-b border-slate-100 px-4 py-3">
+        <div className="flex gap-2 overflow-x-auto border-b border-sand-100 px-4 py-3">
           {["Entradas", "Platos", "Bebidas", "Postres"].map((cat, i) => (
             <button
               key={cat}
               className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium ${
                 i === 0
                   ? "bg-primary-600 text-white"
-                  : "bg-slate-100 text-slate-600"
+                  : "bg-sand-100 text-sand-600"
               }`}
             >
               {cat}
@@ -137,20 +137,20 @@ const screenshots = [
           {["Wantan Frito", "Siu Mai", "Enrollado", "Kam Lu"].map((item) => (
             <button
               key={item}
-              className="rounded-xl border-2 border-slate-100 p-4 text-center transition-all hover:border-primary-300 hover:bg-primary-50"
+              className="rounded-xl border-2 border-sand-100 p-4 text-center transition-all hover:border-primary-300 hover:bg-primary-50"
             >
               <div className="mx-auto h-16 w-16 rounded-xl bg-gradient-to-br from-orange-100 to-orange-200" />
-              <p className="mt-2 font-semibold text-slate-700">{item}</p>
+              <p className="mt-2 font-semibold text-sand-700">{item}</p>
               <p className="text-sm text-primary-600">S/ 18.00</p>
             </button>
           ))}
         </div>
         {/* Footer */}
-        <div className="border-t border-slate-100 bg-slate-50 px-4 py-3">
+        <div className="border-t border-sand-100 bg-sand-50 px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-500">Tu orden</p>
-              <p className="text-lg font-bold text-slate-800">S/ 36.00</p>
+              <p className="text-sm text-sand-500">Tu orden</p>
+              <p className="text-lg font-bold text-sand-800">S/ 36.00</p>
             </div>
             <button className="rounded-xl bg-accent-500 px-6 py-3 font-semibold text-white">
               Pagar
@@ -166,12 +166,12 @@ const screenshots = [
     icon: LayoutDashboard,
     description: "Gestiona pedidos de todos tus canales en un solo lugar",
     mockup: (
-      <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+      <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-3">
+        <div className="flex items-center justify-between border-b border-sand-100 bg-sand-50 px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary-600" />
-            <span className="font-bold text-slate-700">Hub Pedily</span>
+            <span className="font-bold text-sand-700">Hub Pedily</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
@@ -182,19 +182,19 @@ const screenshots = [
         {/* Content */}
         <div className="flex">
           {/* Sidebar */}
-          <div className="w-16 border-r border-slate-100 bg-slate-50 py-4">
+          <div className="w-16 border-r border-sand-100 bg-sand-50 py-4">
             {["inbox", "done", "stats", "menu"].map((_, i) => (
               <div
                 key={i}
                 className={`mx-auto mb-3 h-10 w-10 rounded-lg ${
-                  i === 0 ? "bg-primary-100" : "bg-slate-200"
+                  i === 0 ? "bg-primary-100" : "bg-sand-200"
                 }`}
               />
             ))}
           </div>
           {/* Orders */}
           <div className="flex-1 p-4">
-            <p className="text-sm font-semibold text-slate-500">
+            <p className="text-sm font-semibold text-sand-500">
               Pedidos de hoy
             </p>
             <div className="mt-3 space-y-2">
@@ -215,11 +215,11 @@ const screenshots = [
               ].map((order) => (
                 <div
                   key={order.id}
-                  className="flex items-center justify-between rounded-lg border border-slate-100 p-3"
+                  className="flex items-center justify-between rounded-lg border border-sand-100 p-3"
                 >
                   <div>
-                    <p className="font-semibold text-slate-700">{order.id}</p>
-                    <p className="text-xs text-slate-400">
+                    <p className="font-semibold text-sand-700">{order.id}</p>
+                    <p className="text-xs text-sand-400">
                       {order.channel} - {order.time}
                     </p>
                   </div>
@@ -250,24 +250,25 @@ export function ProductScreenshots() {
   const activeScreenshot = screenshots.find((s) => s.id === active);
 
   return (
-    <Section className="overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+    <Section id="omnicanal" className="overflow-hidden bg-white">
       <Container>
         <AnimatedSection className="text-center">
-          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
-            Demo
+          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
+            Vende en todos lados
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Mira como funciona
+          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
+            Un canal para cada cliente. Un solo lugar para ti.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            3 canales de venta, un solo lugar para gestionar todo.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
+            Web, WhatsApp con IA y kiosko de autoservicio. El mismo menú y los
+            mismos precios, y todos los pedidos caen en el mismo Hub.
           </p>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
           {/* Segmented control tabs */}
-          <div className="mt-10 flex justify-center">
-            <div className="relative inline-flex rounded-2xl bg-slate-100 p-1">
+          <div className="mt-12 flex justify-center">
+            <div className="relative inline-flex rounded-2xl bg-sand-100 p-1">
               {screenshots.map((screenshot) => {
                 const Icon = screenshot.icon;
                 const isActive = active === screenshot.id;
@@ -278,13 +279,13 @@ export function ProductScreenshots() {
                     className={`relative z-10 flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                       isActive
                         ? "text-white"
-                        : "text-slate-600 hover:text-slate-800"
+                        : "text-sand-600 hover:text-sand-800"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 rounded-xl bg-primary-600 shadow-lg shadow-primary-500/25"
+                        className="absolute inset-0 rounded-xl bg-sand-900 shadow-md"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -297,23 +298,21 @@ export function ProductScreenshots() {
           </div>
         </AnimatedSection>
 
-        <div className="mt-10 flex flex-col items-center">
+        <div className="mt-12 flex flex-col items-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, scale: 0.96, y: 10 }}
+              initial={{ opacity: 0, scale: 0.98, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: -10 }}
+              exit={{ opacity: 0, scale: 0.98, y: -10 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="w-full"
             >
-              <p className="mb-6 text-center text-sm text-slate-500">
+              <p className="mb-6 text-center text-sm text-sand-500">
                 {activeScreenshot?.description}
               </p>
-              {/* Glow behind mockup */}
-              <div className="relative flex justify-center">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-3/4 w-3/4 rounded-full bg-primary-200/20 blur-3xl" />
-                <div className="relative w-full max-w-2xl">
+              <div className="flex justify-center">
+                <div className="w-full max-w-2xl">
                   {activeScreenshot?.mockup}
                 </div>
               </div>

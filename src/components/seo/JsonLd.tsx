@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL, WHATSAPP_TEL, whatsappLink } from "@/lib/site";
+
 export function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
@@ -7,7 +9,7 @@ export function OrganizationJsonLd() {
     url: "https://pedily.com",
     logo: "https://pedily.com/favicon.svg",
     description:
-      "Plataforma multicanal para restaurantes. Recibe pedidos por web, WhatsApp y kiosko. Sin comisiones.",
+      "El sistema operativo de tu restaurante. Vende por web, WhatsApp con IA y kiosko, y opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lima",
@@ -16,10 +18,10 @@ export function OrganizationJsonLd() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hola@pedily.com",
+      email: CONTACT_EMAIL,
       availableLanguage: ["Spanish"],
     },
-    sameAs: ["https://wa.me/51999999999"],
+    sameAs: [whatsappLink()],
   };
 
   return (
@@ -60,7 +62,7 @@ export function SoftwareApplicationJsonLd() {
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description:
-      "Plataforma multicanal para restaurantes. Tienda web, bot de WhatsApp con IA y kiosko de autoservicio. Todo integrado en un solo hub.",
+      "El sistema operativo de tu restaurante: tienda web, bot de WhatsApp con IA, kiosko de autoservicio, Hub de pedidos en tiempo real, inventario, finanzas y facturacion SUNAT. Todo integrado.",
     offers: [
       {
         "@type": "Offer",
@@ -87,22 +89,17 @@ export function SoftwareApplicationJsonLd() {
         availability: "https://schema.org/InStock",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      ratingCount: "48",
-      bestRating: "5",
-      worstRating: "1",
-    },
     featureList: [
       "Tienda web con checkout",
       "Bot de WhatsApp con IA",
       "Kiosko de autoservicio",
-      "Hub de pedidos multicanal",
-      "Facturacion electronica SUNAT",
+      "Hub de pedidos multicanal en tiempo real",
+      "Facturacion electronica SUNAT (Nubefact)",
       "Integracion con Culqi e IZIPAY",
-      "Programa de fidelizacion",
-      "Integracion PedidosYa",
+      "Inventario, recetas y control de costos",
+      "Finanzas: caja, P&L y planilla",
+      "Programa de fidelizacion y referidos",
+      "Integracion PedidosYa y Rappi",
     ],
   };
 
@@ -124,7 +121,23 @@ export function FAQPageJsonLd() {
         name: "Que incluye Pedily exactamente?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Pedily incluye tu tienda web con carrito y checkout, bot de WhatsApp con IA que toma pedidos automaticamente, kiosko de autoservicio para tu local, hub de gestion de pedidos, facturacion electronica SUNAT, sistema de fidelizacion y mas. Todo en una sola plataforma.",
+          text: "Pedily es el sistema operativo de tu restaurante. Por un lado vendes en varios canales: tienda web, bot de WhatsApp con IA, kiosko de autoservicio y marketplaces (PedidosYa, Rappi). Por el otro, operas todo desde un Hub en tiempo real: pedidos, cocina, inventario, recetas, caja, finanzas (P&L y planilla), facturacion SUNAT y fidelizacion.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Pedily maneja inventario y finanzas, no solo pedidos?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Si. Ademas de vender, controlas tu negocio: inventario por almacen con alertas de stock, recetas con costo de ingredientes para conocer tu margen real, caja con cierre cuadrado, P&L, flujo de caja, compras a proveedores y planilla de tu equipo. Lo que otros venden por separado, aqui viene integrado.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Pedily tambien vende por Instagram, Messenger o marketplaces?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Si. El mismo bot con IA atiende WhatsApp, Instagram y Messenger, y el Hub recibe tambien los pedidos de PedidosYa y Rappi. Todos tus canales en un solo tablero.",
         },
       },
       {
@@ -227,8 +240,8 @@ export function LocalBusinessJsonLd() {
     description:
       "Plataforma de pedidos online para restaurantes en Peru. Sin comisiones.",
     url: "https://pedily.com",
-    telephone: "+51999999999",
-    email: "hola@pedily.com",
+    telephone: WHATSAPP_TEL,
+    email: CONTACT_EMAIL,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lima",

@@ -32,15 +32,17 @@
 
 ### Que es Pedily
 
-Pedily es una plataforma SaaS disenada exclusivamente para negocios de comida
--- restaurantes, cafeterias, panaderias, dark kitchens y servicios de catering --
-que necesitan recibir pedidos de forma profesional a traves de multiples canales.
+Pedily es el **sistema operativo** para negocios de comida -- restaurantes,
+cafeterias, panaderias, dark kitchens y servicios de catering. No solo te ayuda
+a **vender** por multiples canales: tambien te deja **operar** todo el negocio
+(cocina, inventario, finanzas, equipo y facturacion) desde un solo lugar.
 
 A diferencia de los marketplaces tradicionales que cobran comisiones del 20-30%
 por cada venta, Pedily opera bajo un modelo de suscripcion mensual fija, lo que
-permite a los negocios mantener el control total de sus margenes.
+permite a los negocios mantener el control total de sus margenes, su marca y sus
+clientes.
 
-### Propuesta de Valor: 3 Canales, 1 Sistema
+### Propuesta de Valor: Vender en todos lados, operar desde un lugar
 
 ```
 +---------------------------------------------------------------------+
@@ -65,15 +67,29 @@ permite a los negocios mantener el control total de sus margenes.
 | Canal | Descripcion | Disponibilidad |
 |-------|-------------|----------------|
 | **Tienda Web** | Catalogo online con carrito de compras, checkout completo y seguimiento de pedido | Todos los planes |
-| **Bot de WhatsApp** | Asistente conversacional impulsado por Claude AI que guia al cliente desde el catalogo hasta el pago | Plan Crecimiento+ |
+| **Bot de WhatsApp** | Asistente conversacional impulsado por Claude AI que guia al cliente desde el catalogo hasta el pago. Tambien atiende Instagram y Messenger | Plan Crecimiento+ |
 | **Kiosko Autoservicio** | Terminal tactil en tienda para que clientes ordenen sin hacer cola. Integrado con IZIPAY | Plan Empresa |
+| **Marketplaces** | Pedidos de PedidosYa y Rappi que llegan al mismo Hub | Plan Empresa |
+
+### La capa de operacion (Hub)
+
+Mas alla de la venta, Pedily incluye la operacion completa del restaurante:
+
+- **Pedidos en tiempo real** de todos los canales en un tablero unico.
+- **Cocina y produccion:** comandas, lotes de produccion y conteos diarios.
+- **Inventario y recetas:** stock por almacen con alertas, recetas con escandallo
+  y descuento automatico de insumos por venta (COGS real).
+- **Finanzas:** caja con cierre cuadrado, P&L, flujo de caja, compras a
+  proveedores y planilla del equipo.
+- **Facturacion SUNAT:** boleta, factura, nota de credito y anulacion via Nubefact.
 
 ### Principios Fundamentales
 
 - **Sin comisiones por venta.** Tarifa plana mensual, sin importar el volumen de pedidos.
-- **Multicanal.** Un solo hub para gestionar pedidos de la web, WhatsApp y kiosko.
+- **Vender + operar.** No solo recibes pedidos: gestionas cocina, inventario, finanzas y equipo.
+- **Multicanal.** Un solo hub para web, WhatsApp, Instagram, Messenger, kiosko y marketplaces.
 - **Tiempo real.** Actualizaciones instantaneas de estado via Supabase Realtime.
-- **Inteligencia artificial.** Bot de WhatsApp potenciado por Claude AI de Anthropic.
+- **Inteligencia artificial.** Bot potenciado por Claude AI de Anthropic.
 - **Autonomia total.** El negocio controla su catalogo, precios, zonas de delivery y marca.
 
 ---
@@ -827,12 +843,51 @@ El dashboard incluye un CRM basico con:
 | Datos fiscales | RUC y razon social del negocio |
 | Tema y colores | Personalizacion visual de la tienda |
 
+### 7.8 Inventario, Recetas y Costos
+
+Pedily incluye un modulo de inventario de nivel ERP (Plan Crecimiento para lo
+basico, Plan Empresa para lo avanzado):
+
+- **Stock por almacen** (`ProductStock`, `WarehouseLocation`) con movimientos
+  auditados y **alertas de minimos**.
+- **Recetas con escandallo** (`Recipe`, `RecipeIngredient`): cada producto se
+  compone de insumos con su costo. Al vender, el stock de insumos se descuenta
+  automaticamente y se calcula el **COGS** (costo de venta) real.
+- **Produccion:** lotes de produccion (`ProductionBatch`) y conteos diarios
+  (`DailyCount`) para controlar mermas.
+- **Compras y proveedores:** ordenes de compra, recepcion de mercaderia y
+  gestion de proveedores.
+
+### 7.9 Finanzas
+
+Modulo financiero para conocer la salud del negocio (Plan Empresa):
+
+- **Caja** con apertura y cierre cuadrado (monto esperado vs. real).
+- **P&L** (estado de resultados), **flujo de caja** e informes de impuestos.
+- **Planilla / nomina:** empleados, turnos y reglas de compensacion.
+- **Exportacion** de reportes a Excel/CSV.
+
+### 7.10 Marketplaces
+
+Los pedidos de **PedidosYa** y **Rappi** llegan al mismo Hub (Plan Empresa),
+con seguimiento del estado del courier, para gestionar todos los canales desde
+un solo tablero.
+
+### 7.11 Reportes y Analitica
+
+- Ventas por dia, canal, hora y categoria.
+- Productos mas vendidos y heatmap de demanda.
+- Estadisticas de cupones y demografia de clientes.
+- Insights automaticos del negocio.
+
 ---
 
 ## 8. Sistema de Roles
 
-Pedily implementa un sistema de control de acceso basado en roles (RBAC) con
-cinco niveles jerarquicos.
+Pedily implementa un sistema de control de acceso basado en roles (RBAC). Los
+permisos se asignan **por modulo** (productos, pedidos, inventario, finanzas,
+etc.) con acciones granulares (ver, crear, editar, eliminar), de modo que cada
+persona del equipo ve solo lo que le corresponde.
 
 ### 8.1 Definicion de Roles
 
@@ -840,8 +895,9 @@ cinco niveles jerarquicos.
 |-----|-------------|---------|
 | `SUPER_ADMIN` | Administrador de la plataforma Pedily. Acceso total a todos los negocios. | Plataforma completa |
 | `ADMIN` | Dueno o gerente del negocio. Acceso total a su tienda. | Un negocio |
-| `OPERADOR` | Empleado encargado de gestionar pedidos y atencion al cliente. | Hub de pedidos + Clientes |
-| `COCINA` | Personal de cocina. Solo ve pedidos en preparacion. | Vista de cocina |
+| `OPERADOR` | Empleado de pedidos, caja y atencion al cliente. | Hub + caja + clientes |
+| `COCINA` | Personal de cocina. Ve pedidos y opera produccion. | Vista de cocina |
+| `CONTABILIDAD` | Encargado de finanzas y reportes (caja, P&L, planilla). | Finanzas + reportes |
 | `CLIENT` | Cliente final que realiza compras. | Tienda + su historial |
 
 ### 8.2 Matriz de Permisos
@@ -1087,11 +1143,19 @@ El programa de referidos incentiva a los clientes a traer nuevos compradores:
 
 | Aspecto | Detalle |
 |---------|---------|
-| Tipo | Logistica de delivery |
-| Uso | Solicitar repartidores externos para entregas |
-| Funciones | Cotizacion, solicitud de envio, tracking |
+| Tipo | Logistica de delivery + marketplace |
+| Uso | Solicitar repartidores externos y recibir pedidos del marketplace en el Hub |
+| Funciones | Cotizacion, solicitud de envio, tracking, webhook + POS Plugin API |
 
-### 11.9 Google Maps
+### 11.9 Rappi
+
+| Aspecto | Detalle |
+|---------|---------|
+| Tipo | Marketplace de delivery |
+| Uso | Los pedidos de Rappi llegan al mismo Hub de Pedily |
+| Funciones | Recepcion via webhook + polling, refresh de token |
+
+### 11.10 Google Maps
 
 | Aspecto | Detalle |
 |---------|---------|
@@ -1260,19 +1324,22 @@ los planes incluyen **cero comisiones por venta**.
 | Hub de pedidos en tiempo real | Si | Si | Si |
 | Metodos de pago (Yape, Plin, efectivo) | Si | Si | Si |
 | Pagos con tarjeta (Culqi) | -- | Si | Si |
-| Bot de WhatsApp (Claude AI) | -- | Si | Si |
-| Human takeover WhatsApp | -- | Si | Si |
+| Bot con IA (WhatsApp, Instagram, Messenger) | -- | Si | Si |
+| Human takeover | -- | Si | Si |
 | Kiosko de autoservicio | -- | -- | Si |
 | POS IZIPAY | -- | -- | Si |
 | Zonas de delivery | 3 zonas | Ilimitadas | Ilimitadas |
-| Integracion PedidosYa | -- | -- | Si |
+| Marketplaces (PedidosYa, Rappi) | -- | -- | Si |
+| Inventario y alertas de stock | -- | Si | Si |
+| Recetas, COGS y produccion | -- | -- | Si |
+| Finanzas (caja, P&L, planilla) | -- | -- | Si |
 | Sistema de puntos y fidelizacion | -- | Si | Si |
 | Cupones de descuento | Basico | Si | Si |
-| Programa de referidos | -- | -- | Si |
+| Programa de referidos y win-back | -- | -- | Si |
 | Gestion de staff y roles | 2 usuarios | 5 usuarios | Ilimitados |
 | Reportes y analitica | Basico | Avanzado | Avanzado + exportacion |
-| Dominio personalizado | -- | -- | Si |
-| Soporte | Email | Email + Chat | Prioritario + Telefono |
+| Dominio personalizado + API | -- | -- | Si |
+| Soporte | Email | Prioritario | Dedicado + onboarding |
 | Facturacion electronica SUNAT | -- | Si | Si |
 
 ### 14.2 Plan Inicio - S/ 249/mes
@@ -1294,31 +1361,33 @@ Ideal para negocios que estan empezando en el mundo digital.
 Para negocios que buscan escalar sus ventas con canales digitales.
 
 **Todo lo del plan Inicio, mas:**
-- Bot de WhatsApp con inteligencia artificial (Claude AI).
+- Bot con IA (Claude AI) en WhatsApp, Instagram y Messenger.
 - Human takeover para atencion personalizada.
 - Pagos con tarjeta de credito y debito (Culqi).
-- Zonas de delivery ilimitadas.
-- Sistema de puntos de fidelizacion.
+- Zonas de delivery ilimitadas y entrega a condominios.
+- Inventario con alertas de stock.
+- Sistema de puntos, cupones y base de datos de clientes.
 - Facturacion electronica SUNAT (Boleta y Factura).
-- 5 usuarios con roles diferenciados.
-- Reportes avanzados de ventas.
-- Soporte por email y chat.
+- 5 usuarios con permisos por modulo.
+- Reportes y analitica de ventas.
+- Soporte prioritario.
 
 ### 14.4 Plan Empresa - S/ 999/mes
 
-Para negocios consolidados que necesitan la solucion multicanal completa.
+Para operaciones consolidadas que necesitan control total: vender en todos
+lados y operar todo el negocio desde un lugar.
 
 **Todo lo del plan Crecimiento, mas:**
-- Kiosko de autoservicio en tienda.
-- Terminal POS con IZIPAY (tarjeta y QR).
-- Integracion con PedidosYa Envios.
-- Programa de referidos.
-- Usuarios y roles ilimitados.
-- Dominio personalizado.
+- Kiosko de autoservicio en tienda con terminal POS IZIPAY (tarjeta y QR).
+- Marketplaces: pedidos de PedidosYa y Rappi en el mismo Hub.
+- Inventario avanzado, recetas con escandallo y costos (COGS).
+- Finanzas: caja, P&L, flujo de caja, compras y planilla.
+- Notas de credito y anulaciones SUNAT.
+- Programa de referidos y campanas de win-back.
+- Usuarios y locales ilimitados.
+- Dominio personalizado y API para integraciones.
 - Reportes avanzados con exportacion CSV/Excel.
-- Soporte prioritario con atencion telefonica.
-- Onboarding personalizado.
-- Acceso anticipado a nuevas funcionalidades.
+- Soporte dedicado + onboarding personalizado.
 
 ### 14.5 Informacion Adicional
 

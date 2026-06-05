@@ -9,74 +9,69 @@ const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Crea tu cuenta y sube tu menu",
+    title: "Sube tu menú y configura tu negocio",
     description:
-      "Registrate gratis, agrega tus productos con fotos y precios. Es como armar un album, bien facil.",
+      "Agrega tus productos con fotos, precios, presentaciones y extras. Define zonas de delivery, horarios y métodos de cobro.",
   },
   {
     icon: Paintbrush,
     step: "02",
-    title: "Personaliza todo a tu gusto",
+    title: "Activa tus canales y tu marca",
     description:
-      "Tu logo, tus colores, tu dominio. Configura zonas de delivery, horarios y como quieres cobrar.",
+      "Tu logo, tus colores y tu dominio. Enciende tu tienda web, el bot de WhatsApp con IA y el kiosko, todos con el mismo catálogo.",
   },
   {
     icon: ShoppingCart,
     step: "03",
-    title: "Listo, a vender",
+    title: "Vende y opera desde el Hub",
     description:
-      "Comparte tu link y empieza a recibir pedidos. Los ves todos en el Hub, en tiempo real.",
+      "Los pedidos de todos los canales llegan en tiempo real. Gestiona cocina, inventario, finanzas y facturación desde un solo lugar.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-sand-50">
       <Container>
         <AnimatedSection className="text-center">
-          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
             Como funciona
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Tu tienda lista en 3 pasos
+          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
+            Empieza a vender en 3 pasos
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Sin codigo, sin complicaciones. Si sabes usar WhatsApp, puedes usar Pedily.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
+            Sin código, sin complicaciones. Si sabes usar WhatsApp, puedes usar Pedily.
           </p>
         </AnimatedSection>
 
         <div className="relative mt-16 grid gap-8 sm:grid-cols-3">
-          {/* Connector line - desktop with shimmer */}
-          <div className="absolute top-14 right-[16.67%] left-[16.67%] hidden h-0.5 overflow-hidden sm:block">
-            <div className="h-full w-full rounded-full bg-gradient-to-r from-primary-200 via-primary-300 to-accent-300" />
-            <div className="absolute inset-0 animate-shimmer">
-              <div className="h-full w-1/3 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-            </div>
+          {/* Connector line - desktop */}
+          <div className="absolute top-14 right-[16.67%] left-[16.67%] hidden h-0.5 sm:block">
+            <div className="h-full w-full rounded-full bg-gradient-to-r from-sand-200 via-sand-300 to-sand-200" />
           </div>
 
           {steps.map((step, i) => (
             <AnimatedSection key={step.step} delay={i * 0.2} variant="scale-up">
               <div className="relative flex flex-col items-center text-center">
-                <div className="group relative z-10">
-                  {/* Gradient ring */}
-                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary-400 to-accent-400 opacity-20 blur-sm transition-opacity group-hover:opacity-40" />
-                  <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary-500/35">
+                <div className="relative z-10">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-warm">
                     <step.icon
                       className="h-10 w-10 text-white"
                       aria-hidden="true"
                     />
                   </div>
-                  <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-600 text-xs font-bold text-white shadow-md ring-2 ring-white">
+                  <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-xs font-bold text-white shadow-sm">
                     {step.step}
                   </span>
                 </div>
 
                 {/* Card body */}
-                <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary-200 hover:shadow-lg">
-                  <h3 className="text-lg font-bold text-slate-900">
+                <div className="mt-6 rounded-2xl border border-sand-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-sand-300 hover:shadow-md">
+                  <h3 className="text-lg font-bold text-sand-900">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  <p className="mt-2 text-sm leading-relaxed text-sand-500">
                     {step.description}
                   </p>
                 </div>
@@ -85,11 +80,7 @@ export function HowItWorks() {
           ))}
 
           {/* Mobile vertical connector */}
-          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 overflow-hidden bg-gradient-to-b from-primary-200 via-primary-300 to-accent-300 sm:hidden">
-            <div className="absolute inset-0 animate-shimmer rotate-90">
-              <div className="h-full w-1/3 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-            </div>
-          </div>
+          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-sand-200 via-sand-300 to-sand-200 sm:hidden" />
         </div>
       </Container>
     </Section>

@@ -8,7 +8,7 @@ interface SectionProps {
 
 export function Section({ children, className, id }: SectionProps) {
   return (
-    <section id={id} className={clsx("py-16 sm:py-24", className)}>
+    <section id={id} className={clsx("py-20 sm:py-28", className)}>
       {children}
     </section>
   );

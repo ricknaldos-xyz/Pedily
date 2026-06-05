@@ -3,8 +3,15 @@
 import { Container } from "@/components/layout/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { TrustBadges } from "@/components/ui/TrustBadges";
-import { ArrowRight, Play, Globe, MessageCircle, Monitor, Bell } from "lucide-react";
+import { ArrowRight, Globe, MessageCircle, Monitor, Bell } from "lucide-react";
 import { motion } from "framer-motion";
+import { whatsappLink } from "@/lib/site";
+
+const WhatsAppGlyph = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" />
+  </svg>
+);
 
 const channels = [
   {
@@ -17,92 +24,72 @@ const channels = [
   {
     icon: MessageCircle,
     label: "Bot WhatsApp + IA",
-    bg: "bg-green-50",
-    text: "text-green-700",
-    ring: "ring-green-200",
+    bg: "bg-primary-100",
+    text: "text-primary-800",
+    ring: "ring-primary-200",
   },
   {
     icon: Monitor,
     label: "Kiosko Autoservicio",
-    bg: "bg-purple-50",
-    text: "text-purple-700",
-    ring: "ring-purple-200",
+    bg: "bg-cream-200",
+    text: "text-cream-800",
+    ring: "ring-cream-400",
   },
-];
-
-const avatars = [
-  { initials: "WC", gradient: "from-indigo-400 to-indigo-600" },
-  { initials: "DT", gradient: "from-emerald-400 to-emerald-600" },
-  { initials: "CE", gradient: "from-amber-400 to-amber-600" },
-  { initials: "PF", gradient: "from-rose-400 to-rose-600" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)]" />
-      {/* Dot grid pattern */}
-      <div className="absolute inset-0 dot-grid" />
-
-      {/* Decorative floating elements */}
-      <motion.div
-        animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-10 h-24 w-24 rounded-2xl bg-gradient-to-br from-primary-300/30 to-primary-100/20 blur-xl"
+    <section className="relative overflow-hidden bg-cream-50">
+      {/* Subtle grid texture */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(59,168,137,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(59,168,137,0.035) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
       />
-      <motion.div
-        animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-20 bottom-20 h-36 w-36 rounded-full bg-gradient-to-br from-accent-300/30 to-accent-100/20 blur-xl"
-      />
-      <motion.div
-        animate={{ y: [0, 10, 0], x: [0, -8, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 right-1/4 h-20 w-20 rounded-full bg-gradient-to-br from-purple-200/20 to-pink-200/20 blur-xl"
-      />
+      {/* Top radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,168,137,0.10),transparent)]" />
 
       <Container className="relative py-20 sm:py-28 lg:py-36">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary-200/60 bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-medium text-primary-700 shadow-sm"
-            >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-accent-500" />
-              La plataforma que usan los restaurantes top de Peru
-            </motion.div>
-
-            <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              Recibe pedidos por{" "}
-              <span className="animate-gradient bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-clip-text text-transparent">
-                web, WhatsApp y kiosko
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-1.5 text-sm font-medium text-primary-700">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
               </span>
+              Creado y probado con Wantan Clan 🥡
+            </div>
+
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-sand-900 sm:text-5xl lg:text-[3.5rem]">
+              Vende más.{" "}
+              <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-accent-400 bg-clip-text text-transparent">
+                Opera todo
+              </span>{" "}
+              desde un lugar.
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
-              Un solo sistema para tus 3 canales de venta. Bot con IA que
-              atiende WhatsApp 24/7, kiosko de autoservicio y tienda web.
-              Pagos, facturacion SUNAT y delivery integrados.{" "}
-              <strong>Sin comisiones.</strong>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-sand-600">
+              El sistema operativo de tu restaurante: vende por{" "}
+              <strong className="text-sand-800">web, WhatsApp con IA y kiosko</strong>, y maneja
+              pedidos, cocina, inventario, finanzas y facturación SUNAT desde un
+              solo Hub. <strong className="text-sand-800">Sin comisiones por pedido.</strong>
             </p>
 
-            {/* 3 Channels badges with staggered animation */}
+            {/* 3 Channels badges */}
             <div className="mt-6 flex flex-wrap gap-2">
-              {channels.map((ch, i) => {
+              {channels.map((ch) => {
                 const Icon = ch.icon;
                 return (
-                  <motion.span
+                  <span
                     key={ch.label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + i * 0.1, duration: 0.3, ease: "easeOut" }}
                     className={`inline-flex items-center gap-1.5 rounded-full ${ch.bg} px-3 py-1.5 text-xs font-medium ${ch.text} ring-1 ${ch.ring}`}
                   >
                     <Icon className="h-3.5 w-3.5" />
                     {ch.label}
-                  </motion.span>
+                  </span>
                 );
               })}
             </div>
@@ -110,56 +97,35 @@ export function Hero() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#cta"
-                className="btn-shimmer group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-500/30 active:scale-[0.98]"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-warm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
-                Prueba gratis 14 dias
+                Prueba gratis 14 días
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
-                href="#funcionalidades"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50 hover:shadow-md active:scale-[0.98]"
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-primary-200 bg-white px-7 py-3.5 text-sm font-semibold text-primary-700 shadow-sm transition-all hover:border-primary-300 hover:bg-primary-50 hover:shadow-md active:scale-[0.98]"
               >
-                <Play className="h-4 w-4 text-primary-500 transition-transform group-hover:scale-110" />
-                Ver demo
+                <span className="text-[#25D366]">
+                  <WhatsAppGlyph />
+                </span>
+                Hablar por WhatsApp
               </a>
             </div>
 
             <TrustBadges className="mt-5" />
 
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {avatars.map((a, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + i * 0.08, type: "spring", stiffness: 300, damping: 20 }}
-                    className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br ${a.gradient} text-xs font-bold text-white shadow-md`}
-                  >
-                    {a.initials}
-                  </motion.div>
-                ))}
+            <div className="mt-8 flex items-center gap-3 rounded-xl border border-sand-200 bg-white/60 p-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 text-base font-bold text-white shadow-sm">
+                🥡
               </div>
-              <div>
-                <div className="flex items-center gap-0.5">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <motion.svg
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.8 + i * 0.1, type: "spring", stiffness: 400, damping: 15 }}
-                      className="h-4 w-4 text-yellow-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </motion.svg>
-                  ))}
-                </div>
-                <p className="text-sm text-slate-500">
-                  +50 negocios ya venden con Pedily
-                </p>
-              </div>
+              <p className="text-sm leading-snug text-sand-600">
+                <strong className="text-sand-800">Wantan Clan</strong> opera sus 3 locales en
+                Lima con Pedily: web, WhatsApp, kiosko y delivery, todos en un
+                solo Hub.
+              </p>
             </div>
           </AnimatedSection>
 
@@ -170,17 +136,17 @@ export function Hero() {
                 initial={{ opacity: 0, x: 30, y: -10 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.5, ease: "easeOut" }}
-                className="absolute -right-2 -top-4 z-10 hidden rounded-xl border border-green-200 bg-white p-3 shadow-lg sm:block"
+                className="absolute -right-2 -top-4 z-10 hidden rounded-xl border border-primary-200 bg-white p-3 shadow-lg shadow-primary-500/10 sm:block"
               >
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-100">
-                    <MessageCircle className="h-4 w-4 text-green-600" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-100">
+                    <MessageCircle className="h-4 w-4 text-primary-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-slate-700">Nuevo pedido por WhatsApp</p>
-                    <p className="text-[10px] text-slate-400">Ana pidio Pollo a la Brasa x2</p>
+                    <p className="text-xs font-semibold text-sand-700">Nuevo pedido por WhatsApp</p>
+                    <p className="text-[10px] text-sand-400">Ana pidió Chaufa Familiar x2</p>
                   </div>
-                  <Bell className="h-3.5 w-3.5 text-green-500" />
+                  <Bell className="h-3.5 w-3.5 text-primary-500" />
                 </div>
               </motion.div>
 
@@ -188,21 +154,17 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="animate-float relative mx-auto max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-300/40 lg:max-w-none"
+                className="relative mx-auto max-w-md overflow-hidden rounded-2xl border border-sand-200/80 bg-white shadow-elevated lg:max-w-none"
               >
-                <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-4 py-3">
+                <div className="flex items-center gap-2 border-b border-sand-100 bg-sand-50/80 px-4 py-3">
                   <div className="h-3 w-3 rounded-full bg-red-400" />
                   <div className="h-3 w-3 rounded-full bg-yellow-400" />
                   <div className="h-3 w-3 rounded-full bg-green-400" />
-                  <span className="ml-2 text-xs text-slate-400">
-                    hub.pedily.com
-                  </span>
+                  <span className="ml-2 text-xs text-sand-400">hub.pedily.com</span>
                 </div>
                 <div className="p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-slate-800">
-                      Hub de Pedidos
-                    </h3>
+                    <h3 className="text-lg font-bold text-sand-800">Hub de Pedidos</h3>
                     <div className="flex items-center gap-1.5">
                       <span className="animate-pulse-soft rounded-full bg-accent-100 px-2.5 py-1 text-xs font-medium text-accent-700">
                         15 nuevos
@@ -214,10 +176,10 @@ export function Hero() {
                     <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-medium text-blue-700">
                       Web
                     </span>
-                    <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                    <span className="rounded-full bg-primary-100 px-2 py-0.5 text-[10px] font-medium text-primary-700">
                       WhatsApp
                     </span>
-                    <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-medium text-purple-700">
+                    <span className="rounded-full bg-cream-300 px-2 py-0.5 text-[10px] font-medium text-cream-800">
                       Kiosko
                     </span>
                   </div>
@@ -225,7 +187,7 @@ export function Hero() {
                     {[
                       {
                         id: "#1042",
-                        name: "Maria Garcia",
+                        name: "María García",
                         total: "S/ 85.00",
                         status: "En cocina",
                         source: "Web",
@@ -234,21 +196,21 @@ export function Hero() {
                       },
                       {
                         id: "#1041",
-                        name: "Carlos Lopez",
+                        name: "Carlos López",
                         total: "S/ 42.50",
                         status: "En camino",
                         source: "WhatsApp",
                         color: "bg-blue-100 text-blue-700",
-                        sourceColor: "bg-green-50 text-green-600",
+                        sourceColor: "bg-primary-50 text-primary-600",
                       },
                       {
                         id: "#1040",
-                        name: "Mesa 5",
+                        name: "Kiosko · Ticket 5",
                         total: "S/ 120.00",
                         status: "Listo",
                         source: "Kiosko",
                         color: "bg-green-100 text-green-700",
-                        sourceColor: "bg-purple-50 text-purple-600",
+                        sourceColor: "bg-cream-200 text-cream-800",
                       },
                     ].map((order, idx) => (
                       <motion.div
@@ -256,27 +218,21 @@ export function Hero() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 + idx * 0.15 }}
-                        className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-3 transition-all hover:border-slate-200 hover:bg-white hover:shadow-sm"
+                        className="flex items-center justify-between rounded-xl border border-sand-100 bg-sand-50/50 p-3 transition-all hover:border-sand-200 hover:bg-white hover:shadow-sm"
                       >
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs font-medium text-slate-400">
-                              {order.id}
-                            </span>
+                            <span className="text-xs font-medium text-sand-400">{order.id}</span>
                             <span
                               className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${order.sourceColor}`}
                             >
                               {order.source}
                             </span>
                           </div>
-                          <p className="text-sm font-medium text-slate-700">
-                            {order.name}
-                          </p>
+                          <p className="text-sm font-medium text-sand-700">{order.name}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-bold text-slate-800">
-                            {order.total}
-                          </p>
+                          <p className="text-sm font-bold text-sand-800">{order.total}</p>
                           <span
                             className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${order.color}`}
                           >
@@ -288,8 +244,6 @@ export function Hero() {
                   </div>
                 </div>
               </motion.div>
-
-              <div className="absolute -right-4 -bottom-4 -z-10 h-full w-full rounded-2xl bg-gradient-to-br from-primary-200/60 to-accent-200/60 blur-sm" />
             </div>
           </AnimatedSection>
         </div>

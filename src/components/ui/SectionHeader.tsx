@@ -21,18 +21,18 @@ export function SectionHeader({
     <AnimatedSection className={isCenter ? "text-center" : ""}>
       {badge && (
         <span
-          className={`mb-4 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold ${
+          className={`mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
             dark
-              ? "bg-accent-500/10 text-accent-400"
-              : "bg-gradient-to-r from-primary-50 to-accent-50 text-primary-700 ring-1 ring-primary-200/50"
+              ? "bg-white/10 text-sand-300"
+              : "bg-primary-50 text-primary-600"
           }`}
         >
           {badge}
         </span>
       )}
       <h2
-        className={`text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem] ${
-          dark ? "text-white" : "text-slate-900"
+        className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${
+          dark ? "text-white" : "text-sand-900"
         }`}
       >
         {title}
@@ -40,7 +40,7 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={`mt-4 text-lg leading-relaxed ${
-            dark ? "text-slate-400" : "text-slate-500"
+            dark ? "text-sand-400" : "text-sand-500"
           } ${isCenter ? "mx-auto max-w-2xl" : "max-w-2xl"}`}
         >
           {subtitle}
