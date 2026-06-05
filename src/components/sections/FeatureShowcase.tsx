@@ -80,12 +80,12 @@ const features = [
     description:
       "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Tu solo supervisas.",
     bullets: [
-      "Entiende como hablan tus clientes",
-      "Responde dudas sobre menu, horarios, delivery",
-      "Toma el pedido completo por chat",
-      "Tu puedes intervenir cuando quieras",
-      "Todas las conversaciones en un solo lugar",
-      "Detecta cuando el cliente quiere comprar",
+      "Entiende texto, audios y hasta fotos de platos",
+      "Toma el pedido completo por chat, del 'hola' al pago",
+      "Recupera carritos abandonados y hace win-back",
+      "Tu equipo interviene cuando quiera (takeover)",
+      "También atiende Instagram y Messenger",
+      "Nunca inventa precios: valida contra tu catálogo",
     ],
     mockup: "whatsapp",
   },
@@ -126,8 +126,8 @@ function FeatureMockup({ type }: { type: string }) {
     catalog: (
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-bold text-slate-700">Menu</h4>
-          <span className="text-xs text-slate-400">12 productos</span>
+          <h4 className="text-sm font-bold text-sand-700">Menu</h4>
+          <span className="text-xs text-sand-400">12 productos</span>
         </div>
         <div className="flex gap-2 overflow-hidden">
           {["Entradas", "Platos", "Bebidas", "Postres"].map((cat) => (
@@ -146,12 +146,12 @@ function FeatureMockup({ type }: { type: string }) {
         ].map((item) => (
           <div
             key={item.name}
-            className="flex items-center gap-3 rounded-lg border border-slate-100 p-2"
+            className="flex items-center gap-3 rounded-lg border border-sand-100 p-2"
           >
             <div className="h-12 w-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-orange-100 to-orange-200" />
             <div className="flex-1">
-              <p className="text-sm font-medium text-slate-700">{item.name}</p>
-              <p className="text-xs text-slate-400">Incluye guarnicion</p>
+              <p className="text-sm font-medium text-sand-700">{item.name}</p>
+              <p className="text-xs text-sand-400">Incluye guarnicion</p>
             </div>
             <span className="text-sm font-bold text-primary-600">
               {item.price}
@@ -163,7 +163,7 @@ function FeatureMockup({ type }: { type: string }) {
     dashboard: (
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-bold text-slate-700">Pedidos hoy</h4>
+          <h4 className="text-sm font-bold text-sand-700">Pedidos hoy</h4>
           <span className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-700">
             +18%
           </span>
@@ -176,24 +176,24 @@ function FeatureMockup({ type }: { type: string }) {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="rounded-lg bg-slate-50 p-2 text-center"
+              className="rounded-lg bg-sand-50 p-2 text-center"
             >
               <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
-              <p className="text-xs text-slate-400">{stat.label}</p>
+              <p className="text-xs text-sand-400">{stat.label}</p>
             </div>
           ))}
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-sand-100">
           <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500" />
         </div>
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-sand-400">
           Meta del dia: 75% completado (S/ 2,340 de S/ 3,100)
         </p>
       </div>
     ),
     payments: (
       <div className="space-y-3">
-        <h4 className="text-sm font-bold text-slate-700">Metodos de pago</h4>
+        <h4 className="text-sm font-bold text-sand-700">Metodos de pago</h4>
         {[
           { name: "Tarjeta (Culqi)", icon: "💳", status: "Web/Bot" },
           { name: "Tarjeta/QR (IZIPAY)", icon: "🏪", status: "Kiosko" },
@@ -202,11 +202,11 @@ function FeatureMockup({ type }: { type: string }) {
         ].map((method) => (
           <div
             key={method.name}
-            className="flex items-center justify-between rounded-lg border border-slate-100 p-2"
+            className="flex items-center justify-between rounded-lg border border-sand-100 p-2"
           >
             <div className="flex items-center gap-2">
               <span>{method.icon}</span>
-              <span className="text-sm text-slate-700">{method.name}</span>
+              <span className="text-sm text-sand-700">{method.name}</span>
             </div>
             <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
               {method.status}
@@ -223,14 +223,14 @@ function FeatureMockup({ type }: { type: string }) {
     kiosk: (
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-bold text-slate-700">Kiosko</h4>
+          <h4 className="text-sm font-bold text-sand-700">Kiosko</h4>
           <span className="rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-700">
             Autoservicio
           </span>
         </div>
-        <div className="rounded-xl border-2 border-slate-200 bg-slate-900 p-3">
+        <div className="rounded-xl border-2 border-sand-200 bg-sand-900 p-3">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-[10px] font-medium text-slate-400">
+            <span className="text-[10px] font-medium text-sand-400">
               WANTAN CLAN
             </span>
             <span className="rounded bg-green-500 px-1.5 py-0.5 text-[9px] font-bold text-white">
@@ -241,7 +241,7 @@ function FeatureMockup({ type }: { type: string }) {
             {["Entradas", "Platos", "Bebidas", "Postres"].map((cat) => (
               <div
                 key={cat}
-                className="rounded-lg bg-slate-800 p-2 text-center"
+                className="rounded-lg bg-sand-800 p-2 text-center"
               >
                 <div className="mb-1 h-6 w-full rounded bg-gradient-to-br from-orange-400/30 to-orange-600/30" />
                 <span className="text-[9px] font-medium text-white">{cat}</span>
@@ -254,13 +254,13 @@ function FeatureMockup({ type }: { type: string }) {
           </div>
         </div>
         <div className="flex justify-center gap-2">
-          <span className="rounded bg-slate-100 px-2 py-1 text-[10px] text-slate-500">
+          <span className="rounded bg-sand-100 px-2 py-1 text-[10px] text-sand-500">
             Tarjeta
           </span>
-          <span className="rounded bg-slate-100 px-2 py-1 text-[10px] text-slate-500">
+          <span className="rounded bg-sand-100 px-2 py-1 text-[10px] text-sand-500">
             QR
           </span>
-          <span className="rounded bg-slate-100 px-2 py-1 text-[10px] text-slate-500">
+          <span className="rounded bg-sand-100 px-2 py-1 text-[10px] text-sand-500">
             Yape
           </span>
         </div>
@@ -268,14 +268,14 @@ function FeatureMockup({ type }: { type: string }) {
     ),
     delivery: (
       <div className="space-y-3">
-        <h4 className="text-sm font-bold text-slate-700">Zona de cobertura</h4>
+        <h4 className="text-sm font-bold text-sand-700">Zona de cobertura</h4>
         <div className="flex h-32 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-green-50">
           <div className="relative">
             <div className="h-20 w-20 rounded-full border-2 border-dashed border-primary-300 bg-primary-50/50" />
             <MapPin className="absolute top-1/2 left-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-primary-600" />
           </div>
         </div>
-        <div className="flex justify-between text-xs text-slate-400">
+        <div className="flex justify-between text-xs text-sand-400">
           <span>Radio: 5 km</span>
           <span>Costo base: S/ 5.00</span>
         </div>
@@ -288,7 +288,7 @@ function FeatureMockup({ type }: { type: string }) {
             <div className="h-8 w-8 rounded-full bg-green-500 p-1.5">
               <MessageCircle className="h-full w-full text-white" />
             </div>
-            <h4 className="text-sm font-bold text-slate-700">
+            <h4 className="text-sm font-bold text-sand-700">
               WhatsApp + IA
             </h4>
           </div>
@@ -296,17 +296,17 @@ function FeatureMockup({ type }: { type: string }) {
             Claude AI
           </span>
         </div>
-        <div className="space-y-2 rounded-lg bg-slate-50 p-3">
-          <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-slate-700">
+        <div className="space-y-2 rounded-lg bg-sand-50 p-3">
+          <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-sand-700">
             Que me recomiendas para cenar?
           </div>
-          <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-slate-700">
+          <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-sand-700">
             Te recomiendo nuestro Lomo Saltado, es el favorito! Viene con arroz y papas fritas. Quieres que te lo agregue al carrito?
           </div>
-          <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-slate-700">
+          <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-sand-700">
             Si, dale! Y una gaseosa
           </div>
-          <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-slate-700">
+          <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-sand-700">
             Listo! Tu carrito:
             <div className="mt-1 space-y-0.5 text-[10px]">
               <p>1x Lomo Saltado - S/ 32.00</p>
@@ -319,7 +319,7 @@ function FeatureMockup({ type }: { type: string }) {
     ),
     loyalty: (
       <div className="space-y-3">
-        <h4 className="text-sm font-bold text-slate-700">
+        <h4 className="text-sm font-bold text-sand-700">
           Programa de puntos
         </h4>
         <div className="rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 p-4 text-white">
@@ -332,7 +332,7 @@ function FeatureMockup({ type }: { type: string }) {
             750 mas para tu proximo descuento
           </p>
         </div>
-        <div className="flex justify-between text-xs text-slate-400">
+        <div className="flex justify-between text-xs text-sand-400">
           <span>10 pts / S/ 1 gastado</span>
           <span>2,000 pts = 15% dcto</span>
         </div>
@@ -341,7 +341,7 @@ function FeatureMockup({ type }: { type: string }) {
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/50 transition-shadow duration-500 hover:shadow-xl">
+    <div className="overflow-hidden rounded-2xl border border-sand-200 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md">
       {mockups[type]}
     </div>
   );
@@ -349,17 +349,18 @@ function FeatureMockup({ type }: { type: string }) {
 
 export function FeatureShowcase() {
   return (
-    <Section id="funcionalidades" className="bg-slate-50">
+    <Section id="funcionalidades" className="bg-sand-50">
       <Container>
         <AnimatedSection className="text-center">
-          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
             Funcionalidades
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
             Todo integrado, nada extra que instalar
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Catalogo, pedidos, pagos, delivery, fidelizacion. Un solo sistema, una sola cuenta.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
+            Catálogo, pedidos, pagos, delivery, fidelización y operación. Un
+            solo sistema, una sola cuenta.
           </p>
         </AnimatedSection>
 
@@ -375,18 +376,18 @@ export function FeatureShowcase() {
                   variant={isOdd ? "fade-right" : "fade-left"}
                   className={isOdd ? "lg:order-2" : ""}
                 >
-                  <div className="inline-flex rounded-xl bg-gradient-to-br from-primary-50 to-primary-100/50 p-3">
+                  <div className="inline-flex rounded-xl bg-primary-50 p-3">
                     <feature.icon className="h-6 w-6 text-primary-600" />
                   </div>
-                  <h3 className="mt-4 text-2xl font-bold text-slate-900">
+                  <h3 className="mt-4 text-2xl font-bold text-sand-900">
                     {feature.title}
                   </h3>
-                  <p className="mt-3 leading-relaxed text-slate-500">{feature.description}</p>
+                  <p className="mt-3 leading-relaxed text-sand-500">{feature.description}</p>
                   <ul className="mt-6 space-y-2.5">
                     {feature.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-start gap-2.5 text-sm text-slate-600"
+                        className="flex items-start gap-2.5 text-sm text-sand-600"
                       >
                         <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent-50">
                           <Check className="h-3 w-3 text-accent-600" />
@@ -401,10 +402,7 @@ export function FeatureShowcase() {
                   delay={0.1}
                   className={isOdd ? "lg:order-1" : ""}
                 >
-                  <div className="relative">
-                    <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-br from-primary-100/30 to-accent-100/30 blur-xl" />
-                    <FeatureMockup type={feature.mockup} />
-                  </div>
+                  <FeatureMockup type={feature.mockup} />
                 </AnimatedSection>
               </div>
             );

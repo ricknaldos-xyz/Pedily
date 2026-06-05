@@ -154,7 +154,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-4xl"
+          className="mt-4 text-3xl font-extrabold text-sand-900 sm:text-4xl"
         >
           Ups, esta pagina no existe
         </motion.h1>
@@ -164,7 +164,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mx-auto mt-4 max-w-md text-lg text-slate-500"
+          className="mx-auto mt-4 max-w-md text-lg text-sand-500"
         >
           Puede que el enlace este roto o la pagina haya sido movida.
         </motion.p>
@@ -184,7 +184,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/precios"
-            className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-6 py-3 text-base font-medium text-slate-600 transition-all hover:border-primary-200 hover:bg-primary-50 hover:text-primary-600"
+            className="inline-flex items-center justify-center rounded-lg border border-sand-200 bg-white px-6 py-3 text-base font-medium text-sand-600 transition-all hover:border-primary-200 hover:bg-primary-50 hover:text-primary-600"
           >
             Ver precios
           </Link>

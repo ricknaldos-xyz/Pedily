@@ -6,15 +6,15 @@ type AnimationVariant = "fade-up" | "fade-left" | "fade-right" | "scale-up" | "b
 
 const variantMap: Record<AnimationVariant, { initial: TargetAndTransition; animate: TargetAndTransition }> = {
   "fade-up": {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
   },
   "fade-left": {
-    initial: { opacity: 0, x: -40 },
+    initial: { opacity: 0, x: -20 },
     animate: { opacity: 1, x: 0 },
   },
   "fade-right": {
-    initial: { opacity: 0, x: 40 },
+    initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
   },
   "scale-up": {
@@ -47,7 +47,7 @@ export function AnimatedSection({
       initial={initial}
       whileInView={animate}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
     >
       {children}

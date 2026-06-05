@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Gabarito } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
@@ -10,16 +10,16 @@ import {
   SoftwareApplicationJsonLd,
 } from "@/components/seo/JsonLd";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const gabarito = Gabarito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "Pedily - Tu negocio digital, listo en minutos",
+  title: "Pedily - El sistema operativo de tu restaurante",
   description:
-    "Plataforma de pedidos online para restaurantes, pastelerias y negocios de comida. Sin comisiones por pedido. Tu marca, tu control.",
+    "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un solo lugar: pedidos, cocina, inventario, finanzas y facturacion SUNAT. Sin comisiones por pedido.",
   keywords: [
     "pedidos online",
     "restaurante digital",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Pedily - Recibe pedidos por web, WhatsApp y kiosko",
+    title: "Pedily - El sistema operativo de tu restaurante",
     description:
-      "Plataforma multicanal para restaurantes. Sin comisiones por pedido. Bot WhatsApp con IA, kiosko de autoservicio, facturacion SUNAT. Desde S/ 249/mes.",
+      "Vende por web, WhatsApp con IA y kiosko. Opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones. Desde S/ 249/mes.",
     type: "website",
     locale: "es_PE",
     url: "https://pedily.com",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pedily - Tu negocio digital, listo en minutos",
+    title: "Pedily - El sistema operativo de tu restaurante",
     description:
-      "Recibe pedidos por web, WhatsApp y kiosko. Sin comisiones. Desde S/ 249/mes.",
+      "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un Hub. Sin comisiones. Desde S/ 249/mes.",
     images: ["/og-image.svg"],
   },
   robots: {
@@ -89,7 +89,7 @@ export default function RootLayout({
         <WebsiteJsonLd />
         <SoftwareApplicationJsonLd />
       </head>
-      <body className={`${plusJakarta.variable} font-sans antialiased`}>
+      <body className={`${gabarito.variable} font-sans antialiased`}>
         <Header />
         <LayoutWrapper>{children}</LayoutWrapper>
         <WhatsAppButton />

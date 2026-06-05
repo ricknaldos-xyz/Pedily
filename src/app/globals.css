@@ -1,36 +1,62 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Gabarito", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #4338ca;
-  --color-primary-800: #3730a3;
-  --color-primary-900: #312e81;
+  /* Primary — Jade (marca / acción). Tomado del producto real (Wantan Clan). */
+  --color-primary-50: #f0fffb;
+  --color-primary-100: #ecfffa;
+  --color-primary-200: #b5ebdc;
+  --color-primary-300: #5ae4bc;
+  --color-primary-400: #55c4a4;
+  --color-primary-500: #3ba889;
+  --color-primary-600: #2f8a70;
+  --color-primary-700: #236b57;
+  --color-primary-800: #164235;
+  --color-primary-900: #0e2b22;
 
-  --color-accent-50: #ecfdf5;
-  --color-accent-100: #d1fae5;
-  --color-accent-200: #a7f3d0;
-  --color-accent-300: #6ee7b7;
-  --color-accent-400: #34d399;
-  --color-accent-500: #10b981;
-  --color-accent-600: #059669;
-  --color-accent-700: #047857;
-  --color-accent-800: #065f46;
-  --color-accent-900: #064e3b;
+  /* Accent — Rojo/naranja cálido (CTA / energía). */
+  --color-accent-50: #fff5f2;
+  --color-accent-100: #ffe3dd;
+  --color-accent-200: #ffc9bd;
+  --color-accent-300: #ff7556;
+  --color-accent-400: #f24119;
+  --color-accent-500: #e02900;
+  --color-accent-600: #c12400;
+  --color-accent-700: #9a1d00;
+  --color-accent-800: #621200;
+  --color-accent-900: #3d2414;
 
-  /* Standardized shadows */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-card-hover: 0 10px 25px -5px rgba(0,0,0,0.08), 0 4px 10px -6px rgba(0,0,0,0.05);
-  --shadow-elevated: 0 20px 40px -12px rgba(0,0,0,0.12);
-  --shadow-glow-primary: 0 0 40px rgba(99,102,241,0.15);
-  --shadow-glow-accent: 0 0 40px rgba(16,185,129,0.15);
+  /* Cream / Gold — fondos cálidos y dorados. */
+  --color-cream-50: #fffdf9;
+  --color-cream-100: #fff8ef;
+  --color-cream-200: #fff1dc;
+  --color-cream-300: #ffedd2;
+  --color-cream-400: #ffe0b2;
+  --color-cream-500: #f0bc6f;
+  --color-cream-600: #d99e4a;
+  --color-cream-700: #95713c;
+  --color-cream-800: #6b5028;
+  --color-cream-900: #463316;
+
+  /* Sand / Earth — neutros cálidos (reemplazan a slate). */
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f6f3ee;
+  --color-sand-200: #ebe5db;
+  --color-sand-300: #d6cab9;
+  --color-sand-400: #b9a991;
+  --color-sand-500: #9f9483;
+  --color-sand-600: #7a6f5e;
+  --color-sand-700: #5a5247;
+  --color-sand-800: #3c372f;
+  --color-sand-900: #26231e;
+
+  /* Sombras con tinte cálido (no negro). */
+  --shadow-xs: 0 1px 2px rgba(149, 113, 60, 0.08);
+  --shadow-card: 0 2px 4px rgba(159, 148, 131, 0.12), 0 1px 2px rgba(159, 148, 131, 0.08);
+  --shadow-card-hover: 0 12px 28px -6px rgba(149, 113, 60, 0.18), 0 4px 10px -3px rgba(159, 148, 131, 0.12);
+  --shadow-elevated: 0 24px 56px -16px rgba(59, 42, 22, 0.22);
+  --shadow-warm: 0 4px 16px rgba(149, 113, 60, 0.35);
 }
 
 html {
@@ -39,13 +65,15 @@ html {
 
 body {
   font-family: var(--font-sans);
+  color: var(--color-sand-900);
+  background-color: var(--color-cream-50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Focus styles for accessibility */
 *:focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -83,42 +111,39 @@ body {
   animation: pulse-soft 2s ease-in-out infinite;
 }
 
-/* Gradient text animation */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 300% 300%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-/* Shimmer effect */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Float animation for mockups */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Glow pulse for CTA buttons */
+/* Glow pulse (used by Button glow variant) */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.3); }
-  50% { box-shadow: 0 0 40px rgba(99,102,241,0.5); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 168, 137, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 168, 137, 0); }
 }
 
 .animate-glow-pulse {
-  animation: glow-pulse 2s ease-in-out infinite;
+  animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+/* Shimmer sweep (used by Button shimmer variant) */
+@keyframes btn-shimmer {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-150%);
+  animation: btn-shimmer 2.8s ease-in-out infinite;
 }
 
 /* Number pop entrance */
@@ -128,7 +153,17 @@ body {
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Marquee animation for logo bars */
+/* Floating motion for decorative elements */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-soft {
+  animation: float-soft 4s ease-in-out infinite;
+}
+
+/* Marquee animation for logo/strip bars */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -142,27 +177,6 @@ body {
   animation-play-state: paused;
 }
 
-/* Button shimmer effect */
-.btn-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-shimmer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: none;
-}
-
-.btn-shimmer:hover::after {
-  animation: shimmer 0.6s ease-in-out;
-}
-
 /* Navigation underline animation */
 .nav-link {
   position: relative;
@@ -174,8 +188,8 @@ body {
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: linear-gradient(to right, #6366f1, #10b981);
+  height: 1.5px;
+  background: var(--color-primary-600);
   border-radius: 1px;
   transition: width 0.3s ease;
 }
@@ -203,16 +217,16 @@ body {
   background: transparent;
 }
 .docs-scrollbar::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-sand-300);
   border-radius: 4px;
 }
 .docs-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--color-sand-400);
 }
 
 /* Docs prose refinements */
 .docs-prose {
-  --tw-prose-body: #334155;
+  --tw-prose-body: #5a5247;
   line-height: 1.8;
 }
 .docs-prose h2 {
@@ -228,7 +242,7 @@ body {
 
 /* Zebra striping for docs tables */
 .docs-prose tbody tr:nth-child(even) {
-  background-color: #f8fafc;
+  background-color: var(--color-sand-50);
 }
 
 /* Callout blockquotes */
@@ -243,7 +257,7 @@ input[type="range"] {
   appearance: none;
   height: 6px;
   border-radius: 3px;
-  background: linear-gradient(to right, var(--color-primary-500), var(--color-accent-500));
+  background: var(--color-primary-500);
   outline: none;
 }
 
@@ -254,7 +268,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: white;
   border: 3px solid var(--color-primary-500);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(149, 113, 60, 0.25);
   cursor: pointer;
   transition: transform 0.15s ease;
 }
@@ -269,13 +283,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background: white;
   border: 3px solid var(--color-primary-500);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(149, 113, 60, 0.25);
   cursor: pointer;
   transition: transform 0.15s ease;
-}
-
-/* Dot grid pattern background */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(99,102,241,0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
 }

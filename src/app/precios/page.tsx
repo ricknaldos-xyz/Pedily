@@ -19,10 +19,10 @@ export default function PreciosPage() {
       <main>
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24">
           <Container className="text-center">
-            <h1 className="text-4xl font-extrabold text-slate-900 sm:text-5xl">
+            <h1 className="text-4xl font-extrabold text-sand-900 sm:text-5xl">
               Precios simples, sin sorpresas
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
               Tarifa fija mensual. Vendas 10 pedidos o 10,000, pagas lo mismo.
               Sin comisiones, sin letra chica.
             </p>
@@ -34,7 +34,7 @@ export default function PreciosPage() {
 
         <section className="bg-white py-16">
           <Container>
-            <h2 className="text-center text-2xl font-bold text-slate-900">
+            <h2 className="text-center text-2xl font-bold text-sand-900">
               Que incluyen todos los planes?
             </h2>
             <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,7 +50,7 @@ export default function PreciosPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-medium text-slate-600"
+                  className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-center text-sm font-medium text-sand-600"
                 >
                   {item}
                 </div>

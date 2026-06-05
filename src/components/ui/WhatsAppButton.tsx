@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { whatsappLink } from "@/lib/site";
 
 const WhatsAppIcon = () => (
   <svg
@@ -16,7 +17,7 @@ const WhatsAppIcon = () => (
 export function WhatsAppButton() {
   return (
     <motion.a
-      href="https://wa.me/51999999999"
+      href={whatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"

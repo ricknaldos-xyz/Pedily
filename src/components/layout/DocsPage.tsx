@@ -305,13 +305,13 @@ export function DocsPage() {
     return (
       <div className="min-h-screen bg-white">
         <div className="mx-auto flex max-w-7xl">
-          <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-60 flex-shrink-0 border-r border-slate-100 bg-slate-50/80 p-4 pt-6 lg:block">
-            <div className="mb-5 h-9 w-full animate-pulse rounded-lg bg-slate-200" />
+          <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-60 flex-shrink-0 border-r border-sand-100 bg-sand-50/80 p-4 pt-6 lg:block">
+            <div className="mb-5 h-9 w-full animate-pulse rounded-lg bg-sand-200" />
             <div className="space-y-1">
               {skeletonWidths.map((w, i) => (
                 <div
                   key={i}
-                  className="h-9 animate-pulse rounded-lg bg-slate-200"
+                  className="h-9 animate-pulse rounded-lg bg-sand-200"
                   style={{ animationDelay: `${i * 50}ms`, width: `${w}%` }}
                 />
               ))}
@@ -321,13 +321,13 @@ export function DocsPage() {
             <div className="max-w-3xl">
               <div className="mb-3 flex gap-2">
                 <div className="h-6 w-14 animate-pulse rounded-full bg-primary-100" />
-                <div className="h-6 w-32 animate-pulse rounded bg-slate-100" />
+                <div className="h-6 w-32 animate-pulse rounded bg-sand-100" />
               </div>
-              <div className="mb-2 h-10 w-2/3 animate-pulse rounded bg-slate-200" />
-              <div className="mb-6 h-5 w-full animate-pulse rounded bg-slate-100" />
+              <div className="mb-2 h-10 w-2/3 animate-pulse rounded bg-sand-200" />
+              <div className="mb-6 h-5 w-full animate-pulse rounded bg-sand-100" />
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {[...Array(6)].map((_, i) => (
-                  <div key={i} className="h-14 animate-pulse rounded-lg bg-slate-100" style={{ animationDelay: `${i * 80}ms` }} />
+                  <div key={i} className="h-14 animate-pulse rounded-lg bg-sand-100" style={{ animationDelay: `${i * 80}ms` }} />
                 ))}
               </div>
             </div>
@@ -341,7 +341,7 @@ export function DocsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Reading progress */}
-      <div className="fixed top-16 right-0 left-0 z-40 h-[3px] bg-slate-100">
+      <div className="fixed top-16 right-0 left-0 z-40 h-[3px] bg-sand-100">
         <motion.div
           className="h-full bg-gradient-to-r from-primary-500 to-accent-500"
           initial={{ width: 0 }}
@@ -358,7 +358,7 @@ export function DocsPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm"
+              className="fixed inset-0 z-[60] bg-sand-900/50 backdrop-blur-sm"
               onClick={() => setSearchOpen(false)}
             />
             <motion.div
@@ -366,10 +366,10 @@ export function DocsPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: -10 }}
               transition={{ duration: 0.15 }}
-              className="fixed top-[10%] right-4 left-4 z-[70] mx-auto max-w-lg overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl sm:top-[15%]"
+              className="fixed top-[10%] right-4 left-4 z-[70] mx-auto max-w-lg overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-2xl sm:top-[15%]"
             >
-              <div className="flex items-center gap-3 border-b border-slate-100 px-4 py-3">
-                <Search className="h-5 w-5 flex-shrink-0 text-slate-400" />
+              <div className="flex items-center gap-3 border-b border-sand-100 px-4 py-3">
+                <Search className="h-5 w-5 flex-shrink-0 text-sand-400" />
                 <input
                   ref={searchOverlayRef}
                   type="text"
@@ -377,22 +377,22 @@ export function DocsPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleSearchKeyDown}
-                  className="flex-1 bg-transparent text-[15px] text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                  className="flex-1 bg-transparent text-[15px] text-sand-800 placeholder:text-sand-400 focus:outline-none"
                 />
-                <kbd className="hidden rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] text-slate-400 sm:inline">ESC</kbd>
+                <kbd className="hidden rounded-md border border-sand-200 bg-sand-50 px-1.5 py-0.5 text-[10px] text-sand-400 sm:inline">ESC</kbd>
               </div>
 
               <div className="max-h-[min(60vh,22rem)] overflow-y-auto p-1.5">
                 {searchQuery.length >= 2 && searchResults.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <Search className="mb-3 h-10 w-10 text-slate-200" />
-                    <p className="text-sm text-slate-400">Sin resultados para &ldquo;{searchQuery}&rdquo;</p>
-                    <p className="mt-1 text-xs text-slate-300">Intenta con otra palabra clave</p>
+                    <Search className="mb-3 h-10 w-10 text-sand-200" />
+                    <p className="text-sm text-sand-400">Sin resultados para &ldquo;{searchQuery}&rdquo;</p>
+                    <p className="mt-1 text-xs text-sand-300">Intenta con otra palabra clave</p>
                   </div>
                 ) : (
                   <ul>
                     {searchQuery.length < 2 && (
-                      <li className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Secciones</li>
+                      <li className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wider text-sand-400">Secciones</li>
                     )}
                     {paletteItems.map((item, i) => {
                       const section = sections.find((s) => s.id === item.id);
@@ -404,11 +404,11 @@ export function DocsPage() {
                             onClick={() => scrollToId(item.id)}
                             onMouseEnter={() => setSelectedSearchIdx(i)}
                             className={`flex w-full items-start gap-3 rounded-xl px-3 py-2.5 text-left transition-all ${
-                              isSelected ? "bg-primary-50 shadow-sm" : "hover:bg-slate-50"
+                              isSelected ? "bg-primary-50 shadow-sm" : "hover:bg-sand-50"
                             }`}
                           >
                             <span className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg ${
-                              isSelected ? "bg-primary-100 text-primary-600" : "bg-slate-100 text-slate-400"
+                              isSelected ? "bg-primary-100 text-primary-600" : "bg-sand-100 text-sand-400"
                             }`}>
                               <Icon className="h-3.5 w-3.5" />
                             </span>
@@ -416,11 +416,11 @@ export function DocsPage() {
                               {item.meta && (
                                 <span className="mb-0.5 block text-[11px] font-medium text-primary-500">{item.meta}</span>
                               )}
-                              <span className={`line-clamp-1 text-sm ${isSelected ? "font-medium text-primary-700" : "text-slate-600"}`}>
+                              <span className={`line-clamp-1 text-sm ${isSelected ? "font-medium text-primary-700" : "text-sand-600"}`}>
                                 {highlightMatch(item.label, item.matchStart, item.matchEnd)}
                               </span>
                             </div>
-                            {isSelected && <span className="mt-1 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-400">↵</span>}
+                            {isSelected && <span className="mt-1 rounded bg-sand-100 px-1.5 py-0.5 text-[10px] text-sand-400">↵</span>}
                           </button>
                         </li>
                       );
@@ -429,10 +429,10 @@ export function DocsPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-4 border-t border-slate-100 bg-slate-50/50 px-4 py-2 text-[11px] text-slate-400">
-                <span><kbd className="rounded border border-slate-200 bg-white px-1 py-0.5">↑↓</kbd> navegar</span>
-                <span><kbd className="rounded border border-slate-200 bg-white px-1 py-0.5">↵</kbd> ir</span>
-                <span><kbd className="rounded border border-slate-200 bg-white px-1 py-0.5">esc</kbd> cerrar</span>
+              <div className="flex items-center gap-4 border-t border-sand-100 bg-sand-50/50 px-4 py-2 text-[11px] text-sand-400">
+                <span><kbd className="rounded border border-sand-200 bg-white px-1 py-0.5">↑↓</kbd> navegar</span>
+                <span><kbd className="rounded border border-sand-200 bg-white px-1 py-0.5">↵</kbd> ir</span>
+                <span><kbd className="rounded border border-sand-200 bg-white px-1 py-0.5">esc</kbd> cerrar</span>
               </div>
             </motion.div>
           </>
@@ -441,15 +441,15 @@ export function DocsPage() {
 
       <div className="mx-auto flex max-w-7xl">
         {/* ─── Left Sidebar ─── */}
-        <aside className="docs-scrollbar sticky top-16 hidden h-[calc(100vh-4rem)] w-60 flex-shrink-0 overflow-y-auto border-r border-slate-100 bg-slate-50/80 lg:block">
+        <aside className="docs-scrollbar sticky top-16 hidden h-[calc(100vh-4rem)] w-60 flex-shrink-0 overflow-y-auto border-r border-sand-100 bg-sand-50/80 lg:block">
           <div className="p-4 pt-6">
             <button
               onClick={() => setSearchOpen(true)}
-              className="group mb-5 flex w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-400 shadow-sm transition-all hover:border-slate-300 hover:shadow"
+              className="group mb-5 flex w-full items-center gap-2 rounded-xl border border-sand-200 bg-white px-3 py-2.5 text-sm text-sand-400 shadow-sm transition-all hover:border-sand-300 hover:shadow"
             >
               <Search className="h-4 w-4 transition-colors group-hover:text-primary-500" />
               <span className="flex-1 text-left text-[13px]">Buscar...</span>
-              <kbd className="rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium text-slate-400">⌘K</kbd>
+              <kbd className="rounded-md border border-sand-200 bg-sand-50 px-1.5 py-0.5 text-[10px] font-medium text-sand-400">⌘K</kbd>
             </button>
 
             <nav className="space-y-0.5">
@@ -464,7 +464,7 @@ export function DocsPage() {
                     className={`group relative flex w-full items-center gap-2.5 rounded-xl py-2 pr-3 pl-3 text-left text-[13px] transition-all ${
                       isActive
                         ? "bg-primary-50 font-semibold text-primary-700 shadow-sm"
-                        : "text-slate-500 hover:bg-white hover:text-slate-800 hover:shadow-sm"
+                        : "text-sand-500 hover:bg-white hover:text-sand-800 hover:shadow-sm"
                     }`}
                   >
                     {/* Active bar */}
@@ -472,7 +472,7 @@ export function DocsPage() {
                       isActive ? "bg-primary-500" : "bg-transparent"
                     }`} />
                     <span className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg transition-colors ${
-                      isActive ? "bg-primary-100 text-primary-600" : "bg-slate-100 text-slate-400 group-hover:bg-white"
+                      isActive ? "bg-primary-100 text-primary-600" : "bg-sand-100 text-sand-400 group-hover:bg-white"
                     }`}>
                       <Icon className="h-3.5 w-3.5" />
                     </span>
@@ -486,12 +486,12 @@ export function DocsPage() {
             </nav>
 
             {/* Progress */}
-            <div className="mt-6 rounded-xl border border-slate-200 bg-white p-3">
+            <div className="mt-6 rounded-xl border border-sand-200 bg-white p-3">
               <div className="mb-2 flex items-center justify-between text-[11px]">
-                <span className="font-medium text-slate-500">Progreso</span>
-                <span className="tabular-nums text-slate-400">{Math.round(readProgress)}%</span>
+                <span className="font-medium text-sand-500">Progreso</span>
+                <span className="tabular-nums text-sand-400">{Math.round(readProgress)}%</span>
               </div>
-              <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-sand-100">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-primary-500 to-accent-500"
                   initial={{ width: 0 }}
@@ -499,7 +499,7 @@ export function DocsPage() {
                   transition={{ duration: 0.3 }}
                 />
               </div>
-              <p className="mt-2 text-[10px] text-slate-400">
+              <p className="mt-2 text-[10px] text-sand-400">
                 {visitedSections.size} de {sections.length} secciones vistas
               </p>
             </div>
@@ -526,7 +526,7 @@ export function DocsPage() {
               >
                 <button
                   onClick={() => { setMobileMenuOpen(false); setSearchOpen(true); }}
-                  className="mb-4 flex w-full items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-400"
+                  className="mb-4 flex w-full items-center gap-2 rounded-xl border border-sand-200 bg-sand-50 px-3 py-2.5 text-sm text-sand-400"
                 >
                   <Search className="h-4 w-4" />
                   Buscar en docs...
@@ -540,11 +540,11 @@ export function DocsPage() {
                         key={s.id}
                         onClick={() => scrollToId(s.id)}
                         className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm ${
-                          isActive ? "bg-primary-50 font-semibold text-primary-700" : "text-slate-500 hover:bg-slate-50"
+                          isActive ? "bg-primary-50 font-semibold text-primary-700" : "text-sand-500 hover:bg-sand-50"
                         }`}
                       >
                         <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${
-                          isActive ? "bg-primary-100 text-primary-600" : "bg-slate-100 text-slate-400"
+                          isActive ? "bg-primary-100 text-primary-600" : "bg-sand-100 text-sand-400"
                         }`}>
                           <Icon className="h-4 w-4" />
                         </span>
@@ -581,12 +581,12 @@ export function DocsPage() {
                     <Sparkles className="h-3 w-3" />
                     v2.0
                   </span>
-                  <span className="text-xs text-slate-400">Actualizado Feb 2026</span>
+                  <span className="text-xs text-sand-400">Actualizado Feb 2026</span>
                 </div>
-                <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+                <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-sand-900 sm:text-3xl">
                   Documentacion de Pedily
                 </h1>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-sand-500 sm:text-base">
                   Guia completa de la plataforma. Aprende a configurar tu tienda, gestionar pedidos y conectar el bot de WhatsApp con IA.
                 </p>
 
@@ -599,7 +599,7 @@ export function DocsPage() {
                       exit={{ opacity: 0, height: 0 }}
                       className="mt-5 overflow-hidden"
                     >
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">Ir a seccion</p>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-sand-400">Ir a seccion</p>
                       <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
                         {sections.slice(0, 6).map((s) => {
                           const Icon = s.icon;
@@ -607,9 +607,9 @@ export function DocsPage() {
                             <button
                               key={s.id}
                               onClick={() => scrollToId(s.id)}
-                              className="group flex items-center gap-2 rounded-lg bg-white/80 px-3 py-2 text-left text-xs font-medium text-slate-600 shadow-sm ring-1 ring-slate-200/80 transition-all hover:bg-white hover:text-primary-600 hover:shadow-md hover:ring-primary-200"
+                              className="group flex items-center gap-2 rounded-lg bg-white/80 px-3 py-2 text-left text-xs font-medium text-sand-600 shadow-sm ring-1 ring-sand-200/80 transition-all hover:bg-white hover:text-primary-600 hover:shadow-md hover:ring-primary-200"
                             >
-                              <Icon className="h-3.5 w-3.5 text-slate-400 transition-colors group-hover:text-primary-500" />
+                              <Icon className="h-3.5 w-3.5 text-sand-400 transition-colors group-hover:text-primary-500" />
                               <span className="truncate">{s.title}</span>
                             </button>
                           );
@@ -617,7 +617,7 @@ export function DocsPage() {
                       </div>
                       <button
                         onClick={() => setShowToc(false)}
-                        className="mt-2 text-xs text-slate-400 hover:text-slate-600"
+                        className="mt-2 text-xs text-sand-400 hover:text-sand-600"
                       >
                         Ver todas las secciones →
                       </button>
@@ -628,7 +628,7 @@ export function DocsPage() {
                 {/* Mobile search */}
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="mt-4 inline-flex w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-400 shadow-sm transition-all hover:shadow-md sm:hidden"
+                  className="mt-4 inline-flex w-full items-center gap-2 rounded-xl border border-sand-200 bg-white px-4 py-3 text-sm text-sand-400 shadow-sm transition-all hover:shadow-md sm:hidden"
                 >
                   <Search className="h-4 w-4" />
                   Buscar en la documentacion...
@@ -636,7 +636,7 @@ export function DocsPage() {
               </div>
             </div>
 
-            <article className="docs-prose prose prose-slate max-w-none prose-headings:scroll-mt-24 prose-h2:mt-14 prose-h2:border-b prose-h2:border-slate-200 prose-h2:pb-4 prose-h2:text-[1.5rem] prose-h2:font-extrabold prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline prose-code:rounded prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[13px] prose-code:font-medium prose-code:text-primary-700 prose-code:before:content-none prose-code:after:content-none prose-pre:relative prose-pre:rounded-xl prose-pre:bg-[#22272e] prose-table:overflow-hidden prose-table:rounded-xl prose-table:border prose-table:border-slate-200 prose-th:bg-slate-50 prose-th:px-4 prose-th:py-2.5 prose-th:text-left prose-th:text-[11px] prose-th:font-semibold prose-th:uppercase prose-th:tracking-wider prose-th:text-slate-500 prose-td:px-4 prose-td:py-2.5 prose-td:text-sm prose-td:border-t prose-td:border-slate-100 prose-blockquote:rounded-r-xl prose-blockquote:border-l-[3px] prose-blockquote:border-primary-400 prose-blockquote:bg-primary-50/60 prose-blockquote:py-0.5 prose-blockquote:not-italic prose-blockquote:text-slate-600 prose-li:marker:text-slate-400 prose-hr:border-slate-200">
+            <article className="docs-prose prose prose-slate max-w-none prose-headings:scroll-mt-24 prose-h2:mt-14 prose-h2:border-b prose-h2:border-sand-200 prose-h2:pb-4 prose-h2:text-[1.5rem] prose-h2:font-extrabold prose-h3:mt-8 prose-h3:text-base prose-h3:font-bold prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline prose-code:rounded prose-code:bg-sand-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[13px] prose-code:font-medium prose-code:text-primary-700 prose-code:before:content-none prose-code:after:content-none prose-pre:relative prose-pre:rounded-xl prose-pre:bg-[#22272e] prose-table:overflow-hidden prose-table:rounded-xl prose-table:border prose-table:border-sand-200 prose-th:bg-sand-50 prose-th:px-4 prose-th:py-2.5 prose-th:text-left prose-th:text-[11px] prose-th:font-semibold prose-th:uppercase prose-th:tracking-wider prose-th:text-sand-500 prose-td:px-4 prose-td:py-2.5 prose-td:text-sm prose-td:border-t prose-td:border-sand-100 prose-blockquote:rounded-r-xl prose-blockquote:border-l-[3px] prose-blockquote:border-primary-400 prose-blockquote:bg-primary-50/60 prose-blockquote:py-0.5 prose-blockquote:not-italic prose-blockquote:text-sand-600 prose-li:marker:text-sand-400 prose-hr:border-sand-200">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
@@ -656,7 +656,7 @@ export function DocsPage() {
                             </span>
                           )}
                           <span className="flex-1">{children}</span>
-                          <a href={`#${sectionId}`} className="text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" aria-label="Enlace">
+                          <a href={`#${sectionId}`} className="text-sand-300 opacity-0 transition-opacity group-hover:opacity-100" aria-label="Enlace">
                             <Hash className="h-4 w-4" />
                           </a>
                         </span>
@@ -669,7 +669,7 @@ export function DocsPage() {
                     return (
                       <h3 id={id} className="group" {...props}>
                         {children}
-                        <a href={`#${id}`} className="ml-2 inline-block text-slate-300 opacity-0 transition-opacity group-hover:opacity-100" aria-label="Enlace">
+                        <a href={`#${id}`} className="ml-2 inline-block text-sand-300 opacity-0 transition-opacity group-hover:opacity-100" aria-label="Enlace">
                           <Hash className="inline h-3.5 w-3.5" />
                         </a>
                       </h3>
@@ -684,14 +684,14 @@ export function DocsPage() {
                     return (
                       <div className="not-prose group relative my-6">
                         <div className="flex items-center justify-between rounded-t-xl bg-[#2d333b] px-4 py-2.5">
-                          <span className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wider text-slate-400">
-                            <span className="h-2 w-2 rounded-full bg-slate-500" />
+                          <span className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wider text-sand-400">
+                            <span className="h-2 w-2 rounded-full bg-sand-500" />
                             {lang || "code"}
                           </span>
                           <button
                             onClick={() => copyCode(codeText)}
                             className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] transition-all ${
-                              isCopied ? "bg-accent-500/20 text-accent-400" : "text-slate-400 hover:bg-white/10 hover:text-slate-200"
+                              isCopied ? "bg-accent-500/20 text-accent-400" : "text-sand-400 hover:bg-white/10 hover:text-sand-200"
                             }`}
                           >
                             {isCopied ? <><Check className="h-3 w-3" /> Copiado</> : <><Copy className="h-3 w-3" /> Copiar</>}
@@ -702,12 +702,12 @@ export function DocsPage() {
                     );
                   },
                   table: ({ children, ...props }) => (
-                    <div className="my-6 overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                    <div className="my-6 overflow-x-auto rounded-xl border border-sand-200 shadow-sm">
                       <table className="!my-0 !border-0" {...props}>{children}</table>
                     </div>
                   ),
                   tr: ({ children, ...props }) => (
-                    <tr className="transition-colors hover:bg-slate-50/80" {...props}>{children}</tr>
+                    <tr className="transition-colors hover:bg-sand-50/80" {...props}>{children}</tr>
                   ),
                 }}
               >
@@ -716,27 +716,27 @@ export function DocsPage() {
             </article>
 
             {/* Prev / Next */}
-            <nav className="mt-14 grid grid-cols-2 gap-3 border-t border-slate-200 pt-8">
+            <nav className="mt-14 grid grid-cols-2 gap-3 border-t border-sand-200 pt-8">
               {prevSection ? (
                 <button
                   onClick={() => scrollToId(prevSection.id)}
-                  className="group flex flex-col items-start gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-5 text-left shadow-sm transition-all hover:border-primary-200 hover:bg-primary-50/30 hover:shadow-md"
+                  className="group flex flex-col items-start gap-2 rounded-2xl border border-sand-200 bg-white px-5 py-5 text-left shadow-sm transition-all hover:border-primary-200 hover:bg-primary-50/30 hover:shadow-md"
                 >
-                  <span className="flex items-center gap-1 text-[11px] font-medium text-slate-400 group-hover:text-primary-500">
+                  <span className="flex items-center gap-1 text-[11px] font-medium text-sand-400 group-hover:text-primary-500">
                     <ChevronLeft className="h-3 w-3" /> Anterior
                   </span>
-                  <span className="text-sm font-semibold text-slate-700 group-hover:text-primary-700">{prevSection.title}</span>
+                  <span className="text-sm font-semibold text-sand-700 group-hover:text-primary-700">{prevSection.title}</span>
                 </button>
               ) : <div />}
               {nextSection ? (
                 <button
                   onClick={() => scrollToId(nextSection.id)}
-                  className="group flex flex-col items-end gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-5 text-right shadow-sm transition-all hover:border-primary-200 hover:bg-primary-50/30 hover:shadow-md"
+                  className="group flex flex-col items-end gap-2 rounded-2xl border border-sand-200 bg-white px-5 py-5 text-right shadow-sm transition-all hover:border-primary-200 hover:bg-primary-50/30 hover:shadow-md"
                 >
-                  <span className="flex items-center gap-1 text-[11px] font-medium text-slate-400 group-hover:text-primary-500">
+                  <span className="flex items-center gap-1 text-[11px] font-medium text-sand-400 group-hover:text-primary-500">
                     Siguiente <ChevronRight className="h-3 w-3" />
                   </span>
-                  <span className="text-sm font-semibold text-slate-700 group-hover:text-primary-700">{nextSection.title}</span>
+                  <span className="text-sm font-semibold text-sand-700 group-hover:text-primary-700">{nextSection.title}</span>
                 </button>
               ) : <div />}
             </nav>
@@ -747,8 +747,8 @@ export function DocsPage() {
         <aside className="docs-scrollbar sticky top-16 hidden h-[calc(100vh-4rem)] w-48 flex-shrink-0 overflow-y-auto py-8 pr-4 xl:block">
           {subHeadings.length > 0 ? (
             <div>
-              <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400">En esta pagina</p>
-              <nav className="space-y-px border-l-2 border-slate-100">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-sand-400">En esta pagina</p>
+              <nav className="space-y-px border-l-2 border-sand-100">
                 {subHeadings.map((h) => {
                   const isActive = activeH3 === h.id;
                   return (
@@ -756,7 +756,7 @@ export function DocsPage() {
                       key={h.id}
                       onClick={() => scrollToId(h.id, false)}
                       className={`-ml-px block w-full truncate border-l-2 py-1.5 pl-3 pr-1 text-left text-[12px] transition-all ${
-                        isActive ? "border-primary-500 font-medium text-primary-700" : "border-transparent text-slate-400 hover:border-slate-300 hover:text-slate-700"
+                        isActive ? "border-primary-500 font-medium text-primary-700" : "border-transparent text-sand-400 hover:border-sand-300 hover:text-sand-700"
                       }`}
                       title={h.text}
                     >
@@ -768,8 +768,8 @@ export function DocsPage() {
             </div>
           ) : (
             <div className="text-center">
-              <p className="text-[11px] text-slate-300">Desplazate para ver</p>
-              <p className="text-[11px] text-slate-300">los subtitulos</p>
+              <p className="text-[11px] text-sand-300">Desplazate para ver</p>
+              <p className="text-[11px] text-sand-300">los subtitulos</p>
             </div>
           )}
         </aside>
@@ -783,10 +783,10 @@ export function DocsPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed right-4 bottom-4 z-40 rounded-full bg-white p-2.5 shadow-lg ring-1 ring-slate-200 transition-all hover:-translate-y-0.5 hover:shadow-xl lg:right-6 lg:bottom-6"
+            className="fixed right-4 bottom-4 z-40 rounded-full bg-white p-2.5 shadow-lg ring-1 ring-sand-200 transition-all hover:-translate-y-0.5 hover:shadow-xl lg:right-6 lg:bottom-6"
             aria-label="Volver arriba"
           >
-            <ArrowUp className="h-4 w-4 text-slate-600" />
+            <ArrowUp className="h-4 w-4 text-sand-600" />
           </motion.button>
         )}
       </AnimatePresence>

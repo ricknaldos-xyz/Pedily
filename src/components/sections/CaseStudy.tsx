@@ -1,159 +1,147 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { TrendingUp, Users, Clock, ShoppingBag } from "lucide-react";
-import { useInView } from "framer-motion";
+import {
+  Globe,
+  MessageCircle,
+  Monitor,
+  Truck,
+  Layers,
+  Bot,
+  ReceiptText,
+  Users,
+} from "lucide-react";
 
-function AnimatedValue({ value, inView }: { value: string; inView: boolean }) {
-  const [display, setDisplay] = useState(value.startsWith("+") || value.startsWith("S") ? "0" : value);
-  const hasAnimated = useRef(false);
+const channels = [
+  { icon: Globe, label: "Tienda Web" },
+  { icon: MessageCircle, label: "WhatsApp + IA" },
+  { icon: Monitor, label: "Kiosko" },
+  { icon: Truck, label: "Delivery propio" },
+];
 
-  useEffect(() => {
-    if (!inView || hasAnimated.current) return;
-    hasAnimated.current = true;
-
-    // Extract numeric part
-    const match = value.match(/(\d[\d,]*)/);
-    if (!match) {
-      setDisplay(value);
-      return;
-    }
-
-    const numStr = match[1].replace(",", "");
-    const target = parseInt(numStr, 10);
-    const prefix = value.substring(0, value.indexOf(match[1]));
-    const suffix = value.substring(value.indexOf(match[1]) + match[1].length);
-    const hasComma = match[1].includes(",");
-    const duration = 1500;
-    const steps = 40;
-    const stepTime = duration / steps;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(target * eased);
-      const formatted = hasComma ? current.toLocaleString() : String(current);
-      setDisplay(`${prefix}${formatted}${suffix}`);
-      if (step >= steps) clearInterval(timer);
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [inView, value]);
-
-  return <>{display}</>;
-}
-
-const metrics = [
+const facts = [
   {
-    icon: TrendingUp,
-    value: "+40%",
-    label: "Aumento en pedidos",
-    description: "en los primeros 3 meses",
+    icon: Layers,
+    value: "3",
+    label: "locales en Lima",
+    description: "operando con un solo Hub",
   },
   {
-    icon: ShoppingBag,
-    value: "S/ 85",
-    label: "Ticket promedio",
-    description: "vs S/ 62 antes",
+    icon: Bot,
+    value: "24/7",
+    label: "bot con IA",
+    description: "toma pedidos por WhatsApp",
+  },
+  {
+    icon: ReceiptText,
+    value: "SUNAT",
+    label: "facturación electrónica",
+    description: "boletas y facturas al instante",
   },
   {
     icon: Users,
-    value: "2,400+",
-    label: "Clientes recurrentes",
-    description: "en su base de datos",
-  },
-  {
-    icon: Clock,
-    value: "24/7",
-    label: "Pedidos automaticos",
-    description: "con el bot de WhatsApp",
+    value: "100%",
+    label: "clientes propios",
+    description: "su base de datos, no de un tercero",
   },
 ];
 
 export function CaseStudy() {
-  const metricsRef = useRef(null);
-  const isInView = useInView(metricsRef, { once: true, margin: "-100px" });
-
   return (
-    <Section className="relative bg-slate-900 overflow-hidden">
-      {/* Dark dot grid pattern */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.07) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
-
+    <Section className="relative overflow-hidden bg-primary-900">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_0%,rgba(242,65,25,0.14),transparent)]" />
       <Container className="relative">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Left: Story */}
           <AnimatedSection>
-            <span className="inline-block rounded-full bg-accent-500/10 px-4 py-1.5 text-sm font-semibold text-accent-400 ring-1 ring-accent-500/20">
-              Caso de exito
+            <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-200">
+              Caso real
             </span>
-            <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Wantan Clan: de depender de Rappi a vender directo
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-slate-300">
-              Wantan Clan es una cadena de comida china-peruana en Lima con 3 locales.
-              Antes pagaban mas de S/ 8,000/mes en comisiones a agregadores.
-            </p>
-            <p className="mt-4 leading-relaxed text-slate-400">
-              Con Pedily activaron su tienda web, el bot de WhatsApp y el kiosko en
-              su local principal. En 3 meses, el 60% de sus pedidos ya vienen por
-              canales propios.
-            </p>
-            <blockquote className="relative mt-8 border-l-4 border-accent-500 pl-6">
-              {/* Large decorative quote mark */}
-              <span className="absolute -left-2 -top-6 text-7xl font-serif leading-none text-accent-500/10">
-                &ldquo;
+
+            <h2 className="mt-6 flex items-center gap-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl">
+                🥡
               </span>
-              <p className="relative text-lg italic leading-relaxed text-white">
-                &ldquo;Antes perdiamos plata con cada pedido de delivery. Ahora tenemos
-                control total y conocemos a nuestros clientes. El bot de WhatsApp
-                es una maravilla, toma pedidos mientras dormimos.&rdquo;
+              Wantan Clan
+            </h2>
+            <p className="mt-2 text-sm font-medium text-primary-200/80">
+              Cadena de comida china-peruana &middot; 3 locales &middot; Lima
+            </p>
+
+            <p className="mt-6 text-lg leading-relaxed text-primary-100/85">
+              Pedily nació operando Wantan Clan de punta a punta. Hoy venden por
+              su web, por un bot de WhatsApp con IA y por kioscos de
+              autoservicio en local, con delivery propio y a condominios — y
+              gestionan todo (cocina, inventario, finanzas y facturación SUNAT)
+              desde un solo Hub.
+            </p>
+
+            {/* Channels activated */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {channels.map((ch) => {
+                const Icon = ch.icon;
+                return (
+                  <span
+                    key={ch.label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 text-xs font-medium text-primary-100 ring-1 ring-white/10"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {ch.label}
+                  </span>
+                );
+              })}
+            </div>
+
+            <blockquote className="mt-8 border-l-2 border-accent-400/50 pl-5">
+              <p className="text-base leading-relaxed text-primary-100/85">
+                La idea detrás de Pedily es simple: dejar de pagar comisiones por
+                cada pedido y ser dueño de tu canal, tu marca y tus clientes. Lo
+                construimos para un restaurante real, no para una demo.
               </p>
-              <footer className="mt-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-600 text-sm font-bold text-white">
-                  CW
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Carlos Wong</p>
-                  <p className="text-sm text-slate-400">Fundador, Wantan Clan</p>
-                </div>
-              </footer>
             </blockquote>
           </AnimatedSection>
 
-          <div ref={metricsRef}>
+          {/* Right: Facts about the real deployment */}
+          <div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {metrics.map((metric, i) => {
-                const Icon = metric.icon;
+              {facts.map((fact, i) => {
+                const Icon = fact.icon;
                 return (
-                  <AnimatedSection key={metric.label} delay={i * 0.1} variant="scale-up">
-                    <div className="group rounded-2xl border border-slate-700/50 bg-slate-800/50 p-6 backdrop-blur transition-all duration-300 hover:border-accent-500/30 hover:shadow-lg hover:shadow-accent-500/10">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-500/10 transition-colors group-hover:bg-accent-500/20">
-                        <Icon className="h-6 w-6 text-accent-400" />
+                  <AnimatedSection
+                    key={fact.label}
+                    delay={0.1 + i * 0.1}
+                    variant="scale-up"
+                  >
+                    <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-500/15 transition-colors group-hover:bg-accent-500/25">
+                        <Icon className="h-5 w-5 text-accent-300" />
                       </div>
-                      <p className="mt-4 text-3xl font-extrabold text-white">
-                        <AnimatedValue value={metric.value} inView={isInView} />
+                      <p className="mt-3 text-2xl font-extrabold text-white">
+                        {fact.value}
                       </p>
-                      <p className="mt-1 font-semibold text-slate-200">
-                        {metric.label}
+                      <p className="mt-0.5 text-sm font-semibold text-primary-100">
+                        {fact.label}
                       </p>
-                      <p className="mt-0.5 text-sm text-slate-400">
-                        {metric.description}
+                      <p className="text-xs text-primary-200/70">
+                        {fact.description}
                       </p>
                     </div>
                   </AnimatedSection>
                 );
               })}
             </div>
+
+            <AnimatedSection delay={0.5}>
+              <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm leading-relaxed text-primary-100/85">
+                  <strong className="text-white">El modelo:</strong> tarifa fija
+                  mensual en lugar de hasta 25% de comisión por pedido como en
+                  los agregadores. Cuanto más vendes, más se nota la diferencia.
+                </p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </Container>

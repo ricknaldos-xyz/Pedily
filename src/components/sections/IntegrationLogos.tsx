@@ -3,128 +3,161 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { MessageCircle, Bike, Bot } from "lucide-react";
+import {
+  CreditCard,
+  Smartphone,
+  FileText,
+  MessageCircle,
+  Bike,
+  Bot,
+  Wallet,
+  MapPin,
+} from "lucide-react";
 
-interface Integration {
-  name: string;
-  description: string;
-  logo: React.ReactNode;
-  brandColor: string;
-  hoverBg: string;
-}
-
-function CulqiLogo() {
-  return (
-    <svg viewBox="0 0 100 32" className="h-8 w-auto" fill="currentColor">
-      <text x="0" y="24" fontSize="22" fontWeight="700" fontFamily="system-ui">
-        culqi
-      </text>
-    </svg>
-  );
-}
-
-function IzipayLogo() {
-  return (
-    <svg viewBox="0 0 100 32" className="h-8 w-auto" fill="currentColor">
-      <text x="0" y="24" fontSize="20" fontWeight="700" fontFamily="system-ui">
-        IZIPAY
-      </text>
-    </svg>
-  );
-}
-
-function NubefactLogo() {
-  return (
-    <svg viewBox="0 0 120 32" className="h-8 w-auto" fill="currentColor">
-      <text x="0" y="24" fontSize="20" fontWeight="600" fontFamily="system-ui">
-        nubefact
-      </text>
-    </svg>
-  );
-}
-
-const integrations: Integration[] = [
+const integrations = [
   {
     name: "Culqi",
-    description: "Pagos online",
-    logo: <CulqiLogo />,
-    brandColor: "hover:text-[#00D1A1]",
-    hoverBg: "hover:bg-[#00D1A1]/5",
+    category: "Pagos",
+    description: "Cobra con tarjeta en tu web y bot de WhatsApp",
+    icon: CreditCard,
+    iconBg: "bg-primary-50",
+    iconColor: "text-primary-600",
+    hoverBorder: "hover:border-primary-300",
   },
   {
     name: "IZIPAY",
-    description: "Pagos en kiosko",
-    logo: <IzipayLogo />,
-    brandColor: "hover:text-[#FF6B00]",
-    hoverBg: "hover:bg-[#FF6B00]/5",
+    category: "Pagos",
+    description: "Tarjeta y QR en tu kiosko de autoservicio",
+    icon: Smartphone,
+    iconBg: "bg-accent-50",
+    iconColor: "text-accent-500",
+    hoverBorder: "hover:border-accent-300",
   },
   {
-    name: "Nubefact",
-    description: "Facturacion SUNAT",
-    logo: <NubefactLogo />,
-    brandColor: "hover:text-[#2563EB]",
-    hoverBg: "hover:bg-[#2563EB]/5",
+    name: "Yape y Plin",
+    category: "Pagos",
+    description: "Billeteras digitales, automatico o con comprobante",
+    icon: Wallet,
+    iconBg: "bg-primary-50",
+    iconColor: "text-primary-600",
+    hoverBorder: "hover:border-primary-300",
+  },
+  {
+    name: "Nubefact · SUNAT",
+    category: "Facturacion",
+    description: "Boleta, factura, nota de credito y anulacion",
+    icon: FileText,
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+    hoverBorder: "hover:border-blue-300",
   },
   {
     name: "WhatsApp Business",
-    description: "Pedidos por chat",
-    logo: <MessageCircle className="h-8 w-8" />,
-    brandColor: "hover:text-[#25D366]",
-    hoverBg: "hover:bg-[#25D366]/5",
+    category: "Canal",
+    description: "Pedidos por chat con IA. Tambien Instagram y Messenger",
+    icon: MessageCircle,
+    iconBg: "bg-green-50",
+    iconColor: "text-green-600",
+    hoverBorder: "hover:border-green-300",
   },
   {
-    name: "PedidosYa",
-    description: "Delivery integrado",
-    logo: <Bike className="h-8 w-8" />,
-    brandColor: "hover:text-[#FA0050]",
-    hoverBg: "hover:bg-[#FA0050]/5",
+    name: "PedidosYa y Rappi",
+    category: "Marketplaces",
+    description: "Sus pedidos llegan al mismo Hub, con tracking en vivo",
+    icon: Bike,
+    iconBg: "bg-rose-50",
+    iconColor: "text-rose-600",
+    hoverBorder: "hover:border-rose-300",
   },
   {
     name: "Claude AI",
-    description: "Bot inteligente",
-    logo: <Bot className="h-8 w-8" />,
-    brandColor: "hover:text-[#D97706]",
-    hoverBg: "hover:bg-[#D97706]/5",
+    category: "IA",
+    description: "El cerebro del bot que atiende y toma pedidos 24/7",
+    icon: Bot,
+    iconBg: "bg-cream-200",
+    iconColor: "text-cream-700",
+    hoverBorder: "hover:border-cream-400",
+  },
+  {
+    name: "Google Maps",
+    category: "Delivery",
+    description: "Direcciones, cobertura por zona y costo de envio",
+    icon: MapPin,
+    iconBg: "bg-primary-50",
+    iconColor: "text-primary-600",
+    hoverBorder: "hover:border-primary-300",
   },
 ];
 
+const extras = ["Efectivo", "Tu dominio propio", "SSL incluido", "API"];
+
 export function IntegrationLogos() {
   return (
-    <Section className="bg-slate-50">
+    <Section className="bg-white">
       <Container>
         <AnimatedSection className="text-center">
-          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
             Integraciones
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
-            Integrado con las mejores plataformas
+          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
+            Todo conectado, listo para usar
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Conectamos con los servicios que ya usas
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
+            Pagos, facturación SUNAT, delivery, marketplaces e IA. Todas las
+            integraciones incluidas, sin setup fees ni configuraciones eternas.
           </p>
         </AnimatedSection>
 
-        <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-          {integrations.map((integration, i) => (
-            <AnimatedSection key={integration.name} delay={i * 0.08} variant="scale-up">
-              <div
-                className={`group flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg ${integration.hoverBg}`}
-              >
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {integrations.map((integration, i) => {
+            const Icon = integration.icon;
+            return (
+              <AnimatedSection key={integration.name} delay={i * 0.08}>
                 <div
-                  className={`text-slate-400 transition-all duration-300 ${integration.brandColor} group-hover:scale-110`}
+                  className={`group flex items-start gap-4 rounded-2xl border border-sand-200 bg-white p-6 transition-all duration-300 hover:shadow-md ${integration.hoverBorder}`}
                 >
-                  {integration.logo}
+                  <div
+                    className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${integration.iconBg}`}
+                  >
+                    <Icon
+                      className={`h-6 w-6 ${integration.iconColor}`}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-sm font-bold text-sand-900">
+                        {integration.name}
+                      </h3>
+                      <span className="rounded-full bg-sand-100 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-sand-500">
+                        {integration.category}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-sand-500">
+                      {integration.description}
+                    </p>
+                  </div>
                 </div>
-                <span className="mt-3 text-sm font-semibold text-slate-700">
-                  {integration.name}
-                </span>
-                <span className="mt-1 text-xs text-slate-400">
-                  {integration.description}
-                </span>
-              </div>
-            </AnimatedSection>
-          ))}
+              </AnimatedSection>
+            );
+          })}
         </div>
+
+        <AnimatedSection delay={0.5}>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+            <span className="text-xs font-medium text-sand-400">
+              Tambien compatible con
+            </span>
+            {extras.map((extra) => (
+              <span
+                key={extra}
+                className="rounded-full border border-sand-200 bg-sand-50 px-3 py-1 text-xs font-medium text-sand-500"
+              >
+                {extra}
+              </span>
+            ))}
+          </div>
+        </AnimatedSection>
       </Container>
     </Section>
   );

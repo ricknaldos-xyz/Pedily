@@ -10,7 +10,17 @@ const faqs = [
   {
     question: "Que incluye Pedily exactamente?",
     answer:
-      "Tres canales de venta en uno: tu tienda web, un bot de WhatsApp con IA que atiende solo, y un kiosko de autoservicio para tu local. Todo llega al mismo Hub donde gestionas pedidos, pagos y delivery.",
+      "Es el sistema operativo de tu restaurante. Por un lado vendes en varios canales: tu tienda web, un bot de WhatsApp con IA que atiende solo, kiosko de autoservicio y marketplaces. Por el otro, operas todo desde un Hub: pedidos en tiempo real, cocina, inventario, recetas, caja, finanzas, planilla y facturacion SUNAT.",
+  },
+  {
+    question: "Pedily maneja inventario y finanzas, no solo pedidos?",
+    answer:
+      "Si. Ademas de vender, controlas tu negocio: inventario por almacen con alertas de stock, recetas con costo de ingredientes (sabes tu margen real), caja con cierre cuadrado, P&L, flujo de caja, compras a proveedores y hasta planilla de tu equipo. Lo que otros venden por separado, aqui viene integrado.",
+  },
+  {
+    question: "Tambien vende por Instagram, Messenger o marketplaces?",
+    answer:
+      "Si. El mismo bot con IA atiende WhatsApp, Instagram y Messenger, y el Hub recibe tambien los pedidos de PedidosYa y Rappi. Todos tus canales en un solo tablero.",
   },
   {
     question: "Necesito saber de tecnologia?",
@@ -54,13 +64,13 @@ export function FAQ() {
     <Section id="faq">
       <Container className="max-w-3xl">
         <AnimatedSection className="text-center">
-          <span className="mb-4 inline-flex items-center rounded-full bg-gradient-to-r from-primary-50 to-accent-50 px-4 py-1.5 text-sm font-semibold text-primary-700 ring-1 ring-primary-200/50">
+          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
             FAQ
           </span>
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
             Dudas? Aqui las respuestas
           </h2>
-          <p className="mt-4 text-lg text-slate-500">
+          <p className="mt-4 text-lg text-sand-500">
             Lo que mas nos preguntan antes de empezar.
           </p>
         </AnimatedSection>
@@ -71,25 +81,25 @@ export function FAQ() {
               <Accordion.Item
                 key={i}
                 value={`item-${i}`}
-                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 data-[state=open]:border-primary-200 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary-50/30 data-[state=open]:to-transparent data-[state=open]:shadow-md data-[state=open]:shadow-primary-500/5"
+                className="group relative overflow-hidden rounded-xl border border-sand-200 bg-white transition-all duration-300 data-[state=open]:border-primary-300 data-[state=open]:shadow-sm"
               >
                 {/* Left accent bar */}
-                <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-xl bg-gradient-to-b from-primary-500 to-accent-500 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
+                <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-xl bg-primary-500 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
 
-                <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left text-sm font-semibold text-slate-900 transition-colors hover:text-primary-600">
+                <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left text-sm font-semibold text-sand-900 transition-colors hover:text-primary-600">
                   <div className="flex items-center gap-3">
-                    <span className="flex-shrink-0 text-xs font-medium text-slate-300 group-data-[state=open]:text-primary-400">
+                    <span className="flex-shrink-0 text-xs font-medium text-sand-300 group-data-[state=open]:text-primary-400">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {faq.question}
                   </div>
                   <ChevronDown
-                    className="h-4 w-4 flex-shrink-0 text-slate-400 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary-500"
+                    className="h-4 w-4 flex-shrink-0 text-sand-400 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary-500"
                     aria-hidden="true"
                   />
                 </Accordion.Trigger>
                 <Accordion.Content className="overflow-hidden data-[state=closed]:animate-[accordion-up_300ms_ease-in-out] data-[state=open]:animate-[accordion-down_300ms_ease-in-out]">
-                  <div className="border-t border-slate-100 px-6 py-4 pl-14 text-sm leading-relaxed text-slate-500">
+                  <div className="border-t border-sand-100 px-6 py-4 pl-14 text-sm leading-relaxed text-sand-500">
                     {faq.answer}
                   </div>
                 </Accordion.Content>
@@ -100,7 +110,7 @@ export function FAQ() {
 
         {/* Bottom CTA */}
         <AnimatedSection delay={0.2} className="mt-10 text-center">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-sand-500">
             Tienes mas preguntas?{" "}
             <a
               href="/contacto"

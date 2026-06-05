@@ -13,10 +13,10 @@ export default function TerminosPage() {
       <Header />
       <main className="min-h-screen bg-white py-16 sm:py-24">
         <Container className="max-w-3xl">
-          <h1 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">
             Terminos y Condiciones
           </h1>
-          <p className="mt-4 text-sm text-slate-500">
+          <p className="mt-4 text-sm text-sand-500">
             Ultima actualizacion: Febrero 2026
           </p>
 
