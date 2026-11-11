@@ -300,14 +300,14 @@ Para cadenas y franquicias. Incluiria:
 
 4. **Metricas de valor:** Mostrar ROI calculado vs agregadores en el sitio.
 
-5. **Case studies:** Publicar resultados reales (Wantan Clan +40% pedidos).
+5. **Case studies:** Publicar resultados reales (restaurante piloto +40% pedidos).
 
 ### Accion Inmediata Recomendada:
 
 1. **Subir precios** a S/ 249 / S/ 499 / S/ 999
 2. **Agregar calculadora de ROI** en landing ("Cuanto ahorras vs Rappi")
 3. **Crear tier Enterprise** con pricing custom
-4. **Redactar caso de exito** detallado de Wantan Clan
+4. **Redactar caso de exito** detallado del restaurante piloto
 
 ---
 
