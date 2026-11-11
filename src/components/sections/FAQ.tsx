@@ -30,12 +30,12 @@ const faqs = [
   {
     question: "Como funciona el kiosko?",
     answer:
-      "Es una app para tablet. La pones en tu local y tus clientes piden solos: ven el menu, eligen, personalizan, pagan con tarjeta o Yape, y el pedido llega a cocina. Sin cajero, sin colas.",
+      "Es una pantalla táctil con navegador. Tus clientes ven el menú, personalizan y pagan con tarjeta o Yape, o eligen pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica.",
   },
   {
     question: "Que formas de pago aceptan?",
     answer:
-      "Todas las que necesitas: tarjeta (Culqi en web, IZIPAY en kiosko), Yape, Plin, y efectivo contra entrega. Y lo mejor: la boleta o factura sale automatica, directo a SUNAT.",
+      "Tarjeta y Yape con Culqi, y Yape o Plin por QR con verificación del comprobante. El dinero llega a la cuenta de tu restaurante.",
   },
   {
     question: "¿Puedo verlo antes de decidir?",
@@ -50,7 +50,7 @@ const faqs = [
   {
     question: "Solo funciona en Peru?",
     answer:
-      "Por ahora si. Tenemos todo integrado para Peru: Culqi, IZIPAY, Yape, Plin y facturacion SUNAT. Estamos trabajando en Colombia, Chile y Mexico. Si estas en otro pais, escribenos.",
+      "Por ahora solo Perú: Culqi, Yape, Plin y facturación electrónica SUNAT.",
   },
   {
     question: "Cuanto me cobran por pedido?",

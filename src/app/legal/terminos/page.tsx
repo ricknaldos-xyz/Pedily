@@ -52,8 +52,7 @@ export default function TerminosPage() {
             </p>
             <ul>
               <li>
-                Los pagos se procesan a traves de pasarelas seguras (Culqi,
-                IZIPAY).
+                Los pagos se procesan a traves de pasarelas seguras (Culqi).
               </li>
               <li>
                 Si no pagas, tu cuenta puede ser suspendida hasta regularizar.
@@ -97,7 +96,7 @@ export default function TerminosPage() {
 
             <h2>7. Integraciones de terceros</h2>
             <p>
-              Pedily se integra con servicios de terceros como Culqi, IZIPAY,
+              Pedily se integra con servicios de terceros como Culqi,
               WhatsApp (Meta), Nubefact y PedidosYa. Cada uno tiene sus propios
               terminos que debes aceptar. No somos responsables de fallas o
               cambios en estos servicios externos.

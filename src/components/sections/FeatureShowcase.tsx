@@ -48,12 +48,11 @@ const features = [
     icon: CreditCard,
     title: "Cobra como quieras",
     description:
-      "Tarjeta, Yape, Plin o efectivo. Tu eliges. Y la boleta o factura sale automatica, directo a SUNAT.",
+      "Tarjeta, Yape o Plin, directo a tu cuenta. Y la boleta o factura sale automática, directo a SUNAT.",
     bullets: [
       "Tarjetas con Culqi (web y WhatsApp)",
-      "Tarjeta y QR en kiosko (IZIPAY)",
+      "Tarjeta y Yape también en el kiosko",
       "Yape y Plin con verificacion de comprobante",
-      "Efectivo contra entrega",
       "Boleta y Factura electronica automatica",
       "Integracion con Nubefact y SUNAT",
     ],
@@ -63,13 +62,13 @@ const features = [
     icon: Monitor,
     title: "Kiosko: tus clientes piden solos",
     description:
-      "Una tablet en tu local y listo. El cliente ordena, paga y el pedido llega a cocina. Sin cajero, sin colas.",
+      "Una pantalla táctil en tu local: el cliente pide y paga solo, o paga en caja. El pedido llega a cocina.",
     bullets: [
       "Pantalla tactil facil de usar",
       "Tu menu completo con fotos",
       "Personalizaciones y modificadores",
-      "Paga con tarjeta, QR o Yape (IZIPAY)",
-      "Ticket y boleta automaticos",
+      "Paga con tarjeta o Yape en pantalla, o en caja",
+      "Ticket y boleta impresos (requiere PC con Windows e impresora térmica)",
       "El pedido aparece en el Hub al instante",
     ],
     mockup: "kiosk",
@@ -196,9 +195,7 @@ function FeatureMockup({ type }: { type: string }) {
         <h4 className="text-sm font-bold text-sand-700">Metodos de pago</h4>
         {[
           { name: "Tarjeta (Culqi)", icon: "💳", status: "Web/Bot" },
-          { name: "Tarjeta/QR (IZIPAY)", icon: "🏪", status: "Kiosko" },
           { name: "Yape / Plin", icon: "📱", status: "Todos" },
-          { name: "Efectivo", icon: "💵", status: "Delivery" },
         ].map((method) => (
           <div
             key={method.name}

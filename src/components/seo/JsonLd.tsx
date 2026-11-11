@@ -69,7 +69,7 @@ export function SoftwareApplicationJsonLd() {
       "Kiosko de autoservicio",
       "Hub de pedidos multicanal en tiempo real",
       "Facturacion electronica SUNAT (Nubefact)",
-      "Integracion con Culqi e IZIPAY",
+      "Cobros con Culqi, Yape y Plin",
       "Inventario, recetas y control de costos",
       "Finanzas: caja, P&L y planilla",
       "Programa de fidelizacion y referidos",

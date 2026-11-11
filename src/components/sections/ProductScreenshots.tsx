@@ -109,7 +109,7 @@ const screenshots = [
     id: "kiosko",
     name: "Kiosko",
     icon: Monitor,
-    description: "Autoservicio en tu local con pago integrado IZIPAY",
+    description: "Autoservicio en tu local, con pago en pantalla o en caja",
     mockup: (
       <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border-8 border-sand-800 bg-white shadow-2xl">
         {/* Kiosk header */}

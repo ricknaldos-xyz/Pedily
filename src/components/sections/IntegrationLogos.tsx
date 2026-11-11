@@ -5,7 +5,6 @@ import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import {
   CreditCard,
-  Smartphone,
   FileText,
   MessageCircle,
   Bike,
@@ -23,15 +22,6 @@ const integrations = [
     iconBg: "bg-primary-50",
     iconColor: "text-primary-600",
     hoverBorder: "hover:border-primary-300",
-  },
-  {
-    name: "IZIPAY",
-    category: "Pagos",
-    description: "Tarjeta y QR en tu kiosko de autoservicio",
-    icon: Smartphone,
-    iconBg: "bg-accent-50",
-    iconColor: "text-accent-500",
-    hoverBorder: "hover:border-accent-300",
   },
   {
     name: "Yape y Plin",
@@ -89,7 +79,7 @@ const integrations = [
   },
 ];
 
-const extras = ["Efectivo", "Tu dominio propio", "SSL incluido", "API"];
+const extras = ["Tu dominio propio", "SSL incluido"];
 
 export function IntegrationLogos() {
   return (
@@ -112,7 +102,11 @@ export function IntegrationLogos() {
           {integrations.map((integration, i) => {
             const Icon = integration.icon;
             return (
-              <AnimatedSection key={integration.name} delay={i * 0.08}>
+              <AnimatedSection
+                key={integration.name}
+                delay={i * 0.08}
+                className="sm:last:col-span-2 sm:last:mx-auto sm:last:w-full sm:last:max-w-md lg:last:col-span-1 lg:last:col-start-2 lg:last:max-w-none"
+              >
                 <div
                   className={`group flex items-start gap-4 rounded-2xl border border-sand-200 bg-white p-6 transition-all duration-300 hover:shadow-md ${integration.hoverBorder}`}
                 >

@@ -48,7 +48,7 @@ export default function PrivacidadPage() {
                 direccion, logo, horarios.
               </li>
               <li>
-                <strong>Datos de pago:</strong> procesados por Culqi/IZIPAY, no
+                <strong>Datos de pago:</strong> procesados por Culqi, no
                 almacenamos tarjetas.
               </li>
               <li>
@@ -95,7 +95,7 @@ export default function PrivacidadPage() {
             </p>
             <ul>
               <li>
-                <strong>Pasarelas de pago:</strong> Culqi, IZIPAY para procesar
+                <strong>Pasarelas de pago:</strong> Culqi para procesar
                 cobros.
               </li>
               <li>

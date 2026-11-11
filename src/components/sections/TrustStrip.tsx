@@ -8,7 +8,6 @@ const integrations = [
   "Culqi",
   "Yape",
   "Plin",
-  "Izipay",
   "Nubefact · SUNAT",
   "WhatsApp Business",
   "PedidosYa",
