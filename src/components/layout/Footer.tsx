@@ -35,10 +35,6 @@ const socialIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-const resourceLinks = [
-  { href: "/docs", label: "Documentacion" },
-];
-
 const companyLinks = [
   { href: "/contacto", label: "Contacto" },
   { href: "/legal/terminos", label: "Terminos y condiciones" },
@@ -52,7 +48,7 @@ export function Footer() {
       <div className="h-px bg-sand-200" />
 
       <Container className="py-12 sm:py-16">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-primary-700">
@@ -106,22 +102,6 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-sand-900">Producto</h3>
             <ul className="mt-3 space-y-2.5">
               {productLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm leading-relaxed text-sand-500 transition-colors hover:text-primary-600"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-sand-900">Recursos</h3>
-            <ul className="mt-3 space-y-2.5">
-              {resourceLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}

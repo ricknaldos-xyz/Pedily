@@ -19,12 +19,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pedily.com/docs</loc>
-    <lastmod>2026-02-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://pedily.com/legal/terminos</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>yearly</changefreq>

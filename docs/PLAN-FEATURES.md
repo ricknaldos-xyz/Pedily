@@ -1,3 +1,5 @@
+> **OBSOLETO:** describe planes y límites que el producto no implementa. No usar como fuente para textos públicos.
+
 # Definicion de Planes Pedily
 
 > Documento interno que define exactamente que incluye cada plan.

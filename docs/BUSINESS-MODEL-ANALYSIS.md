@@ -1,3 +1,5 @@
+> **OBSOLETO:** describe planes y límites que el producto no implementa. No usar como fuente para textos públicos.
+
 # Analisis de Modelo de Negocio - Pedily
 
 > Analisis desde la perspectiva de Product Designer Senior, Service Designer y Especialista en Startups

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Container } from "./Container";
-import { Menu, X, Search, ChevronLeft } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -12,14 +12,12 @@ const landingLinks = [
   { href: "#bot-ia", label: "Bot IA" },
   { href: "#precios", label: "Precios" },
   { href: "#faq", label: "FAQ" },
-  { href: "/docs", label: "Docs" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isDocs = pathname.startsWith("/docs");
   const isLanding = pathname === "/";
 
   useEffect(() => {
@@ -50,44 +48,9 @@ export function Header() {
               Pedily
             </span>
           </Link>
-
-          {isDocs && (
-            <>
-              <span className="hidden text-sand-300 sm:block">/</span>
-              <span className="hidden text-sm font-medium text-sand-600 sm:block">
-                Docs
-              </span>
-            </>
-          )}
         </div>
 
-        {isDocs ? (
-          /* Docs-specific header */
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                const fn = (window as unknown as Record<string, unknown>)
-                  .__docsOpenSearch;
-                if (typeof fn === "function") fn();
-              }}
-              className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white px-3 py-1.5 text-sm text-sand-400 transition-all hover:border-sand-300 hover:bg-sand-50 sm:flex"
-            >
-              <Search className="h-3.5 w-3.5" />
-              <span>Buscar...</span>
-              <kbd className="rounded border border-sand-200 bg-sand-50 px-1.5 py-0.5 text-[10px] font-medium">
-                ⌘K
-              </kbd>
-            </button>
-            <Link
-              href="/"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-sand-600 transition-colors hover:bg-sand-100 hover:text-primary-600"
-            >
-              <ChevronLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">Inicio</span>
-            </Link>
-          </div>
-        ) : (
-          /* Landing page header */
+        {/* Landing page header */}
           <>
             <nav className="hidden items-center gap-1 md:flex">
               {landingLinks.map((link) => (
@@ -128,11 +91,10 @@ export function Header() {
               )}
             </button>
           </>
-        )}
       </Container>
 
       <AnimatePresence>
-        {mobileOpen && !isDocs && (
+        {mobileOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
