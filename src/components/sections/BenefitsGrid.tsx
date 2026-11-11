@@ -14,9 +14,9 @@ const benefits = [
   },
   {
     icon: Bot,
-    title: "Un bot que vende solo",
+    title: "Un bot que toma pedidos",
     description:
-      "IA 24/7 que toma pedidos por WhatsApp en lenguaje natural. Sin que tu equipo conteste un solo mensaje.",
+      "IA que responde por WhatsApp a cualquier hora y toma pedidos en lenguaje natural. Cuando hace falta, pasa la conversación a una persona de tu equipo.",
   },
   {
     icon: LayoutDashboard,
@@ -28,7 +28,7 @@ const benefits = [
     icon: Ban,
     title: "Sin comisiones por pedido",
     description:
-      "Nada de 25% por pedido como los agregadores. Pagas una tarifa fija mensual; vendas 10 o 10,000 pedidos, las ganancias son tuyas.",
+      "Nada de 25% por pedido como los agregadores. Te preparamos una cotización según lo que uses.",
   },
 ];
 

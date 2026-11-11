@@ -75,12 +75,12 @@ export function BotShowcase() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection>
             <span className="mb-4 inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-200">
-              Un bot que vende solo
+              Un bot que toma pedidos
             </span>
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
-              Toma pedidos por WhatsApp 24/7,{" "}
+              Toma pedidos por WhatsApp a cualquier hora,{" "}
               <span className="bg-gradient-to-r from-primary-300 to-accent-300 bg-clip-text text-transparent">
-                sin que tu equipo conteste un solo mensaje
+                y te pasa la conversación cuando hace falta
               </span>
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-primary-100/90">

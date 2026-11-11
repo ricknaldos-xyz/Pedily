@@ -136,9 +136,9 @@ export function CaseStudy() {
             <AnimatedSection delay={0.5}>
               <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-sm leading-relaxed text-primary-100/85">
-                  <strong className="text-white">El modelo:</strong> tarifa fija
-                  mensual en lugar de hasta 25% de comisión por pedido como en
-                  los agregadores. Cuanto más vendes, más se nota la diferencia.
+                  <strong className="text-white">El modelo:</strong> vender por
+                  tus propios canales en lugar de pagar hasta 25% de comisión
+                  por pedido en los agregadores.
                 </p>
               </div>
             </AnimatedSection>

@@ -18,7 +18,6 @@ const comparisons = [
   { feature: "Finanzas: caja, P&L y planilla", pedily: true, aggregators: false },
   { feature: "Pedidos de Rappi y PedidosYa en tu Hub", pedily: true, aggregators: "N/A" },
   { feature: "Roles de equipo (cocina, operador, admin)", pedily: true, aggregators: false },
-  { feature: "Tarifa fija, sin comisión por pedido", pedily: true, aggregators: false },
   { feature: "Facturacion electronica SUNAT", pedily: true, aggregators: "Limitada" },
 ];
 

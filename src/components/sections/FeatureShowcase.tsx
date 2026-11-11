@@ -77,7 +77,7 @@ const features = [
     icon: MessageCircle,
     title: "Bot WhatsApp que vende por ti",
     description:
-      "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Tu solo supervisas.",
+      "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Cuando hace falta, pasa la conversación a tu equipo.",
     bullets: [
       "Entiende pedidos escritos en lenguaje natural",
       "Toma el pedido completo por chat, del 'hola' al pago",

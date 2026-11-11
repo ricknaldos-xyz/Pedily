@@ -61,3 +61,10 @@ api\.pedily
 
 # L-09 · tiempos de respuesta sin respaldo
 24 horas
+
+# P1-D3 · forma de cobro sin decidir y bot que no necesita a nadie
+tarifa fija
+sin que tu equipo
+un solo mensaje
+vende solo
+t[uú] solo supervisas
