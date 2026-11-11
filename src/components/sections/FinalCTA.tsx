@@ -2,12 +2,11 @@
 
 import { Container } from "@/components/layout/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ArrowRight, Shield, X as XIcon, Headphones } from "lucide-react";
+import { ArrowRight, Shield, Headphones } from "lucide-react";
 import { whatsappLink } from "@/lib/site";
 
 const trustItems = [
   { icon: Shield, text: "Instalación acompañada" },
-  { icon: XIcon, text: "Cancela cuando quieras" },
   { icon: Headphones, text: "Onboarding y soporte en Perú" },
 ];
 

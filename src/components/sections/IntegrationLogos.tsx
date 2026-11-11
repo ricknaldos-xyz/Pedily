@@ -93,8 +93,8 @@ export function IntegrationLogos() {
             Todo conectado, listo para usar
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-            Pagos, facturación SUNAT, delivery, marketplaces e IA. Todas las
-            integraciones incluidas, sin setup fees ni configuraciones eternas.
+            Pagos, facturación SUNAT, delivery, marketplaces e IA, conectados
+            entre sí.
           </p>
         </AnimatedSection>
 

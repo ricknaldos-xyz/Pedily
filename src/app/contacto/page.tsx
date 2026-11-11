@@ -60,8 +60,8 @@ export default function ContactoPage() {
               Hablemos
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-sand-500">
-              Tienes dudas? Quieres una demo personalizada? Escribenos y te
-              respondemos en menos de 24 horas.
+              ¿Tienes dudas? ¿Quieres ver una demostración? Escríbenos y te
+              respondemos.
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function ContactoPage() {
                       <div>
                         <p className="font-medium text-sand-900">WhatsApp</p>
                         <p className="text-sm text-sand-500">
-                          Respuesta rápida, de lunes a sábado
+                          Escríbenos por chat
                         </p>
                       </div>
                     </a>

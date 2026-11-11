@@ -23,7 +23,7 @@
 
   <!-- CTA -->
   <rect x="80" y="490" width="280" height="56" rx="12" fill="#6366F1"/>
-  <text x="140" y="528" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="white">Desde S/ 249/mes</text>
+  <text x="140" y="528" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="white">Pide tu cotización</text>
 
   <!-- Feature badges -->
   <rect x="400" y="490" width="140" height="40" rx="8" fill="#E0E7FF"/>

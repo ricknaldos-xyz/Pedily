@@ -35,13 +35,11 @@ export default function PreciosPage() {
             <h2 className="text-center text-2xl font-bold text-sand-900">
               ¿Qué incluye la instalación?
             </h2>
-            <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "SSL y hosting incluido",
                 "Soporte tecnico",
-                "Actualizaciones automaticas",
                 "Demostración guiada",
-                "Migracion asistida",
                 "Capacitacion inicial",
               ].map((item) => (
                 <div

@@ -1,0 +1,63 @@
+# Promesas que la landing no puede hacer (plan Pedily, L-01 a L-08).
+# Un patrón por línea (grep -E, sin distinguir mayúsculas). Las líneas que
+# empiezan por # y las vacías se ignoran. Lo usa scripts/comprobar-promesas.sh.
+
+# L-01 · registro inmediato y prueba gratis
+14 d[ií]as
+prueba gratis
+empieza gratis
+en minutos
+sin tarjeta
+
+# L-02 · planes, precios y límites
+S/ ?(199|249|399|499|799|999)
+priceRange
+ilimitad
+[0-9]+ usuarios
+3 zonas
+plan (inicio|crecimiento|empresa)
+setup fees
+cancela cuando quieras
+
+# L-03 · pagos y kiosko
+izipay
+efectivo
+tablet
+android
+
+# L-04 · caso de cliente sin permiso
+3 locales
+locales en lima
+cadena
+wantan
+chaufa
+
+# L-05 · fidelización y automatizaciones que no están
+puntos
+\bvip\b
+referid
+win-back
+cumplea
+(atiende|tambi[eé]n) instagram
+messenger
+audio
+carritos? abandonad
+
+# L-06 · mapa, exportación, API y multi-local
+dibuja
+excel
+tracking en vivo
+locales ilimitados
+multi-?(local|ruc|tenant)
+\+ ?API
+API p[uú]blica
+api\.pedily
+
+# L-07 · documentación pública
+/docs
+
+# L-08 · datos de contacto inventados
+51999999999
+
+# L-09 · tiempos de respuesta sin respaldo
+24 horas
