@@ -8,7 +8,6 @@ import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
 import { IntegrationLogos } from "@/components/sections/IntegrationLogos";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { ROICalculator } from "@/components/sections/ROICalculator";
 import { CaseStudy } from "@/components/sections/CaseStudy";
 import { ComparisonTable } from "@/components/sections/ComparisonTable";
 import { FAQ } from "@/components/sections/FAQ";
@@ -29,7 +28,6 @@ export default function Home() {
       <IntegrationLogos />
       <HowItWorks />
       <PricingTable />
-      <ROICalculator />
       <CaseStudy />
       <ComparisonTable />
       <FAQ />

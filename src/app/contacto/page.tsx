@@ -205,7 +205,7 @@ export default function ContactoPage() {
                         id="telefono"
                         name="telefono"
                         className="mt-1.5 block w-full rounded-xl border border-sand-200 px-4 py-3 text-sm transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
-                        placeholder="999 999 999"
+                        placeholder="900 000 000"
                       />
                     </div>
 

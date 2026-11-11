@@ -1,15 +1,14 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { ROICalculator } from "@/components/sections/ROICalculator";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Container } from "@/components/layout/Container";
 
 export const metadata = {
-  title: "Precios | Pedily - Planes sin comisiones para tu restaurante",
+  title: "Precios | Pedily - Sin comisiones para tu restaurante",
   description:
-    "Planes desde S/ 249/mes. Sin comisiones por pedido. Incluye tienda web, bot WhatsApp con IA, kiosko y mas. Compara cuanto ahorras vs Rappi.",
+    "Sin comisiones por pedido. Tienda web, panel de pedidos, cobros y facturación SUNAT, y como opción bot de WhatsApp y kiosko. Pide tu cotización.",
 };
 
 export default function PreciosPage() {
@@ -20,30 +19,27 @@ export default function PreciosPage() {
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24">
           <Container className="text-center">
             <h1 className="text-4xl font-extrabold text-sand-900 sm:text-5xl">
-              Precios simples, sin sorpresas
+              Un precio a la medida de tu restaurante
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-              Tarifa fija mensual. Vendas 10 pedidos o 10,000, pagas lo mismo.
-              Sin comisiones, sin letra chica.
+              Sin comisión por pedido. Te preparamos una cotización según lo que
+              necesita tu negocio.
             </p>
           </Container>
         </section>
 
         <PricingTable />
-        <ROICalculator />
 
         <section className="bg-white py-16">
           <Container>
             <h2 className="text-center text-2xl font-bold text-sand-900">
-              Que incluyen todos los planes?
+              ¿Qué incluye la instalación?
             </h2>
-            <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 "SSL y hosting incluido",
                 "Soporte tecnico",
                 "Actualizaciones automaticas",
-                "Sin contratos de permanencia",
-                "Backups diarios",
                 "Demostración guiada",
                 "Migracion asistida",
                 "Capacitacion inicial",

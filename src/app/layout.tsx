@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pedily - El sistema operativo de tu restaurante",
     description:
-      "Vende por web, WhatsApp con IA y kiosko. Opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones. Desde S/ 249/mes.",
+      "Vende por web, WhatsApp con IA y kiosko. Opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones por pedido.",
     type: "website",
     locale: "es_PE",
     url: "https://pedily.com",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pedily - El sistema operativo de tu restaurante",
     description:
-      "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un Hub. Sin comisiones. Desde S/ 249/mes.",
+      "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un Hub. Sin comisiones por pedido.",
     images: ["/og-image.svg"],
   },
   robots: {

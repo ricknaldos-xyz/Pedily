@@ -55,7 +55,7 @@ const faqs = [
   {
     question: "Cuanto me cobran por pedido?",
     answer:
-      "Cero. Nada. A diferencia de Rappi o PedidosYa que te cobran 25%, nosotros cobramos una tarifa fija al mes. Vendas 10 o 10,000 pedidos, pagas lo mismo.",
+      "No cobramos comisión por pedido.",
   },
 ];
 

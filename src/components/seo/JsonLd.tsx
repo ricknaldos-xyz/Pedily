@@ -63,32 +63,6 @@ export function SoftwareApplicationJsonLd() {
     operatingSystem: "Web",
     description:
       "El sistema operativo de tu restaurante: tienda web, bot de WhatsApp con IA, kiosko de autoservicio, Hub de pedidos en tiempo real, inventario, finanzas y facturacion SUNAT. Todo integrado.",
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Plan Inicio",
-        price: "249",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-      {
-        "@type": "Offer",
-        name: "Plan Crecimiento",
-        price: "499",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-      {
-        "@type": "Offer",
-        name: "Plan Empresa",
-        price: "999",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-    ],
     featureList: [
       "Tienda web con checkout",
       "Bot de WhatsApp con IA",
@@ -145,7 +119,7 @@ export function FAQPageJsonLd() {
         name: "Cuanto cuesta Pedily?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Pedily tiene 3 planes: Inicio a S/ 249/mes, Crecimiento a S/ 499/mes y Empresa a S/ 999/mes. Todos sin comisiones por pedido. Con pago anual obtienes 20% de descuento.",
+          text: "Te preparamos una cotización a la medida de tu restaurante. No cobramos comisión por pedido.",
         },
       },
       {
@@ -153,7 +127,7 @@ export function FAQPageJsonLd() {
         name: "Pedily cobra comision por pedido?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Pedily cobra una tarifa fija mensual, sin comisiones por pedido. Vendas 10 o 10,000 pedidos, pagas lo mismo. Solo pagas las comisiones de las pasarelas de pago (Culqi, IZIPAY) que son del proveedor, no de Pedily.",
+          text: "No. No cobramos comisión por pedido. Solo pagas las comisiones de la pasarela de pago (Culqi), que son del proveedor.",
         },
       },
       {
@@ -177,7 +151,7 @@ export function FAQPageJsonLd() {
         name: "Pedily emite boletas y facturas?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Si. Pedily esta integrado con Nubefact para emitir boletas y facturas electronicas automaticamente, directo a SUNAT. Disponible en los planes Crecimiento y Empresa.",
+          text: "Si. Pedily esta integrado con Nubefact para emitir boletas y facturas electronicas automaticamente, directo a SUNAT.",
         },
       },
       {
@@ -186,14 +160,6 @@ export function FAQPageJsonLd() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "No. Tú nos das tu carta, tus fotos y tus horarios; nosotros lo dejamos configurado y te enseñamos a usarlo.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Puedo cancelar en cualquier momento?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. No hay contratos de permanencia. Puedes cancelar tu suscripcion cuando quieras desde tu panel de administracion.",
         },
       },
     ],
@@ -259,7 +225,6 @@ export function LocalBusinessJsonLd() {
       opens: "09:00",
       closes: "18:00",
     },
-    priceRange: "S/ 249 - S/ 999",
   };
 
   return (
