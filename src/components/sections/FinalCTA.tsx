@@ -6,7 +6,7 @@ import { ArrowRight, Shield, X as XIcon, Headphones } from "lucide-react";
 import { whatsappLink } from "@/lib/site";
 
 const trustItems = [
-  { icon: Shield, text: "Sin tarjeta de crédito" },
+  { icon: Shield, text: "Instalación acompañada" },
   { icon: XIcon, text: "Cancela cuando quieras" },
   { icon: Headphones, text: "Onboarding y soporte en Perú" },
 ];
@@ -32,8 +32,8 @@ export function FinalCTA() {
             ¿Listo para vender más y operar mejor?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-primary-100/85">
-            Empieza tu prueba gratis o escríbenos por WhatsApp. En minutos
-            puedes estar recibiendo pedidos por web, WhatsApp y kiosko.
+            Escríbenos y te mostramos el sistema funcionando. Nosotros
+            configuramos tu tienda, tu carta y tus cobros contigo.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -41,7 +41,7 @@ export function FinalCTA() {
               href="/contacto"
               className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-semibold text-primary-800 shadow-warm transition-all hover:bg-primary-50 active:scale-[0.98]"
             >
-              Empezar prueba gratis
+              Agenda una demo
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a

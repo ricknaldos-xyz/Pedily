@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Necesito saber de tecnologia?",
     answer:
-      "Para nada. Si sabes usar WhatsApp y redes sociales, puedes usar Pedily. Es subir fotos, poner precios y listo. Ademas tenemos guias y soporte si te trabas en algo.",
+      "Para nada. Tú nos das tu carta, tus fotos y tus horarios; nosotros lo dejamos configurado y te enseñamos a usarlo.",
   },
   {
     question: "Como funciona el kiosko?",
@@ -38,9 +38,9 @@ const faqs = [
       "Todas las que necesitas: tarjeta (Culqi en web, IZIPAY en kiosko), Yape, Plin, y efectivo contra entrega. Y lo mejor: la boleta o factura sale automatica, directo a SUNAT.",
   },
   {
-    question: "Puedo probar antes de pagar?",
+    question: "¿Puedo verlo antes de decidir?",
     answer:
-      "Claro. 14 dias gratis, sin meter tarjeta. Pruebas todo y si no te convence, no pagas nada. Sin letra chica.",
+      "Sí. Te mostramos una tienda de demostración completa y resolvemos tus dudas. La puesta en marcha la hacemos contigo, paso a paso.",
   },
   {
     question: "El bot de WhatsApp realmente funciona?",

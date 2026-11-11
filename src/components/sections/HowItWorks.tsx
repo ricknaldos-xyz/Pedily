@@ -9,21 +9,21 @@ const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Sube tu menú y configura tu negocio",
+    title: "Nos envías tu carta y los datos de tu negocio",
     description:
-      "Agrega tus productos con fotos, precios, presentaciones y extras. Define zonas de delivery, horarios y métodos de cobro.",
+      "Tus productos con fotos, precios, presentaciones y extras, tus zonas de delivery, tus horarios y cómo quieres cobrar.",
   },
   {
     icon: Paintbrush,
     step: "02",
-    title: "Activa tus canales y tu marca",
+    title: "Configuramos tu tienda con tu marca y conectamos tus cobros",
     description:
       "Tu logo, tus colores y tu dominio. Enciende tu tienda web, el bot de WhatsApp con IA y el kiosko, todos con el mismo catálogo.",
   },
   {
     icon: ShoppingCart,
     step: "03",
-    title: "Vende y opera desde el Hub",
+    title: "Vendes y operas desde el panel",
     description:
       "Los pedidos de todos los canales llegan en tiempo real. Gestiona cocina, inventario, finanzas y facturación desde un solo lugar.",
   },
@@ -38,7 +38,7 @@ export function HowItWorks() {
             Como funciona
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
-            Empieza a vender en 3 pasos
+            Así es la puesta en marcha
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
             Sin código, sin complicaciones. Si sabes usar WhatsApp, puedes usar Pedily.

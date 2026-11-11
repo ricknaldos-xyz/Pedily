@@ -158,10 +158,10 @@ export function FAQPageJsonLd() {
       },
       {
         "@type": "Question",
-        name: "Puedo probar Pedily gratis?",
+        name: "¿Puedo verlo antes de decidir?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Si. Ofrecemos 14 dias de prueba gratis con todas las funcionalidades del plan Crecimiento. No necesitas tarjeta de credito para empezar.",
+          text: "Sí. Te mostramos una tienda de demostración completa y resolvemos tus dudas. La puesta en marcha la hacemos contigo, paso a paso.",
         },
       },
       {
@@ -185,7 +185,7 @@ export function FAQPageJsonLd() {
         name: "Necesito conocimientos tecnicos para usar Pedily?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Pedily esta disenado para que cualquier persona pueda configurar su tienda sin conocimientos tecnicos. Ademas, el plan Empresa incluye onboarding personalizado donde te ayudamos a configurar todo.",
+          text: "No. Tú nos das tu carta, tus fotos y tus horarios; nosotros lo dejamos configurado y te enseñamos a usarlo.",
         },
       },
       {

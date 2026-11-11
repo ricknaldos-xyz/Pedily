@@ -203,14 +203,14 @@ export function PricingTable() {
                   </div>
 
                   <a
-                    href="#cta"
+                    href="/contacto"
                     className={`mt-6 block rounded-lg py-3 text-center text-sm font-semibold transition-all active:scale-[0.98] ${
                       plan.popular
                         ? "bg-primary-600 text-white shadow-sm hover:bg-primary-700 hover:shadow-md"
                         : "border border-sand-200 bg-white text-sand-700 hover:border-sand-300 hover:bg-sand-50"
                     }`}
                   >
-                    Probar 14 dias gratis
+                    Hablar con ventas
                   </a>
 
                   <ul className="mt-8 flex-1 space-y-3">

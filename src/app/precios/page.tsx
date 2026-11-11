@@ -44,7 +44,7 @@ export default function PreciosPage() {
                 "Actualizaciones automaticas",
                 "Sin contratos de permanencia",
                 "Backups diarios",
-                "14 dias de prueba gratis",
+                "Demostración guiada",
                 "Migracion asistida",
                 "Capacitacion inicial",
               ].map((item) => (

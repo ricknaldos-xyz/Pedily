@@ -109,10 +109,10 @@ export function Header() {
                 Ver precios
               </a>
               <a
-                href="#cta"
+                href="/contacto"
                 className="rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
-                Empieza gratis
+                Agenda una demo
               </a>
             </div>
 
@@ -163,14 +163,14 @@ export function Header() {
                   </motion.a>
                 ))}
                 <motion.a
-                  href="#cta"
+                  href="/contacto"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: landingLinks.length * 0.05 }}
                   className="mt-2 rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-semibold text-white"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Empieza gratis
+                  Agenda una demo
                 </motion.a>
               </Container>
             </motion.div>
