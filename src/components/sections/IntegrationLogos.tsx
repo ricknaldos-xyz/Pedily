@@ -53,7 +53,7 @@ const integrations = [
   {
     name: "PedidosYa y Rappi",
     category: "Marketplaces",
-    description: "Sus pedidos llegan al mismo Hub, con tracking en vivo",
+    description: "Sus pedidos llegan al mismo panel; la conexión la activamos contigo",
     icon: Bike,
     iconBg: "bg-rose-50",
     iconColor: "text-rose-600",

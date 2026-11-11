@@ -10,7 +10,7 @@ const faqs = [
   {
     question: "Que incluye Pedily exactamente?",
     answer:
-      "Es el sistema operativo de tu restaurante. Por un lado vendes en varios canales: tu tienda web, un bot de WhatsApp con IA que atiende solo, kiosko de autoservicio y marketplaces. Por el otro, operas todo desde un Hub: pedidos en tiempo real, cocina, inventario, recetas, caja, finanzas, planilla y facturacion SUNAT.",
+      "Es el sistema operativo de tu restaurante, para un local. Por un lado vendes en varios canales: tu tienda web, un bot de WhatsApp con IA que atiende solo y kiosko de autoservicio. Por el otro, operas todo desde un Hub: pedidos en tiempo real, cocina, inventario, recetas, caja, finanzas, planilla y facturacion SUNAT.",
   },
   {
     question: "Pedily maneja inventario y finanzas, no solo pedidos?",

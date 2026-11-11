@@ -67,7 +67,7 @@ export function SoftwareApplicationJsonLd() {
       "Tienda web con checkout",
       "Bot de WhatsApp con IA",
       "Kiosko de autoservicio",
-      "Hub de pedidos multicanal en tiempo real",
+      "Panel de pedidos de todos tus canales en tiempo real",
       "Facturacion electronica SUNAT (Nubefact)",
       "Cobros con Culqi, Yape y Plin",
       "Inventario, recetas y control de costos",
@@ -95,7 +95,7 @@ export function FAQPageJsonLd() {
         name: "Que incluye Pedily exactamente?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Pedily es el sistema operativo de tu restaurante. Por un lado vendes en varios canales: tienda web, bot de WhatsApp con IA, kiosko de autoservicio y marketplaces (PedidosYa, Rappi). Por el otro, operas todo desde un Hub en tiempo real: pedidos, cocina, inventario, recetas, caja, finanzas (P&L y planilla), facturacion SUNAT y fidelizacion.",
+          text: "Pedily es el sistema operativo de tu restaurante. Es para un local. Por un lado vendes en varios canales: tienda web, bot de WhatsApp con IA y kiosko de autoservicio. Por el otro, operas todo desde un Hub en tiempo real: pedidos, cocina, inventario, recetas, caja, finanzas (P&L y planilla), facturacion SUNAT y fidelizacion.",
         },
       },
       {

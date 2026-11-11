@@ -29,7 +29,7 @@ export default function TerminosPage() {
             <h2>1. Que es Pedily</h2>
             <p>
               Pedily es una plataforma SaaS (Software as a Service) que permite
-              a negocios de comida recibir pedidos a traves de multiples
+              a negocios de comida recibir pedidos a traves de varios
               canales: tienda web, bot de WhatsApp y kiosko de autoservicio.
               Pedily es operado por Hub de Innovacion Digital SAC, con domicilio
               en Lima, Peru.

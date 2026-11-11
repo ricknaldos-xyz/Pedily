@@ -90,14 +90,14 @@ const features = [
     icon: MapPin,
     title: "Delivery bajo control",
     description:
-      "Dibuja tu zona en el mapa, el sistema calcula el costo. Si necesitas repartidores, conecta con PedidosYa Envios.",
+      "Define tus zonas por distrito o código postal, con su tarifa y su tiempo de entrega. Si necesitas repartidores, conecta con PedidosYa Envíos.",
     bullets: [
-      "Mapa interactivo para definir cobertura",
+      "Tarifa y tiempo por zona",
       "Costo automatico por zona o distrito",
-      "Tracking en vivo con PedidosYa",
+      "Envíos con PedidosYa cuando no tienes repartidor",
       "Opcion de recojo en tienda",
       "Clientes guardan varias direcciones",
-      "Tu cliente sigue su pedido en tiempo real",
+      "Tu cliente ve el estado de su pedido",
     ],
     mockup: "delivery",
   },

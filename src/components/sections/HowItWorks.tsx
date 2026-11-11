@@ -18,7 +18,7 @@ const steps = [
     step: "02",
     title: "Configuramos tu tienda con tu marca y conectamos tus cobros",
     description:
-      "Tu logo, tus colores y tu dominio. Enciende tu tienda web, el bot de WhatsApp con IA y el kiosko, todos con el mismo catálogo.",
+      "Tu logo, tus colores y tu dominio: lo configuramos nosotros con lo que nos envíes.",
   },
   {
     icon: ShoppingCart,

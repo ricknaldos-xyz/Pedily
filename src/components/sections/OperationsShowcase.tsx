@@ -37,7 +37,7 @@ const modules = [
     icon: Wallet,
     title: "Finanzas tipo ERP",
     description:
-      "Caja con apertura y cierre cuadrado, P&L, flujo de caja, impuestos, compras a proveedores y planilla de tu equipo. Exporta a Excel.",
+      "Caja con apertura y cierre cuadrado, P&L, flujo de caja, impuestos, compras a proveedores y planilla de tu equipo. Exporta tus reportes en CSV.",
   },
   {
     icon: ReceiptText,
