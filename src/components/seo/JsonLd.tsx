@@ -18,10 +18,10 @@ export function OrganizationJsonLd() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: CONTACT_EMAIL,
+      ...(CONTACT_EMAIL ? { email: CONTACT_EMAIL } : {}),
       availableLanguage: ["Spanish"],
     },
-    sameAs: [whatsappLink()],
+    ...(whatsappLink() ? { sameAs: [whatsappLink()] } : {}),
   };
 
   return (
@@ -206,24 +206,13 @@ export function LocalBusinessJsonLd() {
     description:
       "Plataforma de pedidos online para restaurantes en Peru. Sin comisiones.",
     url: "https://pedily.com",
-    telephone: WHATSAPP_TEL,
-    email: CONTACT_EMAIL,
+    ...(WHATSAPP_TEL ? { telephone: WHATSAPP_TEL } : {}),
+    ...(CONTACT_EMAIL ? { email: CONTACT_EMAIL } : {}),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lima",
       addressRegion: "Lima",
       addressCountry: "PE",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -12.0464,
-      longitude: -77.0428,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
     },
   };
 

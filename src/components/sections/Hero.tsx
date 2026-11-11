@@ -38,6 +38,7 @@ const channels = [
 ];
 
 export function Hero() {
+  const waHref = whatsappLink();
   return (
     <section className="relative overflow-hidden bg-cream-50">
       {/* Subtle grid texture */}
@@ -102,17 +103,19 @@ export function Hero() {
                 Agenda una demo
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl border border-primary-200 bg-white px-7 py-3.5 text-sm font-semibold text-primary-700 shadow-sm transition-all hover:border-primary-300 hover:bg-primary-50 hover:shadow-md active:scale-[0.98]"
-              >
-                <span className="text-[#25D366]">
-                  <WhatsAppGlyph />
-                </span>
-                Hablar por WhatsApp
-              </a>
+              {waHref && (
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl border border-primary-200 bg-white px-7 py-3.5 text-sm font-semibold text-primary-700 shadow-sm transition-all hover:border-primary-300 hover:bg-primary-50 hover:shadow-md active:scale-[0.98]"
+                >
+                  <span className="text-[#25D366]">
+                    <WhatsAppGlyph />
+                  </span>
+                  Hablar por WhatsApp
+                </a>
+              )}
             </div>
 
             <TrustBadges className="mt-5" />

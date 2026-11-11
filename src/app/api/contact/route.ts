@@ -76,47 +76,51 @@ export async function POST(request: Request) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const FROM = process.env.RESEND_FROM || "Pedily <onboarding@resend.dev>";
 
-  // Si Resend está configurado, enviamos el correo.
-  if (RESEND_API_KEY) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: FROM,
-          to: [CONTACT_EMAIL],
-          reply_to: email,
-          subject,
-          text,
-          html,
-        }),
-      });
-      if (!res.ok) {
-        const detail = await res.text();
-        console.error("[contact] Resend error:", res.status, detail);
-        return NextResponse.json(
-          { error: "No se pudo enviar el mensaje. Intenta por WhatsApp." },
-          { status: 502 }
-        );
-      }
-      return NextResponse.json({ ok: true });
-    } catch (err) {
-      console.error("[contact] Resend exception:", err);
+  // Sin proveedor de correo o sin buzón de destino, el mensaje no llega a
+  // nadie: se lo decimos al usuario en vez de fingir un envío correcto.
+  if (!RESEND_API_KEY || !CONTACT_EMAIL) {
+    console.warn(
+      "[contact] Falta RESEND_API_KEY o NEXT_PUBLIC_CONTACT_EMAIL: mensaje no enviado."
+    );
+    return NextResponse.json(
+      {
+        error:
+          "El formulario no está disponible en este momento. Inténtalo más tarde.",
+      },
+      { status: 503 }
+    );
+  }
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: FROM,
+        to: [CONTACT_EMAIL],
+        reply_to: email,
+        subject,
+        text,
+        html,
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("[contact] Resend error:", res.status, detail);
       return NextResponse.json(
-        { error: "No se pudo enviar el mensaje. Intenta por WhatsApp." },
+        { error: "No se pudo enviar el mensaje. Inténtalo más tarde." },
         { status: 502 }
       );
     }
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[contact] Resend exception:", err);
+    return NextResponse.json(
+      { error: "No se pudo enviar el mensaje. Inténtalo más tarde." },
+      { status: 502 }
+    );
   }
-
-  // Sin proveedor de email configurado: registramos el lead en los logs del
-  // servidor para no perderlo. TODO(PENDIENTE): definir RESEND_API_KEY,
-  // RESEND_FROM y NEXT_PUBLIC_CONTACT_EMAIL en producción.
-  console.warn(
-    "[contact] RESEND_API_KEY no configurada — lead registrado en logs:\n" + text
-  );
-  return NextResponse.json({ ok: true, delivered: false });
 }

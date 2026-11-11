@@ -59,6 +59,9 @@ const chat: { from: "user" | "bot"; text: string; typing?: boolean }[] = [
 ];
 
 export function BotShowcase() {
+  const botDemoHref = whatsappLink(
+    "Hola Pedily 👋 Quiero ver el bot de WhatsApp con IA en acción."
+  );
   return (
     <section
       id="bot-ia"
@@ -106,9 +109,10 @@ export function BotShowcase() {
             </div>
 
             <a
-              href={whatsappLink("Hola Pedily 👋 Quiero ver el bot de WhatsApp con IA en acción.")}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={botDemoHref ?? "/contacto"}
+              {...(botDemoHref
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="mt-9 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-primary-800 shadow-warm transition-all hover:bg-primary-50 active:scale-[0.98]"
             >
               Ver el bot en acción

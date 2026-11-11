@@ -11,6 +11,7 @@ export default function ContactoPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const waHref = whatsappLink();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ export default function ContactoPage() {
       setError(
         err instanceof Error
           ? err.message
-          : "No se pudo enviar el mensaje. Intenta por WhatsApp."
+          : "No se pudo enviar el mensaje."
       );
     } finally {
       setSending(false);
@@ -73,35 +74,39 @@ export default function ContactoPage() {
                 </h2>
 
                 <div className="mt-6 space-y-4">
-                  <a
-                    href={whatsappLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-sand-50"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
-                      <MessageCircle className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-sand-900">WhatsApp</p>
-                      <p className="text-sm text-sand-500">
-                        Respuesta rápida, de lunes a sábado
-                      </p>
-                    </div>
-                  </a>
+                  {waHref && (
+                    <a
+                      href={waHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-sand-50"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
+                        <MessageCircle className="h-5 w-5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-sand-900">WhatsApp</p>
+                        <p className="text-sm text-sand-500">
+                          Respuesta rápida, de lunes a sábado
+                        </p>
+                      </div>
+                    </a>
+                  )}
 
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-sand-50"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100">
-                      <Mail className="h-5 w-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <p className="font-medium text-sand-900">Email</p>
-                      <p className="text-sm text-sand-500">{CONTACT_EMAIL}</p>
-                    </div>
-                  </a>
+                  {CONTACT_EMAIL && (
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-sand-50"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100">
+                        <Mail className="h-5 w-5 text-primary-600" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-sand-900">Email</p>
+                        <p className="text-sm text-sand-500">{CONTACT_EMAIL}</p>
+                      </div>
+                    </a>
+                  )}
 
                   <div className="flex items-start gap-3 rounded-xl p-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cream-300">
@@ -228,16 +233,21 @@ export default function ContactoPage() {
 
                     {error && (
                       <div className="rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-sm text-accent-700">
-                        {error}{" "}
-                        <a
-                          href={whatsappLink()}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-semibold underline"
-                        >
-                          Escríbenos por WhatsApp
-                        </a>
-                        .
+                        {error}
+                        {waHref && (
+                          <>
+                            {" "}
+                            <a
+                              href={waHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold underline"
+                            >
+                              Escríbenos por WhatsApp
+                            </a>
+                            .
+                          </>
+                        )}
                       </div>
                     )}
 

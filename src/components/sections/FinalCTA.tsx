@@ -18,6 +18,7 @@ const WhatsAppGlyph = () => (
 );
 
 export function FinalCTA() {
+  const waHref = whatsappLink();
   return (
     <section
       id="cta"
@@ -44,15 +45,17 @@ export function FinalCTA() {
               Agenda una demo
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#1ebe5b] active:scale-[0.98]"
-            >
-              <WhatsAppGlyph />
-              Hablar por WhatsApp
-            </a>
+            {waHref && (
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#1ebe5b] active:scale-[0.98]"
+              >
+                <WhatsAppGlyph />
+                Hablar por WhatsApp
+              </a>
+            )}
           </div>
 
           {/* Trust badges */}

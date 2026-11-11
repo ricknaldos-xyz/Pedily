@@ -1,3 +1,7 @@
+// PENDIENTE DE REVISIÓN LEGAL (plan Pedily, L-08): razón social, RUC y domicilio
+// del operador, correos de contacto y la sección de cuentas (hoy el servicio se
+// contrata por acuerdo con cada restaurante, no por registro en línea) esperan la
+// decisión del dueño (docs/DECISIONES.md, nº 2 y 4) y la revisión de un abogado.
 import { Container } from "@/components/layout/Container";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";

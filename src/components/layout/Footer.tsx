@@ -42,6 +42,7 @@ const companyLinks = [
 ];
 
 export function Footer() {
+  const waHref = whatsappLink();
   return (
     <footer className="bg-sand-50">
       {/* Gradient separator */}
@@ -64,20 +65,31 @@ export function Footer() {
             </p>
             {/* Contacto */}
             <div className="mt-5 space-y-1.5 text-sm">
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
-              >
-                Escríbenos por WhatsApp →
-              </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="block text-sand-500 transition-colors hover:text-primary-600"
-              >
-                {CONTACT_EMAIL}
-              </a>
+              {waHref ? (
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
+                >
+                  Escríbenos por WhatsApp →
+                </a>
+              ) : (
+                <a
+                  href="/contacto"
+                  className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
+                >
+                  Escríbenos →
+                </a>
+              )}
+              {CONTACT_EMAIL && (
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="block text-sand-500 transition-colors hover:text-primary-600"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              )}
             </div>
             {/* Social links (solo los configurados) */}
             {SOCIAL_LINKS.length > 0 && (
