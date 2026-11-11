@@ -60,7 +60,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
               </span>
-              Creado y probado con Wantan Clan 🥡
+              Creado y probado en un restaurante real 🥡
             </div>
 
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-sand-900 sm:text-5xl lg:text-[3.5rem]">
@@ -122,9 +122,8 @@ export function Hero() {
                 🥡
               </div>
               <p className="text-sm leading-snug text-sand-600">
-                <strong className="text-sand-800">Wantan Clan</strong> opera sus 3 locales en
-                Lima con Pedily: web, WhatsApp, kiosko y delivery, todos en un
-                solo Hub.
+                Nació operando un restaurante de Lima de punta a punta: web,
+                WhatsApp, kiosko y reparto en un solo panel.
               </p>
             </div>
           </AnimatedSection>
@@ -144,7 +143,7 @@ export function Hero() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-sand-700">Nuevo pedido por WhatsApp</p>
-                    <p className="text-[10px] text-sand-400">Ana pidió Chaufa Familiar x2</p>
+                    <p className="text-[10px] text-sand-400">Ana pidió Lomo saltado x2</p>
                   </div>
                   <Bell className="h-3.5 w-3.5 text-primary-500" />
                 </div>

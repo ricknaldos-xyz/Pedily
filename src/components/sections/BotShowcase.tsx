@@ -18,7 +18,7 @@ const capabilities = [
     icon: Mic,
     title: "Entiende lenguaje natural, voz e imagen",
     description:
-      "“Quiero un chaufa familiar de pollo y 6 wantanes” y el bot arma el carrito solo. Tu cliente también puede mandar un audio o la foto de un plato.",
+      "“Quiero un lomo saltado y dos chichas” y el bot arma el carrito solo. Tu cliente también puede mandar un audio o la foto de un plato.",
   },
   {
     icon: ShoppingCart,
@@ -52,10 +52,10 @@ const chat: { from: "user" | "bot"; text: string; typing?: boolean }[] = [
     from: "bot",
     text: "¡Hola! 👋 Claro que sí. ¿Te muestro lo más pedido o ya sabes qué quieres?",
   },
-  { from: "user", text: "un chaufa familiar de pollo y 6 wantanes" },
+  { from: "user", text: "un lomo saltado y dos chichas moradas" },
   {
     from: "bot",
-    text: "Listo ✅ Agregué:\n• Chaufa Familiar de Pollo — S/ 38\n• Wantán Frito x6 — S/ 18\nTotal: S/ 56. ¿Delivery o recojo?",
+    text: "Listo ✅ Agregué:\n• Lomo saltado — S/ 32\n• Chicha morada x2 — S/ 16\nTotal: S/ 48. ¿Delivery o recojo?",
   },
   { from: "user", text: "delivery, pago con Yape" },
   {
@@ -149,7 +149,7 @@ export function BotShowcase() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-white">
-                        Wantan Clan
+                        Restaurante Demo
                       </p>
                       <p className="text-[11px] text-green-100">
                         en línea · responde al instante

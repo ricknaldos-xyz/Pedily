@@ -28,19 +28,19 @@ const screenshots = [
             <div className="h-3 w-3 rounded-full bg-green-400" />
           </div>
           <div className="ml-4 flex-1 rounded-lg bg-white px-3 py-1 text-xs text-sand-400">
-            wantanclan.pedily.com
+            demo.example.com
           </div>
         </div>
         {/* Content */}
         <div className="p-4">
           <div className="flex items-center justify-between">
-            <div className="text-lg font-bold text-sand-800">Wantan Clan</div>
+            <div className="text-lg font-bold text-sand-800">Restaurante Demo</div>
             <div className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-700">
               Abierto
             </div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-3">
-            {["Wantan Frito", "Arroz Chaufa", "Tallarín", "Aeropuerto"].map(
+            {["Lomo saltado", "Ají de gallina", "Chicha morada", "Arroz con leche"].map(
               (item) => (
                 <div
                   key={item}
@@ -76,7 +76,7 @@ const screenshots = [
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-white/20" />
             <div>
-              <p className="font-semibold text-white">Wantan Clan</p>
+              <p className="font-semibold text-white">Restaurante Demo</p>
               <p className="text-xs text-green-100">en linea</p>
             </div>
           </div>
@@ -90,16 +90,16 @@ const screenshots = [
             Hola! Claro, con gusto te ayudo. Te muestro nuestro menu?
           </div>
           <div className="ml-auto max-w-[75%] rounded-lg bg-[#dcf8c6] px-3 py-2 text-sm">
-            Si porfa, quiero wantan frito
+            Si porfa, quiero un lomo saltado
           </div>
           <div className="max-w-[75%] rounded-lg bg-white px-3 py-2 text-sm">
-            Perfecto! Wantan Frito x1 (S/ 18). Deseas agregar algo mas?
+            Perfecto! Lomo saltado x1 (S/ 32). Deseas agregar algo mas?
           </div>
           <div className="ml-auto max-w-[75%] rounded-lg bg-[#dcf8c6] px-3 py-2 text-sm">
             Una chicha morada
           </div>
           <div className="max-w-[75%] rounded-lg bg-white px-3 py-2 text-sm">
-            Listo! Tu pedido: Wantan Frito + Chicha = S/ 26. Pago con Yape?
+            Listo! Tu pedido: Lomo saltado + Chicha = S/ 40. Pago con Yape?
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@ const screenshots = [
       <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border-8 border-sand-800 bg-white shadow-2xl">
         {/* Kiosk header */}
         <div className="bg-sand-900 px-6 py-4 text-center">
-          <p className="text-xl font-bold text-white">Wantan Clan</p>
+          <p className="text-xl font-bold text-white">Restaurante Demo</p>
           <p className="text-sm text-sand-400">Toca para ordenar</p>
         </div>
         {/* Categories */}
@@ -134,7 +134,7 @@ const screenshots = [
         </div>
         {/* Grid */}
         <div className="grid grid-cols-2 gap-4 p-4">
-          {["Wantan Frito", "Siu Mai", "Enrollado", "Kam Lu"].map((item) => (
+          {["Lomo saltado", "Ají de gallina", "Chicha morada", "Arroz con leche"].map((item) => (
             <button
               key={item}
               className="rounded-xl border-2 border-sand-100 p-4 text-center transition-all hover:border-primary-300 hover:bg-primary-50"

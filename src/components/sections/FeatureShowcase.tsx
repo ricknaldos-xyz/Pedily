@@ -228,7 +228,7 @@ function FeatureMockup({ type }: { type: string }) {
         <div className="rounded-xl border-2 border-sand-200 bg-sand-900 p-3">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-[10px] font-medium text-sand-400">
-              WANTAN CLAN
+              RESTAURANTE DEMO
             </span>
             <span className="rounded bg-green-500 px-1.5 py-0.5 text-[9px] font-bold text-white">
               PEDIR
@@ -255,7 +255,7 @@ function FeatureMockup({ type }: { type: string }) {
             Tarjeta
           </span>
           <span className="rounded bg-sand-100 px-2 py-1 text-[10px] text-sand-500">
-            QR
+            En caja
           </span>
           <span className="rounded bg-sand-100 px-2 py-1 text-[10px] text-sand-500">
             Yape

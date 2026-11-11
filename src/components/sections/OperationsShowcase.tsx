@@ -108,6 +108,7 @@ export function OperationsShowcase() {
               </div>
             ))}
           </div>
+          <p className="mt-3 text-center text-xs text-sand-400">Datos de ejemplo</p>
         </AnimatedSection>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

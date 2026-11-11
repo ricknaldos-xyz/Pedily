@@ -24,9 +24,9 @@ const channels = [
 const facts = [
   {
     icon: Layers,
-    value: "3",
-    label: "locales en Lima",
-    description: "operando con un solo Hub",
+    value: "1",
+    label: "restaurante en operación diaria",
+    description: "desde el primer pedido",
   },
   {
     icon: Bot,
@@ -64,18 +64,18 @@ export function CaseStudy() {
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-2xl">
                 🥡
               </span>
-              Wantan Clan
+              Probado en un restaurante real
             </h2>
             <p className="mt-2 text-sm font-medium text-primary-200/80">
-              Cadena de comida china-peruana &middot; 3 locales &middot; Lima
+              Restaurante de comida china-peruana &middot; Lima
             </p>
 
             <p className="mt-6 text-lg leading-relaxed text-primary-100/85">
-              Pedily nació operando Wantan Clan de punta a punta. Hoy venden por
-              su web, por un bot de WhatsApp con IA y por kioscos de
-              autoservicio en local, con delivery propio y a condominios — y
-              gestionan todo (cocina, inventario, finanzas y facturación SUNAT)
-              desde un solo Hub.
+              Pedily nació operando este restaurante de punta a punta. Hoy vende
+              por su web, por un bot de WhatsApp con IA y por un kiosko de
+              autoservicio en su local, con delivery propio — y gestiona todo
+              (cocina, inventario, finanzas y facturación SUNAT) desde un solo
+              panel.
             </p>
 
             {/* Channels activated */}
