@@ -44,7 +44,7 @@ const integrations = [
   {
     name: "WhatsApp Business",
     category: "Canal",
-    description: "Pedidos por chat con IA. Tambien Instagram y Messenger",
+    description: "Pedidos por chat con IA",
     icon: MessageCircle,
     iconBg: "bg-green-50",
     iconColor: "text-green-600",

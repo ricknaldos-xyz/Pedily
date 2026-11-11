@@ -72,7 +72,7 @@ export function SoftwareApplicationJsonLd() {
       "Cobros con Culqi, Yape y Plin",
       "Inventario, recetas y control de costos",
       "Finanzas: caja, P&L y planilla",
-      "Programa de fidelizacion y referidos",
+      "Cupones y base de clientes propia",
       "Integracion PedidosYa y Rappi",
     ],
   };
@@ -108,10 +108,10 @@ export function FAQPageJsonLd() {
       },
       {
         "@type": "Question",
-        name: "Pedily tambien vende por Instagram, Messenger o marketplaces?",
+        name: "¿Pedily también recibe pedidos de marketplaces?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Si. El mismo bot con IA atiende WhatsApp, Instagram y Messenger, y el Hub recibe tambien los pedidos de PedidosYa y Rappi. Todos tus canales en un solo tablero.",
+          text: "Hoy el bot atiende WhatsApp. El panel puede recibir también pedidos de PedidosYa y Rappi; esa conexión la activamos y probamos contigo.",
         },
       },
       {

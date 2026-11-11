@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import {
   Mic,
   Image as ImageIcon,
-  ShoppingCart,
+  MessageCircle,
   Gift,
   UserCheck,
   ShieldCheck,
@@ -15,22 +15,16 @@ import { whatsappLink } from "@/lib/site";
 
 const capabilities = [
   {
-    icon: Mic,
-    title: "Entiende lenguaje natural, voz e imagen",
+    icon: MessageCircle,
+    title: "Entiende cómo escriben tus clientes",
     description:
-      "“Quiero un lomo saltado y dos chichas” y el bot arma el carrito solo. Tu cliente también puede mandar un audio o la foto de un plato.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Recupera carritos abandonados",
-    description:
-      "Si tu cliente se queda a medias, el bot le escribe de vuelta con un recordatorio (y hasta un descuento) para cerrar la venta.",
+      "“Quiero un lomo saltado y dos chichas”, y el bot arma el carrito.",
   },
   {
     icon: Gift,
-    title: "Fideliza y reactiva solo",
+    title: "Clientes que vuelven",
     description:
-      "Puntos, niveles VIP, referidos, regalos de cumpleaños y mensajes de win-back a clientes que no pedían hace semanas. Todo automático.",
+      "Cupones y, si quieres, saldo a favor en cada compra. Tu base de clientes es tuya.",
   },
   {
     icon: UserCheck,
@@ -124,22 +118,6 @@ export function BotShowcase() {
           {/* Phone mockup */}
           <AnimatedSection delay={0.15}>
             <div className="relative mx-auto w-full max-w-sm">
-              {/* proactive notification */}
-              <motion.div
-                initial={{ opacity: 0, y: -12, x: 12 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -left-3 top-10 z-20 hidden max-w-[200px] rounded-xl border border-cream-300 bg-white p-3 text-sand-700 shadow-xl sm:block"
-              >
-                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-accent-500">
-                  <ShoppingCart className="h-3.5 w-3.5" /> Carrito recuperado
-                </div>
-                <p className="mt-1 text-[11px] leading-snug text-sand-500">
-                  “¿Seguimos con tu pedido? Te dejo 10% si lo cierras ahora 😋”
-                </p>
-              </motion.div>
-
               <div className="overflow-hidden rounded-[2rem] border-[6px] border-sand-800 bg-sand-800 shadow-elevated">
                 {/* whatsapp header */}
                 <div className="bg-[#075E54] px-4 pb-3 pt-5">

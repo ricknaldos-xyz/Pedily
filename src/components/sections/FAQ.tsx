@@ -18,9 +18,9 @@ const faqs = [
       "Si. Ademas de vender, controlas tu negocio: inventario por almacen con alertas de stock, recetas con costo de ingredientes (sabes tu margen real), caja con cierre cuadrado, P&L, flujo de caja, compras a proveedores y hasta planilla de tu equipo. Lo que otros venden por separado, aqui viene integrado.",
   },
   {
-    question: "Tambien vende por Instagram, Messenger o marketplaces?",
+    question: "¿También recibe pedidos de marketplaces?",
     answer:
-      "Si. El mismo bot con IA atiende WhatsApp, Instagram y Messenger, y el Hub recibe tambien los pedidos de PedidosYa y Rappi. Todos tus canales en un solo tablero.",
+      "Hoy el bot atiende WhatsApp. El panel puede recibir también pedidos de PedidosYa y Rappi; esa conexión la activamos y probamos contigo.",
   },
   {
     question: "Necesito saber de tecnologia?",

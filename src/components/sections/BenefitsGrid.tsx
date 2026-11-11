@@ -16,7 +16,7 @@ const benefits = [
     icon: Bot,
     title: "Un bot que vende solo",
     description:
-      "IA 24/7 que toma pedidos por WhatsApp en lenguaje natural, recupera carritos abandonados y fideliza. Sin que tu equipo conteste un solo mensaje.",
+      "IA 24/7 que toma pedidos por WhatsApp en lenguaje natural. Sin que tu equipo conteste un solo mensaje.",
   },
   {
     icon: LayoutDashboard,

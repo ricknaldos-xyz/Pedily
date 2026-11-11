@@ -13,7 +13,7 @@ const comparisons = [
   { feature: "Bot WhatsApp con IA (Claude)", pedily: true, aggregators: false },
   { feature: "Kiosko de autoservicio en tienda", pedily: true, aggregators: false },
   { feature: "Notificaciones en tiempo real", pedily: true, aggregators: "Solo estado basico" },
-  { feature: "Programa de fidelizacion y referidos", pedily: true, aggregators: false },
+  { feature: "Cupones y base de clientes propia", pedily: true, aggregators: false },
   { feature: "Inventario, recetas y control de costos", pedily: true, aggregators: false },
   { feature: "Finanzas: caja, P&L y planilla", pedily: true, aggregators: false },
   { feature: "Pedidos de Rappi y PedidosYa en tu Hub", pedily: true, aggregators: "N/A" },

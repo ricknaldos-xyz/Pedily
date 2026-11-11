@@ -61,7 +61,7 @@ const modules = [
     icon: FileText,
     title: "Fidelización y crecimiento",
     description:
-      "Puntos, cupones, referidos y vouchers de compensación, integrados con el bot y la tienda. Vende más a quienes ya te compran.",
+      "Cupones y vouchers de compensación, integrados con el bot y la tienda. Vende más a quienes ya te compran.",
   },
 ];
 

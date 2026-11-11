@@ -79,11 +79,9 @@ const features = [
     description:
       "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Tu solo supervisas.",
     bullets: [
-      "Entiende texto, audios y hasta fotos de platos",
+      "Entiende pedidos escritos en lenguaje natural",
       "Toma el pedido completo por chat, del 'hola' al pago",
-      "Recupera carritos abandonados y hace win-back",
       "Tu equipo interviene cuando quiera (takeover)",
-      "También atiende Instagram y Messenger",
       "Nunca inventa precios: valida contra tu catálogo",
     ],
     mockup: "whatsapp",
@@ -107,14 +105,13 @@ const features = [
     icon: Gift,
     title: "Clientes que vuelven",
     description:
-      "Puntos por cada compra, cupones y referidos. Tus clientes ganan, tu vendes mas. Todos felices.",
+      "Cupones y descuentos para que tus clientes repitan.",
     bullets: [
-      "Puntos automaticos por cada sol gastado",
       "Cupones de descuento (% o monto fijo)",
-      "Descuentos por categoria o producto",
-      "Programa de referidos que crece solo",
-      "El cliente ve sus puntos en su perfil",
-      "Le avisas por WhatsApp cuando tiene beneficios",
+      "Descuentos por categoría o producto",
+      "Vencimiento y límite de usos",
+      "Opcional: saldo a favor en cada compra",
+      "Tus clientes repiten su último pedido en dos toques",
     ],
     mockup: "loyalty",
   },
@@ -317,21 +314,16 @@ function FeatureMockup({ type }: { type: string }) {
     loyalty: (
       <div className="space-y-3">
         <h4 className="text-sm font-bold text-sand-700">
-          Programa de puntos
+          Cupón de descuento
         </h4>
         <div className="rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 p-4 text-white">
-          <p className="text-xs opacity-80">Puntos acumulados</p>
-          <p className="text-2xl font-bold">1,250</p>
-          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/30">
-            <div className="h-full w-3/5 rounded-full bg-white" />
-          </div>
-          <p className="mt-1 text-xs opacity-80">
-            750 mas para tu proximo descuento
-          </p>
+          <p className="text-xs opacity-80">Tu cupón</p>
+          <p className="text-2xl font-bold">10 % en tu próximo pedido</p>
+          <p className="mt-1 text-xs opacity-80">Código: VUELVE10</p>
         </div>
         <div className="flex justify-between text-xs text-sand-400">
-          <span>10 pts / S/ 1 gastado</span>
-          <span>2,000 pts = 15% dcto</span>
+          <span>Válido 30 días</span>
+          <span>1 uso por cliente</span>
         </div>
       </div>
     ),
