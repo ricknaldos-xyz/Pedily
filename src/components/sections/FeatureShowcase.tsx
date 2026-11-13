@@ -37,7 +37,7 @@ const features = [
     bullets: [
       "3 canales, 1 solo dashboard",
       "Notificacion al toque cuando entra un pedido",
-      "9 estados: nuevo, cocina, listo, en camino, entregado...",
+      "10 estados: por verificar, confirmado, en cocina, listo, en camino, entregado...",
       "Roles para tu equipo: admin, cocina, operador",
       "Historial completo de cada pedido",
       "Verificacion de pagos Yape/Plin con foto",
