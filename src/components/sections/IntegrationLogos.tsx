@@ -51,9 +51,9 @@ const integrations = [
     hoverBorder: "hover:border-green-300",
   },
   {
-    name: "PedidosYa y Rappi",
-    category: "Marketplaces",
-    description: "Sus pedidos llegan al mismo panel; la conexión la activamos contigo",
+    name: "PedidosYa Envíos",
+    category: "Delivery",
+    description: "Motorizados para tus pedidos cuando no tienes repartidor propio",
     icon: Bike,
     iconBg: "bg-rose-50",
     iconColor: "text-rose-600",
@@ -93,7 +93,7 @@ export function IntegrationLogos() {
             Todo conectado, listo para usar
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-            Pagos, facturación SUNAT, delivery, marketplaces e IA, conectados
+            Pagos, facturación SUNAT, delivery e IA, conectados
             entre sí.
           </p>
         </AnimatedSection>

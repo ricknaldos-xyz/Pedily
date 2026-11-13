@@ -10,8 +10,7 @@ const integrations = [
   "Plin",
   "Nubefact · SUNAT",
   "WhatsApp Business",
-  "PedidosYa",
-  "Rappi",
+  "PedidosYa Envíos",
   "Claude AI",
 ];
 

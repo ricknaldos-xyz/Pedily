@@ -73,7 +73,7 @@ export function SoftwareApplicationJsonLd() {
       "Inventario, recetas y control de costos",
       "Finanzas: caja, P&L y planilla",
       "Cupones y base de clientes propia",
-      "Integracion PedidosYa y Rappi",
+      "Envíos con PedidosYa",
     ],
   };
 
@@ -111,7 +111,7 @@ export function FAQPageJsonLd() {
         name: "¿Pedily también recibe pedidos de marketplaces?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Hoy el bot atiende WhatsApp. El panel puede recibir también pedidos de PedidosYa y Rappi; esa conexión la activamos y probamos contigo.",
+          text: "No. Los pedidos de Rappi y PedidosYa se siguen atendiendo en sus propias plataformas. Pedily es para vender por tus canales propios (web, WhatsApp y kiosko) sin comisión por pedido. Para el reparto sí puedes usar PedidosYa Envíos.",
         },
       },
       {

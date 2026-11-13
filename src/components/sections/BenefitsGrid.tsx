@@ -10,7 +10,7 @@ const benefits = [
     icon: Store,
     title: "Vende en todos lados",
     description:
-      "Web, WhatsApp con IA, kiosko de autoservicio y marketplaces (PedidosYa, Rappi). Una sola marca, un solo catálogo, un solo Hub.",
+      "Web, WhatsApp con IA y kiosko de autoservicio. Una sola marca, un solo catálogo, un solo Hub.",
   },
   {
     icon: Bot,

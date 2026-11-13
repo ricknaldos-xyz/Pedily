@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "¿También recibe pedidos de marketplaces?",
     answer:
-      "Hoy el bot atiende WhatsApp. El panel puede recibir también pedidos de PedidosYa y Rappi; esa conexión la activamos y probamos contigo.",
+      "No. Los pedidos de Rappi y PedidosYa se siguen atendiendo en sus propias plataformas. Pedily es para vender por tus canales propios (web, WhatsApp y kiosko) sin comisión por pedido. Para el reparto sí puedes usar PedidosYa Envíos.",
   },
   {
     question: "Necesito saber de tecnologia?",
