@@ -3,7 +3,6 @@
 // contrata por acuerdo con cada restaurante, no por registro en línea) esperan la
 // decisión del dueño (docs/DECISIONES.md, nº 2 y 4) y la revisión de un abogado.
 import { Container } from "@/components/layout/Container";
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
@@ -14,7 +13,6 @@ export const metadata = {
 export default function TerminosPage() {
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-white py-16 sm:py-24">
         <Container className="max-w-3xl">
           <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">

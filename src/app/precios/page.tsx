@@ -1,4 +1,3 @@
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PricingTable } from "@/components/sections/PricingTable";
 import { FAQ } from "@/components/sections/FAQ";
@@ -14,7 +13,6 @@ export const metadata = {
 export default function PreciosPage() {
   return (
     <>
-      <Header />
       <main>
         <section className="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24">
           <Container className="text-center">

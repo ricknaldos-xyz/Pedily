@@ -1,5 +1,4 @@
 import { Container } from "@/components/layout/Container";
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { CONTACT_EMAIL, CONTACT_LOCATION, whatsappLink } from "@/lib/site";
@@ -19,7 +18,6 @@ export default function ContactoPage() {
 
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-gradient-to-b from-sand-50 to-white py-12 sm:py-24">
         <Container className="max-w-5xl">
           <div className="text-center">
