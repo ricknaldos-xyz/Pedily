@@ -20,7 +20,7 @@ const pasos: Paso[] = [
     texto: "Por WhatsApp, en tu web o en el kiosko. Todo entra al mismo panel.",
     mini: (
       <span className="rounded-lg rounded-tr-sm bg-[#d9fdd3] px-2.5 py-1.5 text-xs text-sand-800">
-        «un lomo y dos chichas pa’ delivery»
+        «medio pollo y una jarra de chicha pa’ Jesús María»
       </span>
     ),
   },
@@ -31,7 +31,7 @@ const pasos: Paso[] = [
       "Solo ofrece lo que está en tu carta, con tus precios, y cobra en tu cuenta Culqi.",
     mini: (
       <span className="rounded-lg bg-white px-2.5 py-1.5 text-xs text-sand-800 ring-1 ring-sand-200">
-        Total S/ 54 · <strong className="text-primary-700">Pagado con Yape</strong>
+        Total S/ 56 · <strong className="text-primary-700">Pagado con Yape</strong>
       </span>
     ),
   },
@@ -62,7 +62,7 @@ const pasos: Paso[] = [
       "Con tus zonas y tarifas. ¿Sin motorizado? Pides uno con PedidosYa Envíos.",
     mini: (
       <span className="rounded-full bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-800">
-        En camino · 35–45 min
+        En camino · 45 min
       </span>
     ),
   },

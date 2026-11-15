@@ -14,20 +14,29 @@ const garantias = [
   `Alta gratis si te quedas ${MESES_PERMANENCIA_ALTA_GRATIS} meses`,
 ];
 
-// Ejemplo de conversación con el asistente (precios coherentes con el resto
-// de la página). No es una captura: el bot de demostración se prueba con el
-// botón «Prueba el bot por WhatsApp» cuando el número está configurado.
+// Ejemplo de conversación con el asistente. Platos, precios, cremas y zona
+// salen de la carta y la configuración de la demo publicada
+// (pedily-backend/config/ejemplos/carta.demo.json y restaurante.demo.config.json:
+// medio pollo S/ 34 con 2 cremas incluidas, chicha morada jarra 1 L S/ 14,
+// reparto a Jesús María S/ 8 y 45 min). No es una captura: el bot de
+// demostración se prueba con el botón «Prueba el bot por WhatsApp» cuando el
+// número está configurado.
 const chat: { de: "cliente" | "bot"; texto: string }[] = [
-  { de: "cliente", texto: "hola, un lomo saltado y dos chichas para delivery" },
+  { de: "cliente", texto: "hola, medio pollo y una jarra de chicha pa’ Jesús María" },
   {
     de: "bot",
     texto:
-      "¡Hola! Te anoto:\n• Lomo saltado — S/ 32\n• Chicha morada x2 — S/ 16\nEnvío a Surquillo — S/ 6\nTotal: S/ 54. ¿Pagas con Yape o tarjeta?",
+      "¡Hola! El medio pollo trae 2 cremas: mayonesa, kétchup, mostaza, ají de la casa u ocopa (+S/ 1). ¿Cuáles te pongo?",
   },
-  { de: "cliente", texto: "yape" },
+  { de: "cliente", texto: "mayo y ají nomás" },
   {
     de: "bot",
-    texto: "Listo, pago recibido ✅ Tu pedido ya está en cocina. Llega en 35–45 min 🛵",
+    texto:
+      "Te anoto:\n• Medio pollo a la brasa (mayonesa, ají) — S/ 34\n• Chicha morada, jarra 1 L — S/ 14\nEnvío a Jesús María — S/ 8\nTotal: S/ 56. Aquí tu enlace para pagar con Yape o tarjeta 👇",
+  },
+  {
+    de: "bot",
+    texto: "Pago recibido ✅ Tu pedido ya está en cocina. Llega en unos 45 min 🛵",
   },
 ];
 
@@ -54,7 +63,7 @@ export function Hero() {
         <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <AnimatedSection>
             <p className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/70 px-3 py-1 text-xs font-semibold text-primary-700 sm:text-sm">
-              Para restaurantes en Perú · desde S/ 249 al mes con IGV
+              Tienda desde S/ 249 · asistente de WhatsApp desde S/ 499 · al mes con IGV
             </p>
 
             <h1 className="mt-4 text-[2.1rem] font-extrabold leading-[1.06] tracking-tight text-sand-900 sm:text-5xl lg:text-[3.4rem]">
@@ -64,9 +73,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-xl text-base leading-relaxed text-sand-600 sm:text-lg">
-              La tienda propia de tu restaurante: web, asistente de WhatsApp
-              con IA y kiosko, con el cobro en tu cuenta y boletas SUNAT. Sin
-              pagarle el 30 % a nadie.
+              Un asistente de WhatsApp que conversa de verdad y cobra, no un
+              formulario. Con tu tienda web, kiosko y boletas SUNAT, y el cobro
+              en tu cuenta. Sin pagarle el 30 % a nadie.
             </p>
 
             <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
