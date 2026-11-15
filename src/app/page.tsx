@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { Dolor } from "@/components/sections/Dolor";
 import { RecorridoPedido } from "@/components/sections/RecorridoPedido";
+import { ComparativaCanales } from "@/components/sections/ComparativaCanales";
 import { CanalesPropios } from "@/components/sections/CanalesPropios";
 import { ClientesQueVuelven } from "@/components/sections/ClientesQueVuelven";
 import { Origen } from "@/components/sections/Origen";
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <Dolor />
       <RecorridoPedido />
+      <ComparativaCanales />
       <CanalesPropios />
       <ClientesQueVuelven />
       <Origen />
