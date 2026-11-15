@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
-import { MessageCircle, Mail, MapPin } from "lucide-react";
+import { Check, MessageCircle, Mail, MapPin } from "lucide-react";
+import { MESES_PERMANENCIA_ALTA_GRATIS } from "@/lib/planes";
 import { CONTACT_EMAIL, CONTACT_LOCATION, whatsappLink } from "@/lib/site";
-import { consolaSolicitudesUrl } from "@/lib/consola";
 import { FormularioSolicitud } from "./FormularioSolicitud";
 
 export const metadata = {
@@ -12,8 +12,6 @@ export const metadata = {
 
 export default function ContactoPage() {
   const waHref = whatsappLink();
-  // «Crear mi tienda» solo aparece si la consola de altas (X-007) está configurada.
-  const consolaActiva = consolaSolicitudesUrl() !== null;
 
   return (
     <>
@@ -24,17 +22,30 @@ export default function ContactoPage() {
               Cuéntanos de tu restaurante
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-sand-500">
-              Tus datos y tres preguntas rápidas. Con eso sabemos por dónde
-              empezar contigo.
+              Tus datos y tres preguntas rápidas. Con eso preparamos tu tienda o,
+              si prefieres, te la mostramos antes.
             </p>
           </div>
 
           <div className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-5">
             <div className="lg:col-span-3">
-              <FormularioSolicitud consolaActiva={consolaActiva} waHref={waHref} />
+              <FormularioSolicitud waHref={waHref} />
             </div>
 
-            <div className="lg:col-span-2">
+            <div className="space-y-4 lg:col-span-2">
+              <ul className="space-y-2 rounded-2xl border border-primary-200 bg-primary-50 p-5 text-sm text-sand-800">
+                {[
+                  `Alta gratis si te quedas ${MESES_PERMANENCIA_ALTA_GRATIS} meses`,
+                  "0 % de comisión al restaurante y al comensal",
+                  "Cobras en tu propia cuenta",
+                  "Desde S/ 249 al mes con IGV",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 flex-shrink-0 text-primary-600" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
               <div className="rounded-2xl border border-sand-200 bg-white p-6">
                 <h2 className="text-lg font-bold text-sand-900">
                   Otras formas de contactarnos

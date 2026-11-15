@@ -13,12 +13,7 @@ export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
     respuesta:
-      "Hay tres planes: S/ 249, S/ 499 y S/ 999 al mes, con IGV incluido. Si pagas el año por adelantado, te regalamos 2 meses. El plan de S/ 249 no trae el asistente de WhatsApp; viene desde el plan de S/ 499.",
-  },
-  {
-    pregunta: "¿Pedily cobra comisión por pedido?",
-    respuesta:
-      "No. Pedily cobra 0 % de comisión al restaurante y 0 % al comensal. Pagas solo tu plan.",
+      "Hay tres planes: S/ 249, S/ 499 y S/ 999 al mes, con IGV incluido, y 0 % de comisión por pedido al restaurante y al comensal. Si pagas el año por adelantado, te regalamos 2 meses. El plan de S/ 249 no trae el asistente de WhatsApp; viene desde el plan de S/ 499.",
   },
   {
     pregunta: "¿Qué pago aparte?",
@@ -61,12 +56,7 @@ export const FAQS: Pregunta[] = [
       "Es una pantalla táctil con navegador en tu local. Tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Viene en el plan de S/ 999.",
   },
   {
-    pregunta: "¿Solo funciona en Perú?",
-    respuesta:
-      "Sí. Está hecho para Perú: Culqi, Yape, Plin y facturación electrónica SUNAT.",
-  },
-  {
     pregunta: "¿Quién está detrás de Pedily?",
-    respuesta: `${EMPRESA.razonSocial}, una empresa peruana. Pedily nació y se probó en ${RESTAURANTE_ORIGEN.nombre}, un restaurante de ${RESTAURANTE_ORIGEN.ciudad} que vende así todos los días.`,
+    respuesta: `${EMPRESA.razonSocial}, una empresa peruana; Pedily funciona solo en Perú (Culqi, Yape, Plin y SUNAT). Pedily nació y se probó en ${RESTAURANTE_ORIGEN.nombre}, un restaurante de ${RESTAURANTE_ORIGEN.ciudad} que vende así todos los días.`,
   },
 ];

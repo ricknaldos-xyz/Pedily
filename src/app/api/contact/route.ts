@@ -117,13 +117,15 @@ export async function POST(request: Request) {
   const solicitud = validacion.datos;
 
   const consolaUrl = consolaSolicitudesUrl();
-  // «Crear mi tienda» solo existe con consola; sin ella, es un pedido de demo.
-  if (solicitud.modo === "tienda" && !consolaUrl) solicitud.modo = "demo";
+  // «Crear mi tienda» sin consola (X-007 aún no existe) llega por correo y el
+  // equipo crea la tienda: la pantalla de gracias lo dice («te escribimos para
+  // crear tu tienda»).
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const hayCorreo = Boolean(RESEND_API_KEY && CONTACT_EMAIL);
 
-  if (!hayCorreo && solicitud.modo === "demo") {
+  const vaAConsola = solicitud.modo === "tienda" && Boolean(consolaUrl);
+  if (!hayCorreo && !vaAConsola) {
     // Sin proveedor de correo ni buzón de destino, el mensaje no llega a
     // nadie: se lo decimos al usuario en vez de fingir un envío correcto.
     console.warn(

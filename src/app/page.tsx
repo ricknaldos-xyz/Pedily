@@ -1,35 +1,33 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { BenefitsGrid } from "@/components/sections/BenefitsGrid";
-import { ProductScreenshots } from "@/components/sections/ProductScreenshots";
-import { BotShowcase } from "@/components/sections/BotShowcase";
-import { OperationsShowcase } from "@/components/sections/OperationsShowcase";
-import { FeatureShowcase } from "@/components/sections/FeatureShowcase";
-import { IntegrationLogos } from "@/components/sections/IntegrationLogos";
-import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Dolor } from "@/components/sections/Dolor";
+import { RecorridoPedido } from "@/components/sections/RecorridoPedido";
+import { CanalesPropios } from "@/components/sections/CanalesPropios";
+import { ClientesQueVuelven } from "@/components/sections/ClientesQueVuelven";
+import { Origen } from "@/components/sections/Origen";
+import { Fundadores } from "@/components/sections/Fundadores";
+import { AbreTuTienda } from "@/components/sections/AbreTuTienda";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { CaseStudy } from "@/components/sections/CaseStudy";
-import { ComparisonTable } from "@/components/sections/ComparisonTable";
+import { Calculadora } from "@/components/sections/Calculadora";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FAQPageJsonLd } from "@/components/seo/JsonLd";
 
+// Estructura: research_notes/Pedily landing auditoría 2026-11-14,
+// 01_copy_conversion.md §5 ajustada por 02_benchmark_landings.md §4.
 export default function Home() {
   return (
     <>
       <FAQPageJsonLd />
       <Hero />
-      <TrustStrip />
-      <BenefitsGrid />
-      <ProductScreenshots />
-      <BotShowcase />
-      <OperationsShowcase />
-      <FeatureShowcase />
-      <IntegrationLogos />
-      <HowItWorks />
+      <Dolor />
+      <RecorridoPedido />
+      <CanalesPropios />
+      <ClientesQueVuelven />
+      <Origen />
+      <Fundadores />
+      <AbreTuTienda />
       <PricingTable />
-      <CaseStudy />
-      <ComparisonTable />
+      <Calculadora />
       <FAQ />
       <FinalCTA />
     </>

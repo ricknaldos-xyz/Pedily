@@ -1,7 +1,7 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { Section } from "@/components/layout/Section";
+import { Bloque } from "@/components/layout/Bloque";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown, MessageCircle } from "lucide-react";
@@ -9,13 +9,13 @@ import { FAQS } from "@/lib/faq";
 
 export function FAQ() {
   return (
-    <Section id="faq">
+    <Bloque id="faq" className="bg-white">
       <Container className="max-w-3xl">
         <AnimatedSection className="text-center">
           <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
             Preguntas frecuentes
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
+          <h2 className="text-[1.7rem] font-extrabold leading-tight tracking-tight text-sand-900 sm:text-4xl">
             Lo que todos preguntan antes de empezar
           </h2>
           <p className="mt-4 text-lg text-sand-500">
@@ -24,7 +24,7 @@ export function FAQ() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <Accordion.Root type="single" collapsible className="mt-12 space-y-3">
+          <Accordion.Root type="single" collapsible className="mt-6 space-y-2">
             {FAQS.map((faq, i) => (
               <Accordion.Item
                 key={i}
@@ -34,7 +34,7 @@ export function FAQ() {
                 {/* Left accent bar */}
                 <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-xl bg-primary-500 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
 
-                <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left text-sm font-semibold text-sand-900 transition-colors hover:text-primary-600">
+                <Accordion.Trigger className="flex w-full items-center justify-between px-4 py-4 text-left text-[15px] sm:px-6 font-semibold text-sand-900 transition-colors hover:text-primary-600">
                   <div className="flex items-center gap-3">
                     <span className="flex-shrink-0 text-xs font-medium text-sand-300 group-data-[state=open]:text-primary-400">
                       {String(i + 1).padStart(2, "0")}
@@ -47,7 +47,7 @@ export function FAQ() {
                   />
                 </Accordion.Trigger>
                 <Accordion.Content className="overflow-hidden data-[state=closed]:animate-[accordion-up_300ms_ease-in-out] data-[state=open]:animate-[accordion-down_300ms_ease-in-out]">
-                  <div className="border-t border-sand-100 px-6 py-4 pl-14 text-sm leading-relaxed text-sand-500">
+                  <div className="border-t border-sand-100 px-4 py-4 text-sm sm:px-6 sm:pl-14 leading-relaxed text-sand-500">
                     {faq.respuesta}
                   </div>
                 </Accordion.Content>
@@ -57,7 +57,7 @@ export function FAQ() {
         </AnimatedSection>
 
         {/* Bottom CTA */}
-        <AnimatedSection delay={0.2} className="mt-10 text-center">
+        <AnimatedSection delay={0.2} className="mt-6 text-center">
           <p className="text-sm text-sand-500">
             ¿Tienes otra pregunta?{" "}
             <a
@@ -70,6 +70,6 @@ export function FAQ() {
           </p>
         </AnimatedSection>
       </Container>
-    </Section>
+    </Bloque>
   );
 }

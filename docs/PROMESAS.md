@@ -25,54 +25,66 @@ Cómo se usa:
 
 ## Tabla
 
-Las líneas son de la rama `fix/landing-honesta` tras L-15; desde L-17 se citan archivos sin línea. Las rutas sin carpeta están en `src/components/sections/`. Los prefijos `W:` y `B:` remiten a las copias `pedily-web` y `pedily-backend`.
+Rehecha el 15-nov-2026 (L-18) para la landing nueva. Las rutas sin carpeta están en `src/components/sections/`. Los prefijos `W:` y `B:` remiten a las copias `pedily-web` y `pedily-backend`. Los números de fila se conservan; los que faltan pasaron a la lista de abajo.
 
 | # | Promesa | Dónde | Estado | Tarea | Patrón |
 |---|---|---|---|---|---|
-| 1 | Tienda web con tu marca | `PricingTable.tsx:11` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
-| 2 | Tu dominio propio, SSL incluido | `IntegrationLogos.tsx:82`, `src/app/precios/page.tsx:40` | Parcial | W-70 (existe), X-009, W-820 | `dominio propio` |
-| 3 | Pedidos de los 3 canales en un solo panel, al instante y con sonido | `FeatureShowcase.tsx`, `OperationsShowcase.tsx` | Existe | W-64 (recorrido con base vacía) | `un solo panel` |
-| 4 | 10 estados del pedido (`HubOrderStatus` de `B:prisma/schema.prisma` tiene 10 valores) | `FeatureShowcase.tsx:40` | Existe | L-15 (cifra corregida de 9 a 10) | `10 estados` |
-| 5 | Roles admin, cocina y operador; permisos por módulo | `FeatureShowcase.tsx:41`, `OperationsShowcase.tsx:58` | Existe | W-64 (paso 4) | `admin, cocina, operador` |
-| 6 | Verificación de pagos Yape/Plin con foto | `FeatureShowcase.tsx:43,55` | Existe | B-803, W-61 | `Yape/Plin con foto` |
-| 7 | Tarjeta con Culqi en la web y en WhatsApp | `FeatureShowcase.tsx:53` | Existe | B-602, B-605; conexión autónoma X-008, W-814 | `Tarjetas con Culqi` |
-| 8 | Tarjeta y Yape también en el kiosko | `FeatureShowcase.tsx:54,70`, `FAQ.tsx:33` | Existe | W-54 (prueba con Culqi de prueba) | `Yape tambi[eé]n en el kiosko` |
-| 9 | Boleta y factura automáticas, notas de crédito, anulaciones y validación de RUC | `FeatureShowcase.tsx:56-57`, `OperationsShowcase.tsx:46` | Existe | B-603, B-604; conexión autónoma W-815 | `notas de cr[eé]dito` |
-| 10 | Libro de Reclamaciones | `OperationsShowcase.tsx:46` | Existe | W-64 | `Libro de Reclamaciones` |
-| 11 | Ticket y boleta impresos en el kiosko (PC con Windows e impresora térmica) | `FeatureShowcase.tsx:71`, `FAQ.tsx:33` | Parcial | K-14, K-15, K-16 | `impresora t[eé]rmica` |
-| 12 | Bot de WhatsApp con IA (Claude) que toma pedidos completos a cualquier hora | `FeatureShowcase.tsx:78-85`, `BotShowcase.tsx`, `Hero.tsx`, `FAQ.tsx:48` | Parcial | Tramo E: B-501…B-520, B-811, B-808 (cumplida cuando cierre B-519) | `Toma el pedido completo por chat` |
-| 13 | Tu equipo toma el chat cuando quiera | `FeatureShowcase.tsx`, `BotShowcase.tsx` | Existe | Tramo E | `toma el chat` |
-| 14 | El bot nunca inventa precios: valida contra tu catálogo | `FeatureShowcase.tsx:85`, `BotShowcase.tsx:37` | Existe | Tramo E (B-519 con la carta del cliente) | `inventa precios` |
-| 15 | Carta con categorías, variantes, modificadores y fotos | `FeatureShowcase.tsx:22-28` | Existe | Carga autónoma: B-817, B-818, W-812 | `Variantes \(tama` |
-| 16 | Stock que se actualiza solo | `FeatureShowcase.tsx:27` | Parcial | W-822 | `Stock que se actualiza solo` |
-| 17 | Zonas de reparto con su tarifa y su tiempo; recojo en tienda (sin «por distrito o código postal» ni «dibuja»: el mapa para dibujar la zona no existe, D+-8) | `FeatureShowcase.tsx` | Existe | W-62; mapa autónomo W-813 | `zonas de reparto` |
-| 18 | Envíos con PedidosYa cuando no tienes repartidor | `FeatureShowcase.tsx:97`, `IntegrationLogos.tsx:54`, `TrustStrip.tsx:13` | Existe | B-601 | `Env[ií]os con PedidosYa` |
-| 19 | Los clientes guardan varias direcciones y ven el estado de su pedido | `FeatureShowcase.tsx:99-100` | Existe | — | `varias direcciones` |
-| 20 | Google Maps para direcciones, cobertura y costo de envío | `IntegrationLogos.tsx:72` | Existe | Clave por API: X-005, X-008 (decisión D+-6) | `Google Maps` |
-| 21 | Cupones (% o monto fijo), por categoría o producto, con vencimiento y límite de usos | `FeatureShowcase.tsx:110-112` | Existe | — | `Vencimiento y l[ií]mite de usos` |
-| 22 | Saldo a favor opcional en cada compra | `FeatureShowcase.tsx:113`, `BotShowcase.tsx:27` | Existe | Antes y después: B-821, W-817 | `saldo a favor` |
-| 23 | Repetir el último pedido en dos toques | `FeatureShowcase.tsx:114` | Existe | — | `dos toques` |
-| 25 | Cocina, lotes de producción y conteos diarios | `OperationsShowcase.tsx:28` | Existe | W-64 | `lotes de producci[oó]n` |
-| 26 | Inventario por almacén con alertas de mínimos; recetas con escandallo; descuento automático de insumos | `OperationsShowcase.tsx:34` | Existe | W-64 | `escandallo` |
-| 27 | Finanzas: caja con cierre, P&L, flujo de caja, impuestos, compras y planilla | `OperationsShowcase.tsx:40` | Existe | W-64 | `flujo de caja` |
-| 28 | Exporta tus reportes en CSV | `OperationsShowcase.tsx:40` | Parcial | B-823 (encender Reportes v2 en el perfil base) | `reportes en CSV` |
-| 29 | Reportes por día, canal, hora y categoría; productos top; heatmap; estadísticas de cupones | `OperationsShowcase.tsx:52` | Existe | W-64 | `heatmap` |
-| 30 | Vouchers de compensación | `OperationsShowcase.tsx:64` | Existe | — | `vouchers de compensaci[oó]n` |
-| 31 | Tus clientes son tuyos (base propia y exportable) | `ui/TrustBadges.tsx:14`, `ComparisonTable.tsx`, `CaseStudy.tsx`, `BotShowcase.tsx:27` | Parcial | B-820, W-818 (exportación completa) | `clientes son tuyos` |
-| 32 | Sin comisiones por pedido | `BenefitsGrid.tsx:29`, `ui/TrustBadges.tsx:6`, `src/app/layout.tsx:22` | Servicio | Decisión del dueño (modelo comercial) | `sin comisiones` |
-| 33 | «Lo configuramos nosotros con lo que nos envíes» | `HowItWorks.tsx:21` | Existe | L-14 (los dos caminos, cuando exista el alta autónoma) | `lo configuramos nosotros` |
-| 34 | Instalación acompañada; onboarding, soporte y capacitación en Perú; demostración guiada | `FinalCTA.tsx:9-10`, `src/app/precios/page.tsx:40-43`, `ui/TrustBadges.tsx:18` | Servicio | Decisión del dueño: quién atiende (L-12) | `Instalaci[oó]n acompa[nñ]ada` |
-| 35 | Creado y probado en un restaurante real | `Hero.tsx:64`, `CaseStudy.tsx:67` | Existe | — | `restaurante real` |
-| 36 | Solo Perú: Culqi, Yape, Plin y SUNAT | `src/lib/faq.ts` | Existe | — | `Solo funciona en Per[uú]` |
-| 37 | El dinero va directo a tu cuenta | `FeatureShowcase.tsx:51`, `FAQ.tsx:38` | Existe | — | `directo a tu cuenta` |
-| 38 | Formulario de demo y alta con 3 preguntas | `src/app/contacto/FormularioSolicitud.tsx`, `src/lib/solicitud.ts` | Existe | L-13 (hecha); «Crear mi tienda» con consola: X-007 | `Cu[aá]ndo quieres empezar` |
+| 1 | Tienda web con tu marca | `CanalesPropios.tsx`, `src/lib/planes.ts` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
+| 3 | Pedidos de web, WhatsApp y kiosko en un solo panel, con aviso sonoro | `RecorridoPedido.tsx` | Existe | W-64 | `mismo panel` |
+| 5 | Roles para tu equipo | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 (paso 4) | `roles para tu equipo` |
+| 6 | Cobrar desde el primer día con el QR de tu Yape o Plin y verificar el comprobante en el panel | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Existe | B-803, W-61 | `QR de tu Yape o Plin` |
+| 7 | Tarjeta con Culqi cuando Culqi te aprueba | `AbreTuTienda.tsx`, `src/lib/faq.ts`, `RecorridoPedido.tsx` | Existe | B-602, B-605; conexión autónoma X-008, W-814 | `Culqi te aprueba` |
+| 8 | En el kiosko: tarjeta, Yape o pagar en caja | `CanalesPropios.tsx`, `src/lib/faq.ts` | Existe | W-54 (prueba con Culqi de prueba) | `en el kiosko, también en caja` |
+| 9 | Boleta o factura electrónica automática con tu RUC, por tu Nubefact | `RecorridoPedido.tsx`, `Hero.tsx` | Existe | B-603, B-604; conexión autónoma W-815 | `boleta sale sola` |
+| 10 | Libro de Reclamaciones | `ClientesQueVuelven.tsx` | Existe | W-64 | `Libro de Reclamaciones` |
+| 11 | Ticket impreso en el kiosko (PC con Windows e impresora térmica) | `CanalesPropios.tsx`, `src/lib/faq.ts` | Parcial | K-14, K-15, K-16 | `impresora t[eé]rmica` |
+| 12 | Asistente de WhatsApp con IA que arma el pedido, cobra y lo manda a cocina | `Hero.tsx`, `RecorridoPedido.tsx`, `src/lib/faq.ts` | Parcial | Tramo E: B-501…B-520, B-811, B-808 (cumplida cuando cierre B-519) | `arma el pedido` |
+| 13 | Si el cliente pide hablar con alguien, el asistente avisa y tu equipo sigue el chat | `RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | Tramo E | `sigue el chat` |
+| 14 | El asistente solo ofrece lo que está en tu carta, con tus precios | `RecorridoPedido.tsx` | Existe | Tramo E (B-519 con la carta del cliente) | `Solo ofrece lo que est[aá] en tu carta` |
+| 15 | Tamaños, extras y notas en la carta | `CanalesPropios.tsx` | Existe | Carga autónoma: B-817, B-818, W-812 | `Tama[nñ]os, extras y notas` |
+| 17 | Reparto con tus zonas y tarifas, o recojo (sin «dibuja la zona»: no existe, D+-8) | `RecorridoPedido.tsx` | Existe | W-62; mapa autónomo W-813 | `zonas y tarifas` |
+| 18 | Motorizado con PedidosYa Envíos cuando no tienes repartidor | `RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | B-601 | `PedidosYa Env[ií]os` |
+| 21 | Cupones con vencimiento y límite de usos | `ClientesQueVuelven.tsx` | Existe | — | `vencimiento y l[ií]mite de usos` |
+| 22 | Saldo a favor para el próximo pedido | `ClientesQueVuelven.tsx` | Existe | Antes y después: B-821, W-817 | `saldo a favor` |
+| 23 | Repetir el último pedido en dos toques | `ClientesQueVuelven.tsx` | Existe | — | `dos toques` |
+| 24 | Meta de ventas del día | `ClientesQueVuelven.tsx` («Y además») | Existe | B-822 (`GET /store/meta-hoy`, `PATCH /store/meta`) | `meta de ventas del d[ií]a` |
+| 26 | Inventario y recetas | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `inventario y recetas` |
+| 27 | Caja con cierre | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `caja con cierre` |
+| 29 | Reportes por canal y hora | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `reportes por canal y hora` |
+| 32 | Sin comisión por pedido | `Hero.tsx`, `PricingTable.tsx`, `FinalCTA.tsx`, `src/app/layout.tsx` | Servicio | Decisión del dueño (modelo comercial) | `sin comisi[oó]n` |
+| 33 | Si prefieres, lo hacemos contigo, sin reunión obligatoria | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño: quién atiende (L-12) | `lo hacemos contigo` |
+| 34 | Te acompañamos en la puesta en marcha | `FinalCTA.tsx`, `Fundadores.tsx` | Servicio | Decisión del dueño: quién atiende (L-12) | `te acompa[nñ]amos` |
+| 35 | Nació y se probó en el restaurante de origen, nombrado sin cifras (regla del dueño) | `Origen.tsx`, `src/lib/faq.ts`, `src/lib/site.ts` | Existe | — | `se prob[oó] en` |
+| 36 | Solo Perú: Culqi, Yape, Plin y SUNAT | `src/lib/faq.ts` | Existe | — | `solo en Per[uú]` |
+| 37 | El dinero va directo a tu cuenta | `Hero.tsx`, `src/lib/faq.ts` | Existe | — | `directo a tu cuenta` |
+| 38 | Formulario «Crear mi tienda» o «Prefiero que me muestren una demo» | `src/app/contacto/FormularioSolicitud.tsx`, `src/lib/solicitud.ts` | Existe | L-13 (hecha); alta con consola: X-007 | `Cu[aá]ndo quieres empezar` |
 | 39 | Planes de S/ 249, 499 y 999 al mes con IGV, 0 % de comisión al restaurante y al comensal | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (14-nov) | `S/ 249` |
-| 40 | Asistente de WhatsApp desde el plan de S/ 499, con un cupo mensual de conversaciones que no se publica | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y medir los cupos (B-518) | `cupo mensual` |
+| 40 | Asistente desde el plan de S/ 499, con un cupo mensual de conversaciones que no se publica | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y medir los cupos (B-518) | `cupo mensual` |
 | 41 | Alta gratis si te quedas 6 meses; si te vas antes, la parte proporcional del alta | `PricingTable.tsx`, `src/lib/faq.ts`, `legal/terminos` | Servicio | Contrato y valor del alta (D+-9, abogado) | `Alta gratis` |
 | 42 | Lo que pagas aparte a Culqi, Nubefact y Meta, con sus precios públicos | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | — | `pagas aparte` |
-| 43 | Cupones, referidos y saldo a favor, apagados hasta que los enciendes en «Opciones de tu tienda» | `FeatureShowcase.tsx`, `src/lib/planes.ts` | Existe | B-812, W-805, W-806, W-807 | `referidos` |
+| 43 | Cupones, referidos y saldo a favor, apagados hasta que los enciendes en «Opciones de tu tienda» | `ClientesQueVuelven.tsx` | Existe | B-812, W-805, W-806, W-807 | `referidos` |
 | 44 | Pago anual con 2 meses gratis | `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (15-nov) | `2 meses` |
-| 45 | Pedily nunca toca tu dinero | `src/lib/faq.ts` | Existe | — | `nunca toca tu dinero` |
+| 45 | Pedily nunca toca tu dinero | `PricingTable.tsx`, `src/lib/faq.ts` | Existe | — | `nunca toca tu dinero` |
+| 46 | Subes una foto de tu carta y la IA arma tus platos y precios para que los revises | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Parcial | Carga autónoma: B-817, B-818, W-812 (comprobar con una carta real) | `foto de tu carta` |
+| 47 | Asistente «Empezar» en el panel que te lleva paso a paso | `AbreTuTienda.tsx` (captura real del panel) | Existe | W-808…W-816 | `te lleva paso a paso` |
+| 48 | Kiosko de autoservicio en el plan de S/ 999 | `CanalesPropios.tsx`, `src/lib/planes.ts`, `src/lib/faq.ts` | Servicio | Contenido del plan de S/ 999 por decidir (dueño) | `plan de S/ 999` |
+| 49 | Programa de fundadores: 10 cupos, precio congelado 24 meses, alta gratis, acompañamiento directo | `Fundadores.tsx`, `src/lib/site.ts` | Servicio | Condiciones propuestas; las confirma el dueño | `fundador` |
+
+### Promesas que ya no salen en la landing (L-18)
+
+Siguen siendo ciertas en el producto; si vuelven a la landing, entran arriba con su número.
+
+| Fila | Promesa | Estado en el producto | Tarea |
+|---|---|---|---|
+| n.º 2 | Dominio propio con SSL | Parcial | W-70, X-009, W-820 |
+| n.º 4 | 10 estados del pedido | Existe | — |
+| n.º 16 | Stock que se actualiza solo | Parcial | W-822 |
+| n.º 19 | Varias direcciones guardadas | Existe | — |
+| n.º 20 | Google Maps para direcciones y costo de envío | Existe | X-005, X-008 |
+| n.º 25 | Lotes de producción y conteos | Existe | W-64 |
+| n.º 28 | Reportes en CSV | Parcial | B-823 |
+| n.º 30 | Vouchers de compensación | Existe | — |
+| n.º 31 | Tus clientes son tuyos (base exportable) | Parcial | B-820, W-818 |
 
 ### Promesas que aún no están en la landing
 
@@ -80,10 +92,8 @@ Se añadirán a la tabla de arriba, con patrón, cuando se escriban en la landin
 
 | Promesa | Estado | Tarea |
 |---|---|---|
-| Meta de ventas del día (estaba en una maqueta; se quitó el 15-nov, L-17) | Por construir | B-822, W-819 |
 | Zona de reparto dibujada en el mapa | Por construir | W-813 + polígonos (D+-8) |
 | Procedimiento de baja | Servicio | X-011 y contrato (D+-9) |
 | Tus datos son tuyos y te los llevas cuando quieras | Por construir | B-820, W-818 → L-12 |
 | Qué pasa si te vas | Por construir | X-011 → L-12 |
 | Dónde están tus datos | Por decidir | Decisión D+-5 → L-12 |
-| Creas tu tienda tú mismo con un asistente | Por construir | W-808…W-816, X-006 → L-14 |

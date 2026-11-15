@@ -77,13 +77,15 @@ export function precioAnual(plan: Plan): number {
   return plan.precioMensual * MESES_PAGADOS_ANUAL;
 }
 
-/** «S/ 249» o «S/ 2 490»: separador de miles con espacio fino. */
+/**
+ * «S/ 249», «S/ 2 490» o «S/ 12,50»: miles con espacio fino y decimales con
+ * coma, igual que «3,44 %» en el resto de la página. No depende del idioma del
+ * navegador (es-PE en Chrome daba «1,800», que se confunde con un decimal).
+ */
 export function soles(monto: number, decimales = 0): string {
-  const texto = monto.toLocaleString("es-PE", {
-    minimumFractionDigits: decimales,
-    maximumFractionDigits: decimales,
-  });
-  return `S/ ${texto}`;
+  const [entero, fraccion] = Math.abs(monto).toFixed(decimales).split(".");
+  const miles = entero.replace(/\B(?=(\d{3})+(?!\d))/g, "\u202f");
+  return `${monto < 0 ? "−" : ""}S/ ${miles}${fraccion ? `,${fraccion}` : ""}`;
 }
 
 /** Lo que el restaurante paga aparte, directo a cada proveedor. */

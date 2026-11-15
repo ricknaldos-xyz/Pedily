@@ -11,6 +11,7 @@ import { DEMO } from "@/lib/site";
 const landingLinks = [
   { href: "/#como-funciona", label: "Cómo funciona" },
   { href: "/#precios", label: "Precios" },
+  { href: "/#fundadores", label: "Fundadores" },
   { href: "/#faq", label: "Preguntas" },
 ];
 

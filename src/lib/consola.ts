@@ -2,8 +2,9 @@
  * Consola de altas (tarea X-007 del plan): recibe las solicitudes «Crear mi
  * tienda». Aún no existe, así que todo queda detrás de CONSOLA_SOLICITUDES_URL:
  *
- * - sin la variable, la landing no enseña «Crear mi tienda» y la solicitud
- *   va solo por correo (el flujo de siempre);
+ * - sin la variable, «Crear mi tienda» y «Prefiero una demo» van solo por
+ *   correo y la pantalla de gracias dice «te escribimos para crear tu tienda»
+ *   (L-18);
  * - con la variable, /api/contact envía la solicitud a esa URL y, además, el
  *   correo; si la consola falla, la solicitud se queda en el correo.
  *

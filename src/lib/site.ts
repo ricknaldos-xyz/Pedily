@@ -102,5 +102,5 @@ export const FUNDADORES = {
   mesesPrecioCongelado: 24,
   altaGratis: true,
   acompanamientoDirecto: true,
-  aCambio: "que nos dejes contar tu caso (con tu permiso y sin cifras que no apruebes)",
+  aCambio: "nos das permiso para contar tu caso",
 } as const;

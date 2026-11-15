@@ -18,8 +18,6 @@ import {
 } from "@/lib/solicitud";
 
 interface Props {
-  /** true si la consola de altas está configurada: enseña «Crear mi tienda». */
-  consolaActiva: boolean;
   waHref: string | null;
 }
 
@@ -40,7 +38,7 @@ function primerNombre(nombre: string): string {
   return nombre.split(/\s+/)[0] || nombre;
 }
 
-export function FormularioSolicitud({ consolaActiva, waHref }: Props) {
+export function FormularioSolicitud({ waHref }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
   const [errores, setErrores] = useState<ErroresSolicitud>({});
   const [errorGeneral, setErrorGeneral] = useState<string | null>(null);
@@ -76,7 +74,7 @@ export function FormularioSolicitud({ consolaActiva, waHref }: Props) {
       | HTMLButtonElement
       | null;
     const modo: ModoSolicitud =
-      consolaActiva && submitter?.value === "tienda" ? "tienda" : "demo";
+      submitter?.value === "tienda" ? "tienda" : "demo";
 
     const fd = new FormData(e.currentTarget);
     const entrada: Record<string, unknown> = { modo };
@@ -350,8 +348,7 @@ export function FormularioSolicitud({ consolaActiva, waHref }: Props) {
       </div>
 
       <div className="mt-6 flex flex-col gap-3">
-        {consolaActiva ? (
-          <>
+        <>
             <button
               type="submit"
               name="modo"
@@ -384,26 +381,7 @@ export function FormularioSolicitud({ consolaActiva, waHref }: Props) {
                 "Prefiero que me muestren una demo"
               )}
             </button>
-          </>
-        ) : (
-          <button
-            type="submit"
-            name="modo"
-            value="demo"
-            disabled={enviando !== null}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-warm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {enviando ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Enviando…
-              </>
-            ) : (
-              <>
-                Pedir una demo <ArrowRight className="h-4 w-4" />
-              </>
-            )}
-          </button>
-        )}
+        </>
         <p className="text-center text-xs text-sand-400">
           Tratamos tus datos según nuestra{" "}
           <Link href="/legal/privacidad" className="underline hover:text-sand-600">

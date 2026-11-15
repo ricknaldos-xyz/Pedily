@@ -21,9 +21,11 @@ interface Props {
 
 export function PricingTable({ sinTitulo = false }: Props) {
   const [anual, setAnual] = useState(false);
+  // En móvil la lista de cada plan se abre a pedido; en escritorio siempre se ve.
+  const [abiertos, setAbiertos] = useState<Record<string, boolean>>({});
 
   return (
-    <section id="precios" className="scroll-mt-16 bg-white py-14 sm:py-20">
+    <section id="precios" className="scroll-mt-16 bg-white py-10 sm:py-20">
       <Container>
         {!sinTitulo && (
           <AnimatedSection className="text-center">
@@ -31,13 +33,12 @@ export function PricingTable({ sinTitulo = false }: Props) {
               Precios claros, con IGV. 0 % de comisión.
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-base text-sand-500 sm:text-lg">
-              Una cuota fija al mes. Ni el restaurante ni el comensal pagan
-              comisión por pedido.
+              Cuota fija al mes. Nadie paga comisión por pedido.
             </p>
           </AnimatedSection>
         )}
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <div
             role="radiogroup"
             aria-label="Forma de pago"
@@ -66,12 +67,12 @@ export function PricingTable({ sinTitulo = false }: Props) {
           </div>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-5xl gap-4 lg:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-5xl gap-4 lg:grid-cols-3">
           {PLANES.map((plan, i) => (
             <AnimatedSection key={plan.id} delay={i * 0.06}>
               <div
                 className={clsx(
-                  "relative flex h-full flex-col rounded-2xl border bg-white p-6",
+                  "relative flex h-full flex-col rounded-2xl border bg-white p-5 sm:p-6",
                   plan.destacado
                     ? "border-2 border-primary-500 shadow-lg shadow-primary-500/10"
                     : "border-sand-200"
@@ -83,8 +84,8 @@ export function PricingTable({ sinTitulo = false }: Props) {
                   </span>
                 )}
                 <h3 className="text-lg font-bold text-sand-900">{plan.nombre}</h3>
-                <p className="mt-1 text-sm text-sand-500">{plan.paraQuien}</p>
-                <p className="mt-4 flex items-baseline gap-1">
+                <p className="mt-0.5 text-sm text-sand-500">{plan.paraQuien}</p>
+                <p className="mt-3 flex items-baseline gap-1">
                   <span className="text-4xl font-extrabold text-sand-900">
                     {soles(anual ? precioAnual(plan) : plan.precioMensual)}
                   </span>
@@ -97,7 +98,22 @@ export function PricingTable({ sinTitulo = false }: Props) {
                     ? `Pagas ${MESES_PAGADOS_ANUAL} meses y usas 12. IGV incluido.`
                     : "IGV incluido."}
                 </p>
-                <ul className="mt-5 flex-1 space-y-2.5">
+                <button
+                  type="button"
+                  aria-expanded={Boolean(abiertos[plan.id])}
+                  onClick={() =>
+                    setAbiertos((a) => ({ ...a, [plan.id]: !a[plan.id] }))
+                  }
+                  className="mt-3 self-start text-sm font-semibold text-primary-700 underline underline-offset-2 lg:hidden"
+                >
+                  {abiertos[plan.id] ? "Ocultar lo que incluye" : "Ver lo que incluye"}
+                </button>
+                <ul
+                  className={clsx(
+                    "mt-3 flex-1 space-y-2 lg:mt-5 lg:block",
+                    abiertos[plan.id] ? "block" : "hidden"
+                  )}
+                >
                   {plan.incluye.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-sand-700">
                       <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-600" />
@@ -114,7 +130,7 @@ export function PricingTable({ sinTitulo = false }: Props) {
                 <a
                   href="/contacto"
                   className={clsx(
-                    "mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all active:scale-[0.98]",
+                    "mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all active:scale-[0.98]",
                     plan.destacado
                       ? "bg-primary-600 text-white hover:bg-primary-700"
                       : "border border-sand-300 text-sand-800 hover:bg-sand-50"
@@ -127,38 +143,41 @@ export function PricingTable({ sinTitulo = false }: Props) {
           ))}
         </div>
 
-        <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-sand-600">
-          <strong className="text-sand-800">Alta gratis</strong> si te quedas al
-          menos {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si te vas antes, pagas la
-          parte proporcional del alta.
+        <p className="mx-auto mt-5 max-w-3xl text-center text-sm text-sand-600">
+          <strong className="text-sand-800">Alta gratis</strong> si te quedas{" "}
+          {MESES_PERMANENCIA_ALTA_GRATIS} meses; si te vas antes, pagas la parte
+          proporcional.
         </p>
 
         <AnimatedSection>
           <div
             id="pagas-aparte"
-            className="mx-auto mt-8 max-w-5xl rounded-2xl border border-cream-400 bg-cream-50 p-5 sm:p-6"
+            className="mx-auto mt-5 max-w-5xl rounded-2xl border border-cream-400 bg-cream-50 p-4 sm:p-6"
           >
             <h3 className="text-base font-bold text-sand-900">
               Lo que pagas aparte, directo a cada proveedor
             </h3>
             <p className="mt-1 text-sm text-sand-600">
-              Pedily nunca toca tu dinero. Estos son los precios públicos de
-              cada proveedor (noviembre de 2026):
+              Pedily nunca toca tu dinero. Precios públicos a noviembre de 2026:
             </p>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+            <ul className="mt-3 divide-y divide-cream-400/60 sm:grid sm:grid-cols-3 sm:gap-3 sm:divide-y-0">
               {COSTOS_APARTE.map((c) => (
-                <li key={c.proveedor} className="rounded-xl bg-white p-4 text-sm">
-                  <p className="font-semibold text-sand-900">{c.proveedor}</p>
-                  <p className="mt-0.5 text-sand-500">{c.que}</p>
-                  <p className="mt-2 font-semibold text-sand-800">{c.precio}</p>
-                  <a
-                    href={c.fuente}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-block text-xs text-primary-700 underline"
-                  >
-                    Ver su tarifa
-                  </a>
+                <li key={c.proveedor} className="py-2.5 text-sm sm:rounded-xl sm:bg-white sm:p-4">
+                  <p>
+                    <strong className="text-sand-900">{c.proveedor}:</strong>{" "}
+                    <span className="font-semibold text-sand-800">{c.precio}</span>
+                  </p>
+                  <p className="mt-0.5 text-xs text-sand-500">
+                    {c.que} ·{" "}
+                    <a
+                      href={c.fuente}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-700 underline"
+                    >
+                      ver su tarifa
+                    </a>
+                  </p>
                 </li>
               ))}
             </ul>
