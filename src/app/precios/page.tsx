@@ -6,7 +6,7 @@ import { Container } from "@/components/layout/Container";
 export const metadata = {
   title: "Precios | Pedily · Desde S/ 249 al mes con IGV, 0 % de comisión",
   description:
-    "Planes de S/ 249, S/ 499 y S/ 999 al mes con IGV incluido y 0 % de comisión por pedido. Alta gratis si te quedas 6 meses; pago anual con 2 meses gratis. Lo que pagas aparte a Culqi, Nubefact y Meta, dicho claro.",
+    "Planes de S/ 249, 499 y 999 al mes con IGV y 0 % de comisión. Alta gratis si te quedas 6 meses. Kiosko y QR de mesa en Completo. Lo que pagas aparte a Culqi, Nubefact y Meta, dicho claro.",
 };
 
 export default function PreciosPage() {

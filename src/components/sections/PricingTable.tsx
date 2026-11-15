@@ -5,8 +5,11 @@ import { clsx } from "clsx";
 import { Container } from "@/components/layout/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, Check, Info } from "lucide-react";
+import { FUNDADORES } from "@/lib/site";
 import {
+  altaProporcional,
   COSTOS_APARTE,
+  EJEMPLO_ALTA,
   MESES_PAGADOS_ANUAL,
   MESES_PERMANENCIA_ALTA_GRATIS,
   PLANES,
@@ -98,6 +101,10 @@ export function PricingTable({ sinTitulo = false }: Props) {
                     ? `Pagas ${MESES_PAGADOS_ANUAL} meses y usas 12. IGV incluido.`
                     : "IGV incluido."}
                 </p>
+                <p className="mt-1 text-xs text-sand-500">
+                  Alta {soles(plan.alta)} · gratis si te quedas{" "}
+                  {MESES_PERMANENCIA_ALTA_GRATIS} meses
+                </p>
                 <button
                   type="button"
                   aria-expanded={Boolean(abiertos[plan.id])}
@@ -143,11 +150,31 @@ export function PricingTable({ sinTitulo = false }: Props) {
           ))}
         </div>
 
-        <p className="mx-auto mt-5 max-w-3xl text-center text-sm text-sand-600">
-          <strong className="text-sand-800">Alta gratis</strong> si te quedas{" "}
-          {MESES_PERMANENCIA_ALTA_GRATIS} meses; si te vas antes, pagas la parte
-          proporcional.
-        </p>
+        <div
+          id="alta"
+          className="mx-auto mt-5 max-w-3xl scroll-mt-20 text-center text-sm leading-relaxed text-sand-600"
+        >
+          <p>
+            <strong className="text-sand-800">Alta gratis</strong> si te quedas{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si te vas antes, pagas solo
+            la parte de los meses que faltan: alta × (meses que faltan ÷{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS}). Ejemplo: {EJEMPLO_ALTA.plan}, te
+            vas tras {EJEMPLO_ALTA.mesesPagados} meses → {soles(EJEMPLO_ALTA.alta)} ×{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados}/
+            {MESES_PERMANENCIA_ALTA_GRATIS} ={" "}
+            <strong className="text-sand-800">
+              {soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}
+            </strong>
+            .
+          </p>
+          {FUNDADORES.activo && (
+            <p className="mt-1.5">
+              <strong className="text-sand-800">Fundadores</strong> (los primeros{" "}
+              {FUNDADORES.cupos}): alta gratis sin permanencia y precio congelado{" "}
+              {FUNDADORES.mesesPrecioCongelado} meses.
+            </p>
+          )}
+        </div>
 
         <AnimatedSection>
           <div

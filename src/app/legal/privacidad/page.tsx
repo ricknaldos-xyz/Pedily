@@ -126,6 +126,25 @@ export default function PrivacidadPage() {
           </ul>
           <p>No vendemos tus datos ni los de tus clientes a terceros.</p>
 
+          <h3>Dónde están los datos: transferencia internacional</h3>
+          <p>
+            Los datos de Pedily se guardan en servidores de{" "}
+            <strong>Estados Unidos</strong> (Virginia, región iad1), de Vercel
+            y Supabase. Además, Meta (WhatsApp), Anthropic (la IA del
+            asistente) y Google (Maps) tratan los datos que les enviamos en sus
+            propios servidores, que también pueden estar fuera del Perú.
+          </p>
+          <p>
+            Esto es un flujo transfronterizo de datos personales según el
+            artículo 15 de la Ley 29733, Ley de Protección de Datos Personales,
+            y su reglamento. Lo hacemos solo con proveedores que ofrecen
+            niveles de protección adecuados (conexiones cifradas, acceso
+            restringido y compromisos contractuales de confidencialidad), y
+            solo para que el servicio funcione. Al contratar Pedily, el
+            restaurante lo sabe y debe informarlo a sus clientes en su propia
+            política de privacidad.
+          </p>
+
           <h2>5. Datos de tus clientes: tu responsabilidad</h2>
           <p>
             Los datos de las personas que compran en tu tienda son tuyos. Tú
@@ -145,7 +164,8 @@ export default function PrivacidadPage() {
           <ul>
             <li>
               <strong>Datos de cuenta:</strong> mientras tu cuenta esté activa,
-              y 30 días después de que termine el servicio.
+              y 30 días después de que termine el servicio, para que puedas
+              exportarlos; luego se borran.
             </li>
             <li>
               <strong>Datos de pedidos:</strong> el tiempo que exigen las

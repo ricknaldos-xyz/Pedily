@@ -92,8 +92,9 @@ export const RESTAURANTE_ORIGEN = {
 } as const;
 
 /**
- * Programa de fundadores. Valores PROPUESTOS por el coordinador el 15-nov;
- * el dueño puede cambiarlos aquí y la landing se actualiza sola.
+ * Programa de fundadores (decisiones del 15-nov-2026, D-decisiones): 10 cupos,
+ * alta gratis SIN condición de permanencia y precio congelado 24 meses. El
+ * dueño puede cambiarlos aquí y la landing se actualiza sola.
  * Sin contador de cupos restantes: solo el total.
  */
 export const FUNDADORES = {
@@ -101,6 +102,7 @@ export const FUNDADORES = {
   cupos: 10,
   mesesPrecioCongelado: 24,
   altaGratis: true,
+  sinPermanencia: true,
   acompanamientoDirecto: true,
   aCambio: "nos das permiso para contar tu caso",
 } as const;

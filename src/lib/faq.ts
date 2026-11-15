@@ -2,7 +2,17 @@
  * Preguntas frecuentes. Una sola fuente para la FAQ visible y para el JSON-LD
  * (FAQPage), que Google exige que coincidan.
  */
-import { EMPRESA, RESTAURANTE_ORIGEN } from "./site";
+import { EMPRESA, FUNDADORES, RESTAURANTE_ORIGEN } from "./site";
+import {
+  altaProporcional,
+  EJEMPLO_ALTA,
+  MESES_PERMANENCIA_ALTA_GRATIS,
+  PLANES,
+  soles,
+} from "./planes";
+
+const [TIENDA, WHATSAPP, COMPLETO] = PLANES;
+const EJ_FALTAN = MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados;
 
 export interface Pregunta {
   pregunta: string;
@@ -12,18 +22,20 @@ export interface Pregunta {
 export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
-    respuesta:
-      "Hay tres planes: S/ 249, S/ 499 y S/ 999 al mes, con IGV incluido, y 0 % de comisión por pedido al restaurante y al comensal. Si pagas el año por adelantado, te regalamos 2 meses. El plan de S/ 249 no trae el asistente de WhatsApp; viene desde el plan de S/ 499.",
+    respuesta: `Tres planes al mes, con IGV incluido y 0 % de comisión por pedido al restaurante y al comensal: ${TIENDA.nombre}, ${soles(TIENDA.precioMensual)} (tienda web, panel, cocina, cobros, boletas SUNAT, reparto y pedidos programados, sin asistente de WhatsApp); ${WHATSAPP.nombre}, ${soles(WHATSAPP.precioMensual)} (suma el asistente de WhatsApp con IA y las campañas); y ${COMPLETO.nombre}, ${soles(COMPLETO.precioMensual)} (suma kiosko, QR de mesa que cobra, 3 veces más conversaciones del asistente y atención prioritaria). Si pagas el año por adelantado, pagas 10 meses y usas 12.`,
   },
   {
     pregunta: "¿Qué pago aparte?",
     respuesta:
-      "Lo que cobra cada proveedor, directo a él: Culqi, 3,44 % + US$ 0,20 por cada venta con tarjeta o Yape; Nubefact, desde S/ 70 al mes por tus boletas y facturas; y, si tienes el asistente, los mensajes de WhatsApp que Meta cobra a tu tarjeta (1.000 mensajes de servicio gratis al mes y luego S/ 0,0998 por mensaje). Son sus precios públicos de noviembre de 2026.",
+      "Lo que cobra cada proveedor, directo a él: Culqi, 3,44 % + US$ 0,20 por cada venta con tarjeta o Yape; Nubefact, desde S/ 70 al mes por tus boletas y facturas; y, si tienes el asistente, los mensajes de WhatsApp que Meta cobra a tu tarjeta (1.000 mensajes de servicio gratis al mes y luego S/ 0,0998 por mensaje; las campañas, S/ 0,2339 por mensaje). Son sus precios públicos de noviembre de 2026. El equipo del kiosko (pantalla, y PC e impresora si quieres ticket) lo compras tú.",
   },
   {
-    pregunta: "¿Hay permanencia?",
-    respuesta:
-      "El alta es gratis si te quedas al menos 6 meses. Si te vas antes, pagas la parte proporcional del alta. No hay ningún otro cargo por irte.",
+    pregunta: "¿Cuánto cuesta el alta y hay permanencia?",
+    respuesta: `El alta cuesta ${soles(TIENDA.alta)} en los planes ${TIENDA.nombre} y ${WHATSAPP.nombre}, y ${soles(COMPLETO.alta)} en ${COMPLETO.nombre} (incluye dejar configurados el kiosko y la impresora en remoto). Es gratis si te quedas al menos ${MESES_PERMANENCIA_ALTA_GRATIS} meses. Si te vas antes, pagas solo la parte de los meses que faltan, redondeada a sol entero. Ejemplo: ${EJEMPLO_ALTA.plan}, te vas tras ${EJEMPLO_ALTA.mesesPagados} meses → ${soles(EJEMPLO_ALTA.alta)} × ${EJ_FALTAN}/${MESES_PERMANENCIA_ALTA_GRATIS} = ${soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}. No hay ningún otro cargo por irte.`,
+  },
+  {
+    pregunta: "¿Qué es el programa de fundadores?",
+    respuesta: `Los primeros ${FUNDADORES.cupos} restaurantes entran con alta gratis sin condición de permanencia y con su precio congelado ${FUNDADORES.mesesPrecioCongelado} meses. A cambio, ${FUNDADORES.aCambio}.`,
   },
   {
     pregunta: "¿El dinero pasa por Pedily?",
@@ -41,9 +53,13 @@ export const FAQS: Pregunta[] = [
       "No. Subes una foto de tu carta y la IA arma tus platos y precios para que los revises. Luego conectas tus cobros y haces un pedido de prueba. Si prefieres, lo hacemos contigo paso a paso, sin reunión obligatoria.",
   },
   {
-    pregunta: "¿Cómo funciona el asistente de WhatsApp?",
+    pregunta: "¿El asistente de WhatsApp es un formulario o conversa?",
+    respuesta: `Conversa. Tu cliente escribe como le escribiría a tu cajero («medio pollo y una jarra de chicha»), el asistente le pregunta lo que falta (cremas, tamaño, dirección), arma el pedido solo con los platos y precios de tu carta, le manda el enlace para pagar con Yape o tarjeta y lo pasa a cocina. Si el cliente pide hablar con una persona, te avisa y tu equipo sigue el chat desde el panel. Viene desde el plan de ${soles(WHATSAPP.precioMensual)} con un cupo mensual de conversaciones que fijamos según tu volumen; en ${COMPLETO.nombre} el cupo es 3 veces mayor.`,
+  },
+  {
+    pregunta: "¿Mis clientes pueden pedir para más tarde?",
     respuesta:
-      "Conversa con tu cliente en español, arma el pedido con los platos y precios de tu carta, le cobra y lo manda a cocina. Si el cliente pide hablar con una persona, te avisa y tu equipo sigue el chat desde el panel. Viene desde el plan de S/ 499 con un cupo mensual de conversaciones que fijamos según tu volumen.",
+      "Sí. Con los pedidos programados tu cliente elige el día y la hora de entrega o de recojo dentro de tu horario, y el pedido entra al panel para prepararlo a tiempo. Viene en todos los planes.",
   },
   {
     pregunta: "¿También recibe pedidos de Rappi o PedidosYa?",
@@ -51,9 +67,13 @@ export const FAQS: Pregunta[] = [
       "No. Los pedidos de Rappi y PedidosYa se siguen atendiendo en sus propias plataformas. Pedily es para vender por tus canales propios (web, WhatsApp y kiosko) sin comisión. Para el reparto sí puedes usar PedidosYa Envíos.",
   },
   {
-    pregunta: "¿Cómo funciona el kiosko?",
+    pregunta: "¿Cómo funcionan el kiosko y el QR de mesa?",
+    respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla.`,
+  },
+  {
+    pregunta: "¿Dónde se guardan los datos?",
     respuesta:
-      "Es una pantalla táctil con navegador en tu local. Tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Viene en el plan de S/ 999.",
+      "En servidores de Estados Unidos (Virginia, región iad1), de Vercel y Supabase. Eso es una transferencia internacional de datos personales (flujo transfronterizo, artículo 15 de la Ley 29733), y lo hacemos con proveedores que cifran las conexiones y restringen el acceso. Los detalles están en la política de privacidad. Si dejas Pedily, puedes exportar tus datos durante 30 días; luego se borran.",
   },
   {
     pregunta: "¿Quién está detrás de Pedily?",

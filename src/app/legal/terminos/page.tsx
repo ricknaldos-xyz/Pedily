@@ -3,7 +3,14 @@
 // los datos del dueño y la revisión de un abogado.
 import { Container } from "@/components/layout/Container";
 import { CONTACT_EMAIL, EMPRESA } from "@/lib/site";
-import { MESES_PERMANENCIA_ALTA_GRATIS } from "@/lib/planes";
+import {
+  altaProporcional,
+  EJEMPLO_ALTA,
+  MESES_PERMANENCIA_ALTA_GRATIS,
+  PLANES,
+  soles,
+} from "@/lib/planes";
+import { FUNDADORES } from "@/lib/site";
 
 export const metadata = {
   title: "Términos y condiciones | Pedily",
@@ -39,7 +46,7 @@ export default function TerminosPage() {
           <p>
             Pedily es un servicio en línea que permite a negocios de comida
             vender por sus propios canales (tienda web, asistente de pedidos
-            por WhatsApp y kiosko de autoservicio) y gestionar sus pedidos,
+            por WhatsApp, kiosko de autoservicio y QR de mesa) y gestionar sus pedidos,
             cobros y comprobantes. Pedily es operado por {EMPRESA.razonSocial}
             {EMPRESA.ruc && <>, con RUC {EMPRESA.ruc}</>}
             {EMPRESA.domicilioFiscal && (
@@ -74,11 +81,33 @@ export default function TerminosPage() {
 
           <h2>4. Alta y permanencia</h2>
           <p>
-            El alta es gratis si mantienes tu plan al menos{" "}
+            El alta (la puesta en marcha de tu tienda) cuesta:{" "}
+            {PLANES.map((p, i) => (
+              <span key={p.id}>
+                {i > 0 && (i === PLANES.length - 1 ? " y " : ", ")}
+                {soles(p.alta)} en el plan {p.nombre}
+              </span>
+            ))}
+            . Es gratis si mantienes tu plan al menos{" "}
             {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si terminas el servicio
-            antes, pagas la parte proporcional del costo del alta indicado en
-            tu contrato. Para terminar el servicio, avísanos por escrito.
+            antes, pagas la parte del alta que corresponde a los meses que
+            faltan: alta × (meses que faltan ÷ {MESES_PERMANENCIA_ALTA_GRATIS}),
+            redondeado a sol entero. Por ejemplo, en el plan{" "}
+            {EJEMPLO_ALTA.plan}, si te vas tras {EJEMPLO_ALTA.mesesPagados}{" "}
+            meses pagas {soles(EJEMPLO_ALTA.alta)} ×{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados}/
+            {MESES_PERMANENCIA_ALTA_GRATIS} ={" "}
+            {soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}.
+            Para terminar el servicio, avísanos por escrito.
           </p>
+          {FUNDADORES.activo && (
+            <p>
+              Los restaurantes del programa de fundadores (los primeros{" "}
+              {FUNDADORES.cupos}) tienen el alta gratis sin condición de
+              permanencia y su precio congelado{" "}
+              {FUNDADORES.mesesPrecioCongelado} meses desde el alta.
+            </p>
+          )}
 
           <h2>5. Uso aceptable</h2>
           <p>Te comprometes a:</p>

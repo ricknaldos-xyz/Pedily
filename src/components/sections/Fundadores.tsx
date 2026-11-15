@@ -10,7 +10,9 @@ export function Fundadores() {
 
   const beneficios = [
     `Tu precio congelado ${FUNDADORES.mesesPrecioCongelado} meses`,
-    ...(FUNDADORES.altaGratis ? ["Alta gratis"] : []),
+    ...(FUNDADORES.altaGratis
+      ? [FUNDADORES.sinPermanencia ? "Alta gratis, sin permanencia" : "Alta gratis"]
+      : []),
     ...(FUNDADORES.acompanamientoDirecto
       ? ["Te acompaña directamente el equipo en la puesta en marcha"]
       : []),
