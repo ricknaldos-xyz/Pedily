@@ -22,9 +22,9 @@ export function CanalesPropios() {
               <div className="overflow-hidden rounded-[1.4rem] border-4 border-sand-900 bg-white shadow-elevated">
                 <Image
                   src="/capturas/tienda-carta.webp"
-                  alt="Carta de la tienda de ejemplo en un celular, con categorías, platos y precios"
+                  alt="Carta de la tienda de ejemplo en un celular: acompañamientos con foto, tamaños y precio"
                   width={560}
-                  height={1106}
+                  height={1120}
                   sizes="(max-width: 640px) 45vw, 300px"
                   className="h-auto w-full"
                 />
@@ -39,9 +39,9 @@ export function CanalesPropios() {
               <div className="overflow-hidden rounded-xl border-4 border-sand-800 bg-white shadow-elevated">
                 <Image
                   src="/capturas/kiosko-carta.webp"
-                  alt="Pantalla del kiosko de autoservicio con la carta y el botón Agregar"
+                  alt="Kiosko de autoservicio con la misma carta: acompañamientos con foto, precio y botón Agregar"
                   width={760}
-                  height={820}
+                  height={795}
                   sizes="(max-width: 640px) 45vw, 420px"
                   className="h-auto w-full"
                 />
