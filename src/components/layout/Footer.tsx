@@ -6,13 +6,20 @@ import {
   DEMO,
   EMPRESA,
 } from "@/lib/site";
+import { HERRAMIENTAS } from "@/lib/herramientas";
 
 // Con «/» delante para que funcionen también fuera de la portada.
 const productLinks = [
   { href: "/#como-funciona", label: "Cómo funciona" },
   { href: "/precios", label: "Precios" },
   { href: DEMO.tiendaUrl, label: "Tienda de ejemplo" },
+  { href: "/#comparativa", label: "Comparar canales" },
   { href: "/#faq", label: "Preguntas frecuentes" },
+];
+
+const toolLinks = [
+  ...HERRAMIENTAS.map((h) => ({ href: `/herramientas/${h.slug}`, label: h.titulo })),
+  { href: "/herramientas", label: "Todas las herramientas" },
 ];
 
 const socialIcons: Record<string, React.ReactNode> = {
@@ -52,7 +59,7 @@ export function Footer() {
       <div className="h-px bg-sand-200" />
 
       <Container className="py-12 sm:py-16">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-12">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-10">
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-primary-700">
@@ -123,6 +130,22 @@ export function Footer() {
                     {...(link.href.startsWith("http")
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
+                    className="text-sm leading-relaxed text-sand-500 transition-colors hover:text-primary-600"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="text-sm font-semibold text-sand-900">Herramientas gratis</h3>
+            <ul className="mt-3 space-y-2.5">
+              {toolLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
                     className="text-sm leading-relaxed text-sand-500 transition-colors hover:text-primary-600"
                   >
                     {link.label}

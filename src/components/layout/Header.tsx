@@ -13,6 +13,7 @@ const landingLinks = [
   { href: "/#precios", label: "Precios" },
   { href: "/#fundadores", label: "Fundadores" },
   { href: "/#faq", label: "Preguntas" },
+  { href: "/herramientas", label: "Herramientas" },
 ];
 
 export function Header() {

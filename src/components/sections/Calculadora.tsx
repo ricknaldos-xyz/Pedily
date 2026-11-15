@@ -124,6 +124,14 @@ export function Calculadora() {
             tarjeta o Yape. Sin Nubefact ni mensajes de Meta sobre los gratuitos.
           </p>
         </div>
+        <p className="mt-4 text-center text-sm text-sand-600">
+          Más cuentas, gratis y con fuentes oficiales:{" "}
+          <a href="/herramientas/calculadora-comision-delivery" className="font-semibold text-primary-700 underline underline-offset-2">comisión de apps</a>
+          {" · "}
+          <a href="/herramientas/calculadora-igv-restaurantes" className="font-semibold text-primary-700 underline underline-offset-2">IGV 2027 de restaurantes</a>
+          {" · "}
+          <a href="/herramientas/costo-mensajes-whatsapp" className="font-semibold text-primary-700 underline underline-offset-2">mensajes de WhatsApp</a>
+        </p>
       </Container>
     </Bloque>
   );

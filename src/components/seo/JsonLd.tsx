@@ -1,5 +1,6 @@
 import { CONTACT_EMAIL, EMPRESA, WHATSAPP_TEL, whatsappLink } from "@/lib/site";
-import { FAQS } from "@/lib/faq";
+import { FAQS, type Pregunta } from "@/lib/faq";
+import type { Herramienta } from "@/lib/herramientas";
 import { PLANES } from "@/lib/planes";
 
 const SITE_URL = "https://pedily.com";
@@ -99,14 +100,17 @@ export function SoftwareApplicationJsonLd() {
   );
 }
 
-/** Mismo contenido que la FAQ visible (src/lib/faq.ts). */
-export function FAQPageJsonLd() {
+/**
+ * Mismo contenido que la FAQ visible (src/lib/faq.ts por defecto, o las
+ * preguntas de una herramienta).
+ */
+export function FAQPageJsonLd({ preguntas = FAQS }: { preguntas?: Pregunta[] } = {}) {
   return (
     <Script
       schema={{
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: FAQS.map((f) => ({
+        mainEntity: preguntas.map((f) => ({
           "@type": "Question",
           name: f.pregunta,
           acceptedAnswer: { "@type": "Answer", text: f.respuesta },
@@ -134,5 +138,41 @@ export function BreadcrumbJsonLd({
         })),
       }}
     />
+  );
+}
+
+/** Calculadora gratis: WebApplication gratuita + migas de pan. */
+export function HerramientaJsonLd({ h }: { h: Herramienta }) {
+  const url = `${SITE_URL}/herramientas/${h.slug}`;
+  return (
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: h.titulo,
+          url,
+          description: h.descripcion,
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          inLanguage: "es-PE",
+          isAccessibleForFree: true,
+          offers: { "@type": "Offer", price: "0", priceCurrency: "PEN" },
+          publisher: { "@type": "Organization", name: "Pedily", url: SITE_URL },
+          citation: h.fuentes.map((f) => ({
+            "@type": "CreativeWork",
+            name: f.nombre,
+            url: f.url,
+          })),
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: "Herramientas gratis", url: `${SITE_URL}/herramientas` },
+          { name: h.titulo, url },
+        ]}
+      />
+    </>
   );
 }
