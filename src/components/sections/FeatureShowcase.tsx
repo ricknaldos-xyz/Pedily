@@ -17,30 +17,30 @@ import {
 const features = [
   {
     icon: ShoppingBag,
-    title: "Tu menu, siempre actualizado",
+    title: "Tu carta, siempre al día",
     description:
-      "Arma tu catalogo con categorias, variantes y personalizaciones. Tus clientes ven fotos, precios y piden desde el celular o la compu.",
+      "Arma tu carta con categorías, tamaños y extras. Tus clientes ven fotos y precios y piden desde el celular o la compu.",
     bullets: [
-      "Categorias organizadas como tu quieras",
-      "Variantes (tamanos, sabores, presentaciones)",
-      "Modificadores tipo 'sin cebolla', 'extra queso'",
+      "Categorías ordenadas como tú quieras",
+      "Variantes (tamaños, sabores, presentaciones)",
+      "Extras y notas como «sin cebolla» o «extra queso»",
       "Stock que se actualiza solo",
-      "Fotos que cargan rapido en cualquier conexion",
+      "Fotos que cargan rápido en cualquier conexión",
     ],
     mockup: "catalog",
   },
   {
     icon: LayoutDashboard,
-    title: "Hub: todos tus pedidos en un lugar",
+    title: "Todos tus pedidos en un solo panel",
     description:
-      "Web, WhatsApp o kiosko, da igual. Todo llega al mismo Hub. Notificacion instantanea, estados claros, tu equipo siempre al dia.",
+      "Web, WhatsApp o kiosko, da igual: todo llega al mismo panel, con aviso al instante y estados claros. Tu equipo siempre al día.",
     bullets: [
-      "3 canales, 1 solo dashboard",
-      "Notificacion al toque cuando entra un pedido",
+      "3 canales, un solo panel",
+      "Aviso al toque cuando entra un pedido",
       "10 estados: por verificar, confirmado, en cocina, listo, en camino, entregado...",
       "Roles para tu equipo: admin, cocina, operador",
       "Historial completo de cada pedido",
-      "Verificacion de pagos Yape/Plin con foto",
+      "Verificación de pagos Yape/Plin con foto",
     ],
     mockup: "dashboard",
   },
@@ -52,9 +52,9 @@ const features = [
     bullets: [
       "Tarjetas con Culqi (web y WhatsApp)",
       "Tarjeta y Yape también en el kiosko",
-      "Yape y Plin con verificacion de comprobante",
-      "Boleta y Factura electronica automatica",
-      "Integracion con Nubefact y SUNAT",
+      "Yape y Plin por QR con verificación del comprobante",
+      "Boleta y factura electrónica automáticas",
+      "Conectado con Nubefact y SUNAT",
     ],
     mockup: "payments",
   },
@@ -64,24 +64,24 @@ const features = [
     description:
       "Una pantalla táctil en tu local: el cliente pide y paga solo, o paga en caja. El pedido llega a cocina.",
     bullets: [
-      "Pantalla tactil facil de usar",
-      "Tu menu completo con fotos",
-      "Personalizaciones y modificadores",
+      "Pantalla táctil fácil de usar",
+      "Tu carta completa con fotos",
+      "Personalizaciones y extras",
       "Paga con tarjeta o Yape en pantalla, o en caja",
       "Ticket y boleta impresos (requiere PC con Windows e impresora térmica)",
-      "El pedido aparece en el Hub al instante",
+      "El pedido aparece en el panel al instante",
     ],
     mockup: "kiosk",
   },
   {
     icon: MessageCircle,
-    title: "Bot WhatsApp que vende por ti",
+    title: "Asistente de WhatsApp (desde el plan de S/ 499)",
     description:
-      "Tu asistente con IA (Claude) atiende WhatsApp 24/7. Responde preguntas, recomienda platos y cierra pedidos. Cuando hace falta, pasa la conversación a tu equipo.",
+      "Tu asistente con IA atiende WhatsApp a cualquier hora: responde preguntas, recomienda platos y cierra pedidos. Cuando hace falta, pasa la conversación a tu equipo.",
     bullets: [
       "Entiende pedidos escritos en lenguaje natural",
-      "Toma el pedido completo por chat, del 'hola' al pago",
-      "Tu equipo interviene cuando quiera (takeover)",
+      "Toma el pedido completo por chat, del «hola» al pago",
+      "Tu equipo toma el chat cuando quiera",
       "Nunca inventa precios: valida contra tu catálogo",
     ],
     mockup: "whatsapp",
@@ -90,12 +90,12 @@ const features = [
     icon: MapPin,
     title: "Delivery bajo control",
     description:
-      "Define tus zonas por distrito o código postal, con su tarifa y su tiempo de entrega. Si necesitas repartidores, conecta con PedidosYa Envíos.",
+      "Define tus zonas de reparto con su tarifa y su tiempo de entrega. Si necesitas repartidores, conecta con PedidosYa Envíos.",
     bullets: [
       "Tarifa y tiempo por zona",
-      "Costo automatico por zona o distrito",
+      "El costo de envío se calcula solo",
       "Envíos con PedidosYa cuando no tienes repartidor",
-      "Opcion de recojo en tienda",
+      "Opción de recojo en tienda",
       "Clientes guardan varias direcciones",
       "Tu cliente ve el estado de su pedido",
     ],
@@ -105,12 +105,12 @@ const features = [
     icon: Gift,
     title: "Clientes que vuelven",
     description:
-      "Cupones y descuentos para que tus clientes repitan.",
+      "Cupones, referidos y saldo a favor para que tus clientes repitan. Los enciendes tú desde «Opciones de tu tienda».",
     bullets: [
       "Cupones de descuento (% o monto fijo)",
       "Descuentos por categoría o producto",
       "Vencimiento y límite de usos",
-      "Opcional: saldo a favor en cada compra",
+      "Referidos y saldo a favor, si los enciendes",
       "Tus clientes repiten su último pedido en dos toques",
     ],
     mockup: "loyalty",
@@ -122,7 +122,7 @@ function FeatureMockup({ type }: { type: string }) {
     catalog: (
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-bold text-sand-700">Menu</h4>
+          <h4 className="text-sm font-bold text-sand-700">Carta</h4>
           <span className="text-xs text-sand-400">12 productos</span>
         </div>
         <div className="flex gap-2 overflow-hidden">
@@ -136,8 +136,8 @@ function FeatureMockup({ type }: { type: string }) {
           ))}
         </div>
         {[
-          { name: "Lomo Saltado", price: "S/ 32.00" },
-          { name: "Ceviche Clasico", price: "S/ 38.00" },
+          { name: "Lomo saltado", price: "S/ 32.00" },
+          { name: "Ceviche clásico", price: "S/ 38.00" },
           { name: "Arroz con Pollo", price: "S/ 28.00" },
         ].map((item) => (
           <div
@@ -147,7 +147,7 @@ function FeatureMockup({ type }: { type: string }) {
             <div className="h-12 w-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-orange-100 to-orange-200" />
             <div className="flex-1">
               <p className="text-sm font-medium text-sand-700">{item.name}</p>
-              <p className="text-xs text-sand-400">Incluye guarnicion</p>
+              <p className="text-xs text-sand-400">Incluye guarnición</p>
             </div>
             <span className="text-sm font-bold text-primary-600">
               {item.price}
@@ -160,9 +160,6 @@ function FeatureMockup({ type }: { type: string }) {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h4 className="text-sm font-bold text-sand-700">Pedidos hoy</h4>
-          <span className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-medium text-accent-700">
-            +18%
-          </span>
         </div>
         <div className="grid grid-cols-3 gap-2">
           {[
@@ -179,17 +176,11 @@ function FeatureMockup({ type }: { type: string }) {
             </div>
           ))}
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-sand-100">
-          <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500" />
-        </div>
-        <p className="text-xs text-sand-400">
-          Meta del dia: 75% completado (S/ 2,340 de S/ 3,100)
-        </p>
       </div>
     ),
     payments: (
       <div className="space-y-3">
-        <h4 className="text-sm font-bold text-sand-700">Metodos de pago</h4>
+        <h4 className="text-sm font-bold text-sand-700">Formas de pago</h4>
         {[
           { name: "Tarjeta (Culqi)", icon: "💳", status: "Web/Bot" },
           { name: "Yape / Plin", icon: "📱", status: "Todos" },
@@ -209,7 +200,7 @@ function FeatureMockup({ type }: { type: string }) {
         ))}
         <div className="mt-2 rounded-lg bg-primary-50 p-2 text-center">
           <p className="text-xs text-primary-700">
-            Facturacion electronica SUNAT incluida
+            Boletas SUNAT automáticas
           </p>
         </div>
       </div>
@@ -243,7 +234,7 @@ function FeatureMockup({ type }: { type: string }) {
             ))}
           </div>
           <div className="mt-2 flex items-center justify-between rounded-lg bg-primary-600 p-2">
-            <span className="text-[10px] text-white">2 items</span>
+            <span className="text-[10px] text-white">2 platos</span>
             <span className="text-xs font-bold text-white">S/ 45.00</span>
           </div>
         </div>
@@ -263,7 +254,7 @@ function FeatureMockup({ type }: { type: string }) {
     delivery: (
       <div className="space-y-3">
         <h4 className="text-sm font-bold text-sand-700">Zona de cobertura</h4>
-        <div className="flex h-32 items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-green-50">
+        <div className="flex h-32 platos-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-green-50">
           <div className="relative">
             <div className="h-20 w-20 rounded-full border-2 border-dashed border-primary-300 bg-primary-50/50" />
             <MapPin className="absolute top-1/2 left-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-primary-600" />
@@ -287,23 +278,23 @@ function FeatureMockup({ type }: { type: string }) {
             </h4>
           </div>
           <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-medium text-purple-700">
-            Claude AI
+            Desde S/ 499
           </span>
         </div>
         <div className="space-y-2 rounded-lg bg-sand-50 p-3">
           <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-sand-700">
-            Que me recomiendas para cenar?
+            ¿Qué me recomiendas para cenar?
           </div>
           <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-sand-700">
-            Te recomiendo nuestro Lomo Saltado, es el favorito! Viene con arroz y papas fritas. Quieres que te lo agregue al carrito?
+            ¡Te recomiendo el lomo saltado, es el favorito! Viene con arroz y papas fritas. ¿Te lo agrego al pedido?
           </div>
           <div className="ml-auto w-3/4 rounded-lg rounded-br-sm bg-green-100 p-2 text-xs text-sand-700">
-            Si, dale! Y una gaseosa
+            ¡Sí, dale! Y una gaseosa
           </div>
           <div className="w-3/4 rounded-lg rounded-bl-sm bg-white p-2 text-xs text-sand-700">
-            Listo! Tu carrito:
+            ¡Listo! Tu pedido:
             <div className="mt-1 space-y-0.5 text-[10px]">
-              <p>1x Lomo Saltado - S/ 32.00</p>
+              <p>1x Lomo saltado - S/ 32.00</p>
               <p>1x Inca Kola 500ml - S/ 5.00</p>
               <p className="font-bold">Total: S/ 37.00</p>
             </div>
@@ -345,7 +336,7 @@ export function FeatureShowcase() {
             Funcionalidades
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
-            Todo integrado, nada extra que instalar
+            Todo lo que necesitas para vender por tu cuenta
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
             Catálogo, pedidos, pagos, delivery, fidelización y operación. Un

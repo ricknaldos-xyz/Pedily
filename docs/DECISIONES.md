@@ -1,16 +1,23 @@
 # Decisiones del dueño que afectan a la landing
 
-Estado al 11-nov-2026 (tarea L-00 del plan). Mientras una decisión diga «sin respuesta», las tareas L-01 a L-08 aplican el texto por defecto prudente que fija el plan (`pedily/_notas/plan/02_plan_web_kiosko.md`, bloque I).
+Estado al 15-nov-2026 (tareas L-17 y L-18 del plan). Fuente: `pedily/_notas/plan/BITACORA.md`, «Decisiones del dueño» (14 y 15-nov). Todo lo comercial vive en un solo sitio del código: `src/lib/planes.ts` (planes, costos aparte) y `src/lib/site.ts` (demos, empresa, restaurante de origen, fundadores).
 
-| # | Decisión | Respuesta | Qué se aplica mientras tanto |
+| # | Decisión | Respuesta | Cómo se aplica |
 |---|---|---|---|
-| 1 | Precios | **Sin respuesta: se aplica el texto por defecto.** | No se publica ningún precio. Un solo bloque «Un solo sistema, a la medida de tu restaurante» con botón «Pide tu cotización» (L-02). Recomendación del plan: no publicar precios hasta medir costos en la demo. |
-| 2 | Nombre comercial del producto que muestra la landing | **Sin respuesta: se aplica el texto por defecto.** | La landing conserva el nombre de trabajo que ya tenía; no se escribe ningún nombre nuevo. El mensaje por defecto de WhatsApp (`src/lib/site.ts`) cambiará con esta decisión (L-08). |
-| 3 | Caso de cliente: si el restaurante original autoriza ser nombrado y con qué cifras | **Sin respuesta: se aplica el texto por defecto.** | Sin permiso escrito, el caso se publica sin nombre y sin cifras no confirmadas («Probado en un restaurante real», un solo local) (L-04). |
-| 4 | Razón social del operador y datos de contacto reales (WhatsApp, correo) | **Sin respuesta: se aplica el texto por defecto.** | Sin número configurado no se pinta ningún botón de WhatsApp; sin correo, no se muestra correo. La razón social de los términos queda marcada como pendiente (L-08). Obligatorio antes de publicar. |
-| 5 | Qué canales se ofrecen ya | **Sin respuesta: se aplica el texto por defecto.** | Web y panel, seguro; bot de WhatsApp, cuando acabe la fase 5 del plan; kiosko, solo con PC con Windows e impresora térmica. La landing los presenta como opciones de la instalación acompañada, sin «próximamente». |
+| 1 | Precios | **S/ 249 / 499 / 999 al mes, IGV incluido, 0 % de comisión al restaurante y al comensal** (14-nov). Pago anual = 2 meses gratis (15-nov). | Tres tarjetas en la portada y en `/precios` (`PLANES`). El de S/ 249 **no** trae el asistente de WhatsApp; va desde S/ 499. Los cupos de conversaciones **no** se publican: «incluye un cupo mensual de conversaciones; te decimos cuál según tu volumen». **Por decidir:** qué incluye exactamente el plan de S/ 999 (hoy: kiosko + cupo mayor, propuesta). |
+| 2 | Alta y permanencia | **Alta gratis si se queda 6 meses; si se va antes, paga la parte proporcional del alta** (14-nov). | Fuera «cancela cuando quieras» y cualquier «sin permanencia». **Falta:** el valor del alta (los términos remiten «al contrato») y la revisión del abogado. |
+| 3 | Lo que paga aparte el restaurante | **Culqi 3,44 % + US$ 0,20 por venta; Nubefact desde S/ 70/mes; mensajes de WhatsApp que Meta cobra a su tarjeta.** Pedily nunca toca el dinero. | Recuadro «Lo que pagas aparte» bajo los precios y FAQ, con enlace a la tarifa de cada proveedor (`COSTOS_APARTE`). Fuentes en `reports/Pedily revisión de propuestas.md`. |
+| 4 | Caso del restaurante de origen | **Se puede nombrar como el restaurante donde nació y se probó Pedily, SIN NINGUNA CIFRA** (15-nov). | El nombre vive solo en `RESTAURANTE_ORIGEN` (`src/lib/site.ts`). `scripts/comprobar-promesas.sh` falla si aparece en otro archivo de `src/`/`public/`, si se escribe incompleto o si su línea lleva números (en todo el repo, docs incluidos). |
+| 5 | Empresa operadora | **Hub de Innovacion Digital SAC** (14-nov). RUC, domicilio fiscal y correos llegan al final. | `EMPRESA` en `src/lib/site.ts`; RUC y domicilio en `null` no se pintan (ni su etiqueta). Los legales llevan la fecha del 15-nov y siguen pendientes de abogado. |
+| 6 | Programa de fundadores | **Sí** (15-nov). Condiciones **propuestas** por el coordinador: 10 cupos, precio congelado 24 meses, alta gratis, acompañamiento directo, a cambio de permiso para contar su caso. | `FUNDADORES` en `src/lib/site.ts`. Sin contador de cupos restantes. El dueño puede cambiar cualquier valor ahí. |
+| 7 | Bot de demostración por WhatsApp | **Sí, público** (15-nov); número nuevo y alta en Meta a cargo del dueño. | Botón «Prueba el bot por WhatsApp» solo si existe `NEXT_PUBLIC_DEMO_BOT_WHATSAPP`; si no, no se pinta (nada de «próximamente»). |
+| 8 | Tienda de demostración | Publicada en `https://pedily-demo-web.vercel.app` (W-52). | «Mira una tienda de ejemplo» en el hero, la cabecera y el pie (`DEMO.tiendaUrl`). |
+| 9 | Nombre comercial | Sin cambio: se mantiene el nombre de trabajo. | — |
 
-Decisiones ya tomadas en otras partes del plan que también tocan la landing (`pedily/_notas/plan/BITACORA.md`):
+Reglas permanentes:
 
-- Recompensas (saldo del 3 %): **apagadas por defecto**, se encienden por restaurante. La landing solo puede presentarlas como opción («si quieres, saldo a favor»).
-- Medios de pago: Yape, tarjeta y QR. **Sin efectivo** (plan maestro §1).
+- Nada de «en preparación», «próximamente» ni «pronto»: lo prometido existe o se quita (registro en `docs/PROMESAS.md`).
+- No inventar clientes, testimonios, cifras ni logos.
+- No decir «nadie más lo hace»: Quick eat! ya junta bot, kiosko y SUNAT. Lo que se comunica es lo comprobable: precio visible, 0 % de comisión al restaurante y al comensal, asistente que toma el pedido completo y cobra, alta guiada sin reunión obligatoria, carta cargada con IA desde una foto, vender desde el día 1 con QR de Yape/Plin, Pedily no toca el dinero, empresa peruana.
+- Recompensas (saldo a favor) y el resto de «Opciones de tu tienda»: **apagadas por defecto**, las enciende cada restaurante.
+- Medios de pago: Yape, tarjeta y QR. **Sin efectivo.**

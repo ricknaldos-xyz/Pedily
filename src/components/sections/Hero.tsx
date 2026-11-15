@@ -16,21 +16,21 @@ const WhatsAppGlyph = () => (
 const channels = [
   {
     icon: Globe,
-    label: "Tienda Web",
+    label: "Tienda web",
     bg: "bg-blue-50",
     text: "text-blue-700",
     ring: "ring-blue-200",
   },
   {
     icon: MessageCircle,
-    label: "Bot WhatsApp + IA",
+    label: "WhatsApp con IA · desde S/ 499",
     bg: "bg-primary-100",
     text: "text-primary-800",
     ring: "ring-primary-200",
   },
   {
     icon: Monitor,
-    label: "Kiosko Autoservicio",
+    label: "Kiosko de autoservicio",
     bg: "bg-cream-200",
     text: "text-cream-800",
     ring: "ring-cream-400",
@@ -73,10 +73,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-sand-600">
-              El sistema operativo de tu restaurante: vende por{" "}
-              <strong className="text-sand-800">web, WhatsApp con IA y kiosko</strong>, y maneja
-              pedidos, cocina, inventario, finanzas y facturación SUNAT desde un
-              solo Hub. <strong className="text-sand-800">Sin comisiones por pedido.</strong>
+              La tienda propia de tu restaurante: web, WhatsApp con IA y kiosko,
+              con cobro directo en tu cuenta y boletas SUNAT.{" "}
+              <strong className="text-sand-800">Desde S/ 249 al mes con IGV, 0 % de comisión por pedido.</strong>
             </p>
 
             {/* 3 Channels badges */}
@@ -100,7 +99,7 @@ export function Hero() {
                 href="/contacto"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-semibold text-white shadow-warm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
-                Agenda una demo
+                Crear mi tienda
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               {waHref && (
@@ -162,11 +161,11 @@ export function Hero() {
                   <div className="h-3 w-3 rounded-full bg-red-400" />
                   <div className="h-3 w-3 rounded-full bg-yellow-400" />
                   <div className="h-3 w-3 rounded-full bg-green-400" />
-                  <span className="ml-2 text-xs text-sand-400">hub.pedily.com</span>
+                  <span className="ml-2 text-xs text-sand-400">turestaurante.pe/panel</span>
                 </div>
                 <div className="p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-sand-800">Hub de Pedidos</h3>
+                    <h3 className="text-lg font-bold text-sand-800">Pedidos de hoy</h3>
                     <div className="flex items-center gap-1.5">
                       <span className="animate-pulse-soft rounded-full bg-accent-100 px-2.5 py-1 text-xs font-medium text-accent-700">
                         15 nuevos

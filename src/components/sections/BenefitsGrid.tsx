@@ -10,13 +10,13 @@ const benefits = [
     icon: Store,
     title: "Vende en todos lados",
     description:
-      "Web, WhatsApp con IA y kiosko de autoservicio. Una sola marca, un solo catálogo, un solo Hub.",
+      "Web, WhatsApp con IA y kiosko de autoservicio. Una sola marca, un solo catálogo, un solo panel.",
   },
   {
     icon: Bot,
     title: "Un bot que toma pedidos",
     description:
-      "IA que responde por WhatsApp a cualquier hora y toma pedidos en lenguaje natural. Cuando hace falta, pasa la conversación a una persona de tu equipo.",
+      "Desde el plan de S/ 499: una IA que responde por WhatsApp a cualquier hora y toma pedidos en lenguaje natural. Cuando hace falta, pasa la conversación a una persona de tu equipo.",
   },
   {
     icon: LayoutDashboard,
@@ -26,9 +26,9 @@ const benefits = [
   },
   {
     icon: Ban,
-    title: "Sin comisiones por pedido",
+    title: "0 % de comisión por pedido",
     description:
-      "Nada de 25% por pedido como los agregadores. Te preparamos una cotización según lo que uses.",
+      "Nada del 30 % por pedido de las apps. Pagas una cuota fija desde S/ 249 al mes, con IGV.",
   },
 ];
 

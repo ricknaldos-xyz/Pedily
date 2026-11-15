@@ -11,7 +11,7 @@ const integrations = [
   "Nubefact · SUNAT",
   "WhatsApp Business",
   "PedidosYa Envíos",
-  "Claude AI",
+  "Claude (Anthropic)",
 ];
 
 function Item({ name }: { name: string }) {
@@ -30,7 +30,7 @@ export function TrustStrip() {
       <Container>
         <AnimatedSection>
           <p className="mb-5 text-center text-xs font-medium uppercase tracking-wider text-sand-400">
-            Conecta con lo que ya usas en Perú · sin instalar nada extra
+            Funciona con lo que ya usas en Perú
           </p>
         </AnimatedSection>
       </Container>

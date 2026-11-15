@@ -1,163 +1,165 @@
-// PENDIENTE DE REVISIÓN LEGAL (plan Pedily, L-08): razón social, RUC y domicilio
-// del operador, correos de contacto y la sección de cuentas (hoy el servicio se
-// contrata por acuerdo con cada restaurante, no por registro en línea) esperan la
-// decisión del dueño (docs/DECISIONES.md, nº 2 y 4) y la revisión de un abogado.
+// PENDIENTE DE REVISIÓN LEGAL (plan Pedily, L-08): RUC y domicilio del
+// operador, correos de contacto, permanencia y tope de responsabilidad esperan
+// los datos del dueño y la revisión de un abogado.
 import { Container } from "@/components/layout/Container";
-import { Footer } from "@/components/layout/Footer";
+import { CONTACT_EMAIL, EMPRESA } from "@/lib/site";
+import { MESES_PERMANENCIA_ALTA_GRATIS } from "@/lib/planes";
 
 export const metadata = {
-  title: "Terminos y Condiciones | Pedily",
-  description: "Terminos y condiciones de uso de la plataforma Pedily.",
+  title: "Términos y condiciones | Pedily",
+  description: "Términos y condiciones de uso de Pedily.",
 };
+
+function Contacto() {
+  return CONTACT_EMAIL ? (
+    <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+  ) : (
+    <a href="/contacto">nuestra página de contacto</a>
+  );
+}
 
 export default function TerminosPage() {
   return (
-    <>
-      <main className="min-h-screen bg-white py-16 sm:py-24">
-        <Container className="max-w-3xl">
-          <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">
-            Terminos y Condiciones
-          </h1>
-          <p className="mt-4 text-sm text-sand-500">
-            Ultima actualizacion: Febrero 2026
+    <div className="min-h-screen bg-white py-16 sm:py-24">
+      <Container className="max-w-3xl">
+        <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">
+          Términos y condiciones
+        </h1>
+        <p className="mt-4 text-sm text-sand-500">
+          Última actualización: 15 de noviembre de 2026
+        </p>
+
+        <div className="legal mt-10 max-w-none space-y-4 text-sand-700">
+          <p>
+            Bienvenido a Pedily. Al contratar y usar Pedily aceptas estos
+            términos. Léelos con calma: están escritos para que se entiendan.
           </p>
 
-          <div className="prose prose-slate mt-10 max-w-none">
-            <p>
-              Bienvenido a Pedily. Al usar nuestra plataforma, aceptas estos
-              terminos. Leelos con calma, estan escritos para que se entiendan.
-            </p>
+          <h2>1. Qué es Pedily</h2>
+          <p>
+            Pedily es un servicio en línea que permite a negocios de comida
+            vender por sus propios canales (tienda web, asistente de pedidos
+            por WhatsApp y kiosko de autoservicio) y gestionar sus pedidos,
+            cobros y comprobantes. Pedily es operado por {EMPRESA.razonSocial}
+            {EMPRESA.ruc && <>, con RUC {EMPRESA.ruc}</>}
+            {EMPRESA.domicilioFiscal && (
+              <>, con domicilio en {EMPRESA.domicilioFiscal}</>
+            )}
+            , empresa peruana.
+          </p>
 
-            <h2>1. Que es Pedily</h2>
-            <p>
-              Pedily es una plataforma SaaS (Software as a Service) que permite
-              a negocios de comida recibir pedidos a traves de varios
-              canales: tienda web, bot de WhatsApp y kiosko de autoservicio.
-              Pedily es operado por Hub de Innovacion Digital SAC, con domicilio
-              en Lima, Peru.
-            </p>
+          <h2>2. Tu cuenta</h2>
+          <p>
+            Para usar Pedily te damos acceso a un panel. Eres responsable de
+            mantener tu contraseña segura y de lo que pase en tu cuenta. Si
+            sospechas que alguien entró sin permiso, avísanos de inmediato.
+          </p>
 
-            <h2>2. Cuentas de usuario</h2>
-            <p>
-              Para usar Pedily necesitas crear una cuenta. Tu eres responsable
-              de mantener tu contrasena segura y de todo lo que pase en tu
-              cuenta. Si sospechas que alguien accedio sin permiso, avisanos de
-              inmediato.
-            </p>
+          <h2>3. Planes y pagos</h2>
+          <p>
+            Los precios de los planes están publicados en nuestra web, con IGV
+            incluido, y pueden cambiar con aviso previo de 30 días. El pago es
+            por adelantado, mensual o anual según elijas. Pedily no cobra
+            comisión por pedido ni al restaurante ni a sus clientes.
+          </p>
+          <ul>
+            <li>
+              Lo que cobran otros proveedores (Culqi, Nubefact, Meta por los
+              mensajes de WhatsApp) lo pagas directamente a cada uno, según sus
+              propias tarifas.
+            </li>
+            <li>Si no pagas, tu cuenta puede suspenderse hasta regularizar.</li>
+            <li>No hay reembolsos por meses no usados, salvo casos especiales.</li>
+          </ul>
 
-            <h2>3. Planes y pagos</h2>
-            <p>
-              Ofrecemos diferentes planes con distintas funcionalidades. Los
-              precios estan publicados en nuestra web y pueden cambiar con aviso
-              previo de 30 dias. El pago es por adelantado, mensual o anual
-              segun elijas.
-            </p>
-            <ul>
-              <li>
-                Los pagos se procesan a traves de pasarelas seguras (Culqi).
-              </li>
-              <li>
-                Si no pagas, tu cuenta puede ser suspendida hasta regularizar.
-              </li>
-              <li>
-                No hay reembolsos por meses no usados, salvo casos especiales.
-              </li>
-            </ul>
+          <h2>4. Alta y permanencia</h2>
+          <p>
+            El alta es gratis si mantienes tu plan al menos{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si terminas el servicio
+            antes, pagas la parte proporcional del costo del alta indicado en
+            tu contrato. Para terminar el servicio, avísanos por escrito.
+          </p>
 
-            <h2>4. Uso aceptable</h2>
-            <p>Te comprometes a:</p>
-            <ul>
-              <li>Usar Pedily solo para fines legales.</li>
-              <li>No vender productos prohibidos o regulados sin permiso.</li>
-              <li>Mantener la informacion de tu negocio actualizada.</li>
-              <li>No intentar hackear, sobrecargar o danar la plataforma.</li>
-              <li>
-                No usar el bot de WhatsApp para spam o mensajes no solicitados.
-              </li>
-            </ul>
+          <h2>5. Uso aceptable</h2>
+          <p>Te comprometes a:</p>
+          <ul>
+            <li>Usar Pedily solo para fines legales.</li>
+            <li>No vender productos prohibidos o regulados sin permiso.</li>
+            <li>Mantener la información de tu negocio actualizada.</li>
+            <li>No intentar vulnerar, sobrecargar o dañar la plataforma.</li>
+            <li>
+              No usar WhatsApp para enviar spam ni mensajes no solicitados.
+            </li>
+          </ul>
 
-            <h2>5. Contenido y datos</h2>
-            <p>
-              Tu mantienes la propiedad de todo el contenido que subes (fotos,
-              descripciones, precios). Nos das permiso para mostrarlo en tu
-              tienda y procesarlo para que el sistema funcione.
-            </p>
-            <p>
-              Los datos de tus clientes son tuyos. Nosotros solo los procesamos
-              para que puedas gestionar tus pedidos. Consulta nuestra Politica
-              de Privacidad para mas detalles.
-            </p>
+          <h2>6. Contenido y datos</h2>
+          <p>
+            Mantienes la propiedad de todo el contenido que subes (fotos,
+            descripciones, precios). Nos das permiso para mostrarlo en tu
+            tienda y procesarlo para que el sistema funcione.
+          </p>
+          <p>
+            Los datos de tus clientes son tuyos. Nosotros solo los tratamos por
+            tu cuenta, para que puedas gestionar tus pedidos. Consulta nuestra{" "}
+            <a href="/legal/privacidad">política de privacidad</a>.
+          </p>
 
-            <h2>6. Disponibilidad del servicio</h2>
-            <p>
-              Hacemos todo lo posible para que Pedily funcione 24/7, pero no
-              podemos garantizar disponibilidad perfecta. Puede haber
-              mantenimientos programados o caidas inesperadas. Te avisaremos
-              cuando sea posible.
-            </p>
+          <h2>7. Disponibilidad del servicio</h2>
+          <p>
+            Trabajamos para que Pedily funcione todo el tiempo, pero no podemos
+            garantizar una disponibilidad perfecta. Puede haber mantenimientos
+            programados o caídas inesperadas. Te avisaremos cuando sea posible.
+          </p>
 
-            <h2>7. Integraciones de terceros</h2>
-            <p>
-              Pedily se integra con servicios de terceros como Culqi,
-              WhatsApp (Meta), Nubefact y PedidosYa. Cada uno tiene sus propios
-              terminos que debes aceptar. No somos responsables de fallas o
-              cambios en estos servicios externos.
-            </p>
+          <h2>8. Servicios de terceros</h2>
+          <p>
+            Pedily se conecta con servicios de terceros como Culqi, WhatsApp
+            (Meta), Nubefact, Google Maps y PedidosYa. Cada uno tiene sus
+            propios términos, que debes aceptar con ellos. No somos
+            responsables de fallas o cambios en esos servicios.
+          </p>
 
-            <h2>8. Limitacion de responsabilidad</h2>
-            <p>
-              Pedily es una herramienta para gestionar pedidos. No somos
-              responsables de:
-            </p>
-            <ul>
-              <li>La calidad de los productos que vendes.</li>
-              <li>Problemas de delivery o repartidores.</li>
-              <li>Disputas entre tu y tus clientes.</li>
-              <li>
-                Perdidas economicas por caidas del servicio o errores en el
-                sistema.
-              </li>
-            </ul>
+          <h2>9. Limitación de responsabilidad</h2>
+          <p>Pedily es una herramienta para vender y gestionar pedidos. No somos responsables de:</p>
+          <ul>
+            <li>La calidad de los productos que vendes.</li>
+            <li>Problemas de reparto o de repartidores.</li>
+            <li>Disputas entre tú y tus clientes.</li>
+            <li>Pérdidas económicas por caídas del servicio o errores del sistema.</li>
+          </ul>
 
-            <h2>9. Cancelacion</h2>
-            <p>
-              Puedes cancelar tu cuenta cuando quieras desde el panel de
-              administracion. Al cancelar:
-            </p>
-            <ul>
-              <li>Tu tienda dejara de estar disponible.</li>
-              <li>
-                Tendras 30 dias para exportar tus datos antes de ser eliminados.
-              </li>
-              <li>Los pagos ya realizados no son reembolsables.</li>
-            </ul>
-            <p>
-              Nosotros tambien podemos cancelar tu cuenta si violas estos
-              terminos, con aviso previo salvo casos graves.
-            </p>
+          <h2>10. Fin del servicio</h2>
+          <p>Cuando termina el servicio:</p>
+          <ul>
+            <li>Tu tienda deja de estar disponible.</li>
+            <li>Tendrás 30 días para pedirnos tus datos antes de eliminarlos.</li>
+            <li>Los pagos ya realizados no son reembolsables.</li>
+          </ul>
+          <p>
+            También podemos terminar el servicio si incumples estos términos,
+            con aviso previo salvo casos graves.
+          </p>
 
-            <h2>10. Cambios en los terminos</h2>
-            <p>
-              Podemos actualizar estos terminos. Te avisaremos por email con al
-              menos 15 dias de anticipacion. Si sigues usando Pedily despues del
-              cambio, significa que aceptas los nuevos terminos.
-            </p>
+          <h2>11. Cambios en los términos</h2>
+          <p>
+            Podemos actualizar estos términos. Te avisaremos por correo con al
+            menos 15 días de anticipación. Si sigues usando Pedily después del
+            cambio, aceptas los nuevos términos.
+          </p>
 
-            <h2>11. Ley aplicable</h2>
-            <p>
-              Estos terminos se rigen por las leyes de Peru. Cualquier disputa
-              se resolvera en los tribunales de Lima.
-            </p>
+          <h2>12. Ley aplicable</h2>
+          <p>
+            Estos términos se rigen por las leyes del Perú. Cualquier disputa
+            se resolverá en los tribunales de Lima.
+          </p>
 
-            <h2>12. Contacto</h2>
-            <p>
-              Si tienes dudas sobre estos terminos, escribenos a{" "}
-              <a href="mailto:legal@pedily.com">legal@pedily.com</a>.
-            </p>
-          </div>
-        </Container>
-      </main>
-      <Footer />
-    </>
+          <h2>13. Contacto</h2>
+          <p>
+            Si tienes dudas sobre estos términos, escríbenos a través de{" "}
+            <Contacto />.
+          </p>
+        </div>
+      </Container>
+    </div>
   );
 }

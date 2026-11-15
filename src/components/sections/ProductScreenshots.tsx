@@ -12,12 +12,20 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
+// Precios de ejemplo, iguales en todas las maquetas.
+const PRECIOS: Record<string, string> = {
+  "Lomo saltado": "S/ 32.00",
+  "Ají de gallina": "S/ 28.00",
+  "Chicha morada": "S/ 8.00",
+  "Arroz con leche": "S/ 9.00",
+};
+
 const screenshots = [
   {
     id: "web",
     name: "Tienda Web",
     icon: ShoppingBag,
-    description: "Tu menu digital con carrito, checkout y pagos integrados",
+    description: "Tu carta en línea con pedido y pago integrados",
     mockup: (
       <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-sand-200 bg-white shadow-2xl">
         {/* Browser chrome */}
@@ -28,7 +36,7 @@ const screenshots = [
             <div className="h-3 w-3 rounded-full bg-green-400" />
           </div>
           <div className="ml-4 flex-1 rounded-lg bg-white px-3 py-1 text-xs text-sand-400">
-            demo.example.com
+            turestaurante.pe
           </div>
         </div>
         {/* Content */}
@@ -50,7 +58,7 @@ const screenshots = [
                   <p className="mt-2 text-sm font-medium text-sand-700">
                     {item}
                   </p>
-                  <p className="text-xs text-sand-400">S/ 18.00</p>
+                  <p className="text-xs text-sand-400">{PRECIOS[item]}</p>
                 </div>
               )
             )}
@@ -66,7 +74,7 @@ const screenshots = [
     id: "whatsapp",
     name: "Bot WhatsApp",
     icon: MessageCircle,
-    description: "IA que toma pedidos 24/7, tu intervienes cuando quieras",
+    description: "Asistente con IA que toma pedidos (desde el plan de S/ 499); tú intervienes cuando quieras",
     mockup: (
       <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl border-4 border-sand-800 bg-sand-800 shadow-2xl">
         {/* Phone notch */}
@@ -77,7 +85,7 @@ const screenshots = [
             <div className="h-10 w-10 rounded-full bg-white/20" />
             <div>
               <p className="font-semibold text-white">Restaurante Demo</p>
-              <p className="text-xs text-green-100">en linea</p>
+              <p className="text-xs text-green-100">en línea</p>
             </div>
           </div>
         </div>
@@ -87,19 +95,19 @@ const screenshots = [
             Hola, quiero hacer un pedido
           </div>
           <div className="max-w-[75%] rounded-lg bg-white px-3 py-2 text-sm">
-            Hola! Claro, con gusto te ayudo. Te muestro nuestro menu?
+            ¡Hola! Claro, con gusto te ayudo. ¿Te muestro nuestra carta?
           </div>
           <div className="ml-auto max-w-[75%] rounded-lg bg-[#dcf8c6] px-3 py-2 text-sm">
-            Si porfa, quiero un lomo saltado
+            Sí, porfa, quiero un lomo saltado
           </div>
           <div className="max-w-[75%] rounded-lg bg-white px-3 py-2 text-sm">
-            Perfecto! Lomo saltado x1 (S/ 32). Deseas agregar algo mas?
+            ¡Perfecto! Lomo saltado x1 (S/ 32). ¿Deseas agregar algo más?
           </div>
           <div className="ml-auto max-w-[75%] rounded-lg bg-[#dcf8c6] px-3 py-2 text-sm">
             Una chicha morada
           </div>
           <div className="max-w-[75%] rounded-lg bg-white px-3 py-2 text-sm">
-            Listo! Tu pedido: Lomo saltado + Chicha = S/ 40. Pago con Yape?
+            ¡Listo! Tu pedido: lomo saltado + chicha morada = S/ 40. ¿Pagas con Yape?
           </div>
         </div>
       </div>
@@ -141,7 +149,7 @@ const screenshots = [
             >
               <div className="mx-auto h-16 w-16 rounded-xl bg-gradient-to-br from-orange-100 to-orange-200" />
               <p className="mt-2 font-semibold text-sand-700">{item}</p>
-              <p className="text-sm text-primary-600">S/ 18.00</p>
+              <p className="text-sm text-primary-600">{PRECIOS[item]}</p>
             </button>
           ))}
         </div>
@@ -162,7 +170,7 @@ const screenshots = [
   },
   {
     id: "hub",
-    name: "Hub Admin",
+    name: "Panel",
     icon: LayoutDashboard,
     description: "Gestiona pedidos de todos tus canales en un solo lugar",
     mockup: (
@@ -171,7 +179,7 @@ const screenshots = [
         <div className="flex items-center justify-between border-b border-sand-100 bg-sand-50 px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary-600" />
-            <span className="font-bold text-sand-700">Hub Pedily</span>
+            <span className="font-bold text-sand-700">Panel</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
@@ -261,7 +269,7 @@ export function ProductScreenshots() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
             Web, WhatsApp con IA y kiosko de autoservicio. El mismo menú y los
-            mismos precios, y todos los pedidos caen en el mismo Hub.
+            mismos precios, y todos los pedidos caen en el mismo panel.
           </p>
         </AnimatedSection>
 

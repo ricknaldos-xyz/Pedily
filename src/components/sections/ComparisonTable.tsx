@@ -6,18 +6,18 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Check, X } from "lucide-react";
 
 const comparisons = [
-  { feature: "Comisiones por pedido", pedily: "0%", aggregators: "15-30%" },
+  { feature: "Comisiones por pedido", pedily: "0%", aggregators: "Hasta 30 %" },
   { feature: "Tu propia marca", pedily: true, aggregators: false },
   { feature: "Datos de tus clientes", pedily: true, aggregators: false },
   { feature: "3 canales (Web, WhatsApp, Kiosko)", pedily: true, aggregators: false },
-  { feature: "Bot WhatsApp con IA (Claude)", pedily: true, aggregators: false },
+  { feature: "Asistente de WhatsApp con IA (desde S/ 499)", pedily: true, aggregators: false },
   { feature: "Kiosko de autoservicio en tienda", pedily: true, aggregators: false },
-  { feature: "Notificaciones en tiempo real", pedily: true, aggregators: "Solo estado basico" },
+  { feature: "Notificaciones en tiempo real", pedily: true, aggregators: "Solo estado básico" },
   { feature: "Cupones y base de clientes propia", pedily: true, aggregators: false },
   { feature: "Inventario, recetas y control de costos", pedily: true, aggregators: false },
   { feature: "Finanzas: caja, P&L y planilla", pedily: true, aggregators: false },
   { feature: "Roles de equipo (cocina, operador, admin)", pedily: true, aggregators: false },
-  { feature: "Facturacion electronica SUNAT", pedily: true, aggregators: "Limitada" },
+  { feature: "Facturación electrónica SUNAT", pedily: true, aggregators: "Limitada" },
 ];
 
 function CellValue({ value, winner }: { value: boolean | string; winner?: boolean }) {
@@ -52,7 +52,7 @@ export function ComparisonTable() {
             Comparativa
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
-            Por que dejar de depender de Rappi?
+            Rappi te trae clientes nuevos. Pedily hace que te pidan directo.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
             Mira lo que obtienes con Pedily vs lo que te dan (y te quitan) los agregadores.
@@ -71,7 +71,7 @@ export function ComparisonTable() {
                   <thead>
                     <tr className="border-b border-sand-200 bg-sand-50/80">
                       <th className="px-6 py-4 text-left text-sm font-semibold text-sand-500">
-                        Caracteristica
+                        Característica
                       </th>
                       <th className="bg-sand-50 px-6 py-4 text-center">
                         <span className="rounded-full bg-primary-600 px-4 py-1 text-sm font-semibold text-white">

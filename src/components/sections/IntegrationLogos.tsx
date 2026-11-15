@@ -26,7 +26,7 @@ const integrations = [
   {
     name: "Yape y Plin",
     category: "Pagos",
-    description: "Billeteras digitales, automatico o con comprobante",
+    description: "Billeteras digitales, automático o por QR con comprobante",
     icon: Wallet,
     iconBg: "bg-primary-50",
     iconColor: "text-primary-600",
@@ -34,8 +34,8 @@ const integrations = [
   },
   {
     name: "Nubefact · SUNAT",
-    category: "Facturacion",
-    description: "Boleta, factura, nota de credito y anulacion",
+    category: "Facturación",
+    description: "Boleta, factura, nota de crédito y anulación",
     icon: FileText,
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
@@ -60,9 +60,9 @@ const integrations = [
     hoverBorder: "hover:border-rose-300",
   },
   {
-    name: "Claude AI",
+    name: "Claude (Anthropic)",
     category: "IA",
-    description: "El cerebro del bot que atiende y toma pedidos 24/7",
+    description: "La IA del asistente que toma pedidos por WhatsApp",
     icon: Bot,
     iconBg: "bg-cream-200",
     iconColor: "text-cream-700",
@@ -71,7 +71,7 @@ const integrations = [
   {
     name: "Google Maps",
     category: "Delivery",
-    description: "Direcciones, cobertura por zona y costo de envio",
+    description: "Direcciones, cobertura por zona y costo de envío",
     icon: MapPin,
     iconBg: "bg-primary-50",
     iconColor: "text-primary-600",
@@ -140,7 +140,7 @@ export function IntegrationLogos() {
         <AnimatedSection delay={0.5}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
             <span className="text-xs font-medium text-sand-400">
-              Tambien compatible con
+              También compatible con
             </span>
             {extras.map((extra) => (
               <span

@@ -287,3 +287,31 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   transition: transform 0.15s ease;
 }
+
+/* Páginas legales (sin plugin de tipografía) */
+.legal h2 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-sand-900);
+}
+.legal h3 {
+  margin-top: 1.25rem;
+  font-weight: 600;
+  color: var(--color-sand-800);
+}
+.legal p,
+.legal li {
+  line-height: 1.7;
+}
+.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.legal ul > li + li {
+  margin-top: 0.35rem;
+}
+.legal a {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}

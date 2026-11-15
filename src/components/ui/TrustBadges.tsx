@@ -3,7 +3,7 @@ import { FileCheck, MapPin, Ban, Users } from "lucide-react";
 const badges = [
   {
     icon: Ban,
-    label: "Sin comisiones por pedido",
+    label: "0 % de comisión por pedido",
   },
   {
     icon: FileCheck,
@@ -15,7 +15,7 @@ const badges = [
   },
   {
     icon: MapPin,
-    label: "Soporte en Perú",
+    label: "Empresa peruana",
   },
 ];
 

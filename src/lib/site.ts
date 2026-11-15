@@ -1,9 +1,10 @@
 /**
- * Configuración central del sitio (contacto, WhatsApp, redes).
+ * Configuración central del sitio: contacto, demos, empresa, restaurante de
+ * origen y programa de fundadores.
  *
- * Los valores reales se inyectan vía variables de entorno
- * (NEXT_PUBLIC_*) para no hardcodear datos. Mientras no se definan, valen
- * null y los enlaces correspondientes (WhatsApp, correo) no se pintan.
+ * Los datos de contacto se inyectan con variables de entorno (NEXT_PUBLIC_*)
+ * para no inventar nada. Mientras no se definan valen null y lo que dependa de
+ * ellos (botón de WhatsApp, correo, bot de demostración) no se pinta.
  */
 
 // Número de WhatsApp de ventas en formato internacional sin "+" ni espacios.
@@ -19,7 +20,7 @@ export const CONTACT_EMAIL: string | null =
 export const CONTACT_LOCATION = "Lima, Perú";
 
 export const SOCIAL_LINKS: { name: string; href: string }[] = [
-  // TODO(PENDIENTE): completar con las URLs reales. Las vacías no se renderizan.
+  // Solo se pintan las que tienen URL.
   { name: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "" },
   { name: "Facebook", href: process.env.NEXT_PUBLIC_FACEBOOK_URL || "" },
   { name: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "" },
@@ -27,20 +28,79 @@ export const SOCIAL_LINKS: { name: string; href: string }[] = [
 ].filter((s) => s.href);
 
 const DEFAULT_WA_MESSAGE =
-  "Hola Pedily 👋 Quiero saber más sobre la plataforma para mi restaurante.";
+  "Hola, quiero saber más sobre Pedily para mi restaurante.";
+
+function enlaceWa(numero: string | null, mensaje: string): string | null {
+  if (!numero) return null;
+  return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+}
 
 /**
- * Construye un enlace wa.me con un mensaje pre-cargado, o null si no hay
- * número configurado (quien lo use no debe pintar el botón).
+ * Enlace wa.me de ventas con un mensaje precargado, o null si no hay número
+ * configurado (quien lo use no debe pintar el botón).
  */
 export function whatsappLink(
   message: string = DEFAULT_WA_MESSAGE
 ): string | null {
-  if (!WHATSAPP_NUMBER) return null;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return enlaceWa(WHATSAPP_NUMBER, message);
 }
 
 /** Versión legible del teléfono, p. ej. para JSON-LD (+51 ...), o null. */
 export const WHATSAPP_TEL: string | null = WHATSAPP_NUMBER
   ? `+${WHATSAPP_NUMBER}`
   : null;
+
+/**
+ * Demostraciones públicas que el visitante puede tocar sin hablar con nadie.
+ *
+ * - `tiendaUrl`: tienda de ejemplo publicada (carta y pedido de prueba).
+ * - `botWhatsapp`: número del bot de demostración (sin «+»). Sin
+ *   NEXT_PUBLIC_DEMO_BOT_WHATSAPP el botón «Prueba el bot por WhatsApp» no se
+ *   pinta en ningún sitio.
+ */
+export const DEMO = {
+  tiendaUrl: "https://pedily-demo-web.vercel.app",
+  botWhatsapp: process.env.NEXT_PUBLIC_DEMO_BOT_WHATSAPP?.trim() || null,
+  botMensaje: "Hola, quiero hacer un pedido",
+} as const;
+
+/** wa.me del bot de demostración, o null si no hay número configurado. */
+export function demoBotLink(): string | null {
+  return enlaceWa(DEMO.botWhatsapp, DEMO.botMensaje);
+}
+
+/**
+ * Empresa que opera Pedily. RUC y domicilio fiscal llegan al final: mientras
+ * valgan null no se pintan (ni la etiqueta).
+ */
+export const EMPRESA = {
+  razonSocial: "Hub de Innovacion Digital SAC",
+  ruc: null as string | null,
+  domicilioFiscal: null as string | null,
+  pais: "Perú",
+} as const;
+
+/**
+ * Restaurante donde nació y se probó Pedily. Se puede nombrar, pero SIN
+ * NINGUNA CIFRA suya (decisión del dueño, 15-nov-2026). El guardián
+ * (scripts/comprobar-promesas.sh) solo admite el nombre en este archivo y en
+ * una línea sin números.
+ */
+export const RESTAURANTE_ORIGEN = {
+  nombre: "Wantan Clan",
+  ciudad: "Lima",
+} as const;
+
+/**
+ * Programa de fundadores. Valores PROPUESTOS por el coordinador el 15-nov;
+ * el dueño puede cambiarlos aquí y la landing se actualiza sola.
+ * Sin contador de cupos restantes: solo el total.
+ */
+export const FUNDADORES = {
+  activo: true,
+  cupos: 10,
+  mesesPrecioCongelado: 24,
+  altaGratis: true,
+  acompanamientoDirecto: true,
+  aCambio: "que nos dejes contar tu caso (con tu permiso y sin cifras que no apruebes)",
+} as const;

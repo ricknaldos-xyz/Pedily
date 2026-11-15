@@ -156,7 +156,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-4 text-3xl font-extrabold text-sand-900 sm:text-4xl"
         >
-          Ups, esta pagina no existe
+          Uy, esta página no existe
         </motion.h1>
 
         {/* Subtext */}
@@ -166,7 +166,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mx-auto mt-4 max-w-md text-lg text-sand-500"
         >
-          Puede que el enlace este roto o la pagina haya sido movida.
+          Puede que el enlace esté roto o que la página se haya movido.
         </motion.p>
 
         {/* CTA buttons */}

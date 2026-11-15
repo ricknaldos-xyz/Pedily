@@ -30,8 +30,8 @@ const facts = [
   },
   {
     icon: Bot,
-    value: "24/7",
-    label: "bot con IA",
+    value: "WhatsApp",
+    label: "asistente con IA",
     description: "toma pedidos por WhatsApp",
   },
   {
@@ -137,7 +137,7 @@ export function CaseStudy() {
               <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-5">
                 <p className="text-sm leading-relaxed text-primary-100/85">
                   <strong className="text-white">El modelo:</strong> vender por
-                  tus propios canales en lugar de pagar hasta 25% de comisión
+                  tus propios canales en lugar de pagar hasta 30 % de comisión
                   por pedido en los agregadores.
                 </p>
               </div>

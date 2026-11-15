@@ -17,9 +17,9 @@ import {
 const modules = [
   {
     icon: Bell,
-    title: "Hub de pedidos en tiempo real",
+    title: "Panel de pedidos en tiempo real",
     description:
-      "Todos los canales en un tablero. Pedido nuevo → notificación al instante con sonido. Flujo claro: por confirmar, en cocina, listo, en camino, entregado.",
+      "Todos los canales en un tablero. Pedido nuevo → notificación al instante con sonido. Flujo claro: por verificar, en cocina, listo, en camino, entregado.",
   },
   {
     icon: ChefHat,
@@ -35,7 +35,7 @@ const modules = [
   },
   {
     icon: Wallet,
-    title: "Finanzas tipo ERP",
+    title: "Caja y finanzas",
     description:
       "Caja con apertura y cierre cuadrado, P&L, flujo de caja, impuestos, compras a proveedores y planilla de tu equipo. Exporta tus reportes en CSV.",
   },
@@ -77,7 +77,7 @@ export function OperationsShowcase() {
             No solo vendes. Operas todo desde un lugar.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-            Pedily es el sistema operativo de tu restaurante: pedidos, cocina,
+            Pedily también ordena tu operación: pedidos, cocina,
             inventario, finanzas, facturación y equipo. Lo que otros venden por
             separado, aquí viene integrado.
           </p>
@@ -90,7 +90,7 @@ export function OperationsShowcase() {
               { label: "Ventas de hoy", value: "S/ 4,280", trend: "+18%", tone: "text-primary-600" },
               { label: "Pedidos", value: "127", trend: "+12%", tone: "text-primary-600" },
               { label: "Ticket promedio", value: "S/ 85", trend: "+9%", tone: "text-primary-600" },
-              { label: "Margen estimado", value: "62%", trend: "COGS auto", tone: "text-sand-400" },
+              { label: "Margen estimado", value: "62%", trend: "costo calculado solo", tone: "text-sand-400" },
             ].map((kpi) => (
               <div
                 key={kpi.label}

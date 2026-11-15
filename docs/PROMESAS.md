@@ -25,13 +25,13 @@ Cómo se usa:
 
 ## Tabla
 
-Las líneas son de la rama `fix/landing-honesta` tras L-15. Las rutas sin carpeta están en `src/components/sections/`. Los prefijos `W:` y `B:` remiten a las copias `pedily-web` y `pedily-backend`.
+Las líneas son de la rama `fix/landing-honesta` tras L-15; desde L-17 se citan archivos sin línea. Las rutas sin carpeta están en `src/components/sections/`. Los prefijos `W:` y `B:` remiten a las copias `pedily-web` y `pedily-backend`.
 
 | # | Promesa | Dónde | Estado | Tarea | Patrón |
 |---|---|---|---|---|---|
 | 1 | Tienda web con tu marca | `PricingTable.tsx:11` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
 | 2 | Tu dominio propio, SSL incluido | `IntegrationLogos.tsx:82`, `src/app/precios/page.tsx:40` | Parcial | W-70 (existe), X-009, W-820 | `dominio propio` |
-| 3 | Pedidos de los 3 canales en un Hub, al instante y con sonido | `FeatureShowcase.tsx:38-39`, `OperationsShowcase.tsx:22` | Existe | W-64 (recorrido con base vacía) | `1 solo dashboard` |
+| 3 | Pedidos de los 3 canales en un solo panel, al instante y con sonido | `FeatureShowcase.tsx`, `OperationsShowcase.tsx` | Existe | W-64 (recorrido con base vacía) | `un solo panel` |
 | 4 | 10 estados del pedido (`HubOrderStatus` de `B:prisma/schema.prisma` tiene 10 valores) | `FeatureShowcase.tsx:40` | Existe | L-15 (cifra corregida de 9 a 10) | `10 estados` |
 | 5 | Roles admin, cocina y operador; permisos por módulo | `FeatureShowcase.tsx:41`, `OperationsShowcase.tsx:58` | Existe | W-64 (paso 4) | `admin, cocina, operador` |
 | 6 | Verificación de pagos Yape/Plin con foto | `FeatureShowcase.tsx:43,55` | Existe | B-803, W-61 | `Yape/Plin con foto` |
@@ -41,18 +41,17 @@ Las líneas son de la rama `fix/landing-honesta` tras L-15. Las rutas sin carpet
 | 10 | Libro de Reclamaciones | `OperationsShowcase.tsx:46` | Existe | W-64 | `Libro de Reclamaciones` |
 | 11 | Ticket y boleta impresos en el kiosko (PC con Windows e impresora térmica) | `FeatureShowcase.tsx:71`, `FAQ.tsx:33` | Parcial | K-14, K-15, K-16 | `impresora t[eé]rmica` |
 | 12 | Bot de WhatsApp con IA (Claude) que toma pedidos completos a cualquier hora | `FeatureShowcase.tsx:78-85`, `BotShowcase.tsx`, `Hero.tsx`, `FAQ.tsx:48` | Parcial | Tramo E: B-501…B-520, B-811, B-808 (cumplida cuando cierre B-519) | `Toma el pedido completo por chat` |
-| 13 | Tu equipo toma el control del chat (takeover) | `FeatureShowcase.tsx:84`, `BotShowcase.tsx:31` | Existe | Tramo E | `takeover` |
+| 13 | Tu equipo toma el chat cuando quiera | `FeatureShowcase.tsx`, `BotShowcase.tsx` | Existe | Tramo E | `toma el chat` |
 | 14 | El bot nunca inventa precios: valida contra tu catálogo | `FeatureShowcase.tsx:85`, `BotShowcase.tsx:37` | Existe | Tramo E (B-519 con la carta del cliente) | `inventa precios` |
 | 15 | Carta con categorías, variantes, modificadores y fotos | `FeatureShowcase.tsx:22-28` | Existe | Carga autónoma: B-817, B-818, W-812 | `Variantes \(tama` |
 | 16 | Stock que se actualiza solo | `FeatureShowcase.tsx:27` | Parcial | W-822 | `Stock que se actualiza solo` |
-| 17 | Zonas por distrito o código postal con tarifa y tiempo; recojo en tienda | `FeatureShowcase.tsx:93-98` | Existe | W-62; mapa autónomo W-813 | `c[oó]digo postal` |
+| 17 | Zonas de reparto con su tarifa y su tiempo; recojo en tienda (sin «por distrito o código postal» ni «dibuja»: el mapa para dibujar la zona no existe, D+-8) | `FeatureShowcase.tsx` | Existe | W-62; mapa autónomo W-813 | `zonas de reparto` |
 | 18 | Envíos con PedidosYa cuando no tienes repartidor | `FeatureShowcase.tsx:97`, `IntegrationLogos.tsx:54`, `TrustStrip.tsx:13` | Existe | B-601 | `Env[ií]os con PedidosYa` |
 | 19 | Los clientes guardan varias direcciones y ven el estado de su pedido | `FeatureShowcase.tsx:99-100` | Existe | — | `varias direcciones` |
 | 20 | Google Maps para direcciones, cobertura y costo de envío | `IntegrationLogos.tsx:72` | Existe | Clave por API: X-005, X-008 (decisión D+-6) | `Google Maps` |
 | 21 | Cupones (% o monto fijo), por categoría o producto, con vencimiento y límite de usos | `FeatureShowcase.tsx:110-112` | Existe | — | `Vencimiento y l[ií]mite de usos` |
 | 22 | Saldo a favor opcional en cada compra | `FeatureShowcase.tsx:113`, `BotShowcase.tsx:27` | Existe | Antes y después: B-821, W-817 | `saldo a favor` |
 | 23 | Repetir el último pedido en dos toques | `FeatureShowcase.tsx:114` | Existe | — | `dos toques` |
-| 24 | Meta de ventas del día (maqueta del Hub) | `FeatureShowcase.tsx:186` | Por construir | B-822, W-819 | `Meta del d[ií]a` |
 | 25 | Cocina, lotes de producción y conteos diarios | `OperationsShowcase.tsx:28` | Existe | W-64 | `lotes de producci[oó]n` |
 | 26 | Inventario por almacén con alertas de mínimos; recetas con escandallo; descuento automático de insumos | `OperationsShowcase.tsx:34` | Existe | W-64 | `escandallo` |
 | 27 | Finanzas: caja con cierre, P&L, flujo de caja, impuestos, compras y planilla | `OperationsShowcase.tsx:40` | Existe | W-64 | `flujo de caja` |
@@ -64,9 +63,16 @@ Las líneas son de la rama `fix/landing-honesta` tras L-15. Las rutas sin carpet
 | 33 | «Lo configuramos nosotros con lo que nos envíes» | `HowItWorks.tsx:21` | Existe | L-14 (los dos caminos, cuando exista el alta autónoma) | `lo configuramos nosotros` |
 | 34 | Instalación acompañada; onboarding, soporte y capacitación en Perú; demostración guiada | `FinalCTA.tsx:9-10`, `src/app/precios/page.tsx:40-43`, `ui/TrustBadges.tsx:18` | Servicio | Decisión del dueño: quién atiende (L-12) | `Instalaci[oó]n acompa[nñ]ada` |
 | 35 | Creado y probado en un restaurante real | `Hero.tsx:64`, `CaseStudy.tsx:67` | Existe | — | `restaurante real` |
-| 36 | Solo Perú: Culqi, Yape, Plin y SUNAT | `FAQ.tsx:51-53` | Existe | — | `Solo funciona en Peru` |
+| 36 | Solo Perú: Culqi, Yape, Plin y SUNAT | `src/lib/faq.ts` | Existe | — | `Solo funciona en Per[uú]` |
 | 37 | El dinero va directo a tu cuenta | `FeatureShowcase.tsx:51`, `FAQ.tsx:38` | Existe | — | `directo a tu cuenta` |
 | 38 | Formulario de demo y alta con 3 preguntas | `src/app/contacto/FormularioSolicitud.tsx`, `src/lib/solicitud.ts` | Existe | L-13 (hecha); «Crear mi tienda» con consola: X-007 | `Cu[aá]ndo quieres empezar` |
+| 39 | Planes de S/ 249, 499 y 999 al mes con IGV, 0 % de comisión al restaurante y al comensal | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (14-nov) | `S/ 249` |
+| 40 | Asistente de WhatsApp desde el plan de S/ 499, con un cupo mensual de conversaciones que no se publica | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y medir los cupos (B-518) | `cupo mensual` |
+| 41 | Alta gratis si te quedas 6 meses; si te vas antes, la parte proporcional del alta | `PricingTable.tsx`, `src/lib/faq.ts`, `legal/terminos` | Servicio | Contrato y valor del alta (D+-9, abogado) | `Alta gratis` |
+| 42 | Lo que pagas aparte a Culqi, Nubefact y Meta, con sus precios públicos | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | — | `pagas aparte` |
+| 43 | Cupones, referidos y saldo a favor, apagados hasta que los enciendes en «Opciones de tu tienda» | `FeatureShowcase.tsx`, `src/lib/planes.ts` | Existe | B-812, W-805, W-806, W-807 | `referidos` |
+| 44 | Pago anual con 2 meses gratis | `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (15-nov) | `2 meses` |
+| 45 | Pedily nunca toca tu dinero | `src/lib/faq.ts` | Existe | — | `nunca toca tu dinero` |
 
 ### Promesas que aún no están en la landing
 
@@ -74,8 +80,9 @@ Se añadirán a la tabla de arriba, con patrón, cuando se escriban en la landin
 
 | Promesa | Estado | Tarea |
 |---|---|---|
-| Programa de referidos | Existe en el producto (B-812, W-805, W-807) | L-11 la pone en la landing; entonces sale `referid` de `promesas-prohibidas.txt` |
-| Sin permanencia | Servicio y procedimiento de baja | X-011 y contrato (D+-9) → L-12 |
+| Meta de ventas del día (estaba en una maqueta; se quitó el 15-nov, L-17) | Por construir | B-822, W-819 |
+| Zona de reparto dibujada en el mapa | Por construir | W-813 + polígonos (D+-8) |
+| Procedimiento de baja | Servicio | X-011 y contrato (D+-9) |
 | Tus datos son tuyos y te los llevas cuando quieras | Por construir | B-820, W-818 → L-12 |
 | Qué pasa si te vas | Por construir | X-011 → L-12 |
 | Dónde están tus datos | Por decidir | Decisión D+-5 → L-12 |

@@ -31,11 +31,11 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section className="bg-sand-50">
+    <Section id="como-funciona" className="bg-sand-50">
       <Container>
         <AnimatedSection className="text-center">
           <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Como funciona
+            Cómo funciona
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
             Así es la puesta en marcha

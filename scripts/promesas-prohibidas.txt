@@ -10,7 +10,9 @@ en minutos
 sin tarjeta
 
 # L-02 · planes, precios y límites
-S/ ?(199|249|399|499|799|999)
+# 15-nov: los precios decididos (S/ 249, 499 y 999 al mes con IGV) SÍ se
+# publican. Se bloquean los precios de los estudios anteriores.
+S/ ?(199|290|399|590|799|990)\b
 priceRange
 ilimitad
 [0-9]+ usuarios
@@ -26,16 +28,17 @@ tablet
 android
 
 # L-04 · caso de cliente sin permiso
+# 15-nov: el restaurante de origen SÍ se puede nombrar, pero sin ninguna cifra.
+# El nombre lo vigila aparte scripts/comprobar-promesas.sh (solo en
+# src/lib/site.ts y en una línea sin números).
 3 locales
 locales en lima
 cadena
-wantan
 chaufa
 
 # L-05 · fidelización y automatizaciones que no están
 puntos
 \bvip\b
-referid
 win-back
 cumplea
 (atiende|tambi[eé]n) instagram
@@ -53,8 +56,8 @@ multi-?(local|ruc|tenant)
 API p[uú]blica
 api\.pedily
 
-# L-07 · documentación pública
-/docs
+# L-07 · documentación pública (la ruta /docs de la landing, no URL ajenas)
+["'(]/docs
 
 # L-08 · datos de contacto inventados
 51999999999

@@ -1,24 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { Container } from "./Container";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { DEMO } from "@/lib/site";
 
+// Con «/» delante para que funcionen también fuera de la portada.
 const landingLinks = [
-  { href: "#funcionalidades", label: "Funcionalidades" },
-  { href: "#bot-ia", label: "Bot IA" },
-  { href: "#precios", label: "Precios" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#como-funciona", label: "Cómo funciona" },
+  { href: "/#precios", label: "Precios" },
+  { href: "/#faq", label: "Preguntas" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-  const isLanding = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -50,8 +48,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Landing page header */}
-          <>
+                  <>
             <nav className="hidden items-center gap-1 md:flex">
               {landingLinks.map((link) => (
                 <a
@@ -66,23 +63,25 @@ export function Header() {
 
             <div className="hidden items-center gap-3 md:flex">
               <a
-                href="#precios"
+                href={DEMO.tiendaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-lg px-4 py-2 text-sm font-medium text-sand-600 transition-all hover:bg-sand-100 hover:text-primary-600"
               >
-                Ver precios
+                Tienda de ejemplo
               </a>
               <a
                 href="/contacto"
                 className="rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
-                Agenda una demo
+                Crear mi tienda
               </a>
             </div>
 
             <button
               className="rounded-lg p-2 transition-colors hover:bg-sand-100 md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {mobileOpen ? (
                 <X className="h-5 w-5 text-sand-700" />
@@ -132,7 +131,7 @@ export function Header() {
                   className="mt-2 rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-semibold text-white"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Agenda una demo
+                  Crear mi tienda
                 </motion.a>
               </Container>
             </motion.div>

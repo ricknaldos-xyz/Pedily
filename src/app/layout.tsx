@@ -9,6 +9,7 @@ import {
   WebsiteJsonLd,
   SoftwareApplicationJsonLd,
 } from "@/components/seo/JsonLd";
+import { EMPRESA } from "@/lib/site";
 
 const gabarito = Gabarito({
   subsets: ["latin"],
@@ -16,24 +17,17 @@ const gabarito = Gabarito({
   variable: "--font-sans",
 });
 
+const TITULO =
+  "Pedily · Pedidos por WhatsApp con IA, tienda web y boletas SUNAT para restaurantes";
+const DESCRIPCION =
+  "Tu WhatsApp toma pedidos solo, tu web vende sin comisión y la boleta sale sola. Tienda propia para restaurantes en Perú desde S/ 249 al mes con IGV, 0 % de comisión por pedido.";
+
 export const metadata: Metadata = {
-  title: "Pedily - El sistema operativo de tu restaurante",
-  description:
-    "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un solo lugar: pedidos, cocina, inventario, finanzas y facturacion SUNAT. Sin comisiones por pedido.",
-  keywords: [
-    "pedidos online",
-    "restaurante digital",
-    "plataforma pedidos",
-    "delivery",
-    "menu digital",
-    "SaaS restaurantes",
-    "bot whatsapp restaurante",
-    "kiosko autoservicio",
-    "pedily",
-  ],
-  authors: [{ name: "Hub de Innovacion Digital SAC" }],
+  title: TITULO,
+  description: DESCRIPCION,
+  authors: [{ name: EMPRESA.razonSocial }],
   creator: "Pedily",
-  publisher: "Hub de Innovacion Digital SAC",
+  publisher: EMPRESA.razonSocial,
   metadataBase: new URL("https://pedily.com"),
   icons: {
     icon: "/favicon.svg",
@@ -41,28 +35,26 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Pedily - El sistema operativo de tu restaurante",
-    description:
-      "Vende por web, WhatsApp con IA y kiosko. Opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones por pedido.",
+    title: TITULO,
+    description: DESCRIPCION,
     type: "website",
     locale: "es_PE",
     url: "https://pedily.com",
     siteName: "Pedily",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Pedily - Plataforma de pedidos para restaurantes",
+        alt: "Pedily: tu WhatsApp toma pedidos solo, tu web vende sin comisión y la boleta sale sola",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pedily - El sistema operativo de tu restaurante",
-    description:
-      "Vende por web, WhatsApp con IA y kiosko, y opera todo desde un Hub. Sin comisiones por pedido.",
-    images: ["/og-image.svg"],
+    title: TITULO,
+    description: DESCRIPCION,
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -83,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es-PE">
       <head>
         <OrganizationJsonLd />
         <WebsiteJsonLd />

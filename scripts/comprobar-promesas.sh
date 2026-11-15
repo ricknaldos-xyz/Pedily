@@ -15,19 +15,42 @@ if hallazgos="$(grep -rniE -f "$patrones" src public)"; then
 fi
 echo "comprobar-promesas: 0 coincidencias en src/ y public/."
 
-# P1-D7: el nombre del cliente original no puede aparecer en ningún archivo del
-# repo (docs, notas, configuración...), versionado o no. Se excluyen solo las
-# carpetas generadas o de terceros y la propia lista de patrones, que lo contiene
-# a propósito para que src/ y public/ también lo vigilen.
+# P1-D7 + decisión del 15-nov: el restaurante de origen se puede NOMBRAR, pero
+# SIN NINGUNA CIFRA suya. Reglas:
+#   1. en src/ y public/ el nombre solo puede estar en src/lib/site.ts
+#      (RESTAURANTE_ORIGEN); los componentes lo leen de ahí;
+#   2. en todo el repo (docs incluidos), cada mención debe ser el nombre
+#      completo y su línea no puede llevar ningún número (ni pedidos, ni %, ni
+#      ventas, ni fechas pegadas a la marca).
+# Se excluyen las carpetas generadas o de terceros y los propios guardianes.
 nombre_original='wantan'
-if hallazgos="$(grep -rniE "$nombre_original" . \
-    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git \
-    --exclude=promesas-prohibidas.txt --exclude=comprobar-promesas.sh)"; then
-  echo "Nombre del cliente original encontrado en el repo:" >&2
+nombre_completo='wantan clan'
+archivo_permitido='src/lib/site.ts'
+fallo_nombre=0
+if hallazgos="$(grep -rliE "$nombre_original" src public | grep -v "^${archivo_permitido}\$")"; then
+  echo "El nombre del restaurante de origen solo puede estar en $archivo_permitido:" >&2
   echo "$hallazgos" >&2
+  fallo_nombre=1
+fi
+while IFS= read -r linea; do
+  [ -z "$linea" ] && continue
+  texto="${linea#*:*:}"
+  minus="$(printf '%s' "$texto" | tr '[:upper:]' '[:lower:]')"
+  sin_nombre="${minus//$nombre_completo/}"
+  if printf '%s' "$sin_nombre" | grep -qi "$nombre_original"; then
+    echo "Mención del restaurante de origen sin el nombre completo: $linea" >&2
+    fallo_nombre=1
+  elif printf '%s' "$texto" | grep -q '[0-9]'; then
+    echo "Cifra junto al nombre del restaurante de origen: $linea" >&2
+    fallo_nombre=1
+  fi
+done < <(grep -rniE "$nombre_original" . \
+    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git \
+    --exclude=promesas-prohibidas.txt --exclude=comprobar-promesas.sh || true)
+if [ "$fallo_nombre" -ne 0 ]; then
   exit 1
 fi
-echo "comprobar-promesas: el nombre del cliente original no aparece en el repo."
+echo "comprobar-promesas: el restaurante de origen solo aparece por su nombre, sin cifras."
 
 # L-15: registro «promesa → tarea» de docs/PROMESAS.md. Cada fila de la tabla
 # principal lleva estado, tarea y patrón (grep -E). Falla si:

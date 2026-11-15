@@ -41,7 +41,7 @@ const capabilities = [
 ];
 
 const chat: { from: "user" | "bot"; text: string; typing?: boolean }[] = [
-  { from: "user", text: "Hola! quiero pedir para la casa 🍜" },
+  { from: "user", text: "¡Hola! Quiero pedir para la casa 🍜" },
   {
     from: "bot",
     text: "¡Hola! 👋 Claro que sí. ¿Te muestro lo más pedido o ya sabes qué quieres?",
