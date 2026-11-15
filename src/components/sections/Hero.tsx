@@ -32,7 +32,7 @@ const chat: { de: "cliente" | "bot"; texto: string }[] = [
   {
     de: "bot",
     texto:
-      "Te anoto:\n• Medio pollo a la brasa (mayonesa, ají) — S/ 34\n• Chicha morada, jarra 1 L — S/ 14\nEnvío a Jesús María — S/ 8\nTotal: S/ 56. Aquí tu enlace para pagar con Yape o tarjeta 👇",
+      "Te anoto:\n• Medio pollo a la brasa (mayonesa, ají) —\u00a0S/\u00a034\n• Chicha morada, jarra 1 L —\u00a0S/\u00a014\nEnvío a Jesús María —\u00a0S/\u00a08\nTotal: S/\u00a056. Aquí tu enlace para pagar con Yape o tarjeta 👇",
   },
   {
     de: "bot",
@@ -63,7 +63,7 @@ export function Hero() {
         <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <AnimatedSection>
             <p className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/70 px-3 py-1 text-xs font-semibold text-primary-700 sm:text-sm">
-              Tienda desde S/ 249 · asistente de WhatsApp desde S/ 499 · al mes con IGV
+              Tienda desde S/ 249 · asistente de WhatsApp desde S/ 499<span className="hidden sm:inline"> · al mes con IGV</span>
             </p>
 
             <h1 className="mt-4 text-[2.1rem] font-extrabold leading-[1.06] tracking-tight text-sand-900 sm:text-5xl lg:text-[3.4rem]">

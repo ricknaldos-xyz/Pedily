@@ -47,7 +47,7 @@ export function CanalesPropios() {
                 />
               </div>
               <figcaption className="mt-2 text-center text-xs text-sand-500">
-                Kiosko de autoservicio (plan de S/ 999)
+                Kiosko (plan Completo, S/ 999)
               </figcaption>
             </figure>
           </AnimatedSection>
