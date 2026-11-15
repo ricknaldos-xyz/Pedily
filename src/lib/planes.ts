@@ -1,5 +1,5 @@
 /**
- * Planes y costos de Pedily. Fuente única: decisiones del 15-nov-2026
+ * Planes y costos de Pedily. Fuente de verdad: decisiones del 15-nov-2026
  * (`pedily/_notas/plan/D-decisiones-2026-11-15.md`). Si el dueño cambia algo,
  * se cambia allí y aquí; la landing, la FAQ, los legales y el JSON-LD leen de
  * este archivo.

@@ -75,3 +75,12 @@ PedidosYa y Rappi
 pedidos de Rappi y PedidosYa en
 marketplaces \(PedidosYa
 integraci[oó]n PedidosYa y Rappi
+
+# G-08 (15-nov) · reglas del dueño: lo prometido se presenta como hecho, nada
+# de «único» (no comprobable) y el chat de ejemplo usa la carta de la demo.
+pronto
+en preparaci[oó]n
+pr[oó]ximamente
+(^|[^a-z])[uú]nic[oa]s?([^a-z]|$)
+foto en camino
+lomo saltado

@@ -67,8 +67,18 @@ Rehecha el 15-nov-2026 (L-18) para la landing nueva. Las rutas sin carpeta está
 | 45 | Pedily nunca toca tu dinero | `PricingTable.tsx`, `src/lib/faq.ts` | Existe | — | `nunca toca tu dinero` |
 | 46 | Subes una foto de tu carta y la IA arma tus platos y precios para que los revises | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Parcial | Carga autónoma: B-817, B-818, W-812 (comprobar con una carta real) | `foto de tu carta` |
 | 47 | Asistente «Empezar» en el panel que te lleva paso a paso | `AbreTuTienda.tsx` (captura real del panel) | Existe | W-808…W-816 | `te lleva paso a paso` |
-| 48 | Kiosko de autoservicio en el plan de S/ 999 | `CanalesPropios.tsx`, `src/lib/planes.ts`, `src/lib/faq.ts` | Servicio | Contenido del plan de S/ 999 por decidir (dueño) | `plan de S/ 999` |
-| 49 | Programa de fundadores: 10 cupos, precio congelado 24 meses, alta gratis, acompañamiento directo | `Fundadores.tsx`, `src/lib/site.ts` | Servicio | Condiciones propuestas; las confirma el dueño | `fundador` |
+| 48 | Kiosko de autoservicio en el plan Completo (S/ 999), licencia para 1 pantalla | `CanalesPropios.tsx`, `src/lib/planes.ts`, `src/lib/faq.ts` | Existe | Decidido el 15-nov (D-decisiones); kiosko: K-14…K-16 | `plan de S/ 999` |
+| 49 | Programa de fundadores: 10 cupos, precio congelado 24 meses, alta gratis sin permanencia, acompañamiento directo | `Fundadores.tsx`, `src/lib/site.ts` | Servicio | Decidido el 15-nov (D-decisiones) | `fundador` |
+| 50 | QR de mesa que cobra (plan Completo) | `src/lib/planes.ts`, `src/lib/faq.ts`, `JsonLd.tsx` | Por construir | G-06 | `QR de mesa` |
+| 51 | Pedidos programados en todos los planes | `src/lib/planes.ts`, `src/lib/faq.ts`, `JsonLd.tsx` | Por construir | G-03 | `pedidos programados` |
+| 52 | Campañas por WhatsApp con plantillas, solo a quien dio permiso (desde S/ 499) | `src/lib/planes.ts` | Por construir | G-04 | `Campa[nñ]as por WhatsApp` |
+| 53 | Cupo del asistente 3 veces mayor en Completo (sin cifra) | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | G-04 (tope por instalación US$ 15 / US$ 45) y medir cupos (B-518) | `3 veces` |
+| 54 | Atención prioritaria en Completo: respuesta el mismo día hábil | `src/lib/planes.ts` | Servicio | Decisión del 15-nov; quién atiende (dueño, L-12) | `mismo d[ií]a h[aá]bil` |
+| 55 | Alta S/ 490 / S/ 790, gratis con 6 meses; si te vas antes, la parte de los meses que faltan (con ejemplo) | `PricingTable.tsx`, `src/lib/faq.ts`, `legal/terminos` | Servicio | Decisión del 15-nov; contrato (abogado) | `meses que faltan` |
+| 56 | Datos en EE. UU. (iad1) con transferencia internacional según la Ley 29733 | `src/lib/faq.ts`, `legal/privacidad` | Existe | D+-5 | `transferencia internacional` |
+| 57 | El asistente conversa de verdad y cobra, no es un formulario | `Hero.tsx`, `ComparativaCanales.tsx`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y G-01 (bot más corto) | `no un formulario` |
+| 58 | Exportar tus datos durante 30 días al irte; luego se borran | `src/lib/faq.ts`, `legal/privacidad`, `legal/terminos` | Por construir | D+-9 (G-07, consola de altas) | `exportar tus datos` |
+| 59 | Herramientas gratis con fuentes oficiales (comisión, IGV 2027, mensajes de WhatsApp) | `src/app/herramientas/`, `src/lib/herramientas.ts` | Existe | G-08 | `herramientas gratis` |
 
 ### Promesas que ya no salen en la landing (L-18)
 

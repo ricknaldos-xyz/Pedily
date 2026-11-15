@@ -98,3 +98,49 @@ if [ "$fallos" -ne 0 ]; then
   exit 1
 fi
 echo "comprobar-promesas: $(printf '%s\n' "$filas" | wc -l | tr -d ' ') promesas de $registro con estado y tarea en regla."
+
+# G-08 (15-nov): cada página pública está en el sitemap, y cada herramienta
+# gratis (src/app/herramientas/<slug>/) usa el esqueleto común
+# (PaginaHerramienta: JSON-LD WebApplication + FAQPage + fuentes), está en el
+# catálogo src/lib/herramientas.ts y su ficha cita al menos una fuente https.
+fallo_rutas=0
+while IFS= read -r pagina; do
+  ruta="${pagina#src/app}"
+  ruta="${ruta%/page.tsx}"
+  case "$ruta" in
+    */\[*|/api*) continue ;;
+  esac
+  if ! grep -q "<loc>https://pedily.com${ruta:-/}</loc>" public/sitemap.xml; then
+    echo "Falta en public/sitemap.xml: ${ruta:-/}" >&2
+    fallo_rutas=1
+  fi
+done < <(find src/app -name page.tsx | sort)
+
+herramientas=0
+for dir in src/app/herramientas/*/; do
+  [ -d "$dir" ] || continue
+  slug="$(basename "$dir")"
+  herramientas=$((herramientas + 1))
+  if ! grep -q "PaginaHerramienta" "$dir/page.tsx"; then
+    echo "Herramienta $slug: no usa PaginaHerramienta (JSON-LD y fuentes)." >&2
+    fallo_rutas=1
+  fi
+  if ! grep -q "slug: \"$slug\"" src/lib/herramientas.ts; then
+    echo "Herramienta $slug: no está en src/lib/herramientas.ts." >&2
+    fallo_rutas=1
+  fi
+done
+fichas="$(grep -c 'slug: "' src/lib/herramientas.ts || true)"
+fuentes="$(grep -cE '^ *fuentes: \[[A-Z_]' src/lib/herramientas.ts || true)"
+if [ "$fichas" -ne "$herramientas" ] || [ "$fuentes" -ne "$fichas" ]; then
+  echo "Herramientas: $herramientas páginas, $fichas fichas y $fuentes con fuentes; deben coincidir." >&2
+  fallo_rutas=1
+fi
+if grep -nE 'url: "http:' src/lib/herramientas.ts; then
+  echo "Las fuentes de las herramientas deben ser https." >&2
+  fallo_rutas=1
+fi
+if [ "$fallo_rutas" -ne 0 ]; then
+  exit 1
+fi
+echo "comprobar-promesas: todas las páginas en el sitemap; $herramientas herramientas con JSON-LD y fuentes."
