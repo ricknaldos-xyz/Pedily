@@ -26,6 +26,9 @@ export function Header() {
   const disparador = useRef<HTMLButtonElement>(null);
   const panelMega = useRef<HTMLDivElement>(null);
   const cerrarTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Momento en que el ratón abrió el menú: el clic que llega justo después
+  // (mismo gesto) no debe cerrarlo.
+  const abiertoPorHover = useRef(0);
 
   // Cerrar menús al navegar.
   useEffect(() => {
@@ -75,6 +78,7 @@ export function Header() {
 
   const abrirConHover = () => {
     if (cerrarTimer.current) clearTimeout(cerrarTimer.current);
+    if (!mega) abiertoPorHover.current = Date.now();
     setMega(true);
   };
   const cerrarConHover = () => {
@@ -84,7 +88,7 @@ export function Header() {
   return (
     <header
       className={clsx(
-        "sticky top-0 z-50 border-b bg-papel/95 backdrop-blur-md transition-shadow",
+        "sticky top-0 z-50 border-b bg-papel transition-shadow",
         conSombra || mega ? "border-tinta/10 shadow-[0_8px_24px_-18px_rgba(36,16,46,0.5)]" : "border-transparent"
       )}
     >
@@ -106,7 +110,10 @@ export function Header() {
               type="button"
               aria-expanded={mega}
               aria-controls="menu-producto"
-              onClick={() => setMega((v) => !v)}
+              onClick={() => {
+                if (Date.now() - abiertoPorHover.current < 600) return setMega(true);
+                setMega((v) => !v);
+              }}
               className={clsx(
                 "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[0.95rem] font-semibold transition-colors",
                 mega ? "bg-tinta/5 text-tinta" : "text-sand-700 hover:text-tinta"
@@ -189,7 +196,7 @@ export function Header() {
             </div>
           ))}
           <div className="flex flex-col gap-3">
-            <Link href="/panel" className="group flex-1 rounded-2xl bg-tinta p-5 text-white">
+            <Link href="/panel" className="group rounded-2xl bg-tinta p-5 text-white">
               <LayoutDashboard aria-hidden className="h-6 w-6 text-aji-400" />
               <p className="mt-3 font-display text-xl font-extrabold leading-tight">El panel, por dentro</p>
               <p className="mt-1 text-sm text-chicha-100">48 pantallas para operar todo tu restaurante.</p>

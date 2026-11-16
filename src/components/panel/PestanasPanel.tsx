@@ -96,7 +96,7 @@ export function PestanasPanel({ pestanas, oscuro = false }: { pestanas: PestanaP
               </div>
             </div>
             <div className={clsx("pt-6 lg:pt-2", oscuro ? "text-chicha-100" : "text-sand-700")}>
-              <h3 className={clsx("font-display text-xl font-bold", oscuro ? "text-white" : "text-tinta")}>{p.nombre}</h3>
+              <p className={clsx("font-display text-xl font-bold", oscuro ? "text-white" : "text-tinta")}>{p.nombre}</p>
               <p className="mt-2 text-[0.98rem] leading-relaxed">{p.texto}</p>
               {p.enlace && (
                 <Link

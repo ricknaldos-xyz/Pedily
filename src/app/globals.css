@@ -337,3 +337,9 @@ input[type="range"]::-moz-range-thumb {
   color: var(--color-chicha-700);
   text-decoration: underline;
 }
+
+/* Un hijo de grid nunca ensancha su columna más allá de la pantalla
+   (las tiras con scroll horizontal y los titulares largos lo hacían en 390 px). */
+:where(.grid) > * {
+  min-width: 0;
+}

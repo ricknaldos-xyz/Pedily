@@ -22,7 +22,7 @@ const GARANTIAS = [
 export function HeroHome() {
   return (
     <section className="papel-trama relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-12 pt-8 sm:px-6 sm:pt-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6 lg:px-8 lg:pb-20 lg:pt-16">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 [&>*]:min-w-0 pb-12 pt-8 sm:px-6 sm:pt-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6 lg:px-8 lg:pb-20 lg:pt-16">
         <div className="relative z-10 lg:pt-6">
           <p className="inline-flex flex-wrap items-center gap-x-2 rounded-full border border-tinta/15 bg-white px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-chicha-700 sm:text-xs">
             Desde S/ 249 al mes con IGV <span aria-hidden>·</span> 0 % de comisión

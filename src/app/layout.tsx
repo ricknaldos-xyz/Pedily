@@ -14,13 +14,13 @@ import { EMPRESA } from "@/lib/site";
 // Sistema «la comanda» (benchmark §5.6): Bricolage Grotesque para titulares,
 // Figtree para texto y JetBrains Mono para precios, números de pedido y horas.
 const bricolage = Bricolage_Grotesque({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   weight: ["600", "700", "800"],
   variable: "--font-bricolage",
   display: "swap",
 });
 const figtree = Figtree({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-figtree",
   display: "swap",
@@ -30,6 +30,8 @@ const jetbrains = JetBrains_Mono({
   weight: ["500", "700"],
   variable: "--font-jetbrains",
   display: "swap",
+  // Solo etiquetas pequeñas: no compite con el titular por la red.
+  preload: false,
 });
 
 const TITULO =

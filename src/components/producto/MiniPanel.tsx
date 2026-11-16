@@ -118,12 +118,12 @@ export function PanelPedidos() {
               {col} <Etiqueta>{i + 1}</Etiqueta>
             </p>
             <div className="rounded-md bg-white/[0.06] p-1.5">
-              <p className="flex justify-between font-mono text-[10px] font-semibold">
-                #{p.n} <span>S/ {p.total}</span>
+              <p className="flex flex-wrap justify-between gap-x-1.5 font-mono text-[10px] font-semibold">
+                <span>#{p.n}</span> <span className="whitespace-nowrap">S/ {p.total}</span>
               </p>
               <p className="mt-0.5 truncate text-[9px] text-white/75">{p.quien}</p>
               <p className="mt-0.5 line-clamp-2 text-[9px] text-white/70">{p.plato}</p>
-              <div className="mt-1 flex items-center gap-1">
+              <div className="mt-1 flex flex-wrap items-center gap-1 whitespace-nowrap">
                 <Etiqueta tono={tono}>{p.canal}</Etiqueta>
                 <Etiqueta tono="verde">{p.min} min</Etiqueta>
               </div>
