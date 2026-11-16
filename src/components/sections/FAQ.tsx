@@ -1,75 +1,46 @@
-"use client";
+import { Plus } from "lucide-react";
+import { Encabezado } from "@/components/ui/Encabezado";
+import { FAQS, type Pregunta } from "@/lib/faq";
 
-import { Container } from "@/components/layout/Container";
-import { Bloque } from "@/components/layout/Bloque";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import * as Accordion from "@radix-ui/react-accordion";
-import { ChevronDown, MessageCircle } from "lucide-react";
-import { FAQS } from "@/lib/faq";
-
-export function FAQ() {
+/**
+ * Preguntas frecuentes con <details>: el texto está en el HTML, se abre sin JS
+ * y coincide con el JSON-LD FAQPage de la misma página.
+ */
+export function FAQ({
+  preguntas = FAQS,
+  titulo = "Lo que todos preguntan antes de empezar",
+  bajada = "Precio, permanencia, dinero y lo que pagas aparte, sin letra chica.",
+  id = "faq",
+}: {
+  preguntas?: Pregunta[];
+  titulo?: string;
+  bajada?: string;
+  id?: string;
+}) {
   return (
-    <Bloque id="faq" className="bg-white">
-      <Container className="max-w-3xl">
-        <AnimatedSection className="text-center">
-          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Preguntas frecuentes
-          </span>
-          <h2 className="text-[1.7rem] font-extrabold leading-tight tracking-tight text-sand-900 sm:text-4xl">
-            Lo que todos preguntan antes de empezar
-          </h2>
-          <p className="mt-4 text-lg text-sand-500">
-            Precio, permanencia, dinero y lo que pagas aparte, sin letra chica.
-          </p>
-        </AnimatedSection>
-
-        <AnimatedSection delay={0.1}>
-          <Accordion.Root type="single" collapsible className="mt-6 space-y-2">
-            {FAQS.map((faq, i) => (
-              <Accordion.Item
-                key={i}
-                value={`item-${i}`}
-                className="group relative overflow-hidden rounded-xl border border-sand-200 bg-white transition-all duration-300 data-[state=open]:border-primary-300 data-[state=open]:shadow-sm"
-              >
-                {/* Left accent bar */}
-                <div className="absolute left-0 top-0 h-full w-[3px] rounded-l-xl bg-primary-500 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
-
-                <Accordion.Trigger className="flex w-full items-center justify-between px-4 py-4 text-left text-[15px] sm:px-6 font-semibold text-sand-900 transition-colors hover:text-primary-600">
-                  <div className="flex items-center gap-3">
-                    <span className="flex-shrink-0 text-xs font-medium text-sand-300 group-data-[state=open]:text-primary-400">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {faq.pregunta}
-                  </div>
-                  <ChevronDown
-                    className="h-4 w-4 flex-shrink-0 text-sand-400 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary-500"
-                    aria-hidden="true"
-                  />
-                </Accordion.Trigger>
-                <Accordion.Content className="overflow-hidden data-[state=closed]:animate-[accordion-up_300ms_ease-in-out] data-[state=open]:animate-[accordion-down_300ms_ease-in-out]">
-                  <div className="border-t border-sand-100 px-4 py-4 text-sm sm:px-6 sm:pl-14 leading-relaxed text-sand-500">
-                    {faq.respuesta}
-                  </div>
-                </Accordion.Content>
-              </Accordion.Item>
-            ))}
-          </Accordion.Root>
-        </AnimatedSection>
-
-        {/* Bottom CTA */}
-        <AnimatedSection delay={0.2} className="mt-6 text-center">
-          <p className="text-sm text-sand-500">
+    <section id={id} className="scroll-mt-16 bg-white py-16 sm:py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+        <div>
+          <Encabezado etiqueta="Preguntas frecuentes" titulo={titulo} bajada={bajada} />
+          <p className="mt-6 text-sm text-sand-700">
             ¿Tienes otra pregunta?{" "}
-            <a
-              href="/contacto"
-              className="inline-flex items-center gap-1 font-semibold text-primary-600 transition-colors hover:text-primary-700"
-            >
-              <MessageCircle className="h-3.5 w-3.5" />
+            <a href="/contacto" className="font-semibold text-chicha-700 underline underline-offset-2">
               Escríbenos
             </a>
           </p>
-        </AnimatedSection>
-      </Container>
-    </Bloque>
+        </div>
+        <div className="divide-y divide-dashed divide-tinta/20 border-y border-dashed border-tinta/20">
+          {preguntas.map((f) => (
+            <details key={f.pregunta} className="group">
+              <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-4 text-left font-display text-[1.08rem] font-bold text-tinta">
+                {f.pregunta}
+                <Plus aria-hidden className="h-5 w-5 shrink-0 text-chicha-600 transition-transform group-open:rotate-45" />
+              </summary>
+              <p className="pb-5 pr-8 text-[0.98rem] leading-relaxed text-sand-700">{f.respuesta}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -22,7 +22,7 @@ export interface Pregunta {
 export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
-    respuesta: `Tres planes al mes, con IGV incluido y 0 % de comisión por pedido al restaurante y al comensal: ${TIENDA.nombre}, ${soles(TIENDA.precioMensual)} (tienda web, panel, cocina, cobros, boletas SUNAT, reparto y pedidos programados, sin asistente de WhatsApp); ${WHATSAPP.nombre}, ${soles(WHATSAPP.precioMensual)} (suma el asistente de WhatsApp con IA y las campañas); y ${COMPLETO.nombre}, ${soles(COMPLETO.precioMensual)} (suma kiosko, QR de mesa que cobra, 3 veces más conversaciones del asistente y atención prioritaria). Si pagas el año por adelantado, pagas 10 meses y usas 12.`,
+    respuesta: `Tres planes al mes, con IGV incluido y 0 % de comisión por pedido al restaurante y al comensal: ${TIENDA.nombre}, ${soles(TIENDA.precioMensual)} (tienda web, panel completo, cocina, caja, cobros, boletas SUNAT, inventario, reportes, reparto y pedidos programados, sin asistente de WhatsApp); ${WHATSAPP.nombre}, ${soles(WHATSAPP.precioMensual)} (suma el asistente de WhatsApp con IA y las campañas); y ${COMPLETO.nombre}, ${soles(COMPLETO.precioMensual)} (suma kiosko, QR de mesa que cobra, 3 veces más conversaciones del asistente y atención prioritaria). Si pagas el año por adelantado, pagas 10 meses y usas 12.`,
   },
   {
     pregunta: "¿Qué pago aparte?",
@@ -45,7 +45,7 @@ export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Puedo vender antes de que Culqi me apruebe?",
     respuesta:
-      "Sí. Desde el primer día cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. Cuando Culqi te aprueba, sumas tarjeta y Yape automático.",
+      "Con el asistente de WhatsApp o el QR de mesa, sí: cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. La tienda web y el kiosko cobran en línea (tarjeta y Yape confirmado automáticamente) cuando Culqi te aprueba.",
   },
   {
     pregunta: "¿Necesito saber de tecnología?",

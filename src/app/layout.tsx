@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Gabarito } from "next/font/google";
+import { Bricolage_Grotesque, Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
@@ -11,16 +11,31 @@ import {
 } from "@/components/seo/JsonLd";
 import { EMPRESA } from "@/lib/site";
 
-const gabarito = Gabarito({
+// Sistema «la comanda» (benchmark §5.6): Bricolage Grotesque para titulares,
+// Figtree para texto y JetBrains Mono para precios, números de pedido y horas.
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin", "latin-ext"],
+  weight: ["600", "700", "800"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+const figtree = Figtree({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-figtree",
+  display: "swap",
+});
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-sans",
+  weight: ["500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 const TITULO =
-  "Pedily · Pedidos por WhatsApp con IA, tienda web y boletas SUNAT para restaurantes";
+  "Pedily · Sistema para restaurantes: WhatsApp con IA, tienda web, cocina, caja y SUNAT";
 const DESCRIPCION =
-  "Tu WhatsApp toma pedidos solo, tu web vende sin comisión y la boleta sale sola. Tienda propia para restaurantes en Perú desde S/ 249 al mes con IGV, 0 % de comisión por pedido.";
+  "Todo tu restaurante en un sistema: asistente de WhatsApp que conversa y cobra, tienda web, kiosko y QR de mesa, cocina, caja, boletas SUNAT, inventario y reportes. Desde S/ 249 al mes con IGV, 0 % de comisión.";
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -46,7 +61,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Pedily: tu WhatsApp toma pedidos solo, tu web vende sin comisión y la boleta sale sola",
+        alt: "Pedily: todo tu restaurante en un sistema, sin comisión",
       },
     ],
   },
@@ -81,7 +96,7 @@ export default function RootLayout({
         <WebsiteJsonLd />
         <SoftwareApplicationJsonLd />
       </head>
-      <body className={`${gabarito.variable} font-sans antialiased`}>
+      <body className={`${bricolage.variable} ${figtree.variable} ${jetbrains.variable} font-sans antialiased`}>
         <Header />
         <LayoutWrapper>{children}</LayoutWrapper>
         <WhatsAppButton />

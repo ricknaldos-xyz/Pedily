@@ -54,12 +54,14 @@ export const WHATSAPP_TEL: string | null = WHATSAPP_NUMBER
  * Demostraciones públicas que el visitante puede tocar sin hablar con nadie.
  *
  * - `tiendaUrl`: tienda de ejemplo publicada (carta y pedido de prueba).
+ * - `kioskoUrl`: kiosko de ejemplo publicado (carta, carrito y pago).
  * - `botWhatsapp`: número del bot de demostración (sin «+»). Sin
  *   NEXT_PUBLIC_DEMO_BOT_WHATSAPP el botón «Prueba el bot por WhatsApp» no se
  *   pinta en ningún sitio.
  */
 export const DEMO = {
   tiendaUrl: "https://pedily-demo-web.vercel.app",
+  kioskoUrl: "https://pedily-demo-kiosko.vercel.app",
   botWhatsapp: process.env.NEXT_PUBLIC_DEMO_BOT_WHATSAPP?.trim() || null,
   botMensaje: "Hola, quiero hacer un pedido",
 } as const;

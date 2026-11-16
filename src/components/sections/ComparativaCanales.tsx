@@ -1,8 +1,5 @@
 import { clsx } from "clsx";
-import { Container } from "@/components/layout/Container";
-import { Bloque } from "@/components/layout/Bloque";
 import { Encabezado } from "@/components/ui/Encabezado";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Check, Minus, X } from "lucide-react";
 import { PLANES, soles } from "@/lib/planes";
 
@@ -74,69 +71,62 @@ const CANALES: Canal[] = [
 ];
 
 const ICONO: Record<Nota, { Icono: typeof Check; clase: string; etiqueta: string }> = {
-  bien: { Icono: Check, clase: "bg-primary-100 text-primary-700", etiqueta: "A favor" },
-  regular: { Icono: Minus, clase: "bg-cream-300 text-cream-800", etiqueta: "Depende" },
-  mal: { Icono: X, clase: "bg-accent-100 text-accent-600", etiqueta: "En contra" },
+  bien: { Icono: Check, clase: "bg-hierba-100 text-hierba-700", etiqueta: "A favor" },
+  regular: { Icono: Minus, clase: "bg-aji-100 text-aji-700", etiqueta: "Depende" },
+  mal: { Icono: X, clase: "bg-rocoto-100 text-rocoto-600", etiqueta: "En contra" },
 };
 
 export function ComparativaCanales() {
   return (
-    <Bloque id="comparativa" className="bg-white">
-      <Container className="max-w-6xl">
+    <section id="comparativa" className="scroll-mt-16 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Encabezado
-          etiqueta="Compara antes de elegir"
-          titulo="Un asistente que conversa de verdad y cobra, no un formulario"
-          bajada="Cuatro formas de recibir pedidos, con lo bueno y lo malo de cada una. También lo nuestro."
+          etiqueta="Comparativa honesta"
+          titulo="Cuatro formas de recibir pedidos, con lo bueno y lo malo de cada una"
+          bajada="También lo nuestro: el asistente gasta más mensajes de Meta que un formulario. Elige con todo sobre la mesa."
         />
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {CANALES.map((c, i) => (
-            <AnimatedSection key={c.id} delay={i * 0.05}>
-              <div
-                className={clsx(
-                  "h-full rounded-2xl p-4",
-                  c.destacado
-                    ? "border-2 border-primary-500 bg-primary-50/60"
-                    : "border border-sand-200 bg-white"
-                )}
-              >
-                <h3 className="text-base font-bold text-sand-900">{c.nombre}</h3>
-                <ul className="mt-2.5 space-y-2">
-                  {c.filas.map((f) => {
-                    const { Icono, clase, etiqueta } = ICONO[f.nota];
-                    return (
-                      <li key={f.texto} className="flex items-start gap-2 text-sm leading-snug text-sand-700">
-                        <span
-                          className={clsx(
-                            "mt-px flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full",
-                            clase
-                          )}
-                        >
-                          <Icono className="h-3 w-3" aria-hidden />
-                          <span className="sr-only">{etiqueta}:</span>
-                        </span>
-                        {f.texto}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </AnimatedSection>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {CANALES.map((c) => (
+            <div
+              key={c.id}
+              className={clsx(
+                "relative h-full rounded-2xl p-5",
+                c.destacado ? "border-2 border-tinta bg-white shadow-[0_6px_0_0_#24102e]" : "border border-tinta/10 bg-white/60"
+              )}
+            >
+              {c.destacado && (
+                <span className="absolute -top-3 left-5 rounded-full border-2 border-tinta bg-aji-500 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-tinta">
+                  Pedily
+                </span>
+              )}
+              <h3 className="font-display text-lg font-bold text-tinta">{c.nombre}</h3>
+              <ul className="mt-3 space-y-2.5">
+                {c.filas.map((f) => {
+                  const { Icono, clase, etiqueta } = ICONO[f.nota];
+                  return (
+                    <li key={f.texto} className="flex items-start gap-2 text-[0.93rem] leading-snug text-sand-700">
+                      <span className={clsx("mt-px flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full", clase)}>
+                        <Icono className="h-3 w-3" aria-hidden />
+                        <span className="sr-only">{etiqueta}:</span>
+                      </span>
+                      {f.texto}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           ))}
         </div>
 
-        <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-sand-600">
-          El asistente viene desde el plan de {soles(whatsapp.precioMensual)}. ¿Cuánto
-          te costarían los mensajes de Meta?{" "}
-          <a
-            href="/herramientas/costo-mensajes-whatsapp"
-            className="font-semibold text-primary-700 underline underline-offset-2"
-          >
+        <p className="mx-auto mt-6 max-w-3xl text-center text-[0.95rem] leading-relaxed text-sand-700">
+          El asistente viene desde el plan de {soles(whatsapp.precioMensual)}. ¿Cuánto te costarían los mensajes de Meta?{" "}
+          <a href="/herramientas/costo-mensajes-whatsapp" className="font-semibold text-chicha-700 underline underline-offset-2">
             Calcúlalo gratis
           </a>
           .
         </p>
-      </Container>
-    </Bloque>
+      </div>
+    </section>
   );
 }
