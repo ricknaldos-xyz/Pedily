@@ -7,10 +7,12 @@
  * - Precios al mes con IGV incluido. 0 % de comisión al restaurante y al
  *   comensal. Anual = 10 meses pagados.
  * - Tienda (S/ 249) NO trae el asistente de WhatsApp; viene desde S/ 499.
- * - El QR de Yape o Plin con verificación del comprobante NO está en la tienda
- *   web (solo Yape y tarjeta por Culqi, `pedily-web/.../PaymentForm.tsx:198-220`):
- *   va en el asistente (S/ 499) y en el QR de mesa (S/ 999). Corregido el
- *   15-nov (LV2-D) según el inventario vendible §20 y §22.1.
+ * - El QR de Yape o Plin del local con verificación del comprobante vuelve al
+ *   plan Tienda (LV2-E, 15-nov): ficha G-09, unida a `main` de pedily-web
+ *   (`8cfb1d1`: `components/features/checkout/PaymentForm/PaymentForm.tsx:46-54`,
+ *   `components/shared/ManualQrPay`) y pedily-backend (`05ffea7`:
+ *   `src/order/web-qr-payment.ts`, `web-qr-proof.service.ts`). Aparece cuando el
+ *   restaurante enciende `PLIN_MANUAL` y sube su QR o número de cobro.
  * - Los cupos de conversaciones del asistente NO se publican en cifras hasta
  *   medirlos; el de Completo es 3 veces el de Tienda + WhatsApp.
  * - Alta: S/ 490 (Tienda y Tienda + WhatsApp) o S/ 790 (Completo), gratis si
@@ -46,6 +48,7 @@ export const PLANES: Plan[] = [
       "Tu tienda web con tu marca, tu carta y tu pedido online",
       "Panel de pedidos con aviso al instante y pantalla de cocina",
       "Cobro con tarjeta y Yape en tu cuenta Culqi",
+      "QR de tu Yape o Plin en la tienda web, con verificación del comprobante en el panel",
       "Boletas y facturas SUNAT automáticas (con tu Nubefact)",
       "Zonas de reparto con su tarifa, y recojo en tienda",
       "Pedidos programados para la hora que elija tu cliente",
@@ -64,7 +67,7 @@ export const PLANES: Plan[] = [
     incluye: [
       "Todo lo del plan Tienda",
       "Asistente de WhatsApp con IA que conversa, arma el pedido, cobra y lo manda a cocina",
-      "Cobro por WhatsApp también con el QR de tu Yape o Plin, con verificación del comprobante",
+      "Cobro por WhatsApp con enlace de Yape o tarjeta, o con el QR de tu Yape o Plin",
       "Te pasa el chat cuando el cliente pide hablar con una persona",
       "Campañas por WhatsApp con plantillas, solo a quien dio su permiso",
       "Incluye un cupo mensual de conversaciones; te decimos cuál según tu volumen",

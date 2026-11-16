@@ -45,7 +45,7 @@ export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Puedo vender antes de que Culqi me apruebe?",
     respuesta:
-      "Con el asistente de WhatsApp o el QR de mesa, sí: cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. La tienda web y el kiosko cobran en línea (tarjeta y Yape confirmado automáticamente) cuando Culqi te aprueba.",
+      "Sí: en la tienda web, el asistente de WhatsApp y el QR de mesa cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. La tarjeta y el Yape confirmado automáticamente llegan cuando Culqi te aprueba; el kiosko cobra así o con «pagar en caja».",
   },
   {
     pregunta: "¿Necesito saber de tecnología?",

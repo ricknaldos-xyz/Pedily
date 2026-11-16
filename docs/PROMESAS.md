@@ -32,7 +32,7 @@ Rehecha el 15-nov-2026 (L-18) para la landing nueva. Las rutas sin carpeta está
 | 1 | Tienda web con tu marca | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
 | 3 | Pedidos de web, WhatsApp y kiosko en un solo panel, con aviso sonoro | `src/components/home/RecorridoPedido.tsx` | Existe | W-64 | `mismo panel` |
 | 5 | Roles para tu equipo | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | W-64 (paso 4) | `roles para tu equipo` |
-| 6 | Cobrar desde el primer día con el QR de tu Yape o Plin y verificar el comprobante en el panel | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Existe | B-803, W-61 | `QR de tu Yape o Plin` |
+| 6 | Cobrar desde el primer día con el QR de tu Yape o Plin y verificar el comprobante en el panel (tienda web, asistente y mesa) | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Existe | B-803, W-61; tienda web: G-09 (fila 73) | `QR de tu Yape o Plin` |
 | 7 | Tarjeta con Culqi cuando Culqi te aprueba | `AbreTuTienda.tsx`, `src/lib/faq.ts`, `src/components/home/RecorridoPedido.tsx` | Existe | B-602, B-605; conexión autónoma X-008, W-814 | `Culqi te aprueba` |
 | 8 | En el kiosko: tarjeta, Yape o pagar en caja | `src/lib/soluciones.ts`, `src/lib/faq.ts` | Existe | W-54 (prueba con Culqi de prueba) | `pagar en caja` |
 | 9 | Boleta o factura electrónica automática con tu RUC, por tu Nubefact | `src/components/home/RecorridoPedido.tsx`, `src/components/home/HeroHome.tsx` | Existe | B-603, B-604; conexión autónoma W-815 | `boleta sale sola` |
@@ -92,6 +92,7 @@ Rehecha el 15-nov-2026 (L-18) para la landing nueva. Las rutas sin carpeta está
 | 70 | Las llaves de Culqi y Nubefact no quedan a la vista en el panel (solo una máscara) | `src/app/panel/page.tsx`, `src/components/sections/AbreTuTienda.tsx` | Existe | Inventario 18.11 (G-07, consola de credenciales) | `no quedan a la vista` |
 | 71 | Personalizador de marca en la portada: nombre, color y logo cambian la tienda y el saludo del asistente al instante (todo en el navegador) | `src/components/home/Personalizador.tsx` | Existe | Marca propia: inventario 16.1; saludo editable: 16.4 (`MessagesTab.tsx:183-309`). El logo no sale del navegador (`URL.createObjectURL`) | `con tu nombre y tus colores` |
 | 72 | Página de demo con la tienda y el kiosko publicados; el cobro de la demo no está conectado | `src/app/demo/page.tsx`, `src/lib/site.ts` | Existe | Tramo D (demo publicada 14-nov); Culqi de la demo pendiente (TRASPASO) | `no está conectado` |
+| 73 | QR de tu Yape o Plin en la tienda web (plan Tienda, S/ 249), con comprobante (número de operación o captura) y verificación en el panel | `src/lib/planes.ts`, `src/lib/soluciones.ts` (`tienda-web`, `caja-y-pagos`), `src/lib/faq.ts` | Existe | G-09 unida a `main` (web `8cfb1d1`: `W/components/features/checkout/PaymentForm/PaymentForm.tsx:46-54`, `W/components/shared/ManualQrPay`; backend `05ffea7`: `B/src/order/web-qr-payment.ts`, `B/src/order/web-qr-proof.service.ts`); se enciende con `PLIN_MANUAL` + QR o número del restaurante | `QR de tu Yape o Plin en la tienda web` |
 
 ### Promesas que ya no salen en la landing (L-18)
 

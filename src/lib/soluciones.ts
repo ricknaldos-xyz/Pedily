@@ -233,7 +233,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         titulo: "Paga y el dinero va a tu cuenta",
         texto:
-          "Yape (hasta S/ 2 000) o tarjeta, cobrados en tu cuenta Culqi. Si el banco pide verificación, se abre su formulario sin perder la venta.",
+          "Yape (hasta S/ 2 000) o tarjeta, cobrados en tu cuenta Culqi, o el QR de tu Yape o Plin con verificación en el panel. Si el banco pide verificación, se abre su formulario sin perder la venta.",
       },
       {
         titulo: "Y vuelve a pedir",
@@ -253,6 +253,7 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Pedir para lo antes posible o programar día y hora", ref: "1.9", opcion: true },
       { texto: "Cupón de descuento en el checkout", ref: "1.10" },
       { texto: "Pago con Yape o tarjeta en tu cuenta Culqi", ref: "1.11" },
+      { texto: "Pago con el QR de tu Yape o Plin: el cliente manda su número de operación o la captura y tú verificas en el panel", ref: "G-09" },
       { texto: "Verificación del banco (3D Secure) sin perder la venta", ref: "1.12", opcion: true },
       { texto: "Cuenta del cliente: registro, recuperar clave y cerrar sesiones", ref: "1.13" },
       { texto: "Entrar con Google", ref: "1.14", opcion: true },
@@ -283,7 +284,7 @@ export const SOLUCIONES: Solucion[] = [
       },
     ],
     noHace: [
-      "La tienda web cobra con Yape y tarjeta a través de Culqi; el QR de Yape o Plin con verificación está en el asistente de WhatsApp y en el QR de mesa.",
+      "Un pago con el QR de tu Yape o Plin no se confirma solo: alguien de tu equipo verifica el comprobante en el panel. La boleta sale después de verificarlo.",
       "No es una app de tienda de aplicaciones: es una web que se instala como acceso directo.",
     ],
     vecinos: ["asistente-whatsapp", "pedidos-programados", "caja-y-pagos", "delivery"],
@@ -311,7 +312,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Puedo cobrar con el QR de mi Yape en la tienda web?",
         respuesta:
-          "La tienda web cobra Yape y tarjeta a través de tu cuenta Culqi, con confirmación automática. El cobro con el QR de tu Yape o Plin y verificación del comprobante está en el asistente de WhatsApp y en el QR de mesa.",
+          "Sí. Si subes tu QR o tu número de cobro en el panel, el checkout ofrece «Yape o Plin con el QR del local». El cliente paga, manda su número de operación o la captura desde la página de su pedido, y tú lo verificas en el panel; al verificar o rechazar le llega un correo. Yape y tarjeta por Culqi se confirman solos.",
       },
     ],
     seo: {
@@ -721,7 +722,7 @@ export const SOLUCIONES: Solucion[] = [
       },
       {
         item: "Tu QR de Yape o Plin",
-        detalle: "Para cobrar por WhatsApp y en la mesa sin pasar por Culqi; verificas el comprobante en el panel.",
+        detalle: "Para cobrar en la tienda web, por WhatsApp y en la mesa sin pasar por Culqi; verificas el comprobante en el panel.",
       },
     ],
     vecinos: ["boletas-sunat", "cocina", "reportes", "tienda-web"],
@@ -734,7 +735,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Puedo vender antes de que Culqi me apruebe?",
         respuesta:
-          "Con el asistente de WhatsApp o el QR de mesa, sí: cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. La tienda web y el kiosko cobran en línea cuando Culqi te aprueba.",
+          "Sí: en la tienda web, el asistente de WhatsApp y el QR de mesa cobras con el QR de tu Yape o Plin y verificas el comprobante en el panel. El kiosko cobra en línea cuando Culqi te aprueba, o «pagar en caja».",
       },
       {
         pregunta: "¿Qué pasa si cancelo un pedido que ya se pagó?",
