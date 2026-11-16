@@ -8,7 +8,7 @@ patrones="$(mktemp)"
 trap 'rm -f "$patrones"' EXIT
 grep -vE '^\s*(#|$)' scripts/promesas-prohibidas.txt > "$patrones"
 
-if hallazgos="$(grep -rniE -f "$patrones" src public)"; then
+if hallazgos="$(grep -rniIE -f "$patrones" src public)"; then
   echo "Promesas prohibidas encontradas:" >&2
   echo "$hallazgos" >&2
   exit 1
@@ -27,7 +27,7 @@ nombre_original='wantan'
 nombre_completo='wantan clan'
 archivo_permitido='src/lib/site.ts'
 fallo_nombre=0
-if hallazgos="$(grep -rliE "$nombre_original" src public | grep -v "^${archivo_permitido}\$")"; then
+if hallazgos="$(grep -rliIE "$nombre_original" src public | grep -v "^${archivo_permitido}\$")"; then
   echo "El nombre del restaurante de origen solo puede estar en $archivo_permitido:" >&2
   echo "$hallazgos" >&2
   fallo_nombre=1
@@ -44,8 +44,8 @@ while IFS= read -r linea; do
     echo "Cifra junto al nombre del restaurante de origen: $linea" >&2
     fallo_nombre=1
   fi
-done < <(grep -rniE "$nombre_original" . \
-    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git \
+done < <(grep -rniIE "$nombre_original" . \
+    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=".next-*" --exclude-dir=.git \
     --exclude=promesas-prohibidas.txt --exclude=comprobar-promesas.sh || true)
 if [ "$fallo_nombre" -ne 0 ]; then
   exit 1
@@ -83,7 +83,7 @@ while IFS=$'\t' read -r num estado tarea patron; do
       && { [ -z "$tarea" ] || [ "$tarea" = "—" ]; }; then
     echo "PROMESAS #$num: «${estado}» sin tarea que la cumpla." >&2; fallos=1
   fi
-  if hallazgos="$(grep -rniE -- "$patron" src public)"; then
+  if hallazgos="$(grep -rniIE -- "$patron" src public)"; then
     if [ "$estado" = "No existe" ]; then
       echo "PROMESAS #$num: promesa marcada «No existe» sigue en la landing:" >&2
       echo "$hallazgos" >&2

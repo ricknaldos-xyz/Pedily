@@ -6,7 +6,7 @@ import { Pause, Play } from "lucide-react";
 import { CLIPS, type ClaveClip } from "@/lib/capturas";
 
 /**
- * Clip corto del producto real, sin audio (LV2-C). Liviano a propósito:
+ * Clip corto del producto real, mudo (LV2-C). Liviano a propósito:
  * `preload="none"` y póster en WebP; solo se descarga y reproduce cuando entra
  * en pantalla, y se pausa al salir. Con `prefers-reduced-motion` no arranca
  * solo: queda el póster y el botón para reproducirlo. Siempre hay botón de

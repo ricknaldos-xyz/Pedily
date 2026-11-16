@@ -67,16 +67,20 @@ export function HeroHome() {
         {/* ── Escena ── */}
         <div className="relative">
           {/* Escritorio: portátil con el panel + celular con el chat + tickets */}
-          <div className="relative hidden lg:block lg:h-[36rem]">
-            <MarcoPortatil className="absolute right-0 top-4 w-[36rem] xl:w-[39rem]">
-              <Clip clave="alarma" />
-            </MarcoPortatil>
-            <MarcoCelular className="absolute bottom-0 left-0 w-[16.5rem] rotate-[-3deg]">
-              <ChatWhatsApp animado className="h-[30rem]" />
-            </MarcoCelular>
-            <TicketPago className="absolute right-[18rem] top-0 rotate-[-4deg] animate-entra [animation-delay:3.4s]" />
-            <TicketComanda className="absolute right-[-1rem] top-[17rem] rotate-[3deg] animate-entra [animation-delay:4.2s]" />
-            <TicketBoleta className="absolute bottom-[1.5rem] right-[8rem] w-48 rotate-[-2deg] animate-entra [animation-delay:5s]" />
+          <div className="relative hidden lg:block lg:h-[40rem]">
+            <div className="absolute right-0 top-4 w-[36rem] xl:w-[39rem]">
+              <MarcoPortatil>
+                <Clip clave="alarma" />
+              </MarcoPortatil>
+            </div>
+            <div className="absolute bottom-0 left-[-2rem] z-10 w-[14.5rem] rotate-[-3deg] xl:left-[-3rem]">
+              <MarcoCelular>
+                <ChatWhatsApp animado className="h-[26rem]" />
+              </MarcoCelular>
+            </div>
+            <TicketPago className="absolute right-[-1.5rem] top-[-0.5rem] z-20 rotate-[4deg] animate-entra [animation-delay:3.4s]" />
+            <TicketComanda className="absolute bottom-[2.5rem] right-0 z-20 rotate-[3deg] animate-entra [animation-delay:4.2s]" />
+            <TicketBoleta className="absolute bottom-0 right-[12.5rem] z-20 w-48 rotate-[-2deg] animate-entra [animation-delay:5s]" />
           </div>
 
           {/* Pantallas chicas y medianas: celular a lo ancho y tickets debajo */}
@@ -99,7 +103,7 @@ export function HeroHome() {
               </li>
             </ol>
           </div>
-          <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-wider text-humo lg:mt-4 lg:text-left">
+          <p className="mt-2 text-center font-mono text-[10px] uppercase tracking-wider text-humo lg:mt-6 lg:text-right">
             Panel real con datos de la demo · chat de ejemplo · asistente desde S/ 499
           </p>
         </div>

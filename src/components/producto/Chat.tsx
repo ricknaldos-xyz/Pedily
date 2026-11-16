@@ -41,7 +41,7 @@ export function ChatWhatsApp({
   logo?: string | null;
 }) {
   return (
-    <div className={clsx("flex flex-col bg-[#efeae2] text-left", className)}>
+    <div className={clsx("flex flex-col overflow-hidden bg-[#efeae2] text-left", className)}>
       <div className="flex items-center gap-2.5 px-3 pb-2.5 pt-7 text-white" style={{ background: color }}>
         <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-black/20 text-xs font-bold">
           {logo ? (

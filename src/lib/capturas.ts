@@ -114,7 +114,7 @@ export const CAPTURAS = {
   "tienda-comprobante": cel("tienda-comprobante", "Checkout: datos del cliente y DNI para la boleta", "tienda-05-checkout-datos-movil"),
   "tienda-programar": cel("tienda-programar", "Checkout: «Programar para más tarde» con el día y la franja", "tienda-07-checkout-programar-movil"),
   "tienda-pago": cel("tienda-pago", "Checkout: pago con Yape o con tarjeta", "tienda-08-pago-yape-movil"),
-  "tienda-mis-pedidos": cel("tienda-mis-pedidos", "«Mis pedidos»: el pedido en preparación con su detalle", "tienda-10-mis-pedidos-movil"),
+  "tienda-mis-pedidos": cel("tienda-mis-pedidos", "«Mis pedidos»: el pedido en curso con su estado y su detalle", "tienda-10-mis-pedidos-movil"),
   "tienda-beneficios": cel("tienda-beneficios", "Beneficios: saldo por cada compra y programa de referidos", "tienda-11-beneficios-movil"),
   "wa-carta": cel("wa-carta", "Carta que se abre desde el chat de WhatsApp", "webview-01-carta-movil"),
   "wa-entrega": cel("wa-entrega", "Desde WhatsApp: recojo y «Programar para más tarde»", "webview-06-entrega-movil"),
@@ -131,7 +131,7 @@ export const CAPTURAS = {
 
 export type ClaveCaptura = keyof typeof CAPTURAS;
 
-/** Clips sin audio (LV2-C `video/`, versión liviana), con su póster. */
+/** Clips mudos (LV2-C `video/`, versión liviana), con su póster. */
 export const CLIPS = {
   whatsapp: {
     ancho: 540,
