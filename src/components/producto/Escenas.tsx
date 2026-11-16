@@ -7,6 +7,7 @@ import { Clip } from "@/components/marca/Clip";
 import { CLIPS } from "@/lib/capturas";
 import type { Escena } from "@/lib/soluciones";
 import { ChatWhatsApp } from "./Chat";
+import { SecuenciaChatMiniApp } from "./ChatMiniApp";
 
 export { ChatWhatsApp };
 
@@ -81,15 +82,9 @@ export function EscenaSolucion({ escena }: { escena: Escena }) {
   switch (escena) {
     case "chat":
       return (
-        <figure className="relative mx-auto w-full max-w-[19rem]">
-          <MarcoCelular>
-            <Clip clave="whatsapp" inmediato />
-          </MarcoCelular>
-          <TicketComanda className="absolute -right-10 bottom-16 hidden rotate-2 lg:block" />
-          <figcaption>
-            <Demo>{CLIPS.whatsapp.nota}</Demo>
-          </figcaption>
-        </figure>
+        <div className="relative mx-auto w-full max-w-[19rem]">
+          <SecuenciaChatMiniApp />
+        </div>
       );
     case "tienda":
       return (

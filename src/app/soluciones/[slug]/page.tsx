@@ -8,6 +8,7 @@ import { IconoSolucion } from "@/components/marca/IconoSolucion";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { EscenaSolucion } from "@/components/producto/Escenas";
 import { Galeria } from "@/components/producto/Galeria";
+import { SeccionChatMiniApp } from "@/components/producto/SeccionChatMiniApp";
 import { GALERIAS } from "@/lib/galerias";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -116,6 +117,9 @@ export default async function PaginaSolucion({ params }: { params: Promise<{ slu
           <p className="max-w-4xl font-display text-xl font-semibold leading-snug text-tinta sm:text-2xl">{s.definicion}</p>
         </div>
       </section>
+
+      {/* ── Chat + mini-app (solo el asistente; decisión del dueño, 16-nov) ── */}
+      {s.slug === "asistente-whatsapp" && <SeccionChatMiniApp />}
 
       {/* ── Cómo funciona ── */}
       <section className="py-16 sm:py-24">

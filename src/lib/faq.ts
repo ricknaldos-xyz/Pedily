@@ -19,6 +19,16 @@ export interface Pregunta {
   respuesta: string;
 }
 
+/**
+ * Decisión del dueño (16-nov): la mini-app del plan con asistente se abre
+ * dentro de WhatsApp (`pedily-web/app/wa/**`, inventario 2.5–2.7 y 12.2).
+ * Sale en la FAQ general, en /precios y en /soluciones/asistente-whatsapp.
+ */
+export const PREGUNTA_DESCARGAR: Pregunta = {
+  pregunta: "¿Mi cliente tiene que descargar algo?",
+  respuesta: `No. Todo pasa en el WhatsApp que ya usa. El asistente conversa en el chat y, para elegir y pagar, le manda el botón «Ver carta»: se abre una mini-app con tu marca dentro de WhatsApp, sin descargar nada. Ahí ve tu carta con fotos, elige tamaños y cremas, encuentra en el carrito lo que ya pidió por chat, elige delivery o recojo (o, si lo enciendes, programar para más tarde) y paga con Yape, tarjeta o el QR de Yape o Plin de tu local. Viene en el plan ${WHATSAPP.nombre} (${soles(WHATSAPP.precioMensual)}) y en ${COMPLETO.nombre}. En la tienda web tampoco descarga nada: se abre en el navegador.`,
+};
+
 export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
@@ -54,8 +64,9 @@ export const FAQS: Pregunta[] = [
   },
   {
     pregunta: "¿El asistente de WhatsApp es un formulario o conversa?",
-    respuesta: `Conversa. Tu cliente escribe como le escribiría a tu cajero («medio pollo y una jarra de chicha»), el asistente le pregunta lo que falta (cremas, tamaño, dirección), arma el pedido solo con los platos y precios de tu carta, le manda el enlace para pagar con Yape o tarjeta y lo pasa a cocina. Si el cliente pide hablar con una persona, te avisa y tu equipo sigue el chat desde el panel. Viene desde el plan de ${soles(WHATSAPP.precioMensual)} con un cupo mensual de conversaciones que fijamos según tu volumen; en ${COMPLETO.nombre} el cupo es 3 veces mayor.`,
+    respuesta: `Conversa. Tu cliente escribe como le escribiría a tu cajero («medio pollo y una jarra de chicha»), el asistente le pregunta lo que falta (cremas, tamaño), arma el pedido solo con los platos y precios de tu carta y le abre la mini-app, dentro del mismo WhatsApp, para poner su dirección y pagar con Yape, tarjeta o QR. El pedido pagado pasa a cocina. Chat para conversar, mini-app para comprar. Si el cliente pide hablar con una persona, te avisa y tu equipo sigue el chat desde el panel. Viene desde el plan de ${soles(WHATSAPP.precioMensual)} con un cupo mensual de conversaciones que fijamos según tu volumen; en ${COMPLETO.nombre} el cupo es 3 veces mayor.`,
   },
+  PREGUNTA_DESCARGAR,
   {
     pregunta: "¿Mis clientes pueden pedir para más tarde?",
     respuesta:

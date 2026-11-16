@@ -9,7 +9,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Comparativa } from "@/components/precios/Comparativa";
 import { Alta, CostosAparte } from "@/components/precios/AltaYCostos";
 import { FAQPageJsonLd, PaginaJsonLd } from "@/components/seo/JsonLd";
-import { FAQS } from "@/lib/faq";
+import { FAQS, PREGUNTA_DESCARGAR } from "@/lib/faq";
 import { MESES_PAGADOS_ANUAL, MESES_PERMANENCIA_ALTA_GRATIS, PLANES, soles } from "@/lib/planes";
 
 const TITULO = "Precios de Pedily: desde S/ 249 al mes con IGV, 0 % de comisión";
@@ -24,7 +24,20 @@ export const metadata: Metadata = {
 };
 
 /** Preguntas de dinero de la FAQ general (mismo texto que el JSON-LD). */
-const PREGUNTAS_PRECIO = [0, 1, 2, 3, 4, 5, 10].map((i) => FAQS[i]);
+const PREGUNTAS_PRECIO = [
+  "¿Cuánto cuesta Pedily?",
+  "¿Qué pago aparte?",
+  "¿Cuánto cuesta el alta y hay permanencia?",
+  "¿Qué es el programa de fundadores?",
+  "¿El dinero pasa por Pedily?",
+  "¿Puedo vender antes de que Culqi me apruebe?",
+  PREGUNTA_DESCARGAR.pregunta,
+  "¿Cómo funcionan el kiosko y el QR de mesa?",
+].map((q) => {
+  const f = FAQS.find((x) => x.pregunta === q);
+  if (!f) throw new Error(`Falta en la FAQ: ${q}`);
+  return f;
+});
 
 const NO_PAGAS = [
   "Comisión por pedido, ni tú ni tu cliente",

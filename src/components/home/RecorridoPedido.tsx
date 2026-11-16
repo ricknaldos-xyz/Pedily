@@ -29,8 +29,8 @@ const PARADAS: Parada[] = [
     ),
   },
   {
-    titulo: "El asistente arma el pedido y cobra",
-    texto: "Solo ofrece lo que está en tu carta, con tus precios, y cobra en tu cuenta.",
+    titulo: "Arma el pedido y abre la mini-app para pagar",
+    texto: "Solo ofrece lo de tu carta, con tus precios. Desde el chat se abre tu mini-app: entrega y pago, a tu cuenta.",
     enlace: { href: RUTA_SOLUCION("caja-y-pagos"), texto: "Caja y pagos" },
     sello: { texto: "Pagado", tono: "pagado" },
     mini: (

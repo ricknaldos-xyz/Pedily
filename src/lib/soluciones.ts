@@ -9,7 +9,7 @@
  * nace apagado lleva `opcion: true` y se presenta como «se enciende en tu
  * restaurante». Nada de cifras de clientes.
  */
-import type { Pregunta } from "./faq";
+import { PREGUNTA_DESCARGAR, type Pregunta } from "./faq";
 
 export type GrupoId = "vende" | "opera" | "vuelven";
 
@@ -89,14 +89,14 @@ export const SOLUCIONES: Solucion[] = [
     slug: "asistente-whatsapp",
     grupo: "vende",
     nombre: "Asistente de WhatsApp con IA",
-    linea: "Conversa, arma el pedido, cobra y lo manda a cocina",
+    linea: "Chat que conversa + mini-app para comprar dentro de WhatsApp",
     icono: "chat",
     plan: "whatsapp",
-    titulo: "Tu WhatsApp atiende en hora punta: conversa, arma el pedido y cobra",
+    titulo: "Tu WhatsApp atiende en hora punta: un chat que conversa y una mini-app para comprar",
     bajada:
-      "Tu cliente escribe como habla. El asistente pregunta lo que falta, arma el pedido solo con tu carta y tus precios, le manda el enlace para pagar y lo pasa a cocina. Si pide una persona, tu equipo sigue el chat.",
+      "Tu cliente escribe como habla y el asistente arma el pedido con tu carta y tus precios. Desde el mismo chat se abre tu mini-app, dentro de WhatsApp y sin descargar nada: ahí elige, pone su dirección y paga. El pedido entra a cocina. Si pide una persona, tu equipo sigue el chat.",
     definicion:
-      "Un asistente de pedidos por WhatsApp es un programa con inteligencia artificial que atiende el número de WhatsApp Business de tu restaurante: entiende lo que escribe el cliente, consulta tu carta, arma el pedido, cobra con un enlace de pago y lo deja en tu panel, listo para cocina.",
+      "Un asistente de pedidos por WhatsApp es un programa con inteligencia artificial que atiende el número de WhatsApp Business de tu restaurante: entiende lo que escribe el cliente, consulta tu carta y arma el pedido. Para elegir y pagar le abre una mini-app con la marca de tu restaurante dentro del mismo WhatsApp, y el pedido pagado queda en tu panel, listo para cocina.",
     escena: "chat",
     pasos: [
       {
@@ -107,12 +107,12 @@ export const SOLUCIONES: Solucion[] = [
       {
         titulo: "Pregunta lo que falta y no inventa precios",
         texto:
-          "Cremas, tamaño, dirección. Solo ofrece lo que está en tu carta, con tus precios: el total lo calcula el servidor y una guarda corrige cualquier precio que no cuadre.",
+          "Cremas y tamaño. Recomienda acompañamientos y bebidas. Solo ofrece lo que está en tu carta, con tus precios: el total lo calcula el servidor y una guarda corrige cualquier precio que no cuadre.",
       },
       {
-        titulo: "Cobra y manda a cocina",
+        titulo: "Abre la mini-app para comprar",
         texto:
-          "Envía el enlace para pagar con Yape o tarjeta en tu cuenta Culqi, o cobra con el QR de tu Yape o Plin y número de operación. El pedido entra al panel con aviso.",
+          "Con el botón «Ver carta» se abre tu mini-app dentro de WhatsApp, con el carrito del chat ya cargado. Ahí elige delivery o recojo y paga con Yape o tarjeta en tu cuenta Culqi, o con el QR de tu Yape o Plin. El pedido entra al panel con aviso.",
       },
       {
         titulo: "Tu equipo nunca pierde el control",
@@ -122,14 +122,16 @@ export const SOLUCIONES: Solucion[] = [
     ],
     funciones: [
       { texto: "Arma el pedido conversando, sobre tu carta real", ref: "2.1" },
-      { texto: "Pregunta cremas, tamaño y dirección antes de cerrar", ref: "2.2" },
+      { texto: "Pregunta cremas y tamaño antes de cerrar", ref: "2.2" },
       { texto: "Cambia o quita lo que el cliente diga («sácale la chicha»)", ref: "2.3" },
       { texto: "Encuentra platos aunque los escriban mal", ref: "2.4" },
       { texto: "Entiende notas de voz", ref: "2.11" },
       { texto: "Entiende la foto de un plato que manda el cliente", ref: "2.12", opcion: true },
-      { texto: "Muestra la carta con fotos en una mini-app, sin descargar nada", ref: "2.5" },
-      { texto: "El carrito pasa del chat a la mini-app y vuelve", ref: "2.6" },
-      { texto: "Cobra con Yape o tarjeta por enlace, o con tu QR de Yape o Plin", ref: "2.7" },
+      { texto: "Mini-app con tu marca dentro de WhatsApp, sin descargar nada: carta con fotos, tamaños y cremas", ref: "2.5" },
+      { texto: "Carrito unido entre chat y mini-app: empiezas escribiendo y terminas tocando", ref: "2.6" },
+      { texto: "En la mini-app: delivery con su dirección o recojo en tu local", ref: "2.7" },
+      { texto: "Cobra en la mini-app con Yape o tarjeta, o con el QR de Yape o Plin de tu local", ref: "2.7" },
+      { texto: "En la mini-app: programar para más tarde", ref: "12.2", opcion: true },
       { texto: "Nunca inventa precios: el total lo calcula el servidor", ref: "2.8" },
       { texto: "Pocos mensajes por pedido: texto, foto y botones viajan juntos", ref: "2.9" },
       { texto: "Avisa lo importante: confirmado, en camino, listo para recoger", ref: "2.10" },
@@ -170,15 +172,16 @@ export const SOLUCIONES: Solucion[] = [
     ],
     noHace: [
       "No atiende otras redes sociales: solo WhatsApp.",
-      "El pago no ocurre dentro del chat: el asistente manda un enlace para pagar.",
+      "No cobra escribiendo en el chat: la dirección y el pago se hacen en la mini-app, que se abre desde el mismo chat.",
     ],
     vecinos: ["tienda-web", "cocina", "caja-y-pagos", "clientes-y-campanas"],
     preguntas: [
       {
         pregunta: "¿El asistente de WhatsApp es un formulario o conversa?",
         respuesta:
-          "Conversa. Tu cliente escribe como le escribiría a tu cajero («medio pollo y una jarra de chicha»), el asistente le pregunta lo que falta (cremas, tamaño, dirección), arma el pedido solo con los platos y precios de tu carta, le manda el enlace para pagar con Yape o tarjeta y lo pasa a cocina.",
+          "Conversa. Tu cliente escribe como le escribiría a tu cajero («medio pollo y una jarra de chicha»), el asistente le pregunta lo que falta (cremas, tamaño), arma el pedido solo con los platos y precios de tu carta y le abre la mini-app para poner su dirección y pagar con Yape, tarjeta o QR. El pedido pagado pasa a cocina.",
       },
+      PREGUNTA_DESCARGAR,
       {
         pregunta: "¿Puede equivocarse con los precios?",
         respuesta:
@@ -203,7 +206,7 @@ export const SOLUCIONES: Solucion[] = [
     seo: {
       titulo: "Asistente de pedidos por WhatsApp con IA para restaurantes",
       descripcion:
-        "Un asistente de WhatsApp que conversa, arma el pedido con tu carta, cobra con Yape o tarjeta y lo manda a cocina. Para restaurantes en Perú, desde S/ 499 al mes con IGV.",
+        "Un asistente de WhatsApp que conversa y arma el pedido, más una mini-app con tu marca dentro de WhatsApp para elegir, pagar con Yape o tarjeta y mandar a cocina. Para restaurantes en Perú, desde S/ 499 al mes con IGV.",
     },
   },
   {

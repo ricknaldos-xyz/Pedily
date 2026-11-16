@@ -66,8 +66,9 @@ export const PLANES: Plan[] = [
     destacado: true,
     incluye: [
       "Todo lo del plan Tienda",
-      "Asistente de WhatsApp con IA que conversa, arma el pedido, cobra y lo manda a cocina",
-      "Cobro por WhatsApp con enlace de Yape o tarjeta, o con el QR de tu Yape o Plin",
+      "Asistente de WhatsApp con IA que conversa, recomienda y arma el pedido",
+      "Mini-app con tu marca dentro de WhatsApp, sin descargar nada: carta con fotos, carrito unido al chat, delivery o recojo y programar",
+      "Cobro en la mini-app con Yape o tarjeta, o con el QR de tu Yape o Plin",
       "Te pasa el chat cuando el cliente pide hablar con una persona",
       "Campañas por WhatsApp con plantillas, solo a quien dio su permiso",
       "Incluye un cupo mensual de conversaciones; te decimos cuál según tu volumen",

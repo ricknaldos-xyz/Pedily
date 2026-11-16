@@ -117,6 +117,10 @@ export const CAPTURAS = {
   "tienda-mis-pedidos": cel("tienda-mis-pedidos", "«Mis pedidos»: el pedido en curso con su estado y su detalle", "tienda-10-mis-pedidos-movil"),
   "tienda-beneficios": cel("tienda-beneficios", "Beneficios: saldo por cada compra y programa de referidos", "tienda-11-beneficios-movil"),
   "wa-carta": cel("wa-carta", "Carta que se abre desde el chat de WhatsApp", "webview-01-carta-movil"),
+  "wa-plato": cel("wa-plato", "Mini-app de WhatsApp: el plato con sus cremas incluidas e indicaciones para cocina", "webview-02-plato-movil"),
+  "wa-bebidas": cel("wa-bebidas", "Mini-app de WhatsApp: bebidas con descuento, tamaños y el botón «Ver carrito»", "webview-03-agregado-movil"),
+  "wa-carrito": cel("wa-carrito", "Mini-app de WhatsApp: el carrito con el pollo pedido por chat y la chicha agregada tocando", "webview-04-carrito-movil"),
+  "wa-confirmar": cel("wa-confirmar", "Mini-app de WhatsApp: resumen, cupón, saldo, delivery o recojo y dirección de envío", "webview-05-checkout-movil"),
   "wa-entrega": cel("wa-entrega", "Desde WhatsApp: recojo y «Programar para más tarde»", "webview-06-entrega-movil"),
   "wa-pago": cel("wa-pago", "Desde WhatsApp: pagar con Yape, con tarjeta o con el QR de Yape o Plin del local", "webview-07-pago-movil"),
   "mesa-carta": cel("mesa-carta", "QR de mesa: la carta de la mesa con «Llamar al mozo»", "mesa-01-carta-movil"),
@@ -133,12 +137,6 @@ export type ClaveCaptura = keyof typeof CAPTURAS;
 
 /** Clips mudos (LV2-C `video/`, versión liviana), con su póster. */
 export const CLIPS = {
-  whatsapp: {
-    ancho: 540,
-    alto: 1168,
-    titulo: "Pedido completo por WhatsApp: el cliente pide, paga y recibe el aviso de que va en camino",
-    nota: "Recreación con los textos reales del asistente (Playground del panel)",
-  },
   kiosko: { ancho: 540, alto: 960, titulo: "Pedido en el kiosko, del plato con cremas al ticket para pagar en caja", nota: "Kiosko real con la carta de la demo" },
   mesa: { ancho: 540, alto: 1168, titulo: "Una mesa divide la cuenta en partes iguales y deja propina", nota: "QR de mesa real con datos de la demo" },
   cocina: { ancho: 960, alto: 600, titulo: "Un pedido pagado entra a la pantalla de cocina y pasa a «En cocina»", nota: "Panel real con datos de la demo" },

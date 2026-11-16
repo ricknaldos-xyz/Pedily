@@ -54,6 +54,10 @@ cliente tienda-08-pago-yape-movil tienda-pago
 cliente tienda-10-mis-pedidos-movil tienda-mis-pedidos
 cliente tienda-11-beneficios-movil tienda-beneficios
 cliente webview-01-carta-movil wa-carta
+cliente webview-02-plato-movil wa-plato
+cliente webview-03-agregado-movil wa-bebidas
+cliente webview-04-carrito-movil wa-carrito
+cliente webview-05-checkout-movil wa-confirmar
 cliente webview-06-entrega-movil wa-entrega
 cliente webview-07-pago-movil wa-pago
 cliente mesa-01-carta-movil mesa-carta
@@ -73,7 +77,6 @@ clip() { # $1 origen, $2 destino, $3 segundo del póster, $4 ancho del póster
   ffmpeg -loglevel error -y -ss "$3" -i "$V/$1.mp4" -frames:v 1 -vf "scale=$4:-2" "$C/$2.png"
   cwebp -quiet -q 74 "$C/$2.png" -o "$C/$2.webp" && rm "$C/$2.png"
 }
-clip clip-01-pedido-por-whatsapp-movil whatsapp 10.5 540
 clip clip-02-pedido-en-kiosko kiosko 3 540
 clip clip-03-mesa-paga-dividido-movil mesa 0.3 540
 clip clip-04-pedido-entra-a-cocina cocina 0.3 960

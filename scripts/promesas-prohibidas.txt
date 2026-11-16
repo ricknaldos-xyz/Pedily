@@ -83,3 +83,11 @@ pr[oó]ximamente
 (^|[^a-z])[uú]nic[oa]s?([^a-z]|$)
 foto en camino
 lomo saltado
+
+# LV2-F (16-nov) · chat + mini-app: la mini-app se probó con pruebas
+# automáticas y en local, no con clientes; nada de cifras de uso ni de una app
+# que haya que descargar.
+clientes reales
+probad[oa]s? (con|por|en) (clientes|restaurantes)
+miles de
+descarga (la|nuestra) app

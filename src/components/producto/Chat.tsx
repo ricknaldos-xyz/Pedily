@@ -5,7 +5,10 @@ import { clsx } from "clsx";
 // demo publicada (pedily-backend/config/ejemplos/carta.demo.json y
 // restaurante.demo.config.json: medio pollo S/ 34 con 2 cremas incluidas,
 // chicha morada jarra 1 L S/ 14, reparto a Jesús María S/ 8 y 45 min).
-export const CHAT_DEMO: { de: "cliente" | "bot"; texto: string; hora: string }[] = [
+// 16-nov: «chat para conversar, mini-app para comprar» (core-prompt.ts:69-71):
+// el asistente cierra con el botón «Ver carta» (copy-voice.ts:210) y la
+// dirección y el pago se hacen en la mini-app.
+export const CHAT_DEMO: { de: "cliente" | "bot"; texto: string; hora: string; boton?: string }[] = [
   { de: "cliente", texto: "hola, medio pollo y una jarra de chicha pa’ Jesús María", hora: "13:02" },
   {
     de: "bot",
@@ -17,8 +20,9 @@ export const CHAT_DEMO: { de: "cliente" | "bot"; texto: string; hora: string }[]
   {
     de: "bot",
     texto:
-      "Te anoto:\n• Medio pollo a la brasa (mayonesa, ají) — S/ 34\n• Chicha morada, jarra 1 L — S/ 14\nEnvío a Jesús María — S/ 8\nTotal: S/ 56. Aquí tu enlace para pagar con Yape o tarjeta 👇",
+      "Te anoto:\n• Medio pollo a la brasa (mayonesa, ají) — S/ 34\n• Chicha morada, jarra 1 L — S/ 14\nTe abro la carta para confirmar la dirección y pagar con Yape, tarjeta o QR 👇",
     hora: "13:03",
+    boton: "Ver carta",
   },
   { de: "bot", texto: "Pago recibido ✅ Tu pedido ya está en cocina. Llega en unos 45 min 🛵", hora: "13:05" },
 ];

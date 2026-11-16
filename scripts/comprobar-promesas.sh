@@ -99,6 +99,24 @@ if [ "$fallos" -ne 0 ]; then
 fi
 echo "comprobar-promesas: $(printf '%s\n' "$filas" | wc -l | tr -d ' ') promesas de $registro con estado y tarea en regla."
 
+# LV2-F (16-nov): la secuencia «chat + mini-app» mezcla un chat recreado con
+# capturas reales. Cada pantalla de chat debe ir rotulada como recreación y
+# cada captura de la mini-app como real con datos de la demo.
+secuencia=src/components/producto/ChatMiniApp.tsx
+if [ -f "$secuencia" ]; then
+  if ! grep -q 'recreación con textos reales' "$secuencia" || ! grep -q 'datos de la demo' "$secuencia"; then
+    echo "$secuencia: faltan los rótulos «recreación con textos reales» y «datos de la demo»." >&2
+    exit 1
+  fi
+  chats="$(grep -c '<ChatWhatsApp' "$secuencia" || true)"
+  notas_chat="$(grep -c 'nota: NOTA_CHAT' "$secuencia" || true)"
+  if [ "$chats" -ne "$notas_chat" ]; then
+    echo "$secuencia: $chats pantallas de chat y $notas_chat rótulos de recreación; deben coincidir." >&2
+    exit 1
+  fi
+  echo "comprobar-promesas: la secuencia chat + mini-app rotula el chat como recreación ($chats pantallas)."
+fi
+
 # G-08 (15-nov): cada página pública está en el sitemap, y cada herramienta
 # gratis (src/app/herramientas/<slug>/) usa el esqueleto común
 # (PaginaHerramienta: JSON-LD WebApplication + FAQPage + fuentes), está en el

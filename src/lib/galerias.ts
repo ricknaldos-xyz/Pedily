@@ -6,7 +6,7 @@
 import type { ClaveCaptura } from "./capturas";
 
 export const GALERIAS: Record<string, ClaveCaptura[]> = {
-  "asistente-whatsapp": ["wa-carta", "wa-pago", "panel-conversaciones", "panel-atencion", "panel-playground", "panel-gasto-asistente"],
+  "asistente-whatsapp": ["panel-conversaciones", "panel-atencion", "panel-playground", "panel-gasto-asistente"],
   "tienda-web": ["tienda-inicio", "tienda-cremas", "tienda-carrito", "tienda-beneficios", "panel-pedidos", "panel-promociones"],
   kiosko: ["kiosko-plato", "kiosko-pago", "kiosko-ticket", "panel-cocina"],
   "qr-de-mesa": ["mesa-carta", "mesa-ronda", "mesa-mis-platos", "panel-mesas"],
