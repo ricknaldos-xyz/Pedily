@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Figtree, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { LayoutWrapper } from "@/components/layout/LayoutWrapper";
@@ -13,25 +13,42 @@ import { EMPRESA } from "@/lib/site";
 
 // Sistema «la comanda» (benchmark §5.6): Bricolage Grotesque para titulares,
 // Figtree para texto y JetBrains Mono para precios, números de pedido y horas.
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
+//
+// Servidas desde el repo (G-11): `next/font/google` las descargaba al compilar
+// y a veces fallaba. Solo el subconjunto latino y los pesos que se usan, en
+// woff2 de @fontsource 5.3.0 (las mismas instancias estáticas de Google
+// Fonts). Licencia SIL Open Font License 1.1: `src/app/fonts/LICENSE-*.txt`.
+const bricolage = localFont({
+  src: [
+    { path: "./fonts/bricolage-grotesque-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/bricolage-grotesque-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/bricolage-grotesque-latin-800-normal.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-bricolage",
   display: "swap",
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
 });
-const figtree = Figtree({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const figtree = localFont({
+  src: [
+    { path: "./fonts/figtree-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/figtree-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/figtree-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/figtree-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-figtree",
   display: "swap",
+  fallback: ["ui-sans-serif", "system-ui", "sans-serif"],
 });
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["500", "700"],
+const jetbrains = localFont({
+  src: [
+    { path: "./fonts/jetbrains-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/jetbrains-mono-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-jetbrains",
   display: "swap",
   // Solo etiquetas pequeñas: no compite con el titular por la red.
   preload: false,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
 });
 
 const TITULO =
