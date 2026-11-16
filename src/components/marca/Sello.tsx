@@ -14,7 +14,7 @@ const TONOS: Record<TonoSello, string> = {
 
 /**
  * Sello de goma ligeramente girado («PAGADO», «EN COCINA»…). Sustituye al
- * círculo dibujado a mano de otros: es lo que se ve en una comanda real.
+ * círculo trazado a mano de otros: es lo que se ve en una comanda real.
  * Si `animado`, «cae» al cargar; sin movimiento se ve quieto.
  */
 export function Sello({

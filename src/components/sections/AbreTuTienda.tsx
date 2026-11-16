@@ -18,7 +18,7 @@ const PASOS = [
   {
     titulo: "Conecta tus cobros y tus boletas",
     texto:
-      "Tu Culqi para tarjeta y Yape, tu Nubefact para las boletas y, si tienes el asistente, tu QR de Yape o Plin. Las llaves se validan y se guardan en el servidor.",
+      "Tu Culqi para tarjeta y Yape, tu Nubefact para las boletas y, si tienes el asistente, tu QR de Yape o Plin. Las llaves no quedan a la vista en el panel.",
   },
   {
     titulo: "Haz un pedido de prueba y abre",

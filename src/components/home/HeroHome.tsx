@@ -80,7 +80,7 @@ export function HeroHome() {
             <TicketBoleta className="absolute bottom-[-1rem] right-[9rem] w-48 rotate-[-2deg] animate-entra [animation-delay:5s]" />
           </div>
 
-          {/* Móvil y tableta: celular a lo ancho y tickets debajo */}
+          {/* Pantallas chicas y medianas: celular a lo ancho y tickets debajo */}
           <div className="lg:hidden">
             <MarcoCelular className="mx-auto w-full max-w-[19rem]">
               <ChatWhatsApp animado className="min-h-[29rem]" />

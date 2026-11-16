@@ -29,56 +29,69 @@ Rehecha el 15-nov-2026 (L-18) para la landing nueva. Las rutas sin carpeta está
 
 | # | Promesa | Dónde | Estado | Tarea | Patrón |
 |---|---|---|---|---|---|
-| 1 | Tienda web con tu marca | `CanalesPropios.tsx`, `src/lib/planes.ts` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
-| 3 | Pedidos de web, WhatsApp y kiosko en un solo panel, con aviso sonoro | `RecorridoPedido.tsx` | Existe | W-64 | `mismo panel` |
-| 5 | Roles para tu equipo | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 (paso 4) | `roles para tu equipo` |
+| 1 | Tienda web con tu marca | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | — (marca desde el panel: B-819, W-810, W-811) | `tienda web` |
+| 3 | Pedidos de web, WhatsApp y kiosko en un solo panel, con aviso sonoro | `src/components/home/RecorridoPedido.tsx` | Existe | W-64 | `mismo panel` |
+| 5 | Roles para tu equipo | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | W-64 (paso 4) | `roles para tu equipo` |
 | 6 | Cobrar desde el primer día con el QR de tu Yape o Plin y verificar el comprobante en el panel | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Existe | B-803, W-61 | `QR de tu Yape o Plin` |
-| 7 | Tarjeta con Culqi cuando Culqi te aprueba | `AbreTuTienda.tsx`, `src/lib/faq.ts`, `RecorridoPedido.tsx` | Existe | B-602, B-605; conexión autónoma X-008, W-814 | `Culqi te aprueba` |
-| 8 | En el kiosko: tarjeta, Yape o pagar en caja | `CanalesPropios.tsx`, `src/lib/faq.ts` | Existe | W-54 (prueba con Culqi de prueba) | `en el kiosko, también en caja` |
-| 9 | Boleta o factura electrónica automática con tu RUC, por tu Nubefact | `RecorridoPedido.tsx`, `Hero.tsx` | Existe | B-603, B-604; conexión autónoma W-815 | `boleta sale sola` |
-| 10 | Libro de Reclamaciones | `ClientesQueVuelven.tsx` | Existe | W-64 | `Libro de Reclamaciones` |
-| 11 | Ticket impreso en el kiosko (PC con Windows e impresora térmica) | `CanalesPropios.tsx`, `src/lib/faq.ts` | Parcial | K-14, K-15, K-16 | `impresora t[eé]rmica` |
-| 12 | Asistente de WhatsApp con IA que arma el pedido, cobra y lo manda a cocina | `Hero.tsx`, `RecorridoPedido.tsx`, `src/lib/faq.ts` | Parcial | Tramo E: B-501…B-520, B-811, B-808 (cumplida cuando cierre B-519) | `arma el pedido` |
-| 13 | Si el cliente pide hablar con alguien, el asistente avisa y tu equipo sigue el chat | `RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | Tramo E | `sigue el chat` |
-| 14 | El asistente solo ofrece lo que está en tu carta, con tus precios | `RecorridoPedido.tsx` | Existe | Tramo E (B-519 con la carta del cliente) | `Solo ofrece lo que est[aá] en tu carta` |
-| 15 | Tamaños, extras y notas en la carta | `CanalesPropios.tsx` | Existe | Carga autónoma: B-817, B-818, W-812 | `Tama[nñ]os, extras y notas` |
-| 17 | Reparto con tus zonas y tarifas, o recojo (sin «dibuja la zona»: no existe, D+-8) | `RecorridoPedido.tsx` | Existe | W-62; mapa autónomo W-813 | `zonas y tarifas` |
-| 18 | Motorizado con PedidosYa Envíos cuando no tienes repartidor | `RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | B-601 | `PedidosYa Env[ií]os` |
-| 21 | Cupones con vencimiento y límite de usos | `ClientesQueVuelven.tsx` | Existe | — | `vencimiento y l[ií]mite de usos` |
-| 22 | Saldo a favor para el próximo pedido | `ClientesQueVuelven.tsx` | Existe | Antes y después: B-821, W-817 | `saldo a favor` |
-| 23 | Repetir el último pedido en dos toques | `ClientesQueVuelven.tsx` | Existe | — | `dos toques` |
-| 24 | Meta de ventas del día | `ClientesQueVuelven.tsx` («Y además») | Existe | B-822 (`GET /store/meta-hoy`, `PATCH /store/meta`) | `meta de ventas del d[ií]a` |
-| 26 | Inventario y recetas | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `inventario y recetas` |
-| 27 | Caja con cierre | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `caja con cierre` |
-| 29 | Reportes por canal y hora | `ClientesQueVuelven.tsx` («Y además») | Existe | W-64 | `reportes por canal y hora` |
-| 32 | Sin comisión por pedido | `Hero.tsx`, `PricingTable.tsx`, `FinalCTA.tsx`, `src/app/layout.tsx` | Servicio | Decisión del dueño (modelo comercial) | `sin comisi[oó]n` |
+| 7 | Tarjeta con Culqi cuando Culqi te aprueba | `AbreTuTienda.tsx`, `src/lib/faq.ts`, `src/components/home/RecorridoPedido.tsx` | Existe | B-602, B-605; conexión autónoma X-008, W-814 | `Culqi te aprueba` |
+| 8 | En el kiosko: tarjeta, Yape o pagar en caja | `src/lib/soluciones.ts`, `src/lib/faq.ts` | Existe | W-54 (prueba con Culqi de prueba) | `pagar en caja` |
+| 9 | Boleta o factura electrónica automática con tu RUC, por tu Nubefact | `src/components/home/RecorridoPedido.tsx`, `src/components/home/HeroHome.tsx` | Existe | B-603, B-604; conexión autónoma W-815 | `boleta sale sola` |
+| 10 | Libro de Reclamaciones | `src/lib/soluciones.ts` | Existe | W-64 | `Libro de Reclamaciones` |
+| 11 | Ticket impreso en el kiosko (PC con Windows e impresora térmica) | `src/lib/soluciones.ts`, `src/lib/faq.ts` | Parcial | K-14, K-15, K-16 | `impresora t[eé]rmica` |
+| 12 | Asistente de WhatsApp con IA que arma el pedido, cobra y lo manda a cocina | `src/components/home/HeroHome.tsx`, `src/components/home/RecorridoPedido.tsx`, `src/lib/faq.ts` | Parcial | Tramo E: B-501…B-520, B-811, B-808 (cumplida cuando cierre B-519) | `arma el pedido` |
+| 13 | Si el cliente pide hablar con alguien, el asistente avisa y tu equipo sigue el chat | `src/components/home/RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | Tramo E | `sigue el chat` |
+| 14 | El asistente solo ofrece lo que está en tu carta, con tus precios | `src/components/home/RecorridoPedido.tsx` | Existe | Tramo E (B-519 con la carta del cliente) | `Solo ofrece lo que est[aá] en tu carta` |
+| 15 | Tamaños, extras y notas en la carta | `src/lib/soluciones.ts` | Existe | Carga autónoma: B-817, B-818, W-812 | `Tama[nñ]os, extras y notas` |
+| 17 | Reparto con tus zonas y tarifas, o recojo (sin «dibuja la zona»: no existe, D+-8) | `src/components/home/RecorridoPedido.tsx` | Existe | W-62; mapa autónomo W-813 | `zonas y tarifas` |
+| 18 | Motorizado con PedidosYa Envíos cuando no tienes repartidor | `src/components/home/RecorridoPedido.tsx`, `src/lib/faq.ts` | Existe | B-601 | `PedidosYa Env[ií]os` |
+| 21 | Cupones con vencimiento y límite de usos | `src/lib/soluciones.ts` | Existe | — | `usos y vencimiento` |
+| 22 | Saldo a favor para el próximo pedido | `src/lib/soluciones.ts` | Existe | Antes y después: B-821, W-817 | `saldo a favor` |
+| 23 | Repetir el último pedido en dos toques | `src/lib/soluciones.ts` | Existe | — | `dos toques` |
+| 24 | Meta de ventas del día | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | B-822 (`GET /store/meta-hoy`, `PATCH /store/meta`) | `meta de ventas del d[ií]a` |
+| 26 | Inventario y recetas | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | W-64 | `inventario y recetas` |
+| 27 | Caja con cierre | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | W-64 | `caja con cierre` |
+| 29 | Reportes por canal y hora | `src/lib/soluciones.ts`, `src/lib/planes.ts` | Existe | W-64 | `hora, canal y zona` |
+| 32 | Sin comisión por pedido | `src/components/home/HeroHome.tsx`, `PricingTable.tsx`, `FinalCTA.tsx`, `src/app/layout.tsx` | Servicio | Decisión del dueño (modelo comercial) | `sin comisi[oó]n` |
 | 33 | Si prefieres, lo hacemos contigo, sin reunión obligatoria | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño: quién atiende (L-12) | `lo hacemos contigo` |
 | 34 | Te acompañamos en la puesta en marcha | `FinalCTA.tsx`, `Fundadores.tsx` | Servicio | Decisión del dueño: quién atiende (L-12) | `te acompa[nñ]amos` |
 | 35 | Nació y se probó en el restaurante de origen, nombrado sin cifras (regla del dueño) | `Origen.tsx`, `src/lib/faq.ts`, `src/lib/site.ts` | Existe | — | `se prob[oó] en` |
 | 36 | Solo Perú: Culqi, Yape, Plin y SUNAT | `src/lib/faq.ts` | Existe | — | `solo en Per[uú]` |
-| 37 | El dinero va directo a tu cuenta | `Hero.tsx`, `src/lib/faq.ts` | Existe | — | `directo a tu cuenta` |
+| 37 | El dinero va directo a tu cuenta | `src/components/home/HeroHome.tsx`, `src/lib/faq.ts` | Existe | — | `directo a tu cuenta` |
 | 38 | Formulario «Crear mi tienda» o «Prefiero que me muestren una demo» | `src/app/contacto/FormularioSolicitud.tsx`, `src/lib/solicitud.ts` | Existe | L-13 (hecha); alta con consola: X-007 | `Cu[aá]ndo quieres empezar` |
 | 39 | Planes de S/ 249, 499 y 999 al mes con IGV, 0 % de comisión al restaurante y al comensal | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (14-nov) | `S/ 249` |
 | 40 | Asistente desde el plan de S/ 499, con un cupo mensual de conversaciones que no se publica | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y medir los cupos (B-518) | `cupo mensual` |
 | 41 | Alta gratis si te quedas 6 meses; si te vas antes, la parte proporcional del alta | `PricingTable.tsx`, `src/lib/faq.ts`, `legal/terminos` | Servicio | Contrato y valor del alta (D+-9, abogado) | `Alta gratis` |
 | 42 | Lo que pagas aparte a Culqi, Nubefact y Meta, con sus precios públicos | `src/lib/planes.ts`, `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | — | `pagas aparte` |
-| 43 | Cupones, referidos y saldo a favor, apagados hasta que los enciendes en «Opciones de tu tienda» | `ClientesQueVuelven.tsx` | Existe | B-812, W-805, W-806, W-807 | `referidos` |
+| 43 | Cupones, referidos y saldo a favor, apagados hasta que los enciendes en «Opciones de tu tienda» | `src/lib/soluciones.ts` | Existe | B-812, W-805, W-806, W-807 | `referidos` |
 | 44 | Pago anual con 2 meses gratis | `PricingTable.tsx`, `src/lib/faq.ts` | Servicio | Decisión del dueño (15-nov) | `2 meses` |
 | 45 | Pedily nunca toca tu dinero | `PricingTable.tsx`, `src/lib/faq.ts` | Existe | — | `nunca toca tu dinero` |
 | 46 | Subes una foto de tu carta y la IA arma tus platos y precios para que los revises | `AbreTuTienda.tsx`, `src/lib/faq.ts` | Parcial | Carga autónoma: B-817, B-818, W-812 (comprobar con una carta real) | `foto de tu carta` |
 | 47 | Asistente «Empezar» en el panel que te lleva paso a paso | `AbreTuTienda.tsx` (captura real del panel) | Existe | W-808…W-816 | `te lleva paso a paso` |
-| 48 | Kiosko de autoservicio en el plan Completo (S/ 999), licencia para 1 pantalla | `CanalesPropios.tsx`, `src/lib/planes.ts`, `src/lib/faq.ts` | Existe | Decidido el 15-nov (D-decisiones); kiosko: K-14…K-16 | `plan de S/ 999` |
+| 48 | Kiosko de autoservicio en el plan Completo (S/ 999), licencia para 1 pantalla | `src/lib/soluciones.ts`, `src/lib/planes.ts`, `src/lib/faq.ts` | Existe | Decidido el 15-nov (D-decisiones); kiosko: K-14…K-16 | `plan de S/ 999` |
 | 49 | Programa de fundadores: 10 cupos, precio congelado 24 meses, alta gratis sin permanencia, acompañamiento directo | `Fundadores.tsx`, `src/lib/site.ts` | Servicio | Decidido el 15-nov (D-decisiones) | `fundador` |
-| 50 | QR de mesa que cobra (plan Completo) | `src/lib/planes.ts`, `src/lib/faq.ts`, `JsonLd.tsx` | Por construir | G-06 | `QR de mesa` |
-| 51 | Pedidos programados en todos los planes | `src/lib/planes.ts`, `src/lib/faq.ts`, `JsonLd.tsx` | Por construir | G-03 | `pedidos programados` |
-| 52 | Campañas por WhatsApp con plantillas, solo a quien dio permiso (desde S/ 499) | `src/lib/planes.ts` | Por construir | G-04 | `Campa[nñ]as por WhatsApp` |
+| 50 | QR de mesa que cobra (plan Completo), apagado hasta encenderlo | `src/lib/planes.ts`, `src/lib/soluciones.ts` (`qr-de-mesa`), `src/lib/faq.ts` | Existe | G-06 mergeada en main (inventario §5: `W/app/mesa/[token]/MesaClient.tsx`, `B/src/mesa/mesa.service.ts:513-536`) | `QR de mesa` |
+| 51 | Pedidos programados en todos los planes, apagado hasta encenderlo | `src/lib/planes.ts`, `src/lib/soluciones.ts` (`pedidos-programados`), `src/lib/faq.ts` | Existe | G-03 mergeada en main (inventario §12: `B/src/store/scheduled-orders/scheduled-slots.ts:66-69`) | `pedidos programados` |
+| 52 | Campañas por WhatsApp con plantillas, solo a quien dio permiso (desde S/ 499) | `src/lib/planes.ts`, `src/lib/soluciones.ts` (`clientes-y-campanas`) | Existe | G-04 mergeada en main (inventario §10: `campaign-catalog.ts`; consentimiento 18.4) | `Campa[nñ]as por WhatsApp` |
 | 53 | Cupo del asistente 3 veces mayor en Completo (sin cifra) | `src/lib/planes.ts`, `src/lib/faq.ts` | Parcial | G-04 (tope por instalación US$ 15 / US$ 45) y medir cupos (B-518) | `3 veces` |
 | 54 | Atención prioritaria en Completo: respuesta el mismo día hábil | `src/lib/planes.ts` | Servicio | Decisión del 15-nov; quién atiende (dueño, L-12) | `mismo d[ií]a h[aá]bil` |
 | 55 | Alta S/ 490 / S/ 790, gratis con 6 meses; si te vas antes, la parte de los meses que faltan (con ejemplo) | `PricingTable.tsx`, `src/lib/faq.ts`, `legal/terminos` | Servicio | Decisión del 15-nov; contrato (abogado) | `meses que faltan` |
 | 56 | Datos en EE. UU. (iad1) con transferencia internacional según la Ley 29733 | `src/lib/faq.ts`, `legal/privacidad` | Existe | D+-5 | `transferencia internacional` |
-| 57 | El asistente conversa de verdad y cobra, no es un formulario | `Hero.tsx`, `ComparativaCanales.tsx`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y G-01 (bot más corto) | `no un formulario` |
+| 57 | El asistente conversa de verdad y cobra, no es un formulario | `src/components/home/HeroHome.tsx`, `ComparativaCanales.tsx`, `src/lib/faq.ts` | Parcial | Tramo E (B-519) y G-01 (bot más corto) | `no un formulario` |
 | 58 | Exportar tus datos durante 30 días al irte; luego se borran | `src/lib/faq.ts`, `legal/privacidad`, `legal/terminos` | Por construir | D+-9 (G-07, consola de altas) | `exportar tus datos` |
 | 59 | Herramientas gratis con fuentes oficiales (comisión, IGV 2027, mensajes de WhatsApp) | `src/app/herramientas/`, `src/lib/herramientas.ts` | Existe | G-08 | `herramientas gratis` |
+| 60 | Carta de soluciones: 12 páginas `/soluciones/<slug>` con todas sus funciones; cada función lleva su fila del inventario vendible (`ref`) y lo que nace apagado se marca «Se enciende en tu restaurante» | `src/lib/soluciones.ts`, `src/app/soluciones/[slug]/page.tsx` | Existe | LV2-D; evidencia por función en `research_notes/Pedily landing v2 2026-11-15/02_inventario_vendible.md` | `Se enciende en tu restaurante` |
+| 61 | Las 48 pantallas del panel en 8 áreas, con lo que ve el dueño y lo que decide | `src/lib/panel.ts`, `src/app/panel/page.tsx`, home | Existe | Inventario §3.1–3.8 (las 3 técnicas cuentan pero no se describen) | `pantallas en` |
+| 62 | Campaña de carrito abandonado (desde S/ 499, apagada hasta encenderla) | `src/lib/soluciones.ts` (`clientes-y-campanas`) | Existe | G-04; inventario 10.3 (`campaign-catalog.ts` + cron `abandoned-cart`), REQ plantilla aprobada por Meta | `carrito abandonado` |
+| 63 | El asistente entiende notas de voz | `src/components/home/Asistente.tsx`, `src/lib/soluciones.ts` | Existe | Inventario 2.11 (`B/src/bot/ai/transcription.service.ts:56,71-75`), REQ clave de OpenAI | `notas de voz` |
+| 64 | Tope mensual de gasto del asistente con avisos | `src/components/home/Asistente.tsx`, `src/lib/soluciones.ts` | Existe | Inventario 10.8 (`B/src/common/ai-budget/ai-budget.service.ts:50-58`) y Bot IA › Gasto (avisos 50/80/100 %) | `tope mensual de gasto` |
+| 65 | Alarma que suena hasta que alguien atiende el pedido pagado | `src/components/home/RecorridoPedido.tsx`, `src/lib/soluciones.ts` | Existe | Inventario 6.3 (`W/hooks/useHubAlarm.ts`; G05/11 sonó 65 s) | `Suena hasta que alguien` |
+| 66 | «Agotado» automático cuando se acaba el insumo de la receta | `src/components/home/Dolor.tsx`, `src/lib/soluciones.ts` | Existe | Inventario 1.4 (`B/src/order/public-stock.ts`) | `Agotado» autom` |
+| 67 | Cierre del día que compara lo vendido con lo que cobraron Culqi y el banco | `src/components/panel/PanelSeis.tsx`, `src/app/panel/page.tsx` | Existe | Inventario §3.2 Cierre del día | `lo que cobraron Culqi` |
+| 68 | Roles: 23 módulos con permisos de ver, crear, editar y borrar | `src/app/panel/page.tsx`, `src/lib/panel.ts` | Existe | Inventario §3.5 Roles (`RolesPage.tsx:59-92`; `B/src/role/role.controller.ts:26-86`) | `23 módulos` |
+| 69 | Exportas todo tu negocio en un ZIP de tablas CSV | `src/app/panel/page.tsx`, `src/lib/panel.ts` | Parcial | Inventario 18.1 (`B/src/store/store.controller.ts:70`; `export-tables.ts:47-161`); en la demo dio 503: REQ almacén de archivos por instalación (INV:198) | `ZIP` |
+| 70 | Las llaves de Culqi y Nubefact no quedan a la vista en el panel (solo una máscara) | `src/app/panel/page.tsx`, `src/components/sections/AbreTuTienda.tsx` | Existe | Inventario 18.11 (G-07, consola de credenciales) | `no quedan a la vista` |
+| 71 | Personalizador de marca en la portada: nombre, color y logo cambian la tienda y el saludo del asistente al instante (todo en el navegador) | `src/components/home/Personalizador.tsx` | Existe | Marca propia: inventario 16.1; saludo editable: 16.4 (`MessagesTab.tsx:183-309`). El logo no sale del navegador (`URL.createObjectURL`) | `con tu nombre y tus colores` |
+| 72 | Página de demo con la tienda y el kiosko publicados; el cobro de la demo no está conectado | `src/app/demo/page.tsx`, `src/lib/site.ts` | Existe | Tramo D (demo publicada 14-nov); Culqi de la demo pendiente (TRASPASO) | `no está conectado` |
 
 ### Promesas que ya no salen en la landing (L-18)
 
@@ -104,6 +117,5 @@ Se añadirán a la tabla de arriba, con patrón, cuando se escriban en la landin
 |---|---|---|
 | Zona de reparto dibujada en el mapa | Por construir | W-813 + polígonos (D+-8) |
 | Procedimiento de baja | Servicio | X-011 y contrato (D+-9) |
-| Tus datos son tuyos y te los llevas cuando quieras | Por construir | B-820, W-818 → L-12 |
 | Qué pasa si te vas | Por construir | X-011 → L-12 |
 | Dónde están tus datos | Por decidir | Decisión D+-5 → L-12 |

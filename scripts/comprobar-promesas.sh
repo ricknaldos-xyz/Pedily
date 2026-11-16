@@ -116,6 +116,21 @@ while IFS= read -r pagina; do
   fi
 done < <(find src/app -name page.tsx | sort)
 
+# LV2-D (15-nov): /soluciones/[slug] es dinámica; cada slug del catálogo
+# src/lib/soluciones.ts debe estar en el sitemap.
+soluciones=0
+while IFS= read -r slug; do
+  soluciones=$((soluciones + 1))
+  if ! grep -q "<loc>https://pedily.vercel.app/soluciones/${slug}</loc>" public/sitemap.xml; then
+    echo "Falta en public/sitemap.xml: /soluciones/${slug}" >&2
+    fallo_rutas=1
+  fi
+done < <(sed -nE 's/^    slug: "([a-z0-9-]+)",$/\1/p' src/lib/soluciones.ts)
+if [ "$soluciones" -eq 0 ]; then
+  echo "No se encontró ningún slug en src/lib/soluciones.ts." >&2
+  fallo_rutas=1
+fi
+
 herramientas=0
 for dir in src/app/herramientas/*/; do
   [ -d "$dir" ] || continue
@@ -143,4 +158,4 @@ fi
 if [ "$fallo_rutas" -ne 0 ]; then
   exit 1
 fi
-echo "comprobar-promesas: todas las páginas en el sitemap; $herramientas herramientas con JSON-LD y fuentes."
+echo "comprobar-promesas: todas las páginas en el sitemap ($soluciones soluciones); $herramientas herramientas con JSON-LD y fuentes."

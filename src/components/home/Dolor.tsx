@@ -8,7 +8,7 @@ const DOLORES = [
   },
   {
     antes: "En hora punta el WhatsApp se llena y los pedidos se enfrían sin respuesta.",
-    con: "El asistente atiende todos los chats a la vez y te pasa los que piden una persona.",
+    con: "El asistente responde al momento, también en hora punta, y te pasa los chats que piden una persona.",
   },
   {
     antes: "Al cierre cuadras Yape, Plin y boletas a mano.",

@@ -176,3 +176,78 @@ export function HerramientaJsonLd({ h }: { h: Herramienta }) {
     </>
   );
 }
+
+/**
+ * Página de solución: Service con su oferta mínima (plan con IGV) + migas.
+ * El precio sale de PLANES (src/lib/planes.ts), igual que en la página.
+ */
+export function SolucionJsonLd({
+  slug,
+  nombre,
+  descripcion,
+  precioDesde,
+  grupo,
+}: {
+  slug: string;
+  nombre: string;
+  descripcion: string;
+  precioDesde: number;
+  grupo: string;
+}) {
+  const url = `${SITE_URL}/soluciones/${slug}`;
+  return (
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: nombre,
+          serviceType: grupo,
+          url,
+          description: descripcion,
+          areaServed: { "@type": "Country", name: "Perú" },
+          provider: { "@type": "Organization", name: "Pedily", url: SITE_URL },
+          offers: {
+            "@type": "Offer",
+            price: String(precioDesde),
+            priceCurrency: "PEN",
+            url: `${SITE_URL}/precios`,
+          },
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: "Soluciones", url: `${SITE_URL}/soluciones` },
+          { name: nombre, url },
+        ]}
+      />
+    </>
+  );
+}
+
+/** Página simple con migas de pan (panel, demo, índice de soluciones). */
+export function PaginaJsonLd({ ruta, nombre, descripcion }: { ruta: string; nombre: string; descripcion: string }) {
+  const url = `${SITE_URL}${ruta}`;
+  return (
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: nombre,
+          url,
+          description: descripcion,
+          inLanguage: "es-PE",
+          isPartOf: { "@type": "WebSite", name: "Pedily", url: SITE_URL },
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: nombre, url },
+        ]}
+      />
+    </>
+  );
+}

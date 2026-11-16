@@ -7,7 +7,7 @@ import { WhatsAppGlyph } from "@/components/ui/WhatsAppGlyph";
 import { demoBotLink } from "@/lib/site";
 import { RUTA_SOLUCION } from "@/lib/soluciones";
 
-const PUNTOS = [
+const VENTAJAS = [
   "Pregunta lo que falta: cremas, tamaño, dirección.",
   "Solo ofrece lo que está en tu carta, con tus precios. El total lo calcula el servidor.",
   "Cobra con enlace de Yape o tarjeta, o con el QR de tu Yape o Plin.",
@@ -31,7 +31,7 @@ export function Asistente() {
             bajada="Tu cliente escribe como le escribiría a tu cajero. El asistente arma el pedido, lo cobra y lo manda a cocina, también en hora punta."
           />
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {PUNTOS.map((p) => (
+            {VENTAJAS.map((p) => (
               <li key={p} className="flex gap-2.5 text-[0.98rem] leading-snug text-chicha-100">
                 <Check aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-aji-400" />
                 {p}
