@@ -11,11 +11,9 @@ Pedily Landing is the marketing website for Pedily, a B2B SaaS product for order
 - **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
-- **Animations:** Framer Motion
+- **Animations:** CSS (sin librerías; `prefers-reduced-motion` las apaga)
 - **Icons:** Lucide React
-- **UI Components:** Radix UI (Accordion)
-- **Markdown:** react-markdown with remark-gfm, rehype-highlight
-- **Code Highlighting:** highlight.js
+- **Capturas reales:** `scripts/copiar-capturas.sh` (LV2-C → `public/capturas`, `public/clips`), registro en `src/lib/capturas.ts`
 - **Utilities:** clsx
 - **Package Manager:** pnpm
 

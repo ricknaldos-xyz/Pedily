@@ -7,19 +7,11 @@ import { Captura } from "@/components/marca/Captura";
 import { MarcoNavegador } from "@/components/marca/Marcos";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { PanelSeis } from "@/components/panel/PanelSeis";
-import {
-  PanelAhora,
-  PanelCaja,
-  PanelClientes,
-  PanelInventario,
-  PanelPedidos,
-  PanelReportes,
-} from "@/components/producto/MiniPanel";
-import { ChatWhatsApp } from "@/components/producto/Chat";
+import { Clip } from "@/components/marca/Clip";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
 import { PANEL, TOTAL_PANTALLAS } from "@/lib/panel";
-import type { ClaveCaptura } from "@/lib/capturas";
+import { CAPTURAS } from "@/lib/capturas";
 import { RUTA_SOLUCION, solucionPorSlug } from "@/lib/soluciones";
 
 const TITULO = "El panel de Pedily por dentro: todo tu restaurante en una pantalla";
@@ -30,17 +22,6 @@ export const metadata: Metadata = {
   description: DESCRIPCION,
   alternates: { canonical: "/panel" },
   openGraph: { title: TITULO, description: DESCRIPCION, url: "/panel", locale: "es_PE", type: "website" },
-};
-
-/** Mini-interfaz de reemplazo mientras no exista la captura real de ese grupo. */
-const REEMPLAZO: Partial<Record<ClaveCaptura, React.ReactNode>> = {
-  "panel-pedidos": <PanelPedidos />,
-  "panel-caja": <PanelCaja />,
-  "panel-recetas": <PanelInventario />,
-  "panel-inventario": <PanelInventario />,
-  "panel-roles": <PanelAhora />,
-  "panel-clientes": <PanelClientes />,
-  "panel-reportes": <PanelReportes />,
 };
 
 const MOMENTOS = [
@@ -90,9 +71,10 @@ export default function Panel() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Encabezado etiqueta="Un día con Pedily" titulo="De la apertura al cierre, sin cuadernos ni hojas sueltas" />
-          <ol className="relative mt-10 space-y-4 border-l-2 border-dashed border-tinta/20 pl-6 sm:pl-8">
+          <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_1.05fr]">
+          <ol className="relative space-y-4 border-l-2 border-dashed border-tinta/20 pl-6 sm:pl-8">
             {MOMENTOS.map((m) => (
-              <li key={m.t} className="relative grid gap-1 sm:grid-cols-[6rem_10rem_1fr] sm:items-baseline sm:gap-4">
+              <li key={m.t} className="relative grid gap-1 sm:grid-cols-[5rem_7rem_1fr] sm:items-baseline sm:gap-4">
                 <span aria-hidden className="absolute -left-[2.05rem] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-tinta bg-aji-500 sm:-left-[2.55rem]" />
                 <span className="font-mono text-sm font-bold text-chicha-700">{m.h}</span>
                 <span className="font-display text-xl font-bold text-tinta">{m.t}</span>
@@ -102,6 +84,15 @@ export default function Panel() {
               </li>
             ))}
           </ol>
+          <figure className="lg:sticky lg:top-24">
+            <MarcoNavegador url="mirestaurante · panel" oscuro>
+              <Clip clave="panel" />
+            </MarcoNavegador>
+            <figcaption className="mt-3 text-center font-mono text-[10px] uppercase tracking-wider text-humo">
+              Recorrido del panel real · datos de demostración
+            </figcaption>
+          </figure>
+          </div>
         </div>
       </section>
 
@@ -162,25 +153,23 @@ export default function Panel() {
                   )}
                 </div>
                 <figure className={clsx("lg:sticky lg:top-36", i % 2 === 1 && "lg:order-1")}>
-                  {g.id === "asistente" ? (
-                    <MarcoNavegador url="mirestaurante · panel/conversaciones" oscuro>
-                      <Captura
-                        clave="panel-conversaciones"
-                        sizes="(max-width: 1024px) 92vw, 600px"
-                        reemplazo={
-                          <div className="bg-[#efeae2] p-4">
-                            <div className="mx-auto max-w-xs">
-                              <ChatWhatsApp className="min-h-[24rem]" />
-                            </div>
-                          </div>
-                        }
-                      />
-                    </MarcoNavegador>
-                  ) : g.captura ? (
+                  {g.captura && (
                     <MarcoNavegador url={`mirestaurante · panel/${g.id}`} oscuro>
-                      <Captura clave={g.captura} sizes="(max-width: 1024px) 92vw, 600px" reemplazo={REEMPLAZO[g.captura]} />
+                      <Captura clave={g.captura} sizes="(max-width: 1024px) 92vw, 600px" />
                     </MarcoNavegador>
-                  ) : null}
+                  )}
+                  {g.extra && g.extra.length > 0 && (
+                    <ul className="mt-4 grid grid-cols-2 gap-3">
+                      {g.extra.map((k) => (
+                        <li key={k}>
+                          <div className="overflow-hidden rounded-xl bg-[#0b0a0d] shadow-md ring-1 ring-tinta/10">
+                            <Captura clave={k} sizes="(max-width: 1024px) 46vw, 290px" />
+                          </div>
+                          <p className="mt-1.5 text-xs leading-snug text-humo">{CAPTURAS[k].alt}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <figcaption className="mt-3 text-center font-mono text-[10px] uppercase tracking-wider text-humo">
                     Panel de la demo · datos de demostración
                   </figcaption>

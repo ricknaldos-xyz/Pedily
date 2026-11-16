@@ -24,6 +24,8 @@ export interface GrupoPanel {
   nombre: string;
   decide: string;
   captura?: ClaveCaptura;
+  /** Otras pantallas reales del área, en pequeño. */
+  extra?: ClaveCaptura[];
   solucion?: string;
   pantallas: Pantalla[];
 }
@@ -34,6 +36,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Operación en vivo y tienda",
     decide: "Qué atender ya, qué cobro verificar, si pausar la tienda y cómo vende cada canal.",
     captura: "panel-pedidos",
+    extra: ["panel-mesas", "panel-ahora"],
     solucion: "cocina",
     pantallas: [
       {
@@ -59,7 +62,8 @@ export const PANEL: GrupoPanel[] = [
     id: "dinero",
     nombre: "Ventas y caja",
     decide: "Si lo cobrado cuadra con Culqi y el banco, si el mes gana plata y cuánto se debe.",
-    captura: "panel-caja",
+    captura: "panel-estado-resultados",
+    extra: ["panel-finanzas"],
     solucion: "caja-y-pagos",
     pantallas: [
       { nombre: "Cierre del día", ve: "Venta del día en cascada y por medio de pago, «Coincide» o «Requiere atención», gastos, CSV, cerrar y reabrir con motivo." },
@@ -74,6 +78,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Carta y costos",
     decide: "Qué vender, a qué precio y con qué margen.",
     captura: "panel-recetas",
+    extra: ["panel-receta-detalle", "panel-reportes-menu"],
     solucion: "inventario-y-recetas",
     pantallas: [
       { nombre: "Productos", ve: "Platos con foto, precio, promo, etiquetas y tiempo de preparación; margen y costo por plato; ordenar arrastrando." },
@@ -92,6 +97,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Inventario, compras y producción",
     decide: "Qué falta, dónde se pierde, qué comprar y qué preparar hoy.",
     captura: "panel-inventario",
+    extra: ["panel-produccion", "panel-compras"],
     solucion: "inventario-y-recetas",
     pantallas: [
       { nombre: "Inventario", ve: "Críticos, todos, preparados, almacén y platos; OK, bajo mínimo o agotado; ajustes y kárdex." },
@@ -122,6 +128,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Clientes y promociones",
     decide: "A quién premiar, a quién recuperar y si vale la pena pagar WhatsApp para traerlo.",
     captura: "panel-clientes",
+    extra: ["panel-cliente-ficha", "panel-campanas"],
     solucion: "clientes-y-campanas",
     pantallas: [
       { nombre: "Clientes", ve: "Ficha con pedidos, gasto, saldo y último pedido; nuevos, recurrentes y los que no vuelven." },
@@ -140,6 +147,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Asistente de WhatsApp",
     decide: "Cómo y cuándo atiende el asistente, cuánto gasta y cuándo lo toma una persona.",
     captura: "panel-conversaciones",
+    extra: ["panel-atencion", "panel-gasto-asistente"],
     solucion: "asistente-whatsapp",
     pantallas: [
       {
@@ -162,6 +170,7 @@ export const PANEL: GrupoPanel[] = [
     nombre: "Reportes",
     decide: "Qué vender más, a qué hora reforzar personal y qué canal y zona rinden.",
     captura: "panel-reportes",
+    extra: ["panel-reportes-tiempos", "panel-reportes-clientes"],
     solucion: "reportes",
     pantallas: [
       {

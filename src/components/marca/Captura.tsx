@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
-import { CAPTURAS, type ClaveCaptura } from "@/lib/capturas";
+import Image, { getImageProps } from "next/image";
+import { CAPTURAS, type CapturaInfo, type ClaveCaptura } from "@/lib/capturas";
 
 /**
  * Captura real del producto, o su reemplazo mientras no exista.
@@ -46,31 +46,44 @@ export function existeCaptura(clave: ClaveCaptura): boolean {
   return fs.existsSync(path.join(process.cwd(), "public", CAPTURAS[clave].src));
 }
 
+/**
+ * Pinta la captura con next/image (AVIF/WebP al tamaño justo y carga diferida).
+ * Si la captura del panel tiene versión de celular y `movil` no es false, en
+ * pantallas de menos de 640 px se ve esa (legible) en lugar de la de escritorio.
+ */
 export function Captura({
   clave,
   reemplazo,
   sizes,
   prioridad = false,
   className,
+  movil = true,
 }: {
   clave: ClaveCaptura;
   reemplazo?: React.ReactNode;
   sizes: string;
   prioridad?: boolean;
   className?: string;
+  movil?: boolean;
 }) {
-  const c = CAPTURAS[clave];
+  const c: CapturaInfo = CAPTURAS[clave];
   const m = medidas(path.join(process.cwd(), "public", c.src));
   if (!m) return <>{reemplazo ?? null}</>;
+  const clase = className ?? "h-auto w-full";
+  const mm = movil && c.movil ? medidas(path.join(process.cwd(), "public", c.movil)) : null;
+  if (!mm || !c.movil) {
+    return <Image src={c.src} alt={c.alt} width={m.ancho} height={m.alto} sizes={sizes} priority={prioridad} className={clase} />;
+  }
+  const comun = { alt: c.alt, priority: prioridad };
+  const {
+    props: { srcSet: srcMovil },
+  } = getImageProps({ ...comun, src: c.movil, width: mm.ancho, height: mm.alto, sizes: "100vw" });
+  const { props: escritorio } = getImageProps({ ...comun, src: c.src, width: m.ancho, height: m.alto, sizes });
   return (
-    <Image
-      src={c.src}
-      alt={c.alt}
-      width={m.ancho}
-      height={m.alto}
-      sizes={sizes}
-      priority={prioridad}
-      className={className ?? "h-auto w-full"}
-    />
+    <picture>
+      <source media="(max-width: 639px)" srcSet={srcMovil} width={mm.ancho} height={mm.alto} />
+      {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+      <img {...escritorio} className={clase} />
+    </picture>
   );
 }

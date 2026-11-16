@@ -4,6 +4,9 @@ import { Encabezado } from "@/components/ui/Encabezado";
 import { Sello, type TonoSello } from "@/components/marca/Sello";
 import { Corte, FilaTicket, Ticket } from "@/components/marca/Ticket";
 import { RUTA_SOLUCION } from "@/lib/soluciones";
+import { Clip } from "@/components/marca/Clip";
+import { MarcoCelular, MarcoKiosko, MarcoNavegador } from "@/components/marca/Marcos";
+import { CLIPS } from "@/lib/capturas";
 
 interface Parada {
   titulo: string;
@@ -128,6 +131,35 @@ export function RecorridoPedido() {
             </li>
           ))}
         </ol>
+
+        {/* ── En video: el mismo pedido en otros canales ── */}
+        <div className="mt-16 rounded-3xl bg-papel p-5 sm:p-8">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-chicha-700">Míralo funcionando</p>
+          <p className="mt-2 max-w-2xl font-display text-2xl font-bold leading-tight text-tinta">
+            Del kiosko y la mesa a la cocina, en el producto real
+          </p>
+          <ul className="mt-8 grid items-end gap-8 sm:grid-cols-2 lg:grid-cols-[0.8fr_0.8fr_1.6fr]">
+            <li>
+              <MarcoKiosko className="mx-auto max-w-[14rem]">
+                <Clip clave="kiosko" />
+              </MarcoKiosko>
+              <p className="mt-3 text-center text-sm text-sand-700">{CLIPS.kiosko.titulo}</p>
+            </li>
+            <li>
+              <MarcoCelular className="mx-auto max-w-[13rem]">
+                <Clip clave="mesa" />
+              </MarcoCelular>
+              <p className="mt-3 text-center text-sm text-sand-700">{CLIPS.mesa.titulo}</p>
+            </li>
+            <li className="sm:col-span-2 lg:col-span-1">
+              <MarcoNavegador url="mirestaurante · panel/cocina" oscuro>
+                <Clip clave="cocina" />
+              </MarcoNavegador>
+              <p className="mt-3 text-center text-sm text-sand-700">{CLIPS.cocina.titulo}</p>
+            </li>
+          </ul>
+          <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-wider text-humo">Producto real · datos de demostración</p>
+        </div>
       </div>
     </section>
   );

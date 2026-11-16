@@ -7,6 +7,8 @@ import { Boton } from "@/components/marca/Boton";
 import { IconoSolucion } from "@/components/marca/IconoSolucion";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { EscenaSolucion } from "@/components/producto/Escenas";
+import { Galeria } from "@/components/producto/Galeria";
+import { GALERIAS } from "@/lib/galerias";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FAQPageJsonLd, SolucionJsonLd } from "@/components/seo/JsonLd";
@@ -132,6 +134,24 @@ export default async function PaginaSolucion({ params }: { params: Promise<{ slu
           </ol>
         </div>
       </section>
+
+      {/* ── Así se ve ── */}
+      {GALERIAS[s.slug] && (
+        <section aria-labelledby="asi-se-ve" className="overflow-hidden border-t border-tinta/10 bg-papel py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-chicha-700">Así se ve</p>
+                <h2 id="asi-se-ve" className="mt-2 font-display text-3xl font-extrabold tracking-[-0.02em] text-tinta sm:text-4xl">
+                  Pantallas reales, no dibujos
+                </h2>
+              </div>
+              <p className="max-w-sm font-mono text-[11px] uppercase tracking-wider text-humo">Producto real · datos de demostración de «Restaurante Demo»</p>
+            </div>
+            <Galeria claves={GALERIAS[s.slug]} />
+          </div>
+        </section>
+      )}
 
       {/* ── Todas las funciones ── */}
       <section id="funciones" className="scroll-mt-16 bg-white py-16 sm:py-24">

@@ -2,7 +2,8 @@ import { Check } from "lucide-react";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { Boton } from "@/components/marca/Boton";
 import { MarcoCelular } from "@/components/marca/Marcos";
-import { ChatWhatsApp } from "@/components/producto/Escenas";
+import { Clip } from "@/components/marca/Clip";
+import { CLIPS } from "@/lib/capturas";
 import { WhatsAppGlyph } from "@/components/ui/WhatsAppGlyph";
 import { demoBotLink } from "@/lib/site";
 import { RUTA_SOLUCION } from "@/lib/soluciones";
@@ -56,9 +57,9 @@ export function Asistente() {
         </div>
         <div className="relative">
           <MarcoCelular oscuro={false} className="mx-auto w-full max-w-[19rem] rotate-[2deg]">
-            <ChatWhatsApp className="min-h-[30rem]" />
+            <Clip clave="whatsapp" />
           </MarcoCelular>
-          <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-wider text-chicha-100">Ejemplo con la carta de la demo</p>
+          <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-wider text-chicha-100">{CLIPS.whatsapp.nota}</p>
         </div>
       </div>
     </section>

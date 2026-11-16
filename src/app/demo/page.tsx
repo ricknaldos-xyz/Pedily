@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { ArrowUpRight, LayoutDashboard, MonitorSmartphone, Store } from "lucide-react";
 import { Boton } from "@/components/marca/Boton";
 import { Captura } from "@/components/marca/Captura";
-import { MarcoCelular, MarcoKiosko } from "@/components/marca/Marcos";
+import { MarcoCelular, MarcoKiosko, MarcoNavegador } from "@/components/marca/Marcos";
+import { Clip } from "@/components/marca/Clip";
 import { WhatsAppGlyph } from "@/components/ui/WhatsAppGlyph";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
@@ -83,14 +84,14 @@ export default function Demo() {
               Donde llega todo: pedidos en vivo, cocina, caja, inventario, clientes y reportes. Recórrelo pantalla por pantalla, con
               datos de demostración.
             </p>
-            <ul className="my-6 space-y-2 text-sm text-chicha-100">
-              {["Operación en vivo", "Cocina", "Caja y finanzas", "Inventario y recetas", "Clientes y campañas", "Reportes"].map((t) => (
-                <li key={t} className="flex items-center gap-2 border-b border-dashed border-white/15 pb-2">
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-aji-400" />
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <figure className="my-6">
+              <MarcoNavegador url="mirestaurante · panel" oscuro>
+                <Clip clave="panel" />
+              </MarcoNavegador>
+              <figcaption className="mt-2 text-center font-mono text-[10px] uppercase tracking-wider text-chicha-100">
+                Pedidos en vivo → reportes → finanzas
+              </figcaption>
+            </figure>
             <Boton href="/panel" variante="aji" ancho flecha>
               Recorrer el panel
             </Boton>
