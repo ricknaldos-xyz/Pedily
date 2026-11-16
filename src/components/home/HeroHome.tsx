@@ -78,9 +78,11 @@ export function HeroHome() {
                 <ChatWhatsApp animado className="h-[26rem]" />
               </MarcoCelular>
             </div>
-            <TicketPago className="absolute right-[-1.5rem] top-[-0.5rem] z-20 rotate-[4deg] animate-entra [animation-delay:3.4s]" />
-            <TicketComanda className="absolute bottom-[2.5rem] right-0 z-20 rotate-[3deg] animate-entra [animation-delay:4.2s]" />
-            <TicketBoleta className="absolute bottom-0 right-[12.5rem] z-20 w-48 rotate-[-2deg] animate-entra [animation-delay:5s]" />
+            <div aria-hidden>
+              <TicketPago className="absolute right-[-1.5rem] top-[-0.5rem] z-20 rotate-[4deg] animate-entra [animation-delay:3.4s]" />
+              <TicketComanda className="absolute bottom-[2.5rem] right-0 z-20 rotate-[3deg] animate-entra [animation-delay:4.2s]" />
+              <TicketBoleta className="absolute bottom-0 right-[12.5rem] z-20 w-48 rotate-[-2deg] animate-entra [animation-delay:5s]" />
+            </div>
           </div>
 
           {/* Pantallas chicas y medianas: celular a lo ancho y tickets debajo */}
