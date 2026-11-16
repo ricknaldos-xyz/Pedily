@@ -3,13 +3,23 @@ import {
   SOCIAL_LINKS,
   CONTACT_EMAIL,
   whatsappLink,
+  DEMO,
+  EMPRESA,
 } from "@/lib/site";
+import { HERRAMIENTAS } from "@/lib/herramientas";
 
+// Con «/» delante para que funcionen también fuera de la portada.
 const productLinks = [
-  { href: "#funcionalidades", label: "Funcionalidades" },
-  { href: "#bot-ia", label: "Bot WhatsApp con IA" },
+  { href: "/#como-funciona", label: "Cómo funciona" },
   { href: "/precios", label: "Precios" },
-  { href: "#faq", label: "Preguntas frecuentes" },
+  { href: DEMO.tiendaUrl, label: "Tienda de ejemplo" },
+  { href: "/#comparativa", label: "Comparar canales" },
+  { href: "/#faq", label: "Preguntas frecuentes" },
+];
+
+const toolLinks = [
+  ...HERRAMIENTAS.map((h) => ({ href: `/herramientas/${h.slug}`, label: h.titulo })),
+  { href: "/herramientas", label: "Todas las herramientas" },
 ];
 
 const socialIcons: Record<string, React.ReactNode> = {
@@ -35,24 +45,21 @@ const socialIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-const resourceLinks = [
-  { href: "/docs", label: "Documentacion" },
-];
-
 const companyLinks = [
   { href: "/contacto", label: "Contacto" },
-  { href: "/legal/terminos", label: "Terminos y condiciones" },
-  { href: "/legal/privacidad", label: "Politica de privacidad" },
+  { href: "/legal/terminos", label: "Términos y condiciones" },
+  { href: "/legal/privacidad", label: "Política de privacidad" },
 ];
 
 export function Footer() {
+  const waHref = whatsappLink();
   return (
     <footer className="bg-sand-50">
       {/* Gradient separator */}
       <div className="h-px bg-sand-200" />
 
       <Container className="py-12 sm:py-16">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-10">
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-primary-700">
@@ -63,25 +70,36 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-sand-500">
-              El sistema operativo de tu restaurante. Vende por web, WhatsApp y
-              kiosko, y opera todo desde un solo Hub. Sin comisiones.
+              La tienda propia de tu restaurante: web, WhatsApp y kiosko, con
+              cobro en tu cuenta y boletas SUNAT. 0 % de comisión por pedido.
             </p>
             {/* Contacto */}
             <div className="mt-5 space-y-1.5 text-sm">
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
-              >
-                Escríbenos por WhatsApp →
-              </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="block text-sand-500 transition-colors hover:text-primary-600"
-              >
-                {CONTACT_EMAIL}
-              </a>
+              {waHref ? (
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
+                >
+                  Escríbenos por WhatsApp →
+                </a>
+              ) : (
+                <a
+                  href="/contacto"
+                  className="block font-medium text-primary-700 transition-colors hover:text-primary-800"
+                >
+                  Escríbenos →
+                </a>
+              )}
+              {CONTACT_EMAIL && (
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="block text-sand-500 transition-colors hover:text-primary-600"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              )}
             </div>
             {/* Social links (solo los configurados) */}
             {SOCIAL_LINKS.length > 0 && (
@@ -109,6 +127,9 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    {...(link.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="text-sm leading-relaxed text-sand-500 transition-colors hover:text-primary-600"
                   >
                     {link.label}
@@ -118,11 +139,11 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold text-sand-900">Recursos</h3>
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="text-sm font-semibold text-sand-900">Herramientas gratis</h3>
             <ul className="mt-3 space-y-2.5">
-              {resourceLinks.map((link) => (
-                <li key={link.label}>
+              {toolLinks.map((link) => (
+                <li key={link.href}>
                   <a
                     href={link.href}
                     className="text-sm leading-relaxed text-sand-500 transition-colors hover:text-primary-600"
@@ -156,13 +177,13 @@ export function Footer() {
             <p className="text-sm text-sand-400">
               &copy; {new Date().getFullYear()} Pedily. Todos los derechos reservados.
             </p>
-            <p className="flex items-center gap-1.5 text-sm text-sand-400">
-              Hecho con <span className="text-red-400">&#9829;</span> en Peru
-              <span className="inline-block text-base">🇵🇪</span>
-              por{" "}
+            <p className="text-center text-sm text-sand-400 sm:text-right">
+              Hecho en {EMPRESA.pais} por{" "}
               <span className="font-medium text-sand-500">
-                Hub de Innovacion Digital SAC
+                {EMPRESA.razonSocial}
               </span>
+              {EMPRESA.ruc && <> · RUC {EMPRESA.ruc}</>}
+              {EMPRESA.domicilioFiscal && <> · {EMPRESA.domicilioFiscal}</>}
             </p>
           </div>
         </div>

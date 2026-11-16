@@ -15,9 +15,11 @@ const WhatsAppIcon = () => (
 );
 
 export function WhatsAppButton() {
+  const href = whatsappLink();
+  if (!href) return null;
   return (
     <motion.a
-      href={whatsappLink()}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"

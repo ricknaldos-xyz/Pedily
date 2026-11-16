@@ -1,68 +1,33 @@
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { PricingTable } from "@/components/sections/PricingTable";
-import { ROICalculator } from "@/components/sections/ROICalculator";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Container } from "@/components/layout/Container";
 
 export const metadata = {
-  title: "Precios | Pedily - Planes sin comisiones para tu restaurante",
+  title: "Precios | Pedily · Desde S/ 249 al mes con IGV, 0 % de comisión",
   description:
-    "Planes desde S/ 249/mes. Sin comisiones por pedido. Incluye tienda web, bot WhatsApp con IA, kiosko y mas. Compara cuanto ahorras vs Rappi.",
+    "Planes de S/ 249, 499 y 999 al mes con IGV y 0 % de comisión. Alta gratis si te quedas 6 meses. Kiosko y QR de mesa en Completo. Lo que pagas aparte a Culqi, Nubefact y Meta, dicho claro.",
 };
 
 export default function PreciosPage() {
   return (
-    <>
-      <Header />
-      <main>
-        <section className="bg-gradient-to-b from-primary-50 to-white py-16 sm:py-24">
-          <Container className="text-center">
-            <h1 className="text-4xl font-extrabold text-sand-900 sm:text-5xl">
-              Precios simples, sin sorpresas
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-              Tarifa fija mensual. Vendas 10 pedidos o 10,000, pagas lo mismo.
-              Sin comisiones, sin letra chica.
-            </p>
-          </Container>
-        </section>
+    <div>
+      <section className="bg-gradient-to-b from-primary-50 to-white pt-14 sm:pt-20">
+        <Container className="text-center">
+          <h1 className="text-3xl font-extrabold text-sand-900 sm:text-5xl">
+            Precios claros, con IGV. 0 % de comisión.
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-sand-500 sm:text-lg">
+            Una cuota fija al mes. Ni tu restaurante ni tus clientes pagan
+            comisión por pedido. Y lo que cobran Culqi, Nubefact y Meta te lo
+            decimos aquí mismo.
+          </p>
+        </Container>
+      </section>
 
-        <PricingTable />
-        <ROICalculator />
-
-        <section className="bg-white py-16">
-          <Container>
-            <h2 className="text-center text-2xl font-bold text-sand-900">
-              Que incluyen todos los planes?
-            </h2>
-            <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                "SSL y hosting incluido",
-                "Soporte tecnico",
-                "Actualizaciones automaticas",
-                "Sin contratos de permanencia",
-                "Backups diarios",
-                "14 dias de prueba gratis",
-                "Migracion asistida",
-                "Capacitacion inicial",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-center text-sm font-medium text-sand-600"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        <FAQ />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </>
+      <PricingTable sinTitulo />
+      <FAQ />
+      <FinalCTA />
+    </div>
   );
 }

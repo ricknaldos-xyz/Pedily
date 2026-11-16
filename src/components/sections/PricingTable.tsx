@@ -1,255 +1,216 @@
 "use client";
 
 import { useState } from "react";
+import { clsx } from "clsx";
 import { Container } from "@/components/layout/Container";
-import { Section } from "@/components/layout/Section";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { Check, Sparkles, Zap, Building2 } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Check, Info } from "lucide-react";
+import { FUNDADORES } from "@/lib/site";
+import {
+  altaProporcional,
+  COSTOS_APARTE,
+  EJEMPLO_ALTA,
+  MESES_PAGADOS_ANUAL,
+  MESES_PERMANENCIA_ALTA_GRATIS,
+  PLANES,
+  precioAnual,
+  soles,
+} from "@/lib/planes";
 
-const plans = [
-  {
-    name: "Inicio",
-    description: "Ideal si recien empiezas a vender online",
-    monthlyPrice: 249,
-    annualPrice: 199,
-    icon: Zap,
-    popular: false,
-    features: [
-      "Tu tienda web con tu menu completo",
-      "Carrito y checkout funcionando",
-      "Pagos con Yape, Plin y efectivo",
-      "Hub de pedidos en tiempo real",
-      "Vista de cocina y notificaciones",
-      "3 zonas de delivery",
-      "Cupones de descuento",
-      "Libro de Reclamaciones",
-      "2 usuarios para tu equipo",
-      "Soporte por email",
-    ],
-  },
-  {
-    name: "Crecimiento",
-    description: "Para negocios que quieren escalar",
-    monthlyPrice: 499,
-    annualPrice: 399,
-    icon: Sparkles,
-    popular: true,
-    features: [
-      "Todo de Inicio, mas:",
-      "Bot con IA en WhatsApp, Instagram y Messenger",
-      "Tu equipo interviene cuando quiera (takeover)",
-      "Cobros con tarjeta (Culqi)",
-      "Boleta y Factura SUNAT automatica",
-      "Zonas de delivery ilimitadas + condominios",
-      "Inventario con alertas de stock",
-      "Puntos, cupones y base de clientes",
-      "Reportes y analitica de ventas",
-      "Hub completo con 5 roles",
-      "5 usuarios con permisos por modulo",
-      "Pedidos ilimitados",
-      "Soporte prioritario",
-    ],
-  },
-  {
-    name: "Empresa",
-    description: "Para operaciones que quieren control total",
-    monthlyPrice: 999,
-    annualPrice: 799,
-    icon: Building2,
-    popular: false,
-    features: [
-      "Todo de Crecimiento, mas:",
-      "Kiosko de autoservicio con IZIPAY",
-      "Marketplaces: PedidosYa y Rappi en el Hub",
-      "Inventario avanzado, recetas y costos (COGS)",
-      "Finanzas: caja, P&L, flujo de caja y compras",
-      "Planilla y gestion de tu equipo",
-      "Notas de credito y anulaciones SUNAT",
-      "Programa de referidos y win-back",
-      "Exporta reportes a Excel",
-      "Usuarios y locales ilimitados",
-      "Tu propio dominio + API",
-      "Soporte dedicado + onboarding",
-    ],
-  },
-];
+interface Props {
+  /** En /precios el título va en la cabecera de la página. */
+  sinTitulo?: boolean;
+}
 
-export function PricingTable() {
-  const [annual, setAnnual] = useState(false);
+export function PricingTable({ sinTitulo = false }: Props) {
+  const [anual, setAnual] = useState(false);
+  // En móvil la lista de cada plan se abre a pedido; en escritorio siempre se ve.
+  const [abiertos, setAbiertos] = useState<Record<string, boolean>>({});
 
   return (
-    <Section id="precios" className="relative bg-white">
-      {/* Subtle grid texture */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "linear-gradient(rgba(59,168,137,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(59,168,137,0.035) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-      <Container className="relative">
-        <AnimatedSection className="text-center">
-          <span className="mb-4 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-600">
-            Precios
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl lg:text-5xl">
-            Elige tu plan, empieza a vender
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-sand-500">
-            Tarifa fija, sin comisiones. Vendas 10 o 10,000 pedidos, pagas lo mismo.
-          </p>
+    <section id="precios" className="scroll-mt-16 bg-white py-10 sm:py-20">
+      <Container>
+        {!sinTitulo && (
+          <AnimatedSection className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-sand-900 sm:text-4xl">
+              Precios claros, con IGV. 0 % de comisión.
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-base text-sand-500 sm:text-lg">
+              Cuota fija al mes. Nadie paga comisión por pedido.
+            </p>
+          </AnimatedSection>
+        )}
 
-          <div className="mt-8 inline-flex items-center rounded-full bg-sand-200/80 p-1">
+        <div className="mt-6 flex justify-center">
+          <div
+            role="radiogroup"
+            aria-label="Forma de pago"
+            className="inline-flex rounded-full border border-sand-200 bg-sand-50 p-1 text-sm font-semibold"
+          >
             {[
-              { id: false, label: "Mensual" },
-              { id: true, label: "Anual" },
-            ].map((opt) => (
+              { valor: false, texto: "Mensual" },
+              { valor: true, texto: "Anual · 2 meses gratis" },
+            ].map((op) => (
               <button
-                key={String(opt.id)}
-                onClick={() => setAnnual(opt.id)}
-                className={`relative rounded-full px-5 py-2 text-sm font-medium transition-colors ${
-                  annual === opt.id ? "text-sand-900" : "text-sand-500 hover:text-sand-700"
-                }`}
+                key={op.texto}
+                type="button"
+                role="radio"
+                aria-checked={anual === op.valor}
+                onClick={() => setAnual(op.valor)}
+                className={clsx(
+                  "rounded-full px-4 py-2 transition-colors",
+                  anual === op.valor
+                    ? "bg-primary-600 text-white shadow-sm"
+                    : "text-sand-600 hover:text-sand-900"
+                )}
               >
-                {annual === opt.id && (
-                  <motion.div
-                    layoutId="pricingToggle"
-                    className="absolute inset-0 rounded-full bg-white shadow-sm"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{opt.label}</span>
-                {opt.id === true && (
-                  <span className="relative z-10 ml-1.5 rounded-full bg-accent-100 px-2 py-0.5 text-xs font-semibold text-accent-700">
-                    -20%
-                  </span>
-                )}
+                {op.texto}
               </button>
             ))}
           </div>
-        </AnimatedSection>
-
-        <div className="mt-12 grid items-start gap-8 lg:grid-cols-3">
-          {plans.map((plan, i) => {
-            const Icon = plan.icon;
-            const price = annual ? plan.annualPrice : plan.monthlyPrice;
-            return (
-              <AnimatedSection key={plan.name} delay={i * 0.1}>
-                <div
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-300 ${
-                    plan.popular
-                      ? "border-2 border-primary-500 bg-white shadow-xl shadow-primary-500/10"
-                      : "border-sand-200 bg-white shadow-sm hover:border-sand-300 hover:shadow-md"
-                  }`}
-                >
-                  {plan.popular && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-4 py-1 text-xs font-semibold text-white shadow-sm">
-                      Mas popular
-                    </span>
-                  )}
-
-                  <div className="flex items-start gap-3">
-                    <div
-                      className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${
-                        plan.popular
-                          ? "bg-primary-100 text-primary-600"
-                          : "bg-sand-100 text-sand-600"
-                      }`}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-sand-900">
-                        {plan.name}
-                      </h3>
-                      <p className="mt-0.5 text-sm text-sand-500">
-                        {plan.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 border-t border-sand-100 pt-6">
-                    <div className="flex items-baseline gap-1">
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={price}
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="text-4xl font-bold text-sand-900"
-                        >
-                          S/ {price}
-                        </motion.span>
-                      </AnimatePresence>
-                      <span className="text-sm text-sand-500">/mes</span>
-                    </div>
-                    {annual && (
-                      <div className="mt-1 flex items-center gap-2">
-                        <span className="text-sm text-sand-400 line-through">
-                          S/ {plan.monthlyPrice}
-                        </span>
-                        <span className="rounded-full bg-accent-100 px-2 py-0.5 text-xs font-semibold text-accent-700">
-                          Ahorras {Math.round((1 - plan.annualPrice / plan.monthlyPrice) * 100)}%
-                        </span>
-                      </div>
-                    )}
-                    {!annual && (
-                      <p className="mt-1 text-xs text-accent-600">
-                        S/ {plan.annualPrice}/mes si pagas anual
-                      </p>
-                    )}
-                  </div>
-
-                  <a
-                    href="#cta"
-                    className={`mt-6 block rounded-lg py-3 text-center text-sm font-semibold transition-all active:scale-[0.98] ${
-                      plan.popular
-                        ? "bg-primary-600 text-white shadow-sm hover:bg-primary-700 hover:shadow-md"
-                        : "border border-sand-200 bg-white text-sand-700 hover:border-sand-300 hover:bg-sand-50"
-                    }`}
-                  >
-                    Probar 14 dias gratis
-                  </a>
-
-                  <ul className="mt-8 flex-1 space-y-3">
-                    {plan.features.map((feature, fi) => {
-                      const isInherit = feature.startsWith("Todo de ");
-                      return (
-                        <li
-                          key={feature}
-                          className={`flex items-start gap-2.5 text-sm ${
-                            isInherit
-                              ? "font-medium text-sand-900"
-                              : "text-sand-600"
-                          } ${fi === 0 && isInherit ? "pb-2 border-b border-sand-100" : ""}`}
-                        >
-                          {!isInherit && (
-                            <span className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${
-                              plan.popular ? "bg-primary-50" : "bg-sand-100"
-                            }`}>
-                              <Check className={`h-3 w-3 ${
-                                plan.popular ? "text-primary-600" : "text-sand-500"
-                              }`} />
-                            </span>
-                          )}
-                          {feature}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </AnimatedSection>
-            );
-          })}
         </div>
 
-        <p className="mt-8 text-center text-sm text-sand-400">
-          Precios en Soles peruanos (PEN), incluyen IGV. Todos los planes incluyen: SSL,
-          hosting, soporte tecnico y actualizaciones automaticas.
-        </p>
+        <div className="mx-auto mt-6 grid max-w-5xl gap-4 lg:grid-cols-3">
+          {PLANES.map((plan, i) => (
+            <AnimatedSection key={plan.id} delay={i * 0.06}>
+              <div
+                className={clsx(
+                  "relative flex h-full flex-col rounded-2xl border bg-white p-5 sm:p-6",
+                  plan.destacado
+                    ? "border-2 border-primary-500 shadow-lg shadow-primary-500/10"
+                    : "border-sand-200"
+                )}
+              >
+                {plan.destacado && (
+                  <span className="absolute -top-3 left-6 rounded-full bg-primary-600 px-3 py-1 text-xs font-semibold text-white">
+                    Con asistente de WhatsApp
+                  </span>
+                )}
+                <h3 className="text-lg font-bold text-sand-900">{plan.nombre}</h3>
+                <p className="mt-0.5 text-sm text-sand-500">{plan.paraQuien}</p>
+                <p className="mt-3 flex items-baseline gap-1">
+                  <span className="text-4xl font-extrabold text-sand-900">
+                    {soles(anual ? precioAnual(plan) : plan.precioMensual)}
+                  </span>
+                  <span className="text-sm text-sand-500">
+                    {anual ? "al año" : "al mes"}
+                  </span>
+                </p>
+                <p className="mt-1 text-xs text-sand-400">
+                  {anual
+                    ? `Pagas ${MESES_PAGADOS_ANUAL} meses y usas 12. IGV incluido.`
+                    : "IGV incluido."}
+                </p>
+                <p className="mt-1 text-xs text-sand-500">
+                  Alta {soles(plan.alta)} · gratis si te quedas{" "}
+                  {MESES_PERMANENCIA_ALTA_GRATIS} meses
+                </p>
+                <button
+                  type="button"
+                  aria-expanded={Boolean(abiertos[plan.id])}
+                  onClick={() =>
+                    setAbiertos((a) => ({ ...a, [plan.id]: !a[plan.id] }))
+                  }
+                  className="mt-3 self-start text-sm font-semibold text-primary-700 underline underline-offset-2 lg:hidden"
+                >
+                  {abiertos[plan.id] ? "Ocultar lo que incluye" : "Ver lo que incluye"}
+                </button>
+                <ul
+                  className={clsx(
+                    "mt-3 flex-1 space-y-2 lg:mt-5 lg:block",
+                    abiertos[plan.id] ? "block" : "hidden"
+                  )}
+                >
+                  {plan.incluye.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-sand-700">
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-600" />
+                      {item}
+                    </li>
+                  ))}
+                  {!plan.conBot && (
+                    <li className="flex items-start gap-2.5 text-sm text-sand-400">
+                      <Info className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                      Sin asistente de WhatsApp
+                    </li>
+                  )}
+                </ul>
+                <a
+                  href="/contacto"
+                  className={clsx(
+                    "mt-4 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all active:scale-[0.98]",
+                    plan.destacado
+                      ? "bg-primary-600 text-white hover:bg-primary-700"
+                      : "border border-sand-300 text-sand-800 hover:bg-sand-50"
+                  )}
+                >
+                  Crear mi tienda <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        <div
+          id="alta"
+          className="mx-auto mt-5 max-w-3xl scroll-mt-20 text-center text-sm leading-relaxed text-sand-600"
+        >
+          <p>
+            <strong className="text-sand-800">Alta gratis</strong> si te quedas{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si te vas antes, pagas solo
+            la parte de los meses que faltan: alta × (meses que faltan ÷{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS}). Ejemplo: {EJEMPLO_ALTA.plan}, te
+            vas tras {EJEMPLO_ALTA.mesesPagados} meses → {soles(EJEMPLO_ALTA.alta)} ×{" "}
+            {MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados}/
+            {MESES_PERMANENCIA_ALTA_GRATIS} ={" "}
+            <strong className="text-sand-800">
+              {soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}
+            </strong>
+            .
+          </p>
+          {FUNDADORES.activo && (
+            <p className="mt-1.5">
+              <strong className="text-sand-800">Fundadores</strong> (los primeros{" "}
+              {FUNDADORES.cupos}): alta gratis sin permanencia y precio congelado{" "}
+              {FUNDADORES.mesesPrecioCongelado} meses.
+            </p>
+          )}
+        </div>
+
+        <AnimatedSection>
+          <div
+            id="pagas-aparte"
+            className="mx-auto mt-5 max-w-5xl rounded-2xl border border-cream-400 bg-cream-50 p-4 sm:p-6"
+          >
+            <h3 className="text-base font-bold text-sand-900">
+              Lo que pagas aparte, directo a cada proveedor
+            </h3>
+            <p className="mt-1 text-sm text-sand-600">
+              Pedily nunca toca tu dinero. Precios públicos a noviembre de 2026:
+            </p>
+            <ul className="mt-3 divide-y divide-cream-400/60 sm:grid sm:grid-cols-3 sm:gap-3 sm:divide-y-0">
+              {COSTOS_APARTE.map((c) => (
+                <li key={c.proveedor} className="py-2.5 text-sm sm:rounded-xl sm:bg-white sm:p-4">
+                  <p>
+                    <strong className="text-sand-900">{c.proveedor}:</strong>{" "}
+                    <span className="font-semibold text-sand-800">{c.precio}</span>
+                  </p>
+                  <p className="mt-0.5 text-xs text-sand-500">
+                    {c.que} ·{" "}
+                    <a
+                      href={c.fuente}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-700 underline"
+                    >
+                      ver su tarifa
+                    </a>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </AnimatedSection>
       </Container>
-    </Section>
+    </section>
   );
 }

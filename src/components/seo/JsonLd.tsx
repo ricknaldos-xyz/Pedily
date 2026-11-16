@@ -1,208 +1,121 @@
-import { CONTACT_EMAIL, WHATSAPP_TEL, whatsappLink } from "@/lib/site";
+import { CONTACT_EMAIL, EMPRESA, WHATSAPP_TEL, whatsappLink } from "@/lib/site";
+import { FAQS, type Pregunta } from "@/lib/faq";
+import type { Herramienta } from "@/lib/herramientas";
+import { PLANES } from "@/lib/planes";
 
-export function OrganizationJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Pedily",
-    legalName: "Hub de Innovacion Digital SAC",
-    url: "https://pedily.com",
-    logo: "https://pedily.com/favicon.svg",
-    description:
-      "El sistema operativo de tu restaurante. Vende por web, WhatsApp con IA y kiosko, y opera pedidos, inventario, finanzas y facturacion SUNAT desde un solo Hub. Sin comisiones.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Lima",
-      addressCountry: "PE",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "sales",
-      email: CONTACT_EMAIL,
-      availableLanguage: ["Spanish"],
-    },
-    sameAs: [whatsappLink()],
-  };
+const SITE_URL = "https://pedily.com";
 
+const DESCRIPCION =
+  "Tienda web, asistente de pedidos por WhatsApp con IA, kiosko y boletas SUNAT para restaurantes en Perú. Desde S/ 249 al mes con IGV, 0 % de comisión por pedido.";
+
+function Script({ schema }: { schema: object }) {
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function OrganizationJsonLd() {
+  const wa = whatsappLink();
+  return (
+    <Script
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Pedily",
+        legalName: EMPRESA.razonSocial,
+        ...(EMPRESA.ruc ? { taxID: EMPRESA.ruc } : {}),
+        url: SITE_URL,
+        logo: `${SITE_URL}/favicon.svg`,
+        description: DESCRIPCION,
+        address: {
+          "@type": "PostalAddress",
+          ...(EMPRESA.domicilioFiscal
+            ? { streetAddress: EMPRESA.domicilioFiscal }
+            : {}),
+          addressLocality: "Lima",
+          addressCountry: "PE",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          ...(CONTACT_EMAIL ? { email: CONTACT_EMAIL } : {}),
+          ...(WHATSAPP_TEL ? { telephone: WHATSAPP_TEL } : {}),
+          availableLanguage: ["Spanish"],
+        },
+        ...(wa ? { sameAs: [wa] } : {}),
+      }}
     />
   );
 }
 
 export function WebsiteJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Pedily",
-    url: "https://pedily.com",
-    description:
-      "Plataforma de pedidos online para restaurantes, pastelerias y negocios de comida. Sin comisiones por pedido.",
-    publisher: {
-      "@type": "Organization",
-      name: "Pedily",
-    },
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <Script
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Pedily",
+        url: SITE_URL,
+        inLanguage: "es-PE",
+        description: DESCRIPCION,
+        publisher: { "@type": "Organization", name: "Pedily" },
+      }}
     />
   );
 }
 
 export function SoftwareApplicationJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Pedily",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    description:
-      "El sistema operativo de tu restaurante: tienda web, bot de WhatsApp con IA, kiosko de autoservicio, Hub de pedidos en tiempo real, inventario, finanzas y facturacion SUNAT. Todo integrado.",
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Plan Inicio",
-        price: "249",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-      {
-        "@type": "Offer",
-        name: "Plan Crecimiento",
-        price: "499",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-      {
-        "@type": "Offer",
-        name: "Plan Empresa",
-        price: "999",
-        priceCurrency: "PEN",
-        priceValidUntil: "2026-12-31",
-        availability: "https://schema.org/InStock",
-      },
-    ],
-    featureList: [
-      "Tienda web con checkout",
-      "Bot de WhatsApp con IA",
-      "Kiosko de autoservicio",
-      "Hub de pedidos multicanal en tiempo real",
-      "Facturacion electronica SUNAT (Nubefact)",
-      "Integracion con Culqi e IZIPAY",
-      "Inventario, recetas y control de costos",
-      "Finanzas: caja, P&L y planilla",
-      "Programa de fidelizacion y referidos",
-      "Integracion PedidosYa y Rappi",
-    ],
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <Script
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Pedily",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: DESCRIPCION,
+        offers: PLANES.map((plan) => ({
+          "@type": "Offer",
+          name: plan.nombre,
+          price: plan.precioMensual,
+          priceCurrency: "PEN",
+          description: `${plan.paraQuien} Precio al mes con IGV incluido. Alta S/ ${plan.alta}, gratis con 6 meses de permanencia.`,
+        })),
+        featureList: [
+          "Tienda web con pedido y pago online",
+          "Asistente de pedidos por WhatsApp con IA (desde el plan de S/ 499)",
+          "Kiosko de autoservicio y QR de mesa que cobra (plan de S/ 999)",
+          "Pedidos programados para la hora que elija el cliente",
+          "Panel de pedidos de todos tus canales al instante",
+          "Boletas y facturas electrónicas SUNAT (con Nubefact)",
+          "Cobros con Culqi, Yape y Plin en tu propia cuenta",
+          "Cupones, referidos y saldo a favor",
+          "Envíos con PedidosYa",
+        ],
+      }}
     />
   );
 }
 
-export function FAQPageJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Que incluye Pedily exactamente?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Pedily es el sistema operativo de tu restaurante. Por un lado vendes en varios canales: tienda web, bot de WhatsApp con IA, kiosko de autoservicio y marketplaces (PedidosYa, Rappi). Por el otro, operas todo desde un Hub en tiempo real: pedidos, cocina, inventario, recetas, caja, finanzas (P&L y planilla), facturacion SUNAT y fidelizacion.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Pedily maneja inventario y finanzas, no solo pedidos?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. Ademas de vender, controlas tu negocio: inventario por almacen con alertas de stock, recetas con costo de ingredientes para conocer tu margen real, caja con cierre cuadrado, P&L, flujo de caja, compras a proveedores y planilla de tu equipo. Lo que otros venden por separado, aqui viene integrado.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Pedily tambien vende por Instagram, Messenger o marketplaces?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. El mismo bot con IA atiende WhatsApp, Instagram y Messenger, y el Hub recibe tambien los pedidos de PedidosYa y Rappi. Todos tus canales en un solo tablero.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Cuanto cuesta Pedily?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Pedily tiene 3 planes: Inicio a S/ 249/mes, Crecimiento a S/ 499/mes y Empresa a S/ 999/mes. Todos sin comisiones por pedido. Con pago anual obtienes 20% de descuento.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Pedily cobra comision por pedido?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Pedily cobra una tarifa fija mensual, sin comisiones por pedido. Vendas 10 o 10,000 pedidos, pagas lo mismo. Solo pagas las comisiones de las pasarelas de pago (Culqi, IZIPAY) que son del proveedor, no de Pedily.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Puedo probar Pedily gratis?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. Ofrecemos 14 dias de prueba gratis con todas las funcionalidades del plan Crecimiento. No necesitas tarjeta de credito para empezar.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Como funciona el bot de WhatsApp?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "El bot usa inteligencia artificial (Claude de Anthropic) para conversar con tus clientes y tomar pedidos automaticamente. Entiende lenguaje natural, muestra el menu, agrega productos al carrito y procesa el pedido. Tu puedes intervenir en cualquier momento si lo deseas.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Pedily emite boletas y facturas?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. Pedily esta integrado con Nubefact para emitir boletas y facturas electronicas automaticamente, directo a SUNAT. Disponible en los planes Crecimiento y Empresa.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Necesito conocimientos tecnicos para usar Pedily?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Pedily esta disenado para que cualquier persona pueda configurar su tienda sin conocimientos tecnicos. Ademas, el plan Empresa incluye onboarding personalizado donde te ayudamos a configurar todo.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Puedo cancelar en cualquier momento?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Si. No hay contratos de permanencia. Puedes cancelar tu suscripcion cuando quieras desde tu panel de administracion.",
-        },
-      },
-    ],
-  };
-
+/**
+ * Mismo contenido que la FAQ visible (src/lib/faq.ts por defecto, o las
+ * preguntas de una herramienta).
+ */
+export function FAQPageJsonLd({ preguntas = FAQS }: { preguntas?: Pregunta[] } = {}) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <Script
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: preguntas.map((f) => ({
+          "@type": "Question",
+          name: f.pregunta,
+          acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+        })),
+      }}
     />
   );
 }
@@ -212,60 +125,54 @@ export function BreadcrumbJsonLd({
 }: {
   items: { name: string; url: string }[];
 }) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  };
-
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <Script
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      }}
     />
   );
 }
 
-export function LocalBusinessJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://pedily.com",
-    name: "Pedily",
-    description:
-      "Plataforma de pedidos online para restaurantes en Peru. Sin comisiones.",
-    url: "https://pedily.com",
-    telephone: WHATSAPP_TEL,
-    email: CONTACT_EMAIL,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Lima",
-      addressRegion: "Lima",
-      addressCountry: "PE",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -12.0464,
-      longitude: -77.0428,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-    priceRange: "S/ 249 - S/ 999",
-  };
-
+/** Calculadora gratis: WebApplication gratuita + migas de pan. */
+export function HerramientaJsonLd({ h }: { h: Herramienta }) {
+  const url = `${SITE_URL}/herramientas/${h.slug}`;
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: h.titulo,
+          url,
+          description: h.descripcion,
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          inLanguage: "es-PE",
+          isAccessibleForFree: true,
+          offers: { "@type": "Offer", price: "0", priceCurrency: "PEN" },
+          publisher: { "@type": "Organization", name: "Pedily", url: SITE_URL },
+          citation: h.fuentes.map((f) => ({
+            "@type": "CreativeWork",
+            name: f.nombre,
+            url: f.url,
+          })),
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: "Herramientas gratis", url: `${SITE_URL}/herramientas` },
+          { name: h.titulo, url },
+        ]}
+      />
+    </>
   );
 }

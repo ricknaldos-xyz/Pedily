@@ -1,26 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { Container } from "./Container";
-import { Menu, X, Search, ChevronLeft } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { DEMO } from "@/lib/site";
 
+// Con «/» delante para que funcionen también fuera de la portada.
 const landingLinks = [
-  { href: "#funcionalidades", label: "Funcionalidades" },
-  { href: "#bot-ia", label: "Bot IA" },
-  { href: "#precios", label: "Precios" },
-  { href: "#faq", label: "FAQ" },
-  { href: "/docs", label: "Docs" },
+  { href: "/#como-funciona", label: "Cómo funciona" },
+  { href: "/#precios", label: "Precios" },
+  { href: "/#fundadores", label: "Fundadores" },
+  { href: "/#faq", label: "Preguntas" },
+  { href: "/herramientas", label: "Herramientas" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-  const isDocs = pathname.startsWith("/docs");
-  const isLanding = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -50,45 +48,9 @@ export function Header() {
               Pedily
             </span>
           </Link>
-
-          {isDocs && (
-            <>
-              <span className="hidden text-sand-300 sm:block">/</span>
-              <span className="hidden text-sm font-medium text-sand-600 sm:block">
-                Docs
-              </span>
-            </>
-          )}
         </div>
 
-        {isDocs ? (
-          /* Docs-specific header */
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                const fn = (window as unknown as Record<string, unknown>)
-                  .__docsOpenSearch;
-                if (typeof fn === "function") fn();
-              }}
-              className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white px-3 py-1.5 text-sm text-sand-400 transition-all hover:border-sand-300 hover:bg-sand-50 sm:flex"
-            >
-              <Search className="h-3.5 w-3.5" />
-              <span>Buscar...</span>
-              <kbd className="rounded border border-sand-200 bg-sand-50 px-1.5 py-0.5 text-[10px] font-medium">
-                ⌘K
-              </kbd>
-            </button>
-            <Link
-              href="/"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-sand-600 transition-colors hover:bg-sand-100 hover:text-primary-600"
-            >
-              <ChevronLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">Inicio</span>
-            </Link>
-          </div>
-        ) : (
-          /* Landing page header */
-          <>
+                  <>
             <nav className="hidden items-center gap-1 md:flex">
               {landingLinks.map((link) => (
                 <a
@@ -103,23 +65,25 @@ export function Header() {
 
             <div className="hidden items-center gap-3 md:flex">
               <a
-                href="#precios"
+                href={DEMO.tiendaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-lg px-4 py-2 text-sm font-medium text-sand-600 transition-all hover:bg-sand-100 hover:text-primary-600"
               >
-                Ver precios
+                Tienda de ejemplo
               </a>
               <a
-                href="#cta"
+                href="/contacto"
                 className="rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
-                Empieza gratis
+                Crear mi tienda
               </a>
             </div>
 
             <button
               className="rounded-lg p-2 transition-colors hover:bg-sand-100 md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {mobileOpen ? (
                 <X className="h-5 w-5 text-sand-700" />
@@ -128,11 +92,10 @@ export function Header() {
               )}
             </button>
           </>
-        )}
       </Container>
 
       <AnimatePresence>
-        {mobileOpen && !isDocs && (
+        {mobileOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -163,14 +126,14 @@ export function Header() {
                   </motion.a>
                 ))}
                 <motion.a
-                  href="#cta"
+                  href="/contacto"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: landingLinks.length * 0.05 }}
                   className="mt-2 rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-semibold text-white"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Empieza gratis
+                  Crear mi tienda
                 </motion.a>
               </Container>
             </motion.div>
