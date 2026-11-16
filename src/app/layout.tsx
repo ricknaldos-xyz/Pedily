@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   authors: [{ name: EMPRESA.razonSocial }],
   creator: "Pedily",
   publisher: EMPRESA.razonSocial,
-  metadataBase: new URL("https://pedily.com"),
+  metadataBase: new URL("https://pedily.vercel.app"),
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description: DESCRIPCION,
     type: "website",
     locale: "es_PE",
-    url: "https://pedily.com",
+    url: "https://pedily.vercel.app",
     siteName: "Pedily",
     images: [
       {

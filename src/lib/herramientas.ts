@@ -8,7 +8,7 @@
  */
 import type { Pregunta } from "./faq";
 
-export const SITE_URL = "https://pedily.com";
+export const SITE_URL = "https://pedily.vercel.app";
 
 export interface Fuente {
   nombre: string;

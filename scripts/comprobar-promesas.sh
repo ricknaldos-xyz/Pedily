@@ -110,7 +110,7 @@ while IFS= read -r pagina; do
   case "$ruta" in
     */\[*|/api*) continue ;;
   esac
-  if ! grep -q "<loc>https://pedily.com${ruta:-/}</loc>" public/sitemap.xml; then
+  if ! grep -q "<loc>https://pedily.vercel.app${ruta:-/}</loc>" public/sitemap.xml; then
     echo "Falta en public/sitemap.xml: ${ruta:-/}" >&2
     fallo_rutas=1
   fi
