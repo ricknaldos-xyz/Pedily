@@ -12,13 +12,22 @@ import { CLIPS, type ClaveClip } from "@/lib/capturas";
  * solo: queda el póster y el botón para reproducirlo. Siempre hay botón de
  * pausa (WCAG 2.2.2).
  */
-export function Clip({ clave, className }: { clave: ClaveClip; className?: string }) {
+export function Clip({
+  clave,
+  className,
+  inmediato = false,
+}: {
+  clave: ClaveClip;
+  className?: string;
+  /** Arriba del todo (hero): el póster va en el HTML desde el principio. */
+  inmediato?: boolean;
+}) {
   const c = CLIPS[clave];
   const ref = useRef<HTMLVideoElement>(null);
   const [andando, setAndando] = useState(false);
   // El póster tampoco se pide hasta que el clip está cerca de la pantalla
   // (un <video> oculto o lejos no debe competir con lo primero que se ve).
-  const [cerca, setCerca] = useState(false);
+  const [cerca, setCerca] = useState(inmediato);
   const manual = useRef(false);
 
   useEffect(() => {

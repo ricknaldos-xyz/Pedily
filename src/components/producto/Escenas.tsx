@@ -83,7 +83,7 @@ export function EscenaSolucion({ escena }: { escena: Escena }) {
       return (
         <figure className="relative mx-auto w-full max-w-[19rem]">
           <MarcoCelular>
-            <Clip clave="whatsapp" />
+            <Clip clave="whatsapp" inmediato />
           </MarcoCelular>
           <TicketComanda className="absolute -right-10 bottom-16 hidden rotate-2 lg:block" />
           <figcaption>
@@ -107,7 +107,7 @@ export function EscenaSolucion({ escena }: { escena: Escena }) {
       return (
         <figure className="relative mx-auto w-full max-w-[20rem]">
           <MarcoKiosko>
-            <Clip clave="kiosko" />
+            <Clip clave="kiosko" inmediato />
           </MarcoKiosko>
           <TicketComanda numero="K-012" className="absolute -right-12 top-10 hidden rotate-3 lg:block" />
           <figcaption>
@@ -119,7 +119,7 @@ export function EscenaSolucion({ escena }: { escena: Escena }) {
       return (
         <figure className="relative mx-auto w-full max-w-[18rem]">
           <MarcoCelular>
-            <Clip clave="mesa" />
+            <Clip clave="mesa" inmediato />
           </MarcoCelular>
           <div className="absolute -right-8 top-16 hidden lg:block">
             <Sello tono="cocina" giro={8}>
@@ -169,7 +169,7 @@ export function EscenaSolucion({ escena }: { escena: Escena }) {
       );
     case "cocina":
       return (
-        <PanelFigura url="mirestaurante · panel/cocina" captura={<Clip clave="cocina" />} nota={CLIPS.cocina.nota}>
+        <PanelFigura url="mirestaurante · panel/cocina" captura={<Clip clave="cocina" inmediato />} nota={CLIPS.cocina.nota}>
           <Sello tono="listo" giro={-6}>
             Listo
           </Sello>

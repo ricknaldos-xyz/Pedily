@@ -70,7 +70,7 @@ export function HeroHome() {
           <div className="relative hidden lg:block lg:h-[40rem]">
             <div className="absolute right-0 top-4 w-[36rem] xl:w-[39rem]">
               <MarcoPortatil>
-                <Clip clave="alarma" />
+                <Clip clave="alarma" inmediato />
               </MarcoPortatil>
             </div>
             <div className="absolute bottom-0 left-[-2rem] z-10 w-[14.5rem] rotate-[-3deg] xl:left-[-3rem]">
