@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/layout/Container";
+import Link from "next/link";
+import { ArrowRight, Bike, MessageCircle, Receipt, type LucideIcon } from "lucide-react";
+import { Boton } from "@/components/marca/Boton";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { HERRAMIENTAS, SITE_URL } from "@/lib/herramientas";
-import { ArrowRight, Calculator } from "lucide-react";
+import { HERRAMIENTAS, LEIDO_EL, SITE_URL } from "@/lib/herramientas";
 
 const TITULO = "Herramientas gratis para restaurantes en Perú | Pedily";
 const DESCRIPCION =
@@ -15,9 +16,15 @@ export const metadata: Metadata = {
   openGraph: { title: TITULO, description: DESCRIPCION, url: `${SITE_URL}/herramientas`, images: ["/og-image.png"] },
 };
 
+const ICONO: Record<string, LucideIcon> = {
+  "calculadora-comision-delivery": Bike,
+  "calculadora-igv-restaurantes": Receipt,
+  "costo-mensajes-whatsapp": MessageCircle,
+};
+
 export default function HerramientasPage() {
   return (
-    <div className="bg-cream-50">
+    <>
       <BreadcrumbJsonLd
         items={[
           { name: "Inicio", url: SITE_URL },
@@ -40,34 +47,54 @@ export default function HerramientasPage() {
           }),
         }}
       />
-      <Container className="max-w-3xl pb-14 pt-8 sm:pb-20 sm:pt-14">
-        <h1 className="text-[1.85rem] font-extrabold leading-tight tracking-tight text-sand-900 sm:text-4xl">
-          Herramientas gratis para restaurantes
-        </h1>
-        <p className="mt-3 text-base leading-relaxed text-sand-600">
-          Haz las cuentas de tu restaurante con datos oficiales. Sin registrarte:
-          cada calculadora cita su fuente.
-        </p>
-        <ul className="mt-6 space-y-3">
-          {HERRAMIENTAS.map((h) => (
-            <li key={h.slug}>
-              <a
-                href={`/herramientas/${h.slug}`}
-                className="group flex items-start gap-3 rounded-2xl bg-white p-4 shadow-card transition hover:ring-2 hover:ring-primary-200"
-              >
-                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
-                  <Calculator className="h-5 w-5" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-bold text-sand-900">{h.titulo}</span>
-                  <span className="mt-0.5 block text-sm text-sand-600">{h.resumen}</span>
-                </span>
-                <ArrowRight className="mt-2 h-4 w-4 flex-shrink-0 text-primary-600 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </div>
+
+      <section className="papel-trama">
+        <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 sm:pb-24 sm:pt-16 lg:px-8">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-chicha-700">Herramientas gratis</p>
+          <h1 className="mt-3 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-tinta text-balance sm:text-6xl">
+            Haz las cuentas de tu restaurante con datos oficiales
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand-700">
+            Sin registrarte. Cada calculadora cita su fuente oficial, leída el {LEIDO_EL}.
+          </p>
+
+          <ul className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
+            {HERRAMIENTAS.map((h) => {
+              const I = ICONO[h.slug] ?? Receipt;
+              return (
+                <li key={h.slug}>
+                  <Link
+                    href={`/herramientas/${h.slug}`}
+                    className="group block h-full text-tinta [filter:drop-shadow(0_12px_18px_rgba(36,16,46,0.14))] transition-transform hover:-translate-y-1"
+                  >
+                    <span className="ticket flex h-full flex-col px-5 py-7">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-aji-500">
+                        <I aria-hidden className="h-6 w-6" />
+                      </span>
+                      <span className="mt-5 font-display text-xl font-bold leading-snug">{h.titulo}</span>
+                      <span className="mt-2 flex-1 text-[0.96rem] leading-relaxed text-sand-700">{h.resumen}</span>
+                      <span aria-hidden className="punteado my-4 text-tinta/30" />
+                      <span className="inline-flex items-center gap-1.5 font-semibold text-chicha-700">
+                        Abrir la calculadora
+                        <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="mt-14 flex flex-col items-start gap-4 rounded-3xl bg-tinta p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <p className="max-w-2xl font-display text-xl font-bold leading-snug sm:text-2xl">
+              ¿Las cuentas dicen que la comisión te pesa? Vende por tu web y tu WhatsApp con 0 % de comisión.
+            </p>
+            <Boton href="/precios" flecha className="shrink-0">
+              Ver precios
+            </Boton>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

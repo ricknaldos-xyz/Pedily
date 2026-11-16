@@ -56,7 +56,7 @@ export function CalculadoraIgv() {
       </div>
 
       <fieldset className="mt-5">
-        <legend className="text-sm font-semibold text-sand-800">
+        <legend className="text-sm font-semibold text-tinta">
           ¿Cumples los requisitos de la tasa especial?
         </legend>
         <ul className="mt-2 space-y-2">
@@ -69,7 +69,7 @@ export function CalculadoraIgv() {
                   onChange={(e) =>
                     setCumple((c) => c.map((v, j) => (j === i ? e.target.checked : v)))
                   }
-                  className="mt-0.5 h-4 w-4 flex-shrink-0 accent-primary-600"
+                  className="mt-0.5 h-4 w-4 flex-shrink-0 accent-chicha-600"
                 />
                 {r}
               </label>
@@ -79,8 +79,8 @@ export function CalculadoraIgv() {
         <p
           className={
             esMype
-              ? "mt-3 rounded-lg bg-primary-50 px-3 py-2 text-sm font-semibold text-primary-800"
-              : "mt-3 rounded-lg bg-accent-50 px-3 py-2 text-sm font-semibold text-accent-700"
+              ? "mt-3 rounded-lg bg-hierba-50 px-3 py-2 text-sm font-semibold text-hierba-700"
+              : "mt-3 rounded-lg bg-rocoto-50 px-3 py-2 text-sm font-semibold text-rocoto-700"
           }
           aria-live="polite"
         >
@@ -90,31 +90,31 @@ export function CalculadoraIgv() {
         </p>
       </fieldset>
 
-      <div className="mt-5 overflow-hidden rounded-xl border border-sand-200">
+      <div className="mt-5 overflow-hidden rounded-xl border-2 border-tinta/10">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">Impuesto por año sobre tus ventas del mes</caption>
-          <thead className="bg-sand-50 text-xs text-sand-600">
+          <thead className="bg-papel font-mono text-[11px] uppercase tracking-wider text-sand-700">
             <tr>
               <th scope="col" className="px-3 py-2 font-semibold">Año</th>
               <th scope="col" className="px-3 py-2 font-semibold">Tasa</th>
               <th scope="col" className="px-3 py-2 text-right font-semibold">Impuesto al mes</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-sand-100">
+          <tbody className="divide-y divide-dashed divide-tinta/15">
             {filas.map((f) => (
               <tr key={f.anio}>
-                <th scope="row" className="px-3 py-2 font-semibold text-sand-900">
+                <th scope="row" className="px-3 py-2 font-semibold text-tinta">
                   {f.anio === "2028" ? "2028 en adelante" : f.anio}
                 </th>
                 <td className="px-3 py-2 text-sand-700">
                   {pct(f.tasa)}
                   {esMype && f.anio !== "2028" && (
-                    <span className="block text-xs text-sand-500">
+                    <span className="block text-xs text-sand-700">
                       IGV {pct(f.igv)} + IPM {pct(f.ipm)}
                     </span>
                   )}
                 </td>
-                <td className="px-3 py-2 text-right font-semibold text-sand-900">
+                <td className="px-3 py-2 text-right font-mono font-semibold text-tinta">
                   {soles(f.impuesto)}
                 </td>
               </tr>
@@ -137,7 +137,7 @@ export function CalculadoraIgv() {
           detalle="Para recibir lo mismo sin impuesto"
         />
       </dl>
-      <p className="mt-3 text-xs leading-relaxed text-sand-500">
+      <p className="mt-3 text-xs leading-relaxed text-sand-700">
         Es el impuesto de tus ventas (débito fiscal), antes de restar el IGV de
         tus compras (crédito fiscal). No incluye impuesto a la renta.
       </p>

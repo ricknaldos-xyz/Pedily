@@ -101,23 +101,23 @@ export function CalculadoraWhatsapp() {
         />
       </dl>
 
-      <ul className="mt-4 divide-y divide-sand-100 rounded-xl border border-sand-200 text-sm">
+      <ul className="mt-4 divide-y divide-dashed divide-tinta/15 rounded-xl border-2 border-tinta/10 text-sm">
         <li className="flex justify-between gap-3 px-3 py-2">
           <span className="text-sand-700">
             Servicio: {fmt(r.servicio)} respuestas, {fmt(r.servicioPagado)} pagadas
           </span>
-          <span className="font-semibold text-sand-900">{soles(r.costoServicio, 2)}</span>
+          <span className="font-mono font-semibold text-tinta">{soles(r.costoServicio, 2)}</span>
         </li>
         <li className="flex justify-between gap-3 px-3 py-2">
           <span className="text-sand-700">Utilidad: {fmt(r.utilidad)} avisos</span>
-          <span className="font-semibold text-sand-900">{soles(r.costoUtilidad, 2)}</span>
+          <span className="font-mono font-semibold text-tinta">{soles(r.costoUtilidad, 2)}</span>
         </li>
         <li className="flex justify-between gap-3 px-3 py-2">
           <span className="text-sand-700">Marketing: {fmt(marketing)} mensajes</span>
-          <span className="font-semibold text-sand-900">{soles(r.costoMarketing, 2)}</span>
+          <span className="font-mono font-semibold text-tinta">{soles(r.costoMarketing, 2)}</span>
         </li>
       </ul>
-      <p className="mt-3 text-xs leading-relaxed text-sand-500">
+      <p className="mt-3 text-xs leading-relaxed text-sand-700">
         Tarifas de Meta para Perú en soles, sin impuestos:{" "}
         {soles(META.servicio, 4)} servicio y utilidad, {soles(META.marketing, 4)}{" "}
         marketing. Es para la plataforma de WhatsApp
