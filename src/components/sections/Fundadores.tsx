@@ -30,16 +30,18 @@ export function Fundadores() {
             </Boton>
           </div>
         </div>
-        <div className="ticket relative px-6 py-7 [filter:drop-shadow(0_14px_20px_rgba(36,16,46,0.25))]">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-humo">Condiciones de fundador</p>
-          <ul className="mt-3 space-y-3">
-            {beneficios.map((b) => (
-              <li key={b} className="flex items-start gap-2.5 text-[1rem] font-semibold text-tinta">
-                <Check aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-hierba-600" />
-                {b}
-              </li>
-            ))}
-          </ul>
+        <div className="relative [filter:drop-shadow(0_14px_20px_rgba(36,16,46,0.25))]">
+          <div className="ticket px-6 py-7">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-humo">Condiciones de fundador</p>
+            <ul className="mt-3 space-y-3">
+              {beneficios.map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[1rem] font-semibold text-tinta">
+                  <Check aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-hierba-600" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="absolute -right-2 -top-4">
             <Sello tono="cocina" giro={8}>
               {FUNDADORES.cupos} cupos

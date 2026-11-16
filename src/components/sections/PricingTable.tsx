@@ -19,9 +19,11 @@ import {
 interface Props {
   /** En /precios el título va en la cabecera de la página. */
   sinTitulo?: boolean;
+  /** En /precios el alta y los costos aparte tienen su propia sección. */
+  soloPlanes?: boolean;
 }
 
-export function PricingTable({ sinTitulo = false }: Props) {
+export function PricingTable({ sinTitulo = false, soloPlanes = false }: Props) {
   const [anual, setAnual] = useState(false);
   // En móvil la lista de cada plan se abre a pedido; en escritorio siempre se ve.
   const [abiertos, setAbiertos] = useState<Record<string, boolean>>({});
@@ -56,9 +58,7 @@ export function PricingTable({ sinTitulo = false }: Props) {
                 onClick={() => setAnual(op.valor)}
                 className={clsx(
                   "min-h-10 rounded-full px-4 py-2 transition-colors",
-                  anual === op.valor
-                    ? "bg-tinta text-white"
-                    : "text-sand-700 hover:text-tinta"
+                  anual === op.valor ? "bg-tinta text-white" : "text-sand-700 hover:text-tinta",
                 )}
               >
                 {op.texto}
@@ -73,9 +73,7 @@ export function PricingTable({ sinTitulo = false }: Props) {
               <div
                 className={clsx(
                   "relative flex h-full flex-col rounded-2xl bg-white p-5 sm:p-6",
-                  plan.destacado
-                    ? "border-2 border-tinta shadow-[0_8px_0_0_#24102e]"
-                    : "border border-tinta/10"
+                  plan.destacado ? "border-2 border-tinta shadow-[0_8px_0_0_#24102e]" : "border border-tinta/10",
                 )}
               >
                 {plan.destacado && (
@@ -89,35 +87,23 @@ export function PricingTable({ sinTitulo = false }: Props) {
                   <span className="font-display text-5xl font-extrabold tracking-tight text-tinta">
                     {soles(anual ? precioAnual(plan) : plan.precioMensual)}
                   </span>
-                  <span className="text-sm text-sand-700">
-                    {anual ? "al año" : "al mes"}
-                  </span>
+                  <span className="text-sm text-sand-700">{anual ? "al año" : "al mes"}</span>
                 </p>
                 <p className="mt-1 text-xs text-sand-700">
-                  {anual
-                    ? `Pagas ${MESES_PAGADOS_ANUAL} meses y usas 12. IGV incluido.`
-                    : "IGV incluido."}
+                  {anual ? `Pagas ${MESES_PAGADOS_ANUAL} meses y usas 12. IGV incluido.` : "IGV incluido."}
                 </p>
                 <p className="mt-1 font-mono text-[11px] text-humo">
-                  Alta {soles(plan.alta)} · gratis si te quedas{" "}
-                  {MESES_PERMANENCIA_ALTA_GRATIS} meses
+                  Alta {soles(plan.alta)} · gratis si te quedas {MESES_PERMANENCIA_ALTA_GRATIS} meses
                 </p>
                 <button
                   type="button"
                   aria-expanded={Boolean(abiertos[plan.id])}
-                  onClick={() =>
-                    setAbiertos((a) => ({ ...a, [plan.id]: !a[plan.id] }))
-                  }
+                  onClick={() => setAbiertos((a) => ({ ...a, [plan.id]: !a[plan.id] }))}
                   className="mt-3 min-h-10 self-start text-sm font-semibold text-chicha-700 underline underline-offset-2 lg:hidden"
                 >
                   {abiertos[plan.id] ? "Ocultar lo que incluye" : "Ver lo que incluye"}
                 </button>
-                <ul
-                  className={clsx(
-                    "mt-3 flex-1 space-y-2 lg:mt-5 lg:block",
-                    abiertos[plan.id] ? "block" : "hidden"
-                  )}
-                >
+                <ul className={clsx("mt-3 flex-1 space-y-2 lg:mt-5 lg:block", abiertos[plan.id] ? "block" : "hidden")}>
                   {plan.incluye.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-sand-700">
                       <Check aria-hidden className="mt-0.5 h-4 w-4 flex-shrink-0 text-hierba-600" />
@@ -137,7 +123,7 @@ export function PricingTable({ sinTitulo = false }: Props) {
                     "mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 px-5 text-[0.95rem] font-semibold transition-all",
                     plan.destacado
                       ? "border-tinta bg-aji-500 text-tinta hover:-translate-y-0.5"
-                      : "border-tinta/15 text-tinta hover:border-tinta/40"
+                      : "border-tinta/15 text-tinta hover:border-tinta/40",
                   )}
                 >
                   Crear mi tienda <ArrowRight className="h-4 w-4" />
@@ -147,66 +133,67 @@ export function PricingTable({ sinTitulo = false }: Props) {
           ))}
         </div>
 
-        <div
-          id="alta"
-          className="mx-auto mt-10 max-w-3xl scroll-mt-20 text-center text-[0.95rem] leading-relaxed text-sand-700"
-        >
-          <p>
-            <strong className="text-tinta">Alta gratis</strong> si te quedas{" "}
-            {MESES_PERMANENCIA_ALTA_GRATIS} meses. Si te vas antes, pagas solo
-            la parte de los meses que faltan: alta × (meses que faltan ÷{" "}
-            {MESES_PERMANENCIA_ALTA_GRATIS}). Ejemplo: {EJEMPLO_ALTA.plan}, te
-            vas tras {EJEMPLO_ALTA.mesesPagados} meses → {soles(EJEMPLO_ALTA.alta)} ×{" "}
-            {MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados}/
-            {MESES_PERMANENCIA_ALTA_GRATIS} ={" "}
-            <strong className="text-tinta">
-              {soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}
-            </strong>
-            .
-          </p>
-          {FUNDADORES.activo && (
-            <p className="mt-1.5">
-              <strong className="text-tinta">Fundadores</strong> (los primeros{" "}
-              {FUNDADORES.cupos}): alta gratis sin permanencia y precio congelado{" "}
-              {FUNDADORES.mesesPrecioCongelado} meses.
-            </p>
-          )}
-        </div>
+        {!soloPlanes && (
+          <>
+            <div
+              id="alta"
+              className="mx-auto mt-10 max-w-3xl scroll-mt-20 text-center text-[0.95rem] leading-relaxed text-sand-700"
+            >
+              <p>
+                <strong className="text-tinta">Alta gratis</strong> si te quedas {MESES_PERMANENCIA_ALTA_GRATIS} meses.
+                Si te vas antes, pagas solo la parte de los meses que faltan: alta × (meses que faltan ÷{" "}
+                {MESES_PERMANENCIA_ALTA_GRATIS}). Ejemplo: {EJEMPLO_ALTA.plan}, te vas tras {EJEMPLO_ALTA.mesesPagados}{" "}
+                meses → {soles(EJEMPLO_ALTA.alta)} × {MESES_PERMANENCIA_ALTA_GRATIS - EJEMPLO_ALTA.mesesPagados}/
+                {MESES_PERMANENCIA_ALTA_GRATIS} ={" "}
+                <strong className="text-tinta">
+                  {soles(altaProporcional(EJEMPLO_ALTA.alta, EJEMPLO_ALTA.mesesPagados))}
+                </strong>
+                .
+              </p>
+              {FUNDADORES.activo && (
+                <p className="mt-1.5">
+                  <strong className="text-tinta">Fundadores</strong> (los primeros {FUNDADORES.cupos}): alta gratis sin
+                  permanencia y precio congelado {FUNDADORES.mesesPrecioCongelado} meses.
+                </p>
+              )}
+            </div>
 
-        <div>
-          <div
-            id="pagas-aparte"
-            className="mx-auto mt-6 max-w-6xl rounded-2xl border border-dashed border-tinta/25 bg-white p-4 sm:p-6"
-          >
-            <h3 className="font-display text-lg font-bold text-tinta">
-              Lo que pagas aparte, directo a cada proveedor
-            </h3>
-            <p className="mt-1 text-sm text-sand-700">
-              Pedily nunca toca tu dinero. Precios públicos a noviembre de 2026:
-            </p>
-            <ul className="mt-3 divide-y divide-dashed divide-tinta/15 sm:grid sm:grid-cols-3 sm:gap-3 sm:divide-y-0">
-              {COSTOS_APARTE.map((c) => (
-                <li key={c.proveedor} className="py-2.5 text-sm sm:rounded-xl sm:bg-papel sm:p-4">
-                  <p>
-                    <strong className="text-tinta">{c.proveedor}:</strong>{" "}
-                    <span className="font-mono text-[13px] font-semibold text-tinta">{c.precio}</span>
-                  </p>
-                  <p className="mt-0.5 text-xs text-sand-700">
-                    {c.que} ·{" "}
-                    <a
-                      href={c.fuente}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-chicha-700 underline"
-                    >
-                      ver su tarifa
-                    </a>
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+            <div>
+              <div
+                id="pagas-aparte"
+                className="mx-auto mt-6 max-w-6xl rounded-2xl border border-dashed border-tinta/25 bg-white p-4 sm:p-6"
+              >
+                <h3 className="font-display text-lg font-bold text-tinta">
+                  Lo que pagas aparte, directo a cada proveedor
+                </h3>
+                <p className="mt-1 text-sm text-sand-700">
+                  Pedily nunca toca tu dinero. Precios públicos a noviembre de 2026:
+                </p>
+                <ul className="mt-3 divide-y divide-dashed divide-tinta/15 sm:grid sm:grid-cols-3 sm:gap-3 sm:divide-y-0">
+                  {COSTOS_APARTE.map((c) => (
+                    <li key={c.proveedor} className="py-2.5 text-sm sm:rounded-xl sm:bg-papel sm:p-4">
+                      <p>
+                        <strong className="text-tinta">{c.proveedor}:</strong>{" "}
+                        <span className="font-mono text-[13px] font-semibold text-tinta">{c.precio}</span>
+                      </p>
+                      <p className="mt-0.5 text-xs text-sand-700">
+                        {c.que} ·{" "}
+                        <a
+                          href={c.fuente}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-chicha-700 underline"
+                        >
+                          ver su tarifa
+                        </a>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
