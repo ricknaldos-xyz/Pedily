@@ -19,6 +19,11 @@
  *   el restaurante se queda 6 meses; si se va antes paga
  *   alta × (6 − meses pagados) / 6, redondeado a sol entero.
  * - Varios locales en una cuenta no entra en ningún plan hasta construirlo.
+ * - Añadido 16-nov (`D-decisiones-2026-11-15.md`): la carta digital por QR
+ *   (solo ver la carta: la carta web `/menu` abierta con un QR) va en TODOS
+ *   los planes; el QR de mesa que cobra (`FEATURE_TABLE_QR`) es un
+ *   complemento de +S/ 150 al mes en Tienda y Tienda + WhatsApp, e incluido en
+ *   Completo. Precio por criterio del coordinador, revisable.
  *
  * Los costos de terceros son los precios públicos de cada proveedor, con su
  * fuente en `reports/Pedily revisión de propuestas.md` (14-nov-2026).
@@ -34,7 +39,25 @@ export interface Plan {
   incluye: string[];
   conBot: boolean;
   destacado?: boolean;
+  /** Complementos que se pueden sumar a este plan (lo que no viene incluido). */
+  complementos?: Complemento["id"][];
 }
+
+export interface Complemento {
+  id: "mesa";
+  nombre: string;
+  /** Soles al mes con IGV, encima de la cuota del plan. */
+  precioMensual: number;
+  queEs: string;
+}
+
+/** Complemento «Mesa»: el QR de mesa que cobra. Incluido en Completo. */
+export const COMPLEMENTO_MESA: Complemento = {
+  id: "mesa",
+  nombre: "QR de mesa que cobra",
+  precioMensual: 150,
+  queEs: "Tu cliente pide por rondas y paga desde la mesa, con la cuenta en vivo y el pago dividido.",
+};
 
 export const PLANES: Plan[] = [
   {
@@ -44,8 +67,10 @@ export const PLANES: Plan[] = [
     alta: 490,
     paraQuien: "Para empezar a vender por tu web sin comisión.",
     conBot: false,
+    complementos: ["mesa"],
     incluye: [
       "Tu tienda web con tu marca, tu carta y tu pedido online",
+      "Carta digital por QR: un QR en tu local abre tu carta con fotos y precios",
       "Panel de pedidos con aviso al instante y pantalla de cocina",
       "Cobro con tarjeta y Yape en tu cuenta Culqi",
       "QR de tu Yape o Plin en la tienda web, con verificación del comprobante en el panel",
@@ -64,6 +89,7 @@ export const PLANES: Plan[] = [
     paraQuien: "Para que WhatsApp tome pedidos solo, también en hora punta.",
     conBot: true,
     destacado: true,
+    complementos: ["mesa"],
     incluye: [
       "Todo lo del plan Tienda",
       "Asistente de WhatsApp con IA que conversa, recomienda y arma el pedido",
@@ -84,7 +110,7 @@ export const PLANES: Plan[] = [
     incluye: [
       "Todo lo del plan Tienda + WhatsApp",
       "Kiosko de autoservicio: licencia para 1 pantalla (el equipo lo compras tú)",
-      "QR de mesa: tu cliente pide y paga desde la mesa",
+      "QR de mesa que cobra, incluido: tu cliente pide por rondas y paga desde la mesa",
       "Un cupo de conversaciones del asistente 3 veces mayor",
       "Atención prioritaria: te respondemos el mismo día hábil",
     ],
@@ -154,3 +180,8 @@ export const CULQI_PORCENTAJE = 3.44;
 export const CULQI_FIJO_USD = 0.2;
 /** Tipo de cambio usado en las estimaciones (BCRP, 12-nov-2026). */
 export const SOLES_POR_DOLAR = 3.41;
+
+/** «+S/ 150 al mes» */
+export function precioComplemento(c: Complemento = COMPLEMENTO_MESA): string {
+  return `+${soles(c.precioMensual)} al mes`;
+}

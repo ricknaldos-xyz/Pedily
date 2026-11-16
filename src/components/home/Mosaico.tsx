@@ -5,7 +5,7 @@ import { Encabezado } from "@/components/ui/Encabezado";
 import { IconoSolucion } from "@/components/marca/IconoSolucion";
 import { GRUPOS, RUTA_SOLUCION, solucionesDe } from "@/lib/soluciones";
 import { TINTE_GRUPO } from "@/lib/tintes";
-import { PLANES, soles } from "@/lib/planes";
+import { COMPLEMENTO_MESA, PLANES, soles } from "@/lib/planes";
 import { TOTAL_PANTALLAS } from "@/lib/panel";
 
 const PRECIO = Object.fromEntries(PLANES.map((p) => [p.id, p.precioMensual]));
@@ -47,7 +47,7 @@ export function Mosaico() {
                       <span className="mt-1 flex-1 text-sm leading-snug text-sand-700">{s.linea}</span>
                       <span className="mt-3 flex items-center justify-between border-t border-dashed border-tinta/15 pt-2.5 font-mono text-[11px] text-humo">
                         <span>{s.funciones.length} funciones</span>
-                        <span>desde {soles(PRECIO[s.plan])}</span>
+                        <span>desde {soles(PRECIO[s.plan])}{s.complemento === "mesa" ? ` + ${COMPLEMENTO_MESA.precioMensual}` : ""}</span>
                       </span>
                     </Link>
                   </li>

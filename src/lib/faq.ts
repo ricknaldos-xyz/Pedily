@@ -5,9 +5,11 @@
 import { EMPRESA, FUNDADORES, RESTAURANTE_ORIGEN } from "./site";
 import {
   altaProporcional,
+  COMPLEMENTO_MESA,
   EJEMPLO_ALTA,
   MESES_PERMANENCIA_ALTA_GRATIS,
   PLANES,
+  precioComplemento,
   soles,
 } from "./planes";
 
@@ -29,10 +31,25 @@ export const PREGUNTA_DESCARGAR: Pregunta = {
   respuesta: `No. Todo pasa en el WhatsApp que ya usa. El asistente conversa en el chat y, para elegir y pagar, le manda el botón «Ver carta»: se abre una mini-app con tu marca dentro de WhatsApp, sin descargar nada. Ahí ve tu carta con fotos, elige tamaños y cremas, encuentra en el carrito lo que ya pidió por chat, elige delivery o recojo (o, si lo enciendes, programar para más tarde) y paga con Yape, tarjeta o el QR de Yape o Plin de tu local. Viene en el plan ${WHATSAPP.nombre} (${soles(WHATSAPP.precioMensual)}) y en ${COMPLETO.nombre}. En la tienda web tampoco descarga nada: se abre en el navegador.`,
 };
 
+/**
+ * Añadido 16-nov (`D-decisiones-2026-11-15.md`): carta digital por QR en todos
+ * los planes (la carta web `/menu`, inventario 1.1) y QR de mesa que cobra
+ * como complemento de +S/ 150 al mes (incluido en Completo).
+ */
+export const PREGUNTA_CARTA_QR: Pregunta = {
+  pregunta: "¿Qué diferencia hay entre la carta digital por QR y el QR de mesa?",
+  respuesta: `La carta digital por QR viene en todos los planes, desde ${soles(TIENDA.precioMensual)}: es un QR en tu local que abre tu carta web con fotos y precios, para verla sin pedir el PDF ni esperar la carta de papel. Te lo dejamos listo para imprimir en el alta. El ${COMPLEMENTO_MESA.nombre} va más allá: cada mesa tiene su QR, el comensal pide por rondas que llegan a cocina con el nombre de la mesa, ve la cuenta en vivo y paga desde su celular, todo junto, en partes iguales o sus platos. Es un complemento de ${precioComplemento()} en ${TIENDA.nombre} y ${WHATSAPP.nombre}, y viene incluido en ${COMPLETO.nombre}.`,
+};
+
+export const PREGUNTA_MESA_PRECIO: Pregunta = {
+  pregunta: "¿Cuánto cuesta el QR de mesa que cobra?",
+  respuesta: `${precioComplemento()} con IGV, sumado a ${TIENDA.nombre} (${soles(TIENDA.precioMensual)}) o a ${WHATSAPP.nombre} (${soles(WHATSAPP.precioMensual)}). En ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}) ya viene incluido, junto con el kiosko. Sin comisión por pedido, como el resto de Pedily. La carta digital por QR, solo para ver la carta, viene en todos los planes sin costo extra.`,
+};
+
 export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
-    respuesta: `Tres planes al mes, con IGV incluido y 0 % de comisión por pedido al restaurante y al comensal: ${TIENDA.nombre}, ${soles(TIENDA.precioMensual)} (tienda web, panel completo, cocina, caja, cobros, boletas SUNAT, inventario, reportes, reparto y pedidos programados, sin asistente de WhatsApp); ${WHATSAPP.nombre}, ${soles(WHATSAPP.precioMensual)} (suma el asistente de WhatsApp con IA y las campañas); y ${COMPLETO.nombre}, ${soles(COMPLETO.precioMensual)} (suma kiosko, QR de mesa que cobra, 3 veces más conversaciones del asistente y atención prioritaria). Si pagas el año por adelantado, pagas 10 meses y usas 12.`,
+    respuesta: `Tres planes al mes, con IGV incluido y 0 % de comisión por pedido al restaurante y al comensal: ${TIENDA.nombre}, ${soles(TIENDA.precioMensual)} (tienda web, carta digital por QR, panel completo, cocina, caja, cobros, boletas SUNAT, inventario, reportes, reparto y pedidos programados, sin asistente de WhatsApp); ${WHATSAPP.nombre}, ${soles(WHATSAPP.precioMensual)} (suma el asistente de WhatsApp con IA y las campañas); y ${COMPLETO.nombre}, ${soles(COMPLETO.precioMensual)} (suma kiosko, QR de mesa que cobra, 3 veces más conversaciones del asistente y atención prioritaria). El QR de mesa que cobra también se puede sumar a los otros dos planes por ${precioComplemento()}. Si pagas el año por adelantado, pagas 10 meses y usas 12.`,
   },
   {
     pregunta: "¿Qué pago aparte?",
@@ -79,8 +96,10 @@ export const FAQS: Pregunta[] = [
   },
   {
     pregunta: "¿Cómo funcionan el kiosko y el QR de mesa?",
-    respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla.`,
+    respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla. El QR de mesa también se suma a ${TIENDA.nombre} o ${WHATSAPP.nombre} como complemento de ${precioComplemento()}.`,
   },
+  PREGUNTA_CARTA_QR,
+  PREGUNTA_MESA_PRECIO,
   {
     pregunta: "¿Dónde se guardan los datos?",
     respuesta:

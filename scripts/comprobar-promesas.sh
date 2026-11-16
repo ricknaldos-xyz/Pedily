@@ -149,6 +149,28 @@ if [ "$soluciones" -eq 0 ]; then
   fallo_rutas=1
 fi
 
+# 16-nov: páginas por tipo de restaurante (src/lib/para.ts → /para/<slug>).
+# Cada una tiene su página, está en el sitemap y se enlaza desde el menú, el
+# pie y la portada.
+paras=0
+while IFS= read -r slug; do
+  paras=$((paras + 1))
+  if [ ! -f "src/app/para/${slug}/page.tsx" ]; then
+    echo "Falta la página src/app/para/${slug}/page.tsx" >&2; fallo_rutas=1
+  fi
+  if ! grep -q "<loc>https://pedily.vercel.app/para/${slug}</loc>" public/sitemap.xml; then
+    echo "Falta en public/sitemap.xml: /para/${slug}" >&2; fallo_rutas=1
+  fi
+done < <(sed -nE 's/^    slug: "([a-z0-9-]+)",$/\1/p' src/lib/para.ts)
+for enlace in src/components/layout/Header.tsx src/components/layout/Footer.tsx; do
+  if [ "$paras" -gt 0 ] && ! grep -q "PAGINAS_PARA" "$enlace"; then
+    echo "$enlace no enlaza las páginas /para (PAGINAS_PARA)." >&2; fallo_rutas=1
+  fi
+done
+if [ "$paras" -gt 0 ] && ! grep -rqE "RUTA_SALON|RUTA_PARA|/para/" src/components/home; then
+  echo "La portada no enlaza ninguna página /para." >&2; fallo_rutas=1
+fi
+
 herramientas=0
 for dir in src/app/herramientas/*/; do
   [ -d "$dir" ] || continue
@@ -176,4 +198,4 @@ fi
 if [ "$fallo_rutas" -ne 0 ]; then
   exit 1
 fi
-echo "comprobar-promesas: todas las páginas en el sitemap ($soluciones soluciones); $herramientas herramientas con JSON-LD y fuentes."
+echo "comprobar-promesas: todas las páginas en el sitemap ($soluciones soluciones, $paras páginas /para enlazadas); $herramientas herramientas con JSON-LD y fuentes."

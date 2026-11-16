@@ -14,7 +14,8 @@ export interface Pantalla {
   /** Nace apagada o necesita algo del restaurante. */
   opcion?: boolean;
   /** Plan mínimo si no es Tienda. */
-  plan?: "whatsapp" | "completo";
+  /** «mesa» = complemento QR de mesa (+S/ 150) o incluido en Completo (16-nov). */
+  plan?: "whatsapp" | "completo" | "mesa";
   /** Uso técnico: cuenta en las 48, no se vende. */
   tecnica?: boolean;
 }
@@ -48,7 +49,7 @@ export const PANEL: GrupoPanel[] = [
         nombre: "Mesas",
         ve: "Mesas abiertas con rondas, total, pagado y lo que falta; avisos del comensal; cobrar en caja, cerrar mesa y QR en PNG o PDF.",
         opcion: true,
-        plan: "completo",
+        plan: "mesa",
       },
       { nombre: "Ahora", ve: "Tienda abierta o en pausa, meta del día, «qué hay que hacer», cobrado contra otro día, tiempo de cocina, stock bajo y caja." },
       { nombre: "Mi negocio", ve: "Datos, horario por día, «Cerrar por hoy», delivery y recojo, medios de pago, meta del día y exportar todos tus datos." },

@@ -9,7 +9,7 @@
  * nace apagado lleva `opcion: true` y se presenta como «se enciende en tu
  * restaurante». Nada de cifras de clientes.
  */
-import { PREGUNTA_DESCARGAR, type Pregunta } from "./faq";
+import { PREGUNTA_CARTA_QR, PREGUNTA_DESCARGAR, PREGUNTA_MESA_PRECIO, type Pregunta } from "./faq";
 
 export type GrupoId = "vende" | "opera" | "vuelven";
 
@@ -67,6 +67,8 @@ export interface Solucion {
   plan: PlanMinimo;
   /** Aclaración del plan cuando una parte va en otro plan. */
   notaPlan?: string;
+  /** Se suma al plan como complemento de pago (16-nov: «mesa», +S/ 150 al mes). */
+  complemento?: "mesa";
   titulo: string;
   bajada: string;
   /** «Qué es», en una frase (definición para buscadores). */
@@ -246,6 +248,7 @@ export const SOLUCIONES: Solucion[] = [
     ],
     funciones: [
       { texto: "Carta online con categorías, fotos y ficha de cada plato", ref: "1.1" },
+      { texto: "Carta digital por QR: un QR en tu local abre tu carta para verla, en todos los planes", ref: "1.1" },
       { texto: "Tamaños o presentaciones por plato, cada uno a su precio", ref: "1.2" },
       { texto: "Cremas y extras con mínimo, máximo e incluidas gratis", ref: "1.3" },
       { texto: "«Agotado» automático cuando se acaba el insumo, con «Solo quedan N»", ref: "1.4", opcion: true },
@@ -292,6 +295,7 @@ export const SOLUCIONES: Solucion[] = [
     ],
     vecinos: ["asistente-whatsapp", "pedidos-programados", "caja-y-pagos", "delivery"],
     preguntas: [
+      PREGUNTA_CARTA_QR,
       {
         pregunta: "¿Mis clientes tienen que registrarse para pedir?",
         respuesta:
@@ -423,7 +427,9 @@ export const SOLUCIONES: Solucion[] = [
     nombre: "QR de mesa que cobra",
     linea: "El comensal pide por rondas y paga desde su celular",
     icono: "qr",
-    plan: "completo",
+    plan: "tienda",
+    complemento: "mesa",
+    notaPlan: "Se suma a Tienda o a Tienda + WhatsApp como complemento; viene incluido en Completo.",
     titulo: "El comensal escanea, pide por rondas y paga desde la mesa",
     bajada:
       "Sin app ni registro. Cada ronda llega a cocina con «Mesa 4 · Terraza», la cuenta se ve en vivo y el grupo paga todo, en partes iguales o cada uno sus platos.",
@@ -471,16 +477,22 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Mesas en el panel: cobrar en caja, verificar Yape o Plin y cerrar mesa", ref: "3.1 Mesas", opcion: true },
     ],
     necesitas: [
-      { item: "Plan Completo", detalle: "El QR de mesa viene con el kiosko y el asistente en el plan de S/ 999." },
+      {
+        item: "El complemento Mesa, o el plan Completo",
+        detalle: "En Tienda (S/ 249) y Tienda + WhatsApp (S/ 499) se suma por +S/ 150 al mes. En Completo (S/ 999) ya viene incluido.",
+      },
       { item: "Tu cuenta Culqi", detalle: "Para cobrar Yape y tarjeta desde la mesa. Sin Culqi, cobras con el QR de tu Yape o Plin." },
       { item: "Imprimir y pegar los QR", detalle: "Salen del panel en PNG o en un PDF A4." },
     ],
     noHace: [
+      "No viene en Tienda ni en Tienda + WhatsApp sin el complemento: ahí el QR que trae el plan es la carta digital, para ver la carta.",
       "No trae plano del salón ni une mesas.",
       "En la mesa no hay verificación 3D Secure de la tarjeta.",
     ],
     vecinos: ["cocina", "caja-y-pagos", "kiosko", "boletas-sunat"],
     preguntas: [
+      PREGUNTA_MESA_PRECIO,
+      PREGUNTA_CARTA_QR,
       {
         pregunta: "¿El comensal tiene que descargar una app?",
         respuesta: "No. Escanea el QR con la cámara del celular y se abre tu carta. No tiene que registrarse.",
@@ -504,7 +516,7 @@ export const SOLUCIONES: Solucion[] = [
     seo: {
       titulo: "QR de mesa para pedir y pagar en restaurantes",
       descripcion:
-        "Carta QR que cobra: el comensal pide por rondas, ve la cuenta en vivo y paga todo, en partes o por platos, con Yape o tarjeta. En el plan Completo de Pedily.",
+        "Carta QR que cobra: el comensal pide por rondas, ve la cuenta en vivo y paga todo, en partes o por platos, con Yape o tarjeta. Complemento de +S/ 150 al mes, o incluido en el plan Completo de Pedily.",
     },
   },
   {

@@ -3,16 +3,18 @@
 import { useState } from "react";
 import { clsx } from "clsx";
 import { Encabezado } from "@/components/ui/Encabezado";
-import { ArrowRight, Check, Info } from "lucide-react";
+import { ArrowRight, Check, Info, Plus } from "lucide-react";
 import { FUNDADORES } from "@/lib/site";
 import {
   altaProporcional,
+  COMPLEMENTO_MESA,
   COSTOS_APARTE,
   EJEMPLO_ALTA,
   MESES_PAGADOS_ANUAL,
   MESES_PERMANENCIA_ALTA_GRATIS,
   PLANES,
   precioAnual,
+  precioComplemento,
   soles,
 } from "@/lib/planes";
 
@@ -114,6 +116,15 @@ export function PricingTable({ sinTitulo = false, soloPlanes = false }: Props) {
                     <li className="flex items-start gap-2.5 text-sm text-humo">
                       <Info className="mt-0.5 h-4 w-4 flex-shrink-0" />
                       Sin asistente de WhatsApp
+                    </li>
+                  )}
+                  {plan.complementos?.includes("mesa") && (
+                    <li className="!mt-3 flex items-start gap-2.5 rounded-lg border border-dashed border-chicha-300 bg-chicha-50 px-2.5 py-2 text-sm text-sand-800">
+                      <Plus aria-hidden className="mt-0.5 h-4 w-4 flex-shrink-0 text-chicha-700" />
+                      <span>
+                        <strong className="font-semibold text-tinta">Complemento:</strong> {COMPLEMENTO_MESA.nombre},{" "}
+                        <span className="whitespace-nowrap font-mono font-semibold text-tinta">{precioComplemento()}</span>
+                      </span>
                     </li>
                   )}
                 </ul>

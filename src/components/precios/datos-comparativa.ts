@@ -14,11 +14,14 @@
  * - Kiosko (§4), QR de mesa (§5) y la pantalla Mesas (§3.1 Mesas): Completo
  *   (S/ 999).
  * - Todo lo demás: desde Tienda (S/ 249), y por tanto en los tres.
+ * - 16-nov: el QR de mesa que cobra (§5 y §3.1 Mesas) es complemento de
+ *   +S/ 150 al mes en Tienda y Tienda + WhatsApp (celda «complemento»), e
+ *   incluido en Completo.
  * Lo que nace apagado (`opcion`) se marca «se enciende».
  */
 import { GRUPOS, SOLUCIONES, type GrupoId, type Icono, type PlanMinimo } from "@/lib/soluciones";
 
-export type Celda = "si" | "enciende" | "no";
+export type Celda = "si" | "enciende" | "complemento" | "no";
 
 export interface FilaComparativa {
   texto: string;
@@ -47,9 +50,15 @@ export function planDeFuncion(ref: string, planSolucion: PlanMinimo): PlanMinimo
   return planSolucion;
 }
 
-function celdas(plan: PlanMinimo, opcion: boolean): [Celda, Celda, Celda] {
+/** Funciones del complemento «Mesa» (QR de mesa que cobra). */
+export function esComplementoMesa(ref: string): boolean {
+  const r = ref.trim();
+  return /^5\./.test(r) || r.startsWith("3.1 Mesas");
+}
+
+function celdas(plan: PlanMinimo, opcion: boolean, complemento: boolean): [Celda, Celda, Celda] {
   const desde = ORDEN.indexOf(plan);
-  return ORDEN.map((_, i) => (i < desde ? "no" : opcion ? "enciende" : "si")) as [Celda, Celda, Celda];
+  return ORDEN.map((_, i) => (i < desde ? (complemento ? "complemento" : "no") : opcion ? "enciende" : "si")) as [Celda, Celda, Celda];
 }
 
 /** Primero lo que trae Tienda; el asistente y el plan Completo, después. */
@@ -64,14 +73,14 @@ export function comparativa(): BloqueComparativa[] {
     filas: s.funciones.map((f) => {
       const plan = planDeFuncion(f.ref, s.plan);
       const opcion = Boolean(f.opcion);
-      return { texto: f.texto, ref: f.ref, plan, opcion, celdas: celdas(plan, opcion) };
+      return { texto: f.texto, ref: f.ref, plan, opcion, celdas: celdas(plan, opcion, esComplementoMesa(f.ref)) };
     }),
   }));
 }
 
-/** Cuántas funciones de la lista trae cada plan (incluidas las que se encienden). */
+/** Cuántas funciones de la lista trae cada plan (incluidas las que se encienden; sin complementos). */
 export function totalesPorPlan(bloques: BloqueComparativa[]): [number, number, number] {
   const t: [number, number, number] = [0, 0, 0];
-  for (const b of bloques) for (const f of b.filas) f.celdas.forEach((c, i) => c !== "no" && t[i]++);
+  for (const b of bloques) for (const f of b.filas) f.celdas.forEach((c, i) => (c === "si" || c === "enciende") && t[i]++);
   return t;
 }

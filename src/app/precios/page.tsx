@@ -9,7 +9,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Comparativa } from "@/components/precios/Comparativa";
 import { Alta, CostosAparte } from "@/components/precios/AltaYCostos";
 import { FAQPageJsonLd, PaginaJsonLd } from "@/components/seo/JsonLd";
-import { FAQS, PREGUNTA_DESCARGAR } from "@/lib/faq";
+import { FAQS, PREGUNTA_CARTA_QR, PREGUNTA_DESCARGAR, PREGUNTA_MESA_PRECIO } from "@/lib/faq";
 import { MESES_PAGADOS_ANUAL, MESES_PERMANENCIA_ALTA_GRATIS, PLANES, soles } from "@/lib/planes";
 
 const TITULO = "Precios de Pedily: desde S/ 249 al mes con IGV, 0 % de comisión";
@@ -33,6 +33,8 @@ const PREGUNTAS_PRECIO = [
   "¿Puedo vender antes de que Culqi me apruebe?",
   PREGUNTA_DESCARGAR.pregunta,
   "¿Cómo funcionan el kiosko y el QR de mesa?",
+  PREGUNTA_CARTA_QR.pregunta,
+  PREGUNTA_MESA_PRECIO.pregunta,
 ].map((q) => {
   const f = FAQS.find((x) => x.pregunta === q);
   if (!f) throw new Error(`Falta en la FAQ: ${q}`);

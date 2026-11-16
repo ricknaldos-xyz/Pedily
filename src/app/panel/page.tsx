@@ -133,7 +133,7 @@ export default function Panel() {
                           {p.nombre}
                           {p.plan && (
                             <span className="rounded-full bg-chicha-50 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-chicha-700">
-                              {p.plan === "whatsapp" ? "Con asistente" : "Plan Completo"}
+                              {p.plan === "whatsapp" ? "Con asistente" : p.plan === "mesa" ? "Complemento Mesa o Completo" : "Plan Completo"}
                             </span>
                           )}
                           {p.opcion && (

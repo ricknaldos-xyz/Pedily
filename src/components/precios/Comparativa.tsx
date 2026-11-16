@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { Check, Minus, Plus, Power } from "lucide-react";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { IconoSolucion } from "@/components/marca/IconoSolucion";
-import { PLANES, soles } from "@/lib/planes";
+import { COMPLEMENTO_MESA, PLANES, precioComplemento, soles } from "@/lib/planes";
 import { RUTA_SOLUCION } from "@/lib/soluciones";
 import { TINTE_GRUPO } from "@/lib/tintes";
 import { comparativa, totalesPorPlan, type Celda } from "./datos-comparativa";
@@ -23,6 +23,13 @@ function Marca({ celda, plan }: { celda: Celda; plan: string }) {
       <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-chicha-50">
         <Power aria-hidden className="h-4 w-4 text-chicha-600" />
         <span className="sr-only">En {plan}, se enciende en tu restaurante</span>
+      </span>
+    );
+  if (celda === "complemento")
+    return (
+      <span className="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-full bg-aji-100 px-1.5 font-mono text-[10px] font-bold text-tinta sm:px-2 sm:text-xs">
+        +{soles(COMPLEMENTO_MESA.precioMensual).replace("S/ ", "S/\u00a0")}
+        <span className="sr-only"> al mes: en {plan} es un complemento</span>
       </span>
     );
   return (
@@ -134,6 +141,10 @@ export function Comparativa() {
             </li>
             <li className="flex items-center gap-2">
               <Power aria-hidden className="h-4 w-4 text-chicha-600" /> Incluido; se enciende en tu restaurante
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="rounded-full bg-aji-100 px-1.5 font-mono text-[11px] font-bold text-tinta">+S/</span> Complemento{" "}
+              {COMPLEMENTO_MESA.nombre}, {precioComplemento()}
             </li>
             <li className="flex items-center gap-2">
               <Minus aria-hidden className="h-4 w-4 text-tinta/40" /> No viene en ese plan

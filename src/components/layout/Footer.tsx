@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PAGINAS_PARA, RUTA_PARA } from "@/lib/para";
 import { Logo } from "@/components/marca/Logo";
 import { SOCIAL_LINKS, CONTACT_EMAIL, whatsappLink, DEMO, EMPRESA, RESTAURANTE_ORIGEN } from "@/lib/site";
 import { HERRAMIENTAS } from "@/lib/herramientas";
@@ -7,6 +8,7 @@ import { GRUPOS, RUTA_SOLUCION, solucionesDe } from "@/lib/soluciones";
 const PRODUCTO = [
   { href: "/panel", label: "El panel por dentro" },
   { href: "/soluciones", label: "Todas las soluciones" },
+  ...PAGINAS_PARA.map((p) => ({ href: RUTA_PARA(p.slug), label: `Para ${p.nombre.toLowerCase()}` })),
   { href: "/precios", label: "Precios" },
   { href: "/demo", label: "Demos para probar" },
   { href: DEMO.tiendaUrl, label: "Tienda de ejemplo" },

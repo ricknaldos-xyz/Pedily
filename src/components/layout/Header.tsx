@@ -4,12 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
-import { ArrowRight, ChevronDown, LayoutDashboard, Menu, PlayCircle, X } from "lucide-react";
+import { ArrowRight, ChevronDown, LayoutDashboard, Menu, PlayCircle, UtensilsCrossed, X } from "lucide-react";
 import { Logo } from "@/components/marca/Logo";
 import { IconoSolucion } from "@/components/marca/IconoSolucion";
 import { GRUPOS, RUTA_SOLUCION, solucionesDe } from "@/lib/soluciones";
 import { TINTE_GRUPO } from "@/lib/tintes";
 import { HERRAMIENTAS } from "@/lib/herramientas";
+import { PAGINAS_PARA, RUTA_PARA } from "@/lib/para";
 
 
 const ENLACES = [
@@ -204,6 +205,15 @@ export function Header() {
                 Recorrerlo <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </span>
             </Link>
+            {PAGINAS_PARA.map((p) => (
+              <Link
+                key={p.slug}
+                href={RUTA_PARA(p.slug)}
+                className="flex items-center gap-2 rounded-xl border-2 border-tinta bg-aji-500 p-3 text-sm font-semibold text-tinta"
+              >
+                <UtensilsCrossed aria-hidden className="h-5 w-5" /> Para {p.nombre.toLowerCase()}
+              </Link>
+            ))}
             <Link href="/demo" className="flex items-center gap-2 rounded-xl border border-tinta/10 bg-white p-3 text-sm font-semibold text-tinta hover:border-tinta/30">
               <PlayCircle aria-hidden className="h-5 w-5 text-chicha-600" /> Prueba las demos
             </Link>
@@ -258,6 +268,16 @@ export function Header() {
             </details>
           ))}
           <ul className="mt-2 grid grid-cols-2 gap-2">
+            {PAGINAS_PARA.map((p) => (
+              <li key={p.slug} className="col-span-2">
+                <Link
+                  href={RUTA_PARA(p.slug)}
+                  className="flex min-h-12 items-center gap-2 rounded-xl border-2 border-tinta bg-aji-500 px-4 font-semibold text-tinta"
+                >
+                  <UtensilsCrossed aria-hidden className="h-5 w-5" /> Para {p.nombre.toLowerCase()}
+                </Link>
+              </li>
+            ))}
             {[...ENLACES, { href: "/herramientas", label: "Herramientas" }, { href: "/contacto", label: "Contacto" }].map((l) => (
               <li key={l.href}>
                 <Link

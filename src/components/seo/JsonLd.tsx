@@ -87,7 +87,9 @@ export function SoftwareApplicationJsonLd() {
         featureList: [
           "Tienda web con pedido y pago online",
           "Asistente de pedidos por WhatsApp con IA (desde el plan de S/ 499)",
-          "Kiosko de autoservicio y QR de mesa que cobra (plan de S/ 999)",
+          "Carta digital por QR en todos los planes",
+          "Kiosko de autoservicio (plan de S/ 999)",
+          "QR de mesa que cobra (complemento de S/ 150 al mes, o incluido en el plan de S/ 999)",
           "Pedidos programados para la hora que elija el cliente",
           "Panel de pedidos de todos tus canales al instante",
           "Boletas y facturas electrónicas SUNAT (con Nubefact)",

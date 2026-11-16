@@ -15,7 +15,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FAQPageJsonLd, SolucionJsonLd } from "@/components/seo/JsonLd";
 import { GRUPOS, RUTA_SOLUCION, SOLUCIONES, solucionPorSlug, type PlanMinimo } from "@/lib/soluciones";
 import { TINTE_GRUPO } from "@/lib/tintes";
-import { PLANES, soles } from "@/lib/planes";
+import { COMPLEMENTO_MESA, PLANES, soles } from "@/lib/planes";
 
 export const dynamicParams = false;
 
@@ -55,13 +55,14 @@ export default async function PaginaSolucion({ params }: { params: Promise<{ slu
   const grupo = GRUPOS.find((g) => g.id === s.grupo)!;
   const tinte = TINTE_GRUPO[s.grupo];
   const plan = PLAN[s.plan];
+  const extra = s.complemento === "mesa" ? COMPLEMENTO_MESA.precioMensual : 0;
   const vecinos = s.vecinos.map(solucionPorSlug).filter((v): v is NonNullable<typeof v> => Boolean(v));
   const base = s.funciones.filter((f) => !f.opcion);
   const opcionales = s.funciones.filter((f) => f.opcion);
 
   return (
     <>
-      <SolucionJsonLd slug={s.slug} nombre={s.nombre} descripcion={s.definicion} precioDesde={plan.precioMensual} grupo={grupo.nombre} />
+      <SolucionJsonLd slug={s.slug} nombre={s.nombre} descripcion={s.definicion} precioDesde={plan.precioMensual + extra} grupo={grupo.nombre} />
       {s.preguntas.length > 0 && <FAQPageJsonLd preguntas={s.preguntas} />}
 
       {/* ── Hero ── */}
@@ -100,8 +101,20 @@ export default async function PaginaSolucion({ params }: { params: Promise<{ slu
               </Boton>
             </div>
             <p className="mt-5 text-sm text-sand-700">
-              <span className="font-mono font-semibold text-tinta">Desde {soles(plan.precioMensual)} al mes</span> con IGV, en el plan{" "}
-              {plan.nombre}. 0 % de comisión.{s.notaPlan ? ` ${s.notaPlan}` : ""}
+              {extra ? (
+                <>
+                  <span className="font-mono font-semibold text-tinta">
+                    Desde {soles(plan.precioMensual)} + {soles(extra)} al mes
+                  </span>{" "}
+                  con IGV: plan {plan.nombre} más el complemento {COMPLEMENTO_MESA.nombre}. En {PLANES[2].nombre} ({soles(PLANES[2].precioMensual)})
+                  viene incluido. 0 % de comisión.
+                </>
+              ) : (
+                <>
+                  <span className="font-mono font-semibold text-tinta">Desde {soles(plan.precioMensual)} al mes</span> con IGV, en el plan{" "}
+                  {plan.nombre}. 0 % de comisión.{s.notaPlan ? ` ${s.notaPlan}` : ""}
+                </>
+              )}
             </p>
           </div>
           <div className="lg:pl-8">
