@@ -54,7 +54,7 @@ const PIEZAS: { slug: string; icono: Icono; titulo: string; texto: string; marca
     slug: "tienda-web",
     icono: "tienda",
     titulo: "Carta digital por QR",
-    texto: "Un QR en el mostrador o en la mesa abre tu carta con fotos y precios. Te lo dejamos listo para imprimir en el alta.",
+    texto: "Un QR en el mostrador o en la mesa abre tu carta con fotos y precios. Lo generas desde tu panel en PNG o en PDF A4 listo para imprimir, con tu logo y tus colores.",
     marca: "En todos los planes",
   },
   {

@@ -52,7 +52,7 @@ export const PANEL: GrupoPanel[] = [
         plan: "mesa",
       },
       { nombre: "Ahora", ve: "Tienda abierta o en pausa, meta del día, «qué hay que hacer», cobrado contra otro día, tiempo de cocina, stock bajo y caja." },
-      { nombre: "Mi negocio", ve: "Datos, horario por día, «Cerrar por hoy», delivery y recojo, medios de pago, meta del día y exportar todos tus datos." },
+      { nombre: "Mi negocio", ve: "Datos, horario por día, «Cerrar por hoy», delivery y recojo, medios de pago, el QR de tu carta (PNG o PDF A4), meta del día y exportar todos tus datos." },
       { nombre: "Códigos postales", ve: "Zonas de reparto en tabla o mapa, con su tarifa y envío mínimo, máximo y promedio." },
       { nombre: "Opciones de tu tienda", ve: "Saldo a favor, referidos, cupón de bienvenida, promociones, condominios y programados, con sus resultados antes y después." },
       { nombre: "Empezar", ve: "Los 14 pasos para abrir tu tienda, con su avance: lo mínimo para vender, completar y opcionales." },

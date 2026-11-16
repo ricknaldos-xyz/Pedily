@@ -38,7 +38,7 @@ export const PREGUNTA_DESCARGAR: Pregunta = {
  */
 export const PREGUNTA_CARTA_QR: Pregunta = {
   pregunta: "¿Qué diferencia hay entre la carta digital por QR y el QR de mesa?",
-  respuesta: `La carta digital por QR viene en todos los planes, desde ${soles(TIENDA.precioMensual)}: es un QR en tu local que abre tu carta web con fotos y precios, para verla sin pedir el PDF ni esperar la carta de papel. Te lo dejamos listo para imprimir en el alta. El ${COMPLEMENTO_MESA.nombre} va más allá: cada mesa tiene su QR, el comensal pide por rondas que llegan a cocina con el nombre de la mesa, ve la cuenta en vivo y paga desde su celular, todo junto, en partes iguales o sus platos. Es un complemento de ${precioComplemento()} en ${TIENDA.nombre} y ${WHATSAPP.nombre}, y viene incluido en ${COMPLETO.nombre}.`,
+  respuesta: `La carta digital por QR viene en todos los planes, desde ${soles(TIENDA.precioMensual)}: es un QR en tu local que abre tu carta web con fotos y precios, para verla sin pedir el PDF ni esperar la carta de papel. Lo generas tú desde el panel, en PNG o en PDF A4 listo para imprimir, con tu logo y tus colores. El ${COMPLEMENTO_MESA.nombre} va más allá: cada mesa tiene su QR, el comensal pide por rondas que llegan a cocina con el nombre de la mesa, ve la cuenta en vivo y paga desde su celular, todo junto, en partes iguales o sus platos. Es un complemento de ${precioComplemento()} en ${TIENDA.nombre} y ${WHATSAPP.nombre}, y viene incluido en ${COMPLETO.nombre}.`,
 };
 
 export const PREGUNTA_MESA_PRECIO: Pregunta = {
