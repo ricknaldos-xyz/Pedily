@@ -85,7 +85,7 @@ export function Resultado({
       >
         {valor}
       </dd>
-      {detalle && <p className="mt-0.5 text-xs leading-snug text-sand-700">{detalle}</p>}
+      {detalle && <dd className="mt-0.5 text-xs leading-snug text-sand-700">{detalle}</dd>}
     </div>
   );
 }
