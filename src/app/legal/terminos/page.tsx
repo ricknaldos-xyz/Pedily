@@ -1,7 +1,7 @@
 // PENDIENTE DE REVISIÓN LEGAL (plan Pedily, L-08): RUC y domicilio del
 // operador, correos de contacto, permanencia y tope de responsabilidad esperan
 // los datos del dueño y la revisión de un abogado.
-import { Container } from "@/components/layout/Container";
+import { PaginaLegal } from "@/components/pagina/PaginaLegal";
 import { CONTACT_EMAIL, EMPRESA } from "@/lib/site";
 import {
   altaProporcional,
@@ -27,16 +27,7 @@ function Contacto() {
 
 export default function TerminosPage() {
   return (
-    <div className="min-h-screen bg-white py-16 sm:py-24">
-      <Container className="max-w-3xl">
-        <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">
-          Términos y condiciones
-        </h1>
-        <p className="mt-4 text-sm text-sand-500">
-          Última actualización: 15 de noviembre de 2026
-        </p>
-
-        <div className="legal mt-10 max-w-none space-y-4 text-sand-700">
+    <PaginaLegal titulo="Términos y condiciones" actualizado="Última actualización: 15 de noviembre de 2026" ruta="/legal/terminos">
           <p>
             Bienvenido a Pedily. Al contratar y usar Pedily aceptas estos
             términos. Léelos con calma: están escritos para que se entiendan.
@@ -187,8 +178,6 @@ export default function TerminosPage() {
             Si tienes dudas sobre estos términos, escríbenos a través de{" "}
             <Contacto />.
           </p>
-        </div>
-      </Container>
-    </div>
+    </PaginaLegal>
   );
 }

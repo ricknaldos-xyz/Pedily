@@ -1,7 +1,7 @@
 // PENDIENTE DE REVISIÓN LEGAL (plan Pedily, L-08): RUC y domicilio del
 // operador, correos de contacto, plazos de conservación y anexo de encargo de
 // datos esperan los datos del dueño y la revisión de un abogado.
-import { Container } from "@/components/layout/Container";
+import { PaginaLegal } from "@/components/pagina/PaginaLegal";
 import { CONTACT_EMAIL, EMPRESA } from "@/lib/site";
 
 export const metadata = {
@@ -19,16 +19,7 @@ function Contacto() {
 
 export default function PrivacidadPage() {
   return (
-    <div className="min-h-screen bg-white py-16 sm:py-24">
-      <Container className="max-w-3xl">
-        <h1 className="text-3xl font-extrabold text-sand-900 sm:text-4xl">
-          Política de privacidad
-        </h1>
-        <p className="mt-4 text-sm text-sand-500">
-          Última actualización: 15 de noviembre de 2026
-        </p>
-
-        <div className="legal mt-10 max-w-none space-y-4 text-sand-700">
+    <PaginaLegal titulo="Política de privacidad" actualizado="Última actualización: 15 de noviembre de 2026" ruta="/legal/privacidad">
           <p>
             En Pedily nos tomamos en serio la privacidad. Esta política explica
             qué datos recopilamos, cómo los usamos y cómo los protegemos, en
@@ -228,8 +219,6 @@ export default function PrivacidadPage() {
           <p>
             ¿Dudas sobre privacidad? Escríbenos a través de <Contacto />.
           </p>
-        </div>
-      </Container>
-    </div>
+    </PaginaLegal>
   );
 }
