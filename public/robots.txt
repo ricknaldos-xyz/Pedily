@@ -1,11 +1,11 @@
 # Pedily - robots.txt
-# https://pedily.com
+# https://pedily.vercel.app (dominio provisional: pedily.com NO es nuestro)
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://pedily.com/sitemap.xml
+Sitemap: https://pedily.vercel.app/sitemap.xml
 
 # Disallow admin/api routes (if any in future)
 Disallow: /api/

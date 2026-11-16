@@ -3,7 +3,7 @@ import { FAQS, type Pregunta } from "@/lib/faq";
 import type { Herramienta } from "@/lib/herramientas";
 import { PLANES } from "@/lib/planes";
 
-const SITE_URL = "https://pedily.com";
+const SITE_URL = "https://pedily.vercel.app";
 
 const DESCRIPCION =
   "Tienda web, asistente de pedidos por WhatsApp con IA, kiosko y boletas SUNAT para restaurantes en Perú. Desde S/ 249 al mes con IGV, 0 % de comisión por pedido.";
