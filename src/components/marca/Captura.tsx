@@ -58,6 +58,7 @@ export function Captura({
   prioridad = false,
   className,
   movil = true,
+  decorativa = false,
 }: {
   clave: ClaveCaptura;
   reemplazo?: React.ReactNode;
@@ -65,16 +66,19 @@ export function Captura({
   prioridad?: boolean;
   className?: string;
   movil?: boolean;
+  /** El texto de al lado ya la describe (pie de foto): alt vacío. */
+  decorativa?: boolean;
 }) {
   const c: CapturaInfo = CAPTURAS[clave];
   const m = medidas(path.join(process.cwd(), "public", c.src));
   if (!m) return <>{reemplazo ?? null}</>;
   const clase = className ?? "h-auto w-full";
+  const alt = decorativa ? "" : c.alt;
   const mm = movil && c.movil ? medidas(path.join(process.cwd(), "public", c.movil)) : null;
   if (!mm || !c.movil) {
-    return <Image src={c.src} alt={c.alt} width={m.ancho} height={m.alto} sizes={sizes} priority={prioridad} className={clase} />;
+    return <Image src={c.src} alt={alt} width={m.ancho} height={m.alto} sizes={sizes} priority={prioridad} className={clase} />;
   }
-  const comun = { alt: c.alt, priority: prioridad };
+  const comun = { alt, priority: prioridad };
   const {
     props: { srcSet: srcMovil },
   } = getImageProps({ ...comun, src: c.movil, width: mm.ancho, height: mm.alto, sizes: "100vw" });

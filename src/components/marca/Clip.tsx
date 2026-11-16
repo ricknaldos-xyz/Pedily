@@ -16,16 +16,33 @@ export function Clip({ clave, className }: { clave: ClaveClip; className?: strin
   const c = CLIPS[clave];
   const ref = useRef<HTMLVideoElement>(null);
   const [andando, setAndando] = useState(false);
+  // El póster tampoco se pide hasta que el clip está cerca de la pantalla
+  // (un <video> oculto o lejos no debe competir con lo primero que se ve).
+  const [cerca, setCerca] = useState(false);
   const manual = useRef(false);
 
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setCerca(true);
+      return;
+    }
+    const acercar = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setCerca(true);
+          acercar.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" }
+    );
+    acercar.observe(v);
     let reducido = false;
     try {
       reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     } catch {}
-    if (reducido || typeof IntersectionObserver === "undefined") return;
+    if (reducido) return () => acercar.disconnect();
     const io = new IntersectionObserver(
       ([e]) => {
         if (manual.current) return;
@@ -35,7 +52,10 @@ export function Clip({ clave, className }: { clave: ClaveClip; className?: strin
       { threshold: 0.4 }
     );
     io.observe(v);
-    return () => io.disconnect();
+    return () => {
+      acercar.disconnect();
+      io.disconnect();
+    };
   }, []);
 
   const alternar = () => {
@@ -54,13 +74,14 @@ export function Clip({ clave, className }: { clave: ClaveClip; className?: strin
         playsInline
         loop
         preload="none"
-        poster={`/clips/${clave}.webp`}
+        poster={cerca ? `/clips/${clave}.webp` : undefined}
         width={c.ancho}
         height={c.alto}
         aria-label={c.titulo}
         onPlay={() => setAndando(true)}
         onPause={() => setAndando(false)}
         className="block h-auto w-full bg-[#0b0a0d]"
+        style={{ aspectRatio: `${c.ancho} / ${c.alto}` }}
       >
         <source src={`/clips/${clave}.webm`} type="video/webm" />
         <source src={`/clips/${clave}.mp4`} type="video/mp4" />

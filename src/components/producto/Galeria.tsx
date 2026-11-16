@@ -23,11 +23,11 @@ export function Galeria({ claves }: { claves: ClaveCaptura[] }) {
               <figure>
                 {CAPTURAS[k].tipo === "kiosko" ? (
                   <MarcoKiosko>
-                    <Captura clave={k} sizes="(max-width: 640px) 62vw, 240px" />
+                    <Captura clave={k} sizes="(max-width: 640px) 62vw, 240px" decorativa />
                   </MarcoKiosko>
                 ) : (
                   <MarcoCelular>
-                    <Captura clave={k} sizes="(max-width: 640px) 62vw, 240px" />
+                    <Captura clave={k} sizes="(max-width: 640px) 62vw, 240px" decorativa />
                   </MarcoCelular>
                 )}
                 {pie(k)}
@@ -47,7 +47,7 @@ export function Galeria({ claves }: { claves: ClaveCaptura[] }) {
               >
                 <figure>
                   <MarcoNavegador oscuro url="mirestaurante · panel">
-                    <Captura clave={k} sizes={sola ? "(max-width: 640px) 84vw, 768px" : "(max-width: 640px) 84vw, 620px"} />
+                    <Captura clave={k} sizes={sola ? "(max-width: 640px) 84vw, 768px" : "(max-width: 640px) 84vw, 620px"} decorativa />
                   </MarcoNavegador>
                   {pie(k)}
                 </figure>

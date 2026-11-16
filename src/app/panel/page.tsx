@@ -163,7 +163,7 @@ export default function Panel() {
                       {g.extra.map((k) => (
                         <li key={k}>
                           <div className="overflow-hidden rounded-xl bg-[#0b0a0d] shadow-md ring-1 ring-tinta/10">
-                            <Captura clave={k} sizes="(max-width: 1024px) 46vw, 290px" />
+                            <Captura clave={k} sizes="(max-width: 1024px) 46vw, 290px" decorativa />
                           </div>
                           <p className="mt-1.5 text-xs leading-snug text-humo">{CAPTURAS[k].alt}</p>
                         </li>
