@@ -95,7 +95,12 @@ export function SoftwareApplicationJsonLd() {
           "Boletas y facturas electrónicas SUNAT (con Nubefact)",
           "Cobros con Culqi, Yape y Plin en tu propia cuenta",
           "Cupones, referidos y saldo a favor",
-          "Envíos con PedidosYa",
+          "Pedidos de Rappi y PedidosYa en el mismo panel",
+          "Motorizado con PedidosYa Envíos o Yango Delivery",
+          "Impresoras térmicas por red y en la nube (Star CloudPRNT, Epson Server Direct Print)",
+          "Registro de Ventas para SIRE y asientos para Concar, Starsoft, Contasis y Siscont",
+          "Google Analytics 4, Tag Manager, píxel y conversiones de Meta y TikTok",
+          "API de lectura y webhooks firmados (plan de S/ 999)",
         ],
       }}
     />

@@ -69,7 +69,7 @@ const PARADAS: Parada[] = [
   },
   {
     titulo: "Sale a reparto o a recojo",
-    texto: "Con tus zonas y tarifas. ¿Sin motorizado? Pides uno con PedidosYa Envíos.",
+    texto: "Con tus zonas y tarifas. ¿Sin motorizado? Pides uno con PedidosYa Envíos o Yango.",
     enlace: { href: RUTA_SOLUCION("delivery"), texto: "Delivery y zonas" },
     sello: { texto: "En camino", tono: "camino" },
     mini: (
