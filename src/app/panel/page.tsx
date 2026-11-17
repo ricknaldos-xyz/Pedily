@@ -14,7 +14,7 @@ import { PANEL, TOTAL_PANTALLAS } from "@/lib/panel";
 import { CAPTURAS } from "@/lib/capturas";
 import { RUTA_SOLUCION, solucionPorSlug } from "@/lib/soluciones";
 
-const TITULO = "El panel de Pedily por dentro: todo tu restaurante en una pantalla";
+const TITULO = "El panel de Pedily por dentro: tu día entero en una pantalla";
 const DESCRIPCION = `Las ${TOTAL_PANTALLAS} pantallas del panel de Pedily en 8 áreas: pedidos en vivo, cocina, caja y cierre del día, carta y recetas, inventario, equipo, clientes y campañas, asistente de WhatsApp y reportes.`;
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ export default function Panel() {
             El panel · {TOTAL_PANTALLAS} pantallas en {PANEL.length} áreas
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-[2.4rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-balance sm:text-6xl">
-            Todo tu restaurante en una pantalla
+            Tu día entero en una pantalla
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chicha-100">
             Pedidos en vivo, cocina, caja, carta y costos, almacén, equipo, clientes, el asistente de WhatsApp y tus números. Un

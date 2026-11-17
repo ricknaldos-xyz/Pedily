@@ -15,13 +15,13 @@ const MOMENTOS = [
 /** El panel como protagonista (benchmark §5.3 n.º 6). */
 export function PanelProtagonista() {
   return (
-    <section id="panel" className="scroll-mt-16 bg-[#160a1d] py-16 text-white sm:py-24">
+    <section id="panel" className="scroll-mt-16 bg-[#160a1d] py-14 text-white sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
           <Encabezado
             oscuro
             etiqueta={`El panel · ${TOTAL_PANTALLAS} pantallas en ${PANEL.length} áreas`}
-            titulo="Todo tu restaurante en una pantalla. Tócalo."
+            titulo="Tu día entero en una pantalla. Tócalo."
             bajada="Cambia de pestaña y mira cómo se opera un día: pedidos, cocina, caja, almacén, clientes y números. Es el mismo panel que usa tu equipo."
           />
           <Boton href="/panel" variante="borde-claro" flecha className="justify-self-start">
@@ -33,7 +33,8 @@ export function PanelProtagonista() {
           <PanelSeis oscuro />
         </div>
 
-        <ol className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-6">
+        {/* En móvil, «Un día con Pedily» completo está en /panel (L-03). */}
+        <ol className="mt-14 hidden grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid sm:grid-cols-3 lg:grid-cols-6">
           {MOMENTOS.map((m) => (
             <li key={m.t} className="bg-[#160a1d] p-4">
               <p className="font-mono text-xs text-aji-400">{m.h}</p>

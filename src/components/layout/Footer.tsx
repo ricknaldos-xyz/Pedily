@@ -60,7 +60,7 @@ export function Footer() {
           <div>
             <Logo claro />
             <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-chicha-100">
-              Todo tu restaurante en un sistema: tienda web, WhatsApp con IA, kiosko y QR de mesa para vender; cocina,
+              Vende directo y opera en un solo sistema: tienda web, WhatsApp con IA, kiosko y QR de mesa para vender; cocina,
               caja, boletas e inventario para operar. 0 % de comisión por pedido.
             </p>
             <p className="mt-3 text-sm text-chicha-100">

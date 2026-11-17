@@ -401,7 +401,7 @@ export default function IntegracionesPage() {
       </section>
 
       <FAQ preguntas={PREGUNTAS_INTEGRACIONES} titulo="Preguntas sobre las integraciones" bajada="Lo que suelen preguntar antes de conectar sus apps y proveedores." />
-      <FinalCTA titulo="Todo tu restaurante en un panel, también Rappi y PedidosYa" />
+      <FinalCTA titulo="Tus pedidos y los de las apps, en un solo panel" />
     </>
   );
 }
