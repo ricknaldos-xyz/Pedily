@@ -57,7 +57,7 @@ export function Comparativa() {
           id="t-comparativa"
           etiqueta={`Función por función · ${nFunciones} funciones`}
           titulo="Qué trae cada plan, sin letra chica"
-          bajada="Las funciones de las 12 soluciones, una por una. Las marcadas con el interruptor vienen apagadas: las encendemos contigo cuando las quieras usar."
+          bajada="Las funciones de las 12 soluciones y las integraciones, una por una. Las marcadas con el interruptor vienen apagadas: las encendemos contigo cuando las quieras usar; las integraciones, cuando el proveedor aprueba tu local."
         />
 
         {/* Cabecera fija con los tres planes */}
@@ -125,8 +125,8 @@ export function Comparativa() {
                   </tbody>
                 </table>
                 <p className="mb-5 pl-2 sm:pl-3">
-                  <Link href={RUTA_SOLUCION(b.slug)} className="text-sm font-semibold text-chicha-700 underline underline-offset-2">
-                    Ver la página de «{b.nombre}» →
+                  <Link href={b.href ?? RUTA_SOLUCION(b.slug)} className="text-sm font-semibold text-chicha-700 underline underline-offset-2">
+                    {b.href ? `Ver cómo se conecta cada una →` : <>Ver la página de «{b.nombre}» →</>}
                   </Link>
                 </p>
               </details>
@@ -161,7 +161,8 @@ export function Comparativa() {
         </div>
         <p className="mt-4 text-xs leading-relaxed text-humo">
           Cada función sale de su página de solución y del inventario del producto revisado en el código el 15 de noviembre de
-          2026. Además del asistente, los planes con WhatsApp traen un cupo mensual de conversaciones; en Completo es 3 veces
+          2026; las integraciones, del código revisado el 16 de noviembre. El cobro con terminal en el kiosko va con el kiosko, en
+          Completo. Además del asistente, los planes con WhatsApp traen un cupo mensual de conversaciones; en Completo es 3 veces
           mayor. El kiosko trae licencia para 1 pantalla; el equipo lo compras tú.
         </p>
       </div>
