@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGEN } from "@/lib/site";
 import Link from "next/link";
 import { clsx } from "clsx";
 import {
@@ -24,12 +25,16 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Boton } from "@/components/marca/Boton";
+import { Captura } from "@/components/marca/Captura";
+import { MarcoNavegador } from "@/components/marca/Marcos";
+import { PieCaptura, urlMarco } from "@/components/producto/Galeria";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FAQPageJsonLd, PaginaJsonLd } from "@/components/seo/JsonLd";
 import { PREGUNTAS_INTEGRACIONES } from "@/lib/faq";
-import { CATEGORIAS, INTEGRACIONES, RUTA_INTEGRACIONES, integracionesDe, type CategoriaId } from "@/lib/integraciones";
+import { CAPTURAS, infoCaptura, type ClaveCaptura } from "@/lib/capturas";
+import { CATEGORIAS, INTEGRACIONES, RUTA_INTEGRACIONES, integracionesDe, type CategoriaId, type IntegracionId } from "@/lib/integraciones";
 import { PLANES, soles } from "@/lib/planes";
 import { RUTA_SOLUCION, solucionPorSlug } from "@/lib/soluciones";
 
@@ -39,9 +44,10 @@ import { RUTA_SOLUCION, solucionPorSlug } from "@/lib/soluciones";
  * restaurante y su plan. Fuente: `src/lib/integraciones.ts` (evidencia
  * ruta:línea en `main` y en `docs/PROMESAS.md`, filas 84–99).
  *
- * Sin capturas todavía: los huecos están en `docs/CAPTURAS-PENDIENTES.md`
- * (las ponen las fichas J-01…J-04 al encender la demo). El diagrama de la
- * cabecera es un esquema, no una pantalla.
+ * Capturas (L-04): pantallas reales de la demo con cada proveedor en modo
+ * simulado (fichas J-01…J-04); el pie lo dice. Las que faltan están en
+ * `docs/CAPTURAS-PENDIENTES.md`. El diagrama de la cabecera es un esquema, no
+ * una pantalla.
  */
 
 const TITULO = "Integraciones de Pedily: Rappi, PedidosYa, Yango, Izipay, SUNAT y más";
@@ -52,7 +58,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: RUTA_INTEGRACIONES },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: RUTA_INTEGRACIONES, locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: RUTA_INTEGRACIONES, locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 const ICONO_CATEGORIA: Record<CategoriaId, LucideIcon> = {
@@ -64,6 +70,62 @@ const ICONO_CATEGORIA: Record<CategoriaId, LucideIcon> = {
   marketing: Globe,
   plataforma: Code2,
 };
+
+/**
+ * Capturas de cada integración. `par`: las dos caben lado a lado (pantallas
+ * estrechas); si no, van una debajo de otra.
+ */
+const CAPTURAS_INTEGRACION: Partial<Record<IntegracionId, { claves: ClaveCaptura[]; par?: boolean }>> = {
+  rappi: { claves: ["int-rappi-alarma", "int-rappi-integraciones"] },
+  pedidosya: { claves: ["int-pedidosya-pedido"] },
+  yango: { claves: ["int-repartos"] },
+  izipay: { claves: ["int-checkout-izipay"] },
+  "terminal-pos": { claves: ["int-caja-terminal", "int-kiosko-terminal"], par: true },
+  impresoras: { claves: ["int-ticket-cliente", "int-ticket-comanda"], par: true },
+  "impresoras-nube": { claves: ["int-impresoras-nube"] },
+  contador: { claves: ["int-contabilidad"] },
+  google: { claves: ["int-medicion-google", "int-tienda-cookies"], par: true },
+  "meta-tiktok": { claves: ["int-conversiones"] },
+  "api-webhooks": { claves: ["int-api-permisos", "int-webhooks-receptor"] },
+};
+
+function CapturasIntegracion({ id }: { id: IntegracionId }) {
+  const grupo = CAPTURAS_INTEGRACION[id];
+  if (!grupo) return null;
+  const sizes = grupo.par ? "(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 280px" : "(max-width: 1024px) 92vw, 768px";
+  return (
+    <div
+      className={clsx(
+        // Tope de 768 px: las capturas son de pantalla estrecha y no se estiran (la tarjeta de API va a lo ancho).
+        "mt-5 grid max-w-3xl gap-4",
+        // Tickets: lado a lado siempre (son angostos). Pantallas: lado a lado desde 640 px; en celular, una
+        // debajo de otra para que se lean.
+        grupo.par && (CAPTURAS[grupo.claves[0]].tipo === "ticket" ? "grid-cols-2 items-start" : "items-start sm:grid-cols-2")
+      )}
+    >
+      {grupo.claves.map((k) => (
+        <figure key={k} className="min-w-0">
+          {CAPTURAS[k].tipo === "ticket" ? (
+            <div className="rounded-xl bg-sand-100 p-3 ring-1 ring-tinta/10">
+              <Captura
+                clave={k}
+                sizes={sizes}
+                // A escala: el papel de 58 mm mide 2/3 del de 80 mm (384 frente a 576 px en la vista previa).
+                className={clsx("mx-auto h-auto max-w-[17rem] shadow-sm", k === "int-ticket-comanda" ? "w-2/3" : "w-full")}
+                decorativa
+              />
+            </div>
+          ) : (
+            <MarcoNavegador oscuro={infoCaptura(k).donde !== "tienda" && infoCaptura(k).donde !== "kiosko"} url={urlMarco(k)}>
+              <Captura clave={k} sizes={sizes} decorativa />
+            </MarcoNavegador>
+          )}
+          <PieCaptura clave={k} className="mt-2 text-[0.82rem]" />
+        </figure>
+      ))}
+    </div>
+  );
+}
 
 const PRECIO = Object.fromEntries(PLANES.map((p) => [p.id, p]));
 
@@ -248,6 +310,7 @@ export default function IntegracionesPage() {
                             </li>
                           ))}
                         </ul>
+                        <CapturasIntegracion id={it.id} />
                         <div className="mt-5 rounded-xl bg-aji-100 p-4">
                           <p className="flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-wider text-tinta">
                             <Plug aria-hidden className="h-4 w-4" /> Cómo se conecta

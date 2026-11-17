@@ -24,8 +24,19 @@ export interface CapturaInfo {
   /** De dónde sale (para quien la regenere). */
   origen: string;
   movil?: string;
-  /** Tipo de marco que le corresponde. */
-  tipo: "panel" | "celular" | "kiosko";
+  /**
+   * Tipo de marco que le corresponde. `recorte`: trozo de una pantalla de la
+   * demo publicada (fichas J, 16-nov), sin versión de celular aparte;
+   * `ticket`: vista previa ESC/POS del papel térmico.
+   */
+  tipo: "panel" | "celular" | "kiosko" | "recorte" | "ticket";
+  /** Dónde se ve (rótulo de la barra del marco), para los recortes. */
+  donde?: "panel" | "tienda" | "kiosko" | "caja";
+  /**
+   * Si la pantalla es de la demo con un proveedor simulado, lo que lleva su
+   * rótulo. Se añade al pie («Demo: …»): no se engaña a nadie (regla J).
+   */
+  demo?: string;
 }
 
 const panel = (n: string, alt: string, origen: string): CapturaInfo => ({
@@ -36,6 +47,14 @@ const panel = (n: string, alt: string, origen: string): CapturaInfo => ({
   tipo: "panel",
 });
 const cel = (n: string, alt: string, origen: string): CapturaInfo => ({ src: `/capturas/cliente/${n}.webp`, alt, origen, tipo: "celular" });
+const rec = (n: string, donde: NonNullable<CapturaInfo["donde"]>, alt: string, origen: string, demo?: string): CapturaInfo => ({
+  src: `/capturas/integraciones/${n}.webp`,
+  alt,
+  origen,
+  tipo: "recorte",
+  donde,
+  demo,
+});
 const kio = (n: string, alt: string, origen: string): CapturaInfo => ({ src: `/capturas/cliente/${n}.webp`, alt, origen, tipo: "kiosko" });
 
 export const CAPTURAS = {
@@ -131,6 +150,120 @@ export const CAPTURAS = {
   "kiosko-comprobante": kio("kiosko-comprobante", "Kiosko: el cliente elige boleta o factura", "kiosko-06-comprobante-kiosko"),
   "kiosko-pago": kio("kiosko-pago", "Kiosko: resumen, cupón y pagar con Culqi o en caja", "kiosko-07-pago-kiosko"),
   "kiosko-ticket": kio("kiosko-ticket", "Kiosko: pedido registrado con su número para pagar en caja", "kiosko-08-ticket-pagar-en-caja-kiosko"),
+
+  // ── Integraciones (L-04): capturas de las fichas J-01…J-04 con la demo en ─
+  // modo simulado (`research_notes/Pedily demo 100 2026-11-16/capturas/`),
+  // recortadas y optimizadas con `scripts/copiar-capturas-integraciones.sh`.
+  "int-rappi-alarma": rec(
+    "rappi-alarma",
+    "panel",
+    "Alarma de pedido de Rappi en el panel: cuenta atrás para aceptar, aviso de productos sin asociar, Aceptar y Rechazar",
+    "J-02/03-alarma-rappi-plazo-4min.jpg",
+    "Rappi simulado"
+  ),
+  "int-rappi-integraciones": rec(
+    "rappi-integraciones",
+    "panel",
+    "Pantalla «Integraciones» del panel: Rappi con su estado y el rótulo del modo demo",
+    "J-02/01-integraciones-rappi-modo-demo.jpg",
+    "Rappi simulado"
+  ),
+  "int-pedidosya-pedido": rec(
+    "pedidosya-pedido",
+    "panel",
+    "Pedido de PedidosYa en el panel: sus platos, «Marcar listo» y los avisos de la app (repartidor y cancelación)",
+    "J-02/10-hub-pedidosya-sin-alerta-repartidor-botones-demo.jpg",
+    "PedidosYa simulado"
+  ),
+  "int-repartos": rec(
+    "repartos-cotizar",
+    "panel",
+    "Repartos: Yango y PedidosYa Envíos cotizan el mismo envío y se elige el más barato",
+    "J-02/04-repartos-cotizar-prueba.jpg",
+    "Yango y PedidosYa Envíos simulados"
+  ),
+  "int-caja-terminal": rec(
+    "caja-terminal",
+    "caja",
+    "Cobro en caja con el terminal POS: el terminal rechazó la tarjeta y la caja ofrece volver a cobrar",
+    "J-03/04-caja-terminal-rechazado.jpg",
+    "terminal de pago (POS) simulado"
+  ),
+  "int-kiosko-terminal": rec(
+    "kiosko-terminal",
+    "kiosko",
+    "Kiosko: «Pagar en el terminal» con el monto, o pagar en caja",
+    "J-03/01-kiosko-terminal-rotulo.jpg",
+    "terminal de pago (POS) simulado"
+  ),
+  "int-checkout-izipay": rec(
+    "checkout-izipay",
+    "tienda",
+    "Checkout de la tienda web con Izipay: tarjeta, Yape o Plin en el formulario seguro de Izipay",
+    "J-03/13-web-checkout-izipay-rotulo.jpg",
+    "Izipay simulado, no se cobra dinero"
+  ),
+  "int-impresoras-nube": rec(
+    "impresoras-nube",
+    "panel",
+    "Impresoras en la nube: una Star CloudPRNT de cocina, sin computadora ni puente de impresión",
+    "J-03/10-panel-impresoras-nube-rotulo.jpg",
+    "impresoras Star CloudPRNT y Epson SDP simuladas"
+  ),
+  "int-ticket-cliente": {
+    src: "/capturas/integraciones/ticket-cliente-80mm.webp",
+    alt: "Vista previa del ticket del cliente en papel de 80 mm, con tildes y ñ, total y QR",
+    origen: "J-01/despues/cliente-80mm.png",
+    tipo: "ticket",
+  },
+  "int-ticket-comanda": {
+    src: "/capturas/integraciones/ticket-comanda-58mm.webp",
+    alt: "Vista previa de la comanda de cocina en papel de 58 mm, con el número grande y las indicaciones",
+    origen: "J-01/despues/comanda-58mm.png",
+    tipo: "ticket",
+  },
+  "int-contabilidad": rec(
+    "contabilidad",
+    "panel",
+    "Contabilidad: comprobantes del mes, archivo SIRE revisado contra el Anexo 3 y descargas TXT, Excel, CSV y Registro de Compras",
+    "J-04/10-contabilidad-descargas-rvie.jpg",
+    "Nubefact/SUNAT simulado, comprobantes de ejemplo no emitidos"
+  ),
+  "int-medicion-google": rec(
+    "medicion-google",
+    "panel",
+    "Medición y Google: los identificadores de Google Analytics 4 y Tag Manager de la tienda",
+    "J-04/03-panel-medicion-rotulo.jpg",
+    "Google, Meta y TikTok simulados"
+  ),
+  "int-tienda-cookies": rec(
+    "tienda-cookies",
+    "tienda",
+    "Aviso de cookies en la tienda web: aceptar, rechazar o configurar antes de medir",
+    "J-04/01-tienda-aviso-cookies.jpg",
+    "tienda de prueba, los pagos no son reales"
+  ),
+  "int-conversiones": rec(
+    "conversiones-eventos",
+    "panel",
+    "Eventos que se habrían enviado: compras para TikTok y Meta con el código del pedido, también la de un QR Yape verificado",
+    "J-04/05-panel-conversiones-eventos.jpg",
+    "Meta y TikTok sin credenciales, nada se envía"
+  ),
+  "int-api-permisos": rec(
+    "api-permisos",
+    "panel",
+    "API: crear una llave eligiendo qué puede leer (pedidos, ventas, comprobantes, productos, clientes con consentimiento)",
+    "J-04/13-api-llaves-ejemplo.jpg",
+    "envío de webhooks simulado"
+  ),
+  "int-webhooks-receptor": rec(
+    "webhooks-receptor",
+    "panel",
+    "Receptor de prueba: webhooks firmados que llegan con firma válida y uno con el cuerpo alterado que se rechaza",
+    "J-04/15-receptor-firma-valida-y-alterada.jpg",
+    "envío de webhooks simulado"
+  ),
 } satisfies Record<string, CapturaInfo>;
 
 export type ClaveCaptura = keyof typeof CAPTURAS;
@@ -145,3 +278,6 @@ export const CLIPS = {
 } as const;
 
 export type ClaveClip = keyof typeof CLIPS;
+
+/** La ficha de una captura con todos sus campos opcionales a la vista. */
+export const infoCaptura = (k: ClaveCaptura): CapturaInfo => CAPTURAS[k];
