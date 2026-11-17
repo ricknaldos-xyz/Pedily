@@ -67,12 +67,12 @@ export function ChatWhatsApp({
             style={animado ? { animationDelay: `${300 + i * 650}ms` } : undefined}
             className={clsx(
               "w-fit max-w-[86%] whitespace-pre-line rounded-lg px-2.5 py-1.5 text-[12.5px] leading-snug text-[#111b21] shadow-[0_1px_0.5px_rgba(0,0,0,0.13)]",
-              m.de === "cliente" ? "ml-auto rounded-tr-sm bg-[#d9fdd3]" : "rounded-tl-sm bg-white",
-              animado && "animate-entra"
+              m.de === "cliente" ? "ml-auto origin-bottom-right rounded-tr-sm bg-[#d9fdd3]" : "origin-bottom-left rounded-tl-sm bg-white",
+              animado && "animate-burbuja"
             )}
           >
             {m.texto}
-            {m.hora && <span className="ml-2 inline-block translate-y-0.5 font-mono text-[9px] text-[#54656f]">{m.hora}</span>}
+            {m.hora && <span className="ml-2 inline-block translate-y-0.5 font-mono text-[10px] text-[#3b4a54]">{m.hora}</span>}
             {m.boton && (
               <span className="-mx-2.5 -mb-1.5 mt-1.5 block border-t border-black/10 py-1.5 text-center text-[12.5px] font-semibold text-[#027eb5]">
                 {m.boton}
