@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 import { ArrowUpRight, Ban, Check, ChevronRight, Power } from "lucide-react";
 import { Boton } from "@/components/marca/Boton";
 import { IconoSolucion } from "@/components/marca/IconoSolucion";
+import { RUTA_INTEGRACION } from "@/lib/integraciones";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { EscenaSolucion } from "@/components/producto/Escenas";
 import { Galeria } from "@/components/producto/Galeria";
@@ -192,10 +193,19 @@ export default async function PaginaSolucion({ params }: { params: Promise<{ slu
                 )}
                 <span>
                   {f.texto}
-                  {f.opcion && (
-                    <span className="ml-2 inline-block rounded-full bg-chicha-50 px-2 py-0.5 align-middle font-mono text-[10px] font-bold uppercase tracking-wider text-chicha-700">
-                      Se enciende en tu restaurante
-                    </span>
+                  {f.integracion ? (
+                    <Link
+                      href={RUTA_INTEGRACION(f.integracion)}
+                      className="ml-2 inline-block rounded-full bg-aji-100 px-2 py-0.5 align-middle font-mono text-[10px] font-bold uppercase tracking-wider text-tinta underline-offset-2 hover:underline"
+                    >
+                      Integración · cómo se conecta
+                    </Link>
+                  ) : (
+                    f.opcion && (
+                      <span className="ml-2 inline-block rounded-full bg-chicha-50 px-2 py-0.5 align-middle font-mono text-[10px] font-bold uppercase tracking-wider text-chicha-700">
+                        Se enciende en tu restaurante
+                      </span>
+                    )
                   )}
                 </span>
               </li>
