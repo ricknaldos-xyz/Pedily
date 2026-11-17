@@ -125,7 +125,7 @@ export function CostosAparte() {
           ))}
         </ul>
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-chicha-100">
-          El equipo del kiosko (la pantalla, y una PC con Windows e impresora térmica si quieres ticket impreso) lo compras tú.
+          El equipo del kiosko (la pantalla y, si quieres ticket impreso, una impresora térmica con una PC con Windows, o una Star o Epson con impresión en la nube, sin PC) lo compras tú.
           Sin asistente de WhatsApp no pagas nada a Meta.
         </p>
       </div>

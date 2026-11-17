@@ -132,7 +132,7 @@ export const FAQS: Pregunta[] = [
   PREGUNTA_RAPPI_PEDIDOSYA,
   {
     pregunta: "¿Cómo funcionan el kiosko y el QR de mesa?",
-    respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla. El QR de mesa también se suma a ${TIENDA.nombre} o ${WHATSAPP.nombre} como complemento de ${precioComplemento()}.`,
+    respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica, o una impresora Star o Epson con impresión en la nube, sin PC. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla. El QR de mesa también se suma a ${TIENDA.nombre} o ${WHATSAPP.nombre} como complemento de ${precioComplemento()}.`,
   },
   PREGUNTA_CARTA_QR,
   PREGUNTA_MESA_PRECIO,
