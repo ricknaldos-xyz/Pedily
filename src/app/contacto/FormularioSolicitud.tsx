@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Loader2, Store } from "lucide-react";
 import clsx from "clsx";
@@ -10,12 +10,16 @@ import {
   FUERA_DE_LIMA,
   ORDEN_CAMPOS,
   PREGUNTAS,
+  planDesdeUrl,
   validarSolicitud,
   type CampoSolicitud,
   type ErroresSolicitud,
   type ModoSolicitud,
+  type Periodicidad,
+  type PlanId,
   type ResultadoEnvio,
 } from "@/lib/solicitud";
+import { MESES_PAGADOS_ANUAL, PLANES, precioAnual, soles } from "@/lib/planes";
 
 interface Props {
   waHref: string | null;
@@ -44,6 +48,16 @@ export function FormularioSolicitud({ waHref }: Props) {
   const [errorGeneral, setErrorGeneral] = useState<string | null>(null);
   const [enviando, setEnviando] = useState<ModoSolicitud | null>(null);
   const [exito, setExito] = useState<Exito | null>(null);
+  // Q-06: plan y periodicidad. Si se llega desde «Crear mi tienda» de un plan
+  // (`/contacto?plan=…&periodicidad=…`, `enlaceSolicitud`), vienen elegidos.
+  // La página se genera al compilar: se leen del enlace al montar.
+  const [plan, setPlan] = useState<PlanId | "">("");
+  const [periodicidad, setPeriodicidad] = useState<Periodicidad>("mensual");
+  useEffect(() => {
+    const desdeUrl = planDesdeUrl(window.location.search);
+    if (desdeUrl.plan) setPlan(desdeUrl.plan);
+    setPeriodicidad(desdeUrl.periodicidad);
+  }, []);
 
   const enfocarPrimerError = (errs: ErroresSolicitud) => {
     const primero = ORDEN_CAMPOS.find((c) => errs[c]);
@@ -299,6 +313,78 @@ export function FormularioSolicitud({ waHref }: Props) {
           {mensajeError(pregunta.id)}
         </fieldset>
       ))}
+
+      <fieldset className="mt-8 border-t border-dashed border-tinta/20 pt-6">
+        <legend className="float-left w-full font-display text-lg font-bold leading-snug text-tinta">
+          Tu plan <span className="font-sans text-sm font-normal text-sand-400">(opcional)</span>
+        </legend>
+        <div className="clear-both flex flex-wrap items-center justify-between gap-3 pt-3">
+          <p className="text-sm text-sand-700">Si no lo tienes claro, te ayudamos a elegir.</p>
+          <div className="inline-flex rounded-full border-2 border-tinta/15 p-1">
+            {(
+              [
+                { valor: "mensual", texto: "Mensual" },
+                { valor: "anual", texto: "Anual · 2 meses gratis" },
+              ] as const
+            ).map((op) => (
+              <label
+                key={op.valor}
+                className={clsx(
+                  "cursor-pointer rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
+                  "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-chicha-600/30",
+                  periodicidad === op.valor ? "bg-tinta text-white" : "text-sand-700 hover:text-tinta"
+                )}
+              >
+                <input
+                  type="radio"
+                  name="periodicidad"
+                  value={op.valor}
+                  checked={periodicidad === op.valor}
+                  onChange={() => setPeriodicidad(op.valor)}
+                  className="sr-only"
+                />
+                {op.texto}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className="grid gap-2.5 pt-4 sm:grid-cols-2">
+          {[
+            ...PLANES.map((p) => ({
+              valor: p.id as PlanId | "",
+              titulo: p.nombre,
+              detalle:
+                periodicidad === "anual"
+                  ? `${soles(precioAnual(p))} al año (pagas ${MESES_PAGADOS_ANUAL} meses)`
+                  : `${soles(p.precioMensual)} al mes`,
+            })),
+            { valor: "" as PlanId | "", titulo: "Aún no lo sé", detalle: "Lo vemos contigo" },
+          ].map((op) => (
+            <label
+              key={op.valor || "sin-plan"}
+              className={clsx(
+                "flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 text-sm text-sand-800 transition-colors",
+                "has-[:checked]:border-tinta has-[:checked]:bg-aji-100 has-[:checked]:text-tinta",
+                "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-chicha-600/30",
+                "border-tinta/10 hover:border-tinta/30 hover:bg-papel"
+              )}
+            >
+              <input
+                type="radio"
+                name="plan"
+                value={op.valor}
+                checked={plan === op.valor}
+                onChange={() => setPlan(op.valor)}
+                className="h-4 w-4 shrink-0 accent-chicha-600"
+              />
+              <span>
+                <span className="block font-semibold text-tinta">{op.titulo}</span>
+                <span className="block text-xs text-sand-700">{op.detalle}</span>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <div className="mt-8 border-t border-dashed border-tinta/20 pt-6">
         <label htmlFor="mensaje" className="block text-sm font-semibold text-tinta">
