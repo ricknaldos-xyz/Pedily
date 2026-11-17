@@ -46,6 +46,46 @@ export const PREGUNTA_MESA_PRECIO: Pregunta = {
   respuesta: `${precioComplemento()} con IGV, sumado a ${TIENDA.nombre} (${soles(TIENDA.precioMensual)}) o a ${WHATSAPP.nombre} (${soles(WHATSAPP.precioMensual)}). En ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}) ya viene incluido, junto con el kiosko. Sin comisión por pedido, como el resto de Pedily. La carta digital por QR, solo para ver la carta, viene en todos los planes sin costo extra.`,
 };
 
+/**
+ * L-02 (16-nov): Pedily recibe los pedidos de Rappi y PedidosYa en el panel
+ * (`B:src/order/marketplace/rappi/`, `B:src/order/marketplace/pedidosya-pos/`,
+ * `W:components/dashboard/MarketplaceOrderAlarm.tsx`; PROMESAS filas 84–85).
+ * Se conecta cuando cada app aprueba la integración del local.
+ */
+export const PREGUNTA_RAPPI_PEDIDOSYA: Pregunta = {
+  pregunta: "¿También recibe pedidos de Rappi o PedidosYa?",
+  respuesta:
+    "Sí. Los pedidos de Rappi y PedidosYa entran al mismo panel y a la pantalla de cocina que los de tu web y tu WhatsApp. Los de Rappi llegan con una alarma y la cuenta atrás de 4 minutos que da Rappi para aceptar, y se pueden aceptar solos; los de PedidosYa los aceptas en PedidosYa como siempre y entran solos a tu panel. Asocias los productos de cada app con tu carta y un pedido de app nunca pide además tu motorizado. Se conecta cuando cada app aprueba la integración de tu local; la carta de cada app la sigues editando en esa app. Viene en todos los planes.",
+};
+
+/** Preguntas de /integraciones (también en su JSON-LD FAQPage). */
+export const PREGUNTAS_INTEGRACIONES: Pregunta[] = [
+  PREGUNTA_RAPPI_PEDIDOSYA,
+  {
+    pregunta: "¿Qué significa «se conecta cuando la app aprueba la integración»?",
+    respuesta:
+      "Rappi, PedidosYa, Izipay y los proveedores de terminales revisan cada integración antes de abrirla a un local. La parte de Pedily está construida; nosotros hacemos el trámite técnico contigo y la encendemos cuando el proveedor da el visto bueno a tu local. Hasta entonces sigues trabajando como hoy, sin perder nada.",
+  },
+  {
+    pregunta: "¿Las integraciones cuestan aparte?",
+    respuesta: `No cobramos comisión ni cargo por conectarlas: cada una viene en el plan que dice su ficha. Las apps de delivery, el reparto, los pagos, las impresoras, los archivos para tu contador, Google, Meta y TikTok vienen desde ${TIENDA.nombre} (${soles(TIENDA.precioMensual)}); la carta en el chat de WhatsApp, desde ${WHATSAPP.nombre}; la API y los webhooks, en ${COMPLETO.nombre}. Cada proveedor te cobra lo suyo directo, según tu contrato con él.`,
+  },
+  {
+    pregunta: "¿Pedily toca mi dinero en Rappi, Izipay o el POS?",
+    respuesta:
+      "No. Rappi y PedidosYa te pagan como siempre, y Culqi, Izipay o tu terminal POS depositan en tu cuenta. Pedily solo recibe el aviso del cobro para marcar el pedido como pagado.",
+  },
+  {
+    pregunta: "¿Qué recibe mi contador?",
+    respuesta:
+      "El TXT del Registro de Ventas para reemplazar la propuesta en SIRE, las mismas 33 columnas en Excel y CSV, el Registro de Compras en CSV y los asientos de ventas para Concar, Starsoft, Contasis o Siscont. Los asientos los ajusta tu contador a sus cuentas antes de importarlos.",
+  },
+  {
+    pregunta: "¿Puedo conectar mis propios sistemas?",
+    respuesta: `Sí, en el plan ${COMPLETO.nombre}: una API de lectura con llaves por restaurante y avisos firmados (webhooks) a la dirección que elijas en cada pedido, pago, comprobante y stock bajo, con documentación pública. La app de Pedily en Zapier se conecta cuando Zapier la aprueba.`,
+  },
+];
+
 export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta Pedily?",
@@ -54,7 +94,7 @@ export const FAQS: Pregunta[] = [
   {
     pregunta: "¿Qué pago aparte?",
     respuesta:
-      "Lo que cobra cada proveedor, directo a él: Culqi, 3,44 % + US$ 0,20 por cada venta con tarjeta o Yape; Nubefact, desde S/ 70 al mes por tus boletas y facturas; y, si tienes el asistente, los mensajes de WhatsApp que Meta cobra a tu tarjeta (1.000 mensajes de servicio gratis al mes y luego S/ 0,0998 por mensaje; las campañas, S/ 0,2339 por mensaje). Son sus precios públicos de noviembre de 2026. El equipo del kiosko (pantalla, y PC e impresora si quieres ticket) lo compras tú.",
+      "Lo que cobra cada proveedor, directo a él: Culqi, 3,44 % + US$ 0,20 por cada venta con tarjeta o Yape; Nubefact, desde S/ 70 al mes por tus boletas y facturas; y, si tienes el asistente, los mensajes de WhatsApp que Meta cobra a tu tarjeta (1.000 mensajes de servicio gratis al mes y luego S/ 0,0998 por mensaje; las campañas, S/ 0,2339 por mensaje). Son sus precios públicos de noviembre de 2026. El equipo del kiosko (pantalla, y PC e impresora si quieres ticket) lo compras tú. Si conectas otras apps o proveedores (Rappi, PedidosYa, Yango, Izipay o tu terminal POS), cada uno te cobra lo suyo, según tu contrato con él.",
   },
   {
     pregunta: "¿Cuánto cuesta el alta y hay permanencia?",
@@ -89,11 +129,7 @@ export const FAQS: Pregunta[] = [
     respuesta:
       "Sí. Con los pedidos programados tu cliente elige el día y la hora de entrega o de recojo dentro de tu horario, y el pedido entra al panel para prepararlo a tiempo. Viene en todos los planes.",
   },
-  {
-    pregunta: "¿También recibe pedidos de Rappi o PedidosYa?",
-    respuesta:
-      "No. Los pedidos de Rappi y PedidosYa se siguen atendiendo en sus propias plataformas. Pedily es para vender por tus canales propios (web, WhatsApp y kiosko) sin comisión. Para el reparto sí puedes usar PedidosYa Envíos.",
-  },
+  PREGUNTA_RAPPI_PEDIDOSYA,
   {
     pregunta: "¿Cómo funcionan el kiosko y el QR de mesa?",
     respuesta: `El kiosko es una pantalla táctil con navegador en tu local: tu cliente ve la carta, personaliza y paga con tarjeta o Yape, o elige pagar en caja. Para imprimir tickets hace falta un PC con Windows y una impresora térmica. Con el QR de mesa, tu cliente escanea el código de su mesa, pide y paga desde su celular, y el pedido llega a tu panel con su número de mesa. Los dos vienen en el plan ${COMPLETO.nombre} (${soles(COMPLETO.precioMensual)}), con licencia del kiosko para 1 pantalla. El QR de mesa también se suma a ${TIENDA.nombre} o ${WHATSAPP.nombre} como complemento de ${precioComplemento()}.`,
