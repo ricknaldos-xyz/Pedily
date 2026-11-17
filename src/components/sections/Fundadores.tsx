@@ -1,7 +1,6 @@
-import { Container } from "@/components/layout/Container";
-import { Bloque } from "@/components/layout/Bloque";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
+import { Boton } from "@/components/marca/Boton";
+import { Sello } from "@/components/marca/Sello";
 import { FUNDADORES } from "@/lib/site";
 
 /** Programa de fundadores: todo sale de FUNDADORES (src/lib/site.ts). */
@@ -10,45 +9,46 @@ export function Fundadores() {
 
   const beneficios = [
     `Tu precio congelado ${FUNDADORES.mesesPrecioCongelado} meses`,
-    ...(FUNDADORES.altaGratis
-      ? [FUNDADORES.sinPermanencia ? "Alta gratis, sin permanencia" : "Alta gratis"]
-      : []),
-    ...(FUNDADORES.acompanamientoDirecto
-      ? ["Te acompaña directamente el equipo en la puesta en marcha"]
-      : []),
+    ...(FUNDADORES.altaGratis ? [FUNDADORES.sinPermanencia ? "Alta gratis, sin permanencia" : "Alta gratis"] : []),
+    ...(FUNDADORES.acompanamientoDirecto ? ["Te acompaña directamente el equipo en la puesta en marcha"] : []),
   ];
 
   return (
-    <Bloque id="fundadores" className="bg-gradient-to-br from-primary-700 to-primary-900">
-      <Container className="max-w-3xl">
-        <AnimatedSection>
-          <p className="text-xs font-bold uppercase tracking-wider text-primary-200">
-            Programa de fundadores
-          </p>
-          <h2 className="mt-2 text-[1.7rem] font-extrabold leading-tight text-white sm:text-4xl">
-            Los primeros {FUNDADORES.cupos} restaurantes entran con condiciones
-            de fundador
+    <section id="fundadores" className="scroll-mt-16 bg-aji-500 py-16 sm:py-20">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.4fr_1fr] lg:px-8">
+        <div>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-tinta">Programa de fundadores</p>
+          <h2 className="mt-3 font-display text-[1.9rem] font-extrabold leading-[1.05] tracking-[-0.025em] text-tinta text-balance sm:text-5xl">
+            Los primeros {FUNDADORES.cupos} restaurantes entran con condiciones de fundador
           </h2>
-          <ul className="mt-5 space-y-2">
-            {beneficios.map((b) => (
-              <li key={b} className="flex items-start gap-2.5 text-base text-primary-50">
-                <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary-300" />
-                {b}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-sm text-primary-100/85">
-            A cambio, {FUNDADORES.aCambio}. Son{" "}
-            {FUNDADORES.cupos} cupos en total.
+          <p className="mt-4 text-[1.02rem] text-tinta/85">
+            A cambio, {FUNDADORES.aCambio}. Son {FUNDADORES.cupos} cupos en total.
           </p>
-          <a
-            href="/contacto"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-primary-800 shadow-lg transition-all hover:bg-primary-50 active:scale-[0.98]"
-          >
-            Quiero ser fundador <ArrowRight className="h-4 w-4" />
-          </a>
-        </AnimatedSection>
-      </Container>
-    </Bloque>
+          <div className="mt-7">
+            <Boton href="/contacto" variante="tinta" tam="lg" flecha>
+              Quiero ser fundador
+            </Boton>
+          </div>
+        </div>
+        <div className="relative [filter:drop-shadow(0_14px_20px_rgba(36,16,46,0.25))]">
+          <div className="ticket px-6 py-7">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-humo">Condiciones de fundador</p>
+            <ul className="mt-3 space-y-3">
+              {beneficios.map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[1rem] font-semibold text-tinta">
+                  <Check aria-hidden className="mt-0.5 h-5 w-5 shrink-0 text-hierba-600" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="absolute -right-2 -top-4">
+            <Sello tono="cocina" giro={8}>
+              {FUNDADORES.cupos} cupos
+            </Sello>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

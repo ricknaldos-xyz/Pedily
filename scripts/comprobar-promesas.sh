@@ -8,7 +8,7 @@ patrones="$(mktemp)"
 trap 'rm -f "$patrones"' EXIT
 grep -vE '^\s*(#|$)' scripts/promesas-prohibidas.txt > "$patrones"
 
-if hallazgos="$(grep -rniE -f "$patrones" src public)"; then
+if hallazgos="$(grep -rniIE -f "$patrones" src public)"; then
   echo "Promesas prohibidas encontradas:" >&2
   echo "$hallazgos" >&2
   exit 1
@@ -27,7 +27,7 @@ nombre_original='wantan'
 nombre_completo='wantan clan'
 archivo_permitido='src/lib/site.ts'
 fallo_nombre=0
-if hallazgos="$(grep -rliE "$nombre_original" src public | grep -v "^${archivo_permitido}\$")"; then
+if hallazgos="$(grep -rliIE "$nombre_original" src public | grep -v "^${archivo_permitido}\$")"; then
   echo "El nombre del restaurante de origen solo puede estar en $archivo_permitido:" >&2
   echo "$hallazgos" >&2
   fallo_nombre=1
@@ -44,8 +44,8 @@ while IFS= read -r linea; do
     echo "Cifra junto al nombre del restaurante de origen: $linea" >&2
     fallo_nombre=1
   fi
-done < <(grep -rniE "$nombre_original" . \
-    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git \
+done < <(grep -rniIE "$nombre_original" . \
+    --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=".next-*" --exclude-dir=.git \
     --exclude=promesas-prohibidas.txt --exclude=comprobar-promesas.sh || true)
 if [ "$fallo_nombre" -ne 0 ]; then
   exit 1
@@ -83,7 +83,7 @@ while IFS=$'\t' read -r num estado tarea patron; do
       && { [ -z "$tarea" ] || [ "$tarea" = "—" ]; }; then
     echo "PROMESAS #$num: «${estado}» sin tarea que la cumpla." >&2; fallos=1
   fi
-  if hallazgos="$(grep -rniE -- "$patron" src public)"; then
+  if hallazgos="$(grep -rniIE -- "$patron" src public)"; then
     if [ "$estado" = "No existe" ]; then
       echo "PROMESAS #$num: promesa marcada «No existe» sigue en la landing:" >&2
       echo "$hallazgos" >&2
@@ -98,6 +98,24 @@ if [ "$fallos" -ne 0 ]; then
   exit 1
 fi
 echo "comprobar-promesas: $(printf '%s\n' "$filas" | wc -l | tr -d ' ') promesas de $registro con estado y tarea en regla."
+
+# LV2-F (16-nov): la secuencia «chat + mini-app» mezcla un chat recreado con
+# capturas reales. Cada pantalla de chat debe ir rotulada como recreación y
+# cada captura de la mini-app como real con datos de la demo.
+secuencia=src/components/producto/ChatMiniApp.tsx
+if [ -f "$secuencia" ]; then
+  if ! grep -q 'recreación con textos reales' "$secuencia" || ! grep -q 'datos de la demo' "$secuencia"; then
+    echo "$secuencia: faltan los rótulos «recreación con textos reales» y «datos de la demo»." >&2
+    exit 1
+  fi
+  chats="$(grep -c '<ChatWhatsApp' "$secuencia" || true)"
+  notas_chat="$(grep -c 'nota: NOTA_CHAT' "$secuencia" || true)"
+  if [ "$chats" -ne "$notas_chat" ]; then
+    echo "$secuencia: $chats pantallas de chat y $notas_chat rótulos de recreación; deben coincidir." >&2
+    exit 1
+  fi
+  echo "comprobar-promesas: la secuencia chat + mini-app rotula el chat como recreación ($chats pantallas)."
+fi
 
 # G-08 (15-nov): cada página pública está en el sitemap, y cada herramienta
 # gratis (src/app/herramientas/<slug>/) usa el esqueleto común
@@ -115,6 +133,43 @@ while IFS= read -r pagina; do
     fallo_rutas=1
   fi
 done < <(find src/app -name page.tsx | sort)
+
+# LV2-D (15-nov): /soluciones/[slug] es dinámica; cada slug del catálogo
+# src/lib/soluciones.ts debe estar en el sitemap.
+soluciones=0
+while IFS= read -r slug; do
+  soluciones=$((soluciones + 1))
+  if ! grep -q "<loc>https://pedily.vercel.app/soluciones/${slug}</loc>" public/sitemap.xml; then
+    echo "Falta en public/sitemap.xml: /soluciones/${slug}" >&2
+    fallo_rutas=1
+  fi
+done < <(sed -nE 's/^    slug: "([a-z0-9-]+)",$/\1/p' src/lib/soluciones.ts)
+if [ "$soluciones" -eq 0 ]; then
+  echo "No se encontró ningún slug en src/lib/soluciones.ts." >&2
+  fallo_rutas=1
+fi
+
+# 16-nov: páginas por tipo de restaurante (src/lib/para.ts → /para/<slug>).
+# Cada una tiene su página, está en el sitemap y se enlaza desde el menú, el
+# pie y la portada.
+paras=0
+while IFS= read -r slug; do
+  paras=$((paras + 1))
+  if [ ! -f "src/app/para/${slug}/page.tsx" ]; then
+    echo "Falta la página src/app/para/${slug}/page.tsx" >&2; fallo_rutas=1
+  fi
+  if ! grep -q "<loc>https://pedily.vercel.app/para/${slug}</loc>" public/sitemap.xml; then
+    echo "Falta en public/sitemap.xml: /para/${slug}" >&2; fallo_rutas=1
+  fi
+done < <(sed -nE 's/^    slug: "([a-z0-9-]+)",$/\1/p' src/lib/para.ts)
+for enlace in src/components/layout/Header.tsx src/components/layout/Footer.tsx; do
+  if [ "$paras" -gt 0 ] && ! grep -q "PAGINAS_PARA" "$enlace"; then
+    echo "$enlace no enlaza las páginas /para (PAGINAS_PARA)." >&2; fallo_rutas=1
+  fi
+done
+if [ "$paras" -gt 0 ] && ! grep -rqE "RUTA_SALON|RUTA_PARA|/para/" src/components/home; then
+  echo "La portada no enlaza ninguna página /para." >&2; fallo_rutas=1
+fi
 
 herramientas=0
 for dir in src/app/herramientas/*/; do
@@ -143,4 +198,4 @@ fi
 if [ "$fallo_rutas" -ne 0 ]; then
   exit 1
 fi
-echo "comprobar-promesas: todas las páginas en el sitemap; $herramientas herramientas con JSON-LD y fuentes."
+echo "comprobar-promesas: todas las páginas en el sitemap ($soluciones soluciones, $paras páginas /para enlazadas); $herramientas herramientas con JSON-LD y fuentes."

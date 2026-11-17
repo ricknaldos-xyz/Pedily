@@ -87,13 +87,20 @@ export function SoftwareApplicationJsonLd() {
         featureList: [
           "Tienda web con pedido y pago online",
           "Asistente de pedidos por WhatsApp con IA (desde el plan de S/ 499)",
-          "Kiosko de autoservicio y QR de mesa que cobra (plan de S/ 999)",
+          "Carta digital por QR en todos los planes",
+          "Kiosko de autoservicio (plan de S/ 999)",
+          "QR de mesa que cobra (complemento de S/ 150 al mes, o incluido en el plan de S/ 999)",
           "Pedidos programados para la hora que elija el cliente",
           "Panel de pedidos de todos tus canales al instante",
           "Boletas y facturas electrónicas SUNAT (con Nubefact)",
           "Cobros con Culqi, Yape y Plin en tu propia cuenta",
           "Cupones, referidos y saldo a favor",
-          "Envíos con PedidosYa",
+          "Pedidos de Rappi y PedidosYa en el mismo panel",
+          "Motorizado con PedidosYa Envíos o Yango Delivery",
+          "Impresoras térmicas por red y en la nube (Star CloudPRNT, Epson Server Direct Print)",
+          "Registro de Ventas para SIRE y asientos para Concar, Starsoft, Contasis y Siscont",
+          "Google Analytics 4, Tag Manager, píxel y conversiones de Meta y TikTok",
+          "API de lectura y webhooks firmados (plan de S/ 999)",
         ],
       }}
     />
@@ -171,6 +178,81 @@ export function HerramientaJsonLd({ h }: { h: Herramienta }) {
           { name: "Inicio", url: SITE_URL },
           { name: "Herramientas gratis", url: `${SITE_URL}/herramientas` },
           { name: h.titulo, url },
+        ]}
+      />
+    </>
+  );
+}
+
+/**
+ * Página de solución: Service con su oferta mínima (plan con IGV) + migas.
+ * El precio sale de PLANES (src/lib/planes.ts), igual que en la página.
+ */
+export function SolucionJsonLd({
+  slug,
+  nombre,
+  descripcion,
+  precioDesde,
+  grupo,
+}: {
+  slug: string;
+  nombre: string;
+  descripcion: string;
+  precioDesde: number;
+  grupo: string;
+}) {
+  const url = `${SITE_URL}/soluciones/${slug}`;
+  return (
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: nombre,
+          serviceType: grupo,
+          url,
+          description: descripcion,
+          areaServed: { "@type": "Country", name: "Perú" },
+          provider: { "@type": "Organization", name: "Pedily", url: SITE_URL },
+          offers: {
+            "@type": "Offer",
+            price: String(precioDesde),
+            priceCurrency: "PEN",
+            url: `${SITE_URL}/precios`,
+          },
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: "Soluciones", url: `${SITE_URL}/soluciones` },
+          { name: nombre, url },
+        ]}
+      />
+    </>
+  );
+}
+
+/** Página simple con migas de pan (panel, demo, índice de soluciones). */
+export function PaginaJsonLd({ ruta, nombre, descripcion }: { ruta: string; nombre: string; descripcion: string }) {
+  const url = `${SITE_URL}${ruta}`;
+  return (
+    <>
+      <Script
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: nombre,
+          url,
+          description: descripcion,
+          inLanguage: "es-PE",
+          isPartOf: { "@type": "WebSite", name: "Pedily", url: SITE_URL },
+        }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Inicio", url: SITE_URL },
+          { name: nombre, url },
         ]}
       />
     </>

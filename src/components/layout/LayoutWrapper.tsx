@@ -1,12 +1,12 @@
-"use client";
-
 import { Footer } from "./Footer";
+import { BarraMovil } from "./BarraMovil";
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <main>{children}</main>
+      <main id="contenido">{children}</main>
       <Footer />
+      <BarraMovil />
     </>
   );
 }

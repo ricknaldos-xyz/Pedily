@@ -89,13 +89,13 @@ export function CalculadoraComision() {
           type="checkbox"
           checked={conIgv}
           onChange={(e) => setConIgv(e.target.checked)}
-          className="mt-0.5 h-4 w-4 accent-primary-600"
+          className="mt-0.5 h-4 w-4 accent-chicha-600"
         />
         La comisión me la facturan con IGV aparte (18 %)
       </label>
 
       <fieldset className="mt-4">
-        <legend className="text-sm font-semibold text-sand-800">Canal propio con</legend>
+        <legend className="text-sm font-semibold text-tinta">Canal propio con</legend>
         <div className="mt-2 flex flex-wrap gap-2">
           {PLANES.map((p) => (
             <button
@@ -105,8 +105,8 @@ export function CalculadoraComision() {
               onClick={() => setPlanId(p.id)}
               className={
                 planId === p.id
-                  ? "rounded-full bg-primary-600 px-3 py-1.5 text-xs font-semibold text-white"
-                  : "rounded-full border border-sand-300 px-3 py-1.5 text-xs font-semibold text-sand-700"
+                  ? "min-h-10 rounded-full border-2 border-tinta bg-aji-500 px-3.5 py-1.5 text-xs font-semibold text-tinta"
+                  : "min-h-10 rounded-full border-2 border-tinta/15 px-3.5 py-1.5 text-xs font-semibold text-sand-700 hover:border-tinta/40"
               }
             >
               Pedily {p.nombre} · {soles(p.precioMensual)}

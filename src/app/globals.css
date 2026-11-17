@@ -1,291 +1,325 @@
 @import "tailwindcss";
 
+/*
+ * Sistema visual «la comanda» (LV2-D, 15-nov-2026).
+ * Fuente: research_notes/Pedily landing v2 2026-11-15/01_benchmark.md §5.6.
+ *
+ * - Tinta / morado maíz #24102E · chicha #5B2A86 · ají amarillo #FFC21A (solo
+ *   CTA y datos destacados, con texto morado encima) · papel #FBF7F0 · humo
+ *   #6E6378 · hierbabuena #147A52 (pagado, listo) · rocoto #B4232A (agotado).
+ * - Las escalas antiguas (primary, accent, cream, sand) se remapean a la nueva
+ *   paleta para que las páginas que aún las usan cambien de piel sin tocarlas.
+ * - El amarillo nunca va como texto sobre fondo claro.
+ */
 @theme {
-  --font-sans: "Gabarito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Primary — Jade (marca / acción). Tomado del producto real. */
-  --color-primary-50: #f0fffb;
-  --color-primary-100: #ecfffa;
-  --color-primary-200: #b5ebdc;
-  --color-primary-300: #5ae4bc;
-  --color-primary-400: #55c4a4;
-  --color-primary-500: #3ba889;
-  --color-primary-600: #2f8a70;
-  --color-primary-700: #236b57;
-  --color-primary-800: #164235;
-  --color-primary-900: #0e2b22;
+  /* Nombres de la marca */
+  --color-tinta: #24102e;
+  --color-papel: #fbf7f0;
+  --color-humo: #6e6378;
 
-  /* Accent — Rojo/naranja cálido (CTA / energía). */
-  --color-accent-50: #fff5f2;
-  --color-accent-100: #ffe3dd;
-  --color-accent-200: #ffc9bd;
-  --color-accent-300: #ff7556;
-  --color-accent-400: #f24119;
-  --color-accent-500: #e02900;
-  --color-accent-600: #c12400;
-  --color-accent-700: #9a1d00;
-  --color-accent-800: #621200;
-  --color-accent-900: #3d2414;
+  /* Chicha (primario) */
+  --color-chicha-50: #f7f1fb;
+  --color-chicha-100: #ede2f6;
+  --color-chicha-200: #dac4ec;
+  --color-chicha-300: #bb98dc;
+  --color-chicha-400: #956ac4;
+  --color-chicha-500: #7542a8;
+  --color-chicha-600: #5b2a86;
+  --color-chicha-700: #4a2170;
+  --color-chicha-800: #371853;
+  --color-chicha-900: #24102e;
 
-  /* Cream / Gold — fondos cálidos y dorados. */
-  --color-cream-50: #fffdf9;
-  --color-cream-100: #fff8ef;
-  --color-cream-200: #fff1dc;
-  --color-cream-300: #ffedd2;
-  --color-cream-400: #ffe0b2;
-  --color-cream-500: #f0bc6f;
-  --color-cream-600: #d99e4a;
-  --color-cream-700: #95713c;
-  --color-cream-800: #6b5028;
-  --color-cream-900: #463316;
+  /* Ají amarillo (acento de acción) */
+  --color-aji-100: #fff3cc;
+  --color-aji-200: #ffe699;
+  --color-aji-300: #ffd866;
+  --color-aji-400: #ffcb3d;
+  --color-aji-500: #ffc21a;
+  --color-aji-600: #eaab00;
+  --color-aji-700: #8a6400;
 
-  /* Sand / Earth — neutros cálidos (reemplazan a slate). */
-  --color-sand-50: #faf8f5;
-  --color-sand-100: #f6f3ee;
-  --color-sand-200: #ebe5db;
-  --color-sand-300: #d6cab9;
-  --color-sand-400: #b9a991;
-  --color-sand-500: #9f9483;
-  --color-sand-600: #7a6f5e;
-  --color-sand-700: #5a5247;
-  --color-sand-800: #3c372f;
-  --color-sand-900: #26231e;
+  /* Hierbabuena (positivo) */
+  --color-hierba-50: #ecf7f1;
+  --color-hierba-100: #d0ecdf;
+  --color-hierba-300: #6fc39e;
+  --color-hierba-500: #1c9163;
+  --color-hierba-600: #147a52;
+  --color-hierba-700: #0f5e3f;
 
-  /* Sombras con tinte cálido (no negro). */
-  --shadow-xs: 0 1px 2px rgba(149, 113, 60, 0.08);
-  --shadow-card: 0 2px 4px rgba(159, 148, 131, 0.12), 0 1px 2px rgba(159, 148, 131, 0.08);
-  --shadow-card-hover: 0 12px 28px -6px rgba(149, 113, 60, 0.18), 0 4px 10px -3px rgba(159, 148, 131, 0.12);
-  --shadow-elevated: 0 24px 56px -16px rgba(59, 42, 22, 0.22);
-  --shadow-warm: 0 4px 16px rgba(149, 113, 60, 0.35);
+  /* Rocoto (alerta) */
+  --color-rocoto-50: #fdf2f2;
+  --color-rocoto-100: #fadcdc;
+  --color-rocoto-300: #e57f82;
+  --color-rocoto-500: #b4232a;
+  --color-rocoto-600: #971c22;
+  --color-rocoto-700: #7a161b;
+
+  /* Escalas heredadas, remapeadas a «la comanda». */
+  --color-primary-50: #f7f1fb;
+  --color-primary-100: #ede2f6;
+  --color-primary-200: #dac4ec;
+  --color-primary-300: #bb98dc;
+  --color-primary-400: #956ac4;
+  --color-primary-500: #7542a8;
+  --color-primary-600: #5b2a86;
+  --color-primary-700: #4a2170;
+  --color-primary-800: #371853;
+  --color-primary-900: #24102e;
+
+  --color-accent-50: #fdf2f2;
+  --color-accent-100: #fadcdc;
+  --color-accent-200: #f3b5b6;
+  --color-accent-300: #e57f82;
+  --color-accent-400: #cf4a4f;
+  --color-accent-500: #b4232a;
+  --color-accent-600: #971c22;
+  --color-accent-700: #7a161b;
+  --color-accent-800: #5c1014;
+  --color-accent-900: #3d0a0d;
+
+  --color-cream-50: #fffdf8;
+  --color-cream-100: #fbf7f0;
+  --color-cream-200: #f6eedf;
+  --color-cream-300: #f0e3cb;
+  --color-cream-400: #e8d3ae;
+  --color-cream-500: #ffc21a;
+  --color-cream-600: #eaab00;
+  --color-cream-700: #8a6400;
+  --color-cream-800: #5e4400;
+  --color-cream-900: #3d2c00;
+
+  /* Neutros con tinte morado (texto ≥ 4,5:1 desde sand-400 sobre blanco). */
+  --color-sand-50: #faf6f0;
+  --color-sand-100: #f3ede5;
+  --color-sand-200: #e6ddd4;
+  --color-sand-300: #cfc4cc;
+  --color-sand-400: #776b81;
+  --color-sand-500: #6e6378;
+  --color-sand-600: #5d5168;
+  --color-sand-700: #4a3e55;
+  --color-sand-800: #352841;
+  --color-sand-900: #24102e;
+
+  /* Sombras con tinte de tinta (no negro). */
+  --shadow-xs: 0 1px 2px rgba(36, 16, 46, 0.06);
+  --shadow-card: 0 1px 2px rgba(36, 16, 46, 0.06), 0 2px 6px rgba(36, 16, 46, 0.05);
+  --shadow-card-hover: 0 14px 30px -10px rgba(36, 16, 46, 0.22), 0 4px 10px -4px rgba(36, 16, 46, 0.1);
+  --shadow-elevated: 0 30px 60px -24px rgba(36, 16, 46, 0.35), 0 8px 20px -8px rgba(36, 16, 46, 0.15);
+  --shadow-warm: 0 6px 0 0 #24102e;
+  --shadow-ticket: 0 1px 0 rgba(36, 16, 46, 0.06), 0 10px 24px -12px rgba(36, 16, 46, 0.35);
+
+  --animate-entra: entra 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-sello: sello 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  /* Burbujas del chat: solo escala, sin opacidad (L-03: el texto que entra
+     nunca queda medio transparente, así el contraste es siempre el final). */
+  --animate-burbuja: burbuja 0.45s cubic-bezier(0.3, 1.3, 0.5, 1) both;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-sand-900);
-  background-color: var(--color-cream-50);
+  color: var(--color-tinta);
+  background-color: var(--color-papel);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
-/* Focus styles for accessibility */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
 *:focus-visible {
-  outline: 2px solid var(--color-primary-500);
+  outline: 3px solid var(--color-chicha-500);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* Radix accordion animations */
-@keyframes accordion-down {
+::selection {
+  background: var(--color-aji-300);
+  color: var(--color-tinta);
+}
+
+/* ─── Movimiento ───────────────────────────────────────────────────────────
+ * Regla: el contenido NUNCA depende de la animación. Todo lo animado se ve
+ * igual sin JS, al imprimir y con prefers-reduced-motion. Solo animaciones de
+ * entrada al cargar (no al hacer scroll), cortas y con «both».
+ */
+/* Usa «translate» (no «transform») para no pisar el giro de cada pieza. */
+@keyframes entra {
   from {
-    height: 0;
     opacity: 0;
+    translate: 0 14px;
   }
   to {
-    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes burbuja {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes sello {
+  0% {
+    opacity: 0;
+    scale: 1.6;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes cinta {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes escribe {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
     opacity: 1;
   }
 }
 
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-    opacity: 1;
+@keyframes pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 194, 26, 0.55);
   }
-  to {
-    height: 0;
-    opacity: 0;
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 194, 26, 0);
   }
 }
 
-/* Pulse for notifications */
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+.animate-cinta {
+  animation: cinta 40s linear infinite;
+}
+.animate-escribe {
+  animation: escribe 1.2s ease-in-out infinite;
+}
+.animate-pulso {
+  animation: pulso 1.8s ease-out infinite;
 }
 
-.animate-pulse-soft {
-  animation: pulse-soft 2s ease-in-out infinite;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .animate-cinta {
+    animation: none !important;
+  }
 }
 
-/* Glow pulse (used by Button glow variant) */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 168, 137, 0.45); }
-  50% { box-shadow: 0 0 0 8px rgba(59, 168, 137, 0); }
+/* ─── Piezas propias ───────────────────────────────────────────────────────── */
+
+/* Tira de ticket: borde dentado arriba y abajo. */
+.ticket {
+  --diente: 7px;
+  background: #fffdf8;
+  -webkit-mask:
+    radial-gradient(circle at var(--diente) 0, #0000 calc(var(--diente) * 0.62), #000 calc(var(--diente) * 0.66)) 0 0 / calc(var(--diente) * 2) 51% repeat-x,
+    radial-gradient(circle at var(--diente) 100%, #0000 calc(var(--diente) * 0.62), #000 calc(var(--diente) * 0.66)) 0 100% / calc(var(--diente) * 2) 51% repeat-x;
+  mask:
+    radial-gradient(circle at var(--diente) 0, #0000 calc(var(--diente) * 0.62), #000 calc(var(--diente) * 0.66)) 0 0 / calc(var(--diente) * 2) 51% repeat-x,
+    radial-gradient(circle at var(--diente) 100%, #0000 calc(var(--diente) * 0.62), #000 calc(var(--diente) * 0.66)) 0 100% / calc(var(--diente) * 2) 51% repeat-x;
 }
 
-.animate-glow-pulse {
-  animation: glow-pulse 2.4s ease-in-out infinite;
+/* Línea punteada de comanda. */
+.punteado {
+  background-image: linear-gradient(to right, currentColor 45%, transparent 0);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  height: 1px;
+}
+.riel-vertical {
+  background-image: linear-gradient(to bottom, currentColor 45%, transparent 0);
+  background-size: 2px 10px;
+  background-repeat: repeat-y;
+  width: 2px;
 }
 
-/* Shimmer sweep (used by Button shimmer variant) */
-@keyframes btn-shimmer {
-  0% { transform: translateX(-150%); }
-  100% { transform: translateX(150%); }
+/* Fondo de papel con trama muy suave. */
+.papel-trama {
+  background-color: var(--color-papel);
+  background-image: radial-gradient(rgba(36, 16, 46, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
 }
 
-.btn-shimmer {
-  position: relative;
-  overflow: hidden;
+/* Barras de desplazamiento ocultas para filas de chips. */
+.sin-barra {
+  scrollbar-width: none;
+}
+.sin-barra::-webkit-scrollbar {
+  display: none;
 }
 
-.btn-shimmer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.35) 50%,
-    transparent 70%
-  );
-  transform: translateX(-150%);
-  animation: btn-shimmer 2.8s ease-in-out infinite;
+/* Detalles (preguntas frecuentes) sin marcador nativo. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
-/* Number pop entrance */
-@keyframes number-pop {
-  0% { opacity: 0; transform: scale(0.5) translateY(10px); }
-  60% { transform: scale(1.1) translateY(-2px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* Floating motion for decorative elements */
-@keyframes float-soft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-float-soft {
-  animation: float-soft 4s ease-in-out infinite;
-}
-
-/* Marquee animation for logo/strip bars */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Navigation underline animation */
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: var(--color-primary-600);
-  border-radius: 1px;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Smooth number counter */
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Progress bar fill */
-@keyframes fill-bar {
-  from { width: 0; }
-}
-
-/* Custom scrollbar for docs sidebars */
-.docs-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-.docs-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.docs-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--color-sand-300);
-  border-radius: 4px;
-}
-.docs-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--color-sand-400);
-}
-
-/* Docs prose refinements */
-.docs-prose {
-  --tw-prose-body: #5a5247;
-  line-height: 1.8;
-}
-.docs-prose h2 {
-  letter-spacing: -0.025em;
-}
-.docs-prose h3 {
-  letter-spacing: -0.015em;
-}
-.docs-prose p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* Zebra striping for docs tables */
-.docs-prose tbody tr:nth-child(even) {
-  background-color: var(--color-sand-50);
-}
-
-/* Callout blockquotes */
-.docs-prose blockquote {
-  border-radius: 0 0.75rem 0.75rem 0;
-  font-size: 0.9375rem;
-}
-
-/* Custom range slider */
+/* Rango de la calculadora */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   height: 6px;
   border-radius: 3px;
-  background: var(--color-primary-500);
+  background: var(--color-chicha-200);
   outline: none;
 }
-
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
-  background: white;
-  border: 3px solid var(--color-primary-500);
-  box-shadow: 0 2px 6px rgba(149, 113, 60, 0.25);
+  background: var(--color-aji-500);
+  border: 3px solid var(--color-tinta);
   cursor: pointer;
-  transition: transform 0.15s ease;
 }
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-}
-
 input[type="range"]::-moz-range-thumb {
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
-  background: white;
-  border: 3px solid var(--color-primary-500);
-  box-shadow: 0 2px 6px rgba(149, 113, 60, 0.25);
+  background: var(--color-aji-500);
+  border: 3px solid var(--color-tinta);
   cursor: pointer;
-  transition: transform 0.15s ease;
 }
 
 /* Páginas legales (sin plugin de tipografía) */
@@ -293,7 +327,7 @@ input[type="range"]::-moz-range-thumb {
   margin-top: 2rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-sand-900);
+  color: var(--color-tinta);
 }
 .legal h3 {
   margin-top: 1.25rem;
@@ -312,6 +346,12 @@ input[type="range"]::-moz-range-thumb {
   margin-top: 0.35rem;
 }
 .legal a {
-  color: var(--color-primary-700);
+  color: var(--color-chicha-700);
   text-decoration: underline;
+}
+
+/* Un hijo de grid nunca ensancha su columna más allá de la pantalla
+   (las tiras con scroll horizontal y los titulares largos lo hacían en 390 px). */
+:where(.grid) > * {
+  min-width: 0;
 }

@@ -7,12 +7,29 @@
  * - Precios al mes con IGV incluido. 0 % de comisión al restaurante y al
  *   comensal. Anual = 10 meses pagados.
  * - Tienda (S/ 249) NO trae el asistente de WhatsApp; viene desde S/ 499.
+ * - El QR de Yape o Plin del local con verificación del comprobante vuelve al
+ *   plan Tienda (LV2-E, 15-nov): ficha G-09, unida a `main` de pedily-web
+ *   (`8cfb1d1`: `components/features/checkout/PaymentForm/PaymentForm.tsx:46-54`,
+ *   `components/shared/ManualQrPay`) y pedily-backend (`05ffea7`:
+ *   `src/order/web-qr-payment.ts`, `web-qr-proof.service.ts`). Aparece cuando el
+ *   restaurante enciende `PLIN_MANUAL` y sube su QR o número de cobro.
  * - Los cupos de conversaciones del asistente NO se publican en cifras hasta
  *   medirlos; el de Completo es 3 veces el de Tienda + WhatsApp.
  * - Alta: S/ 490 (Tienda y Tienda + WhatsApp) o S/ 790 (Completo), gratis si
  *   el restaurante se queda 6 meses; si se va antes paga
  *   alta × (6 − meses pagados) / 6, redondeado a sol entero.
  * - Varios locales en una cuenta no entra en ningún plan hasta construirlo.
+ * - Añadido 16-nov (`D-decisiones-2026-11-15.md`): la carta digital por QR
+ *   (solo ver la carta: la carta web `/menu` abierta con un QR) va en TODOS
+ *   los planes; el QR de mesa que cobra (`FEATURE_TABLE_QR`) es un
+ *   complemento de +S/ 150 al mes en Tienda y Tienda + WhatsApp, e incluido en
+ *   Completo. Precio por criterio del coordinador, revisable.
+ *
+ * - 16-nov (L-02, PROPUESTA al coordinador): integraciones por plan según
+ *   `src/lib/integraciones.ts` (apps de delivery, reparto, pagos, impresoras,
+ *   contador, Google/Meta/TikTok desde Tienda; carta en el chat de WhatsApp y
+ *   anuncios que abren WhatsApp desde Tienda + WhatsApp; API y webhooks en
+ *   Completo).
  *
  * Los costos de terceros son los precios públicos de cada proveedor, con su
  * fuente en `reports/Pedily revisión de propuestas.md` (14-nov-2026).
@@ -28,7 +45,25 @@ export interface Plan {
   incluye: string[];
   conBot: boolean;
   destacado?: boolean;
+  /** Complementos que se pueden sumar a este plan (lo que no viene incluido). */
+  complementos?: Complemento["id"][];
 }
+
+export interface Complemento {
+  id: "mesa";
+  nombre: string;
+  /** Soles al mes con IGV, encima de la cuota del plan. */
+  precioMensual: number;
+  queEs: string;
+}
+
+/** Complemento «Mesa»: el QR de mesa que cobra. Incluido en Completo. */
+export const COMPLEMENTO_MESA: Complemento = {
+  id: "mesa",
+  nombre: "QR de mesa que cobra",
+  precioMensual: 150,
+  queEs: "Tu cliente pide por rondas y paga desde la mesa, con la cuenta en vivo y el pago dividido.",
+};
 
 export const PLANES: Plan[] = [
   {
@@ -38,15 +73,20 @@ export const PLANES: Plan[] = [
     alta: 490,
     paraQuien: "Para empezar a vender por tu web sin comisión.",
     conBot: false,
+    complementos: ["mesa"],
     incluye: [
       "Tu tienda web con tu marca, tu carta y tu pedido online",
+      "Carta digital por QR: un QR en tu local abre tu carta con fotos y precios",
       "Panel de pedidos con aviso al instante y pantalla de cocina",
       "Cobro con tarjeta y Yape en tu cuenta Culqi",
-      "QR de Yape o Plin con verificación del comprobante",
+      "QR de tu Yape o Plin en la tienda web, con verificación del comprobante en el panel",
       "Boletas y facturas SUNAT automáticas (con tu Nubefact)",
       "Zonas de reparto con su tarifa, y recojo en tienda",
       "Pedidos programados para la hora que elija tu cliente",
       "Cupones, referidos y saldo a favor, si los enciendes",
+      "Caja con cierre del día, inventario y recetas, y reportes",
+      "Pedidos de Rappi y PedidosYa en tu mismo panel, cuando cada app aprueba la integración de tu local",
+      "Integraciones: motorizado de PedidosYa Envíos o Yango, Izipay o tu terminal POS, impresoras en red o en la nube, SIRE para tu contador, Google, Meta y TikTok",
     ],
   },
   {
@@ -57,11 +97,15 @@ export const PLANES: Plan[] = [
     paraQuien: "Para que WhatsApp tome pedidos solo, también en hora punta.",
     conBot: true,
     destacado: true,
+    complementos: ["mesa"],
     incluye: [
       "Todo lo del plan Tienda",
-      "Asistente de WhatsApp con IA que conversa, arma el pedido, cobra y lo manda a cocina",
+      "Asistente de WhatsApp con IA que conversa, recomienda y arma el pedido",
+      "Mini-app con tu marca dentro de WhatsApp, sin descargar nada: carta con fotos, carrito unido al chat, delivery o recojo y programar",
+      "Cobro en la mini-app con Yape o tarjeta, o con el QR de tu Yape o Plin",
       "Te pasa el chat cuando el cliente pide hablar con una persona",
       "Campañas por WhatsApp con plantillas, solo a quien dio su permiso",
+      "Tus platos del catálogo de Meta dentro del chat y las ventas de tus anuncios que abren WhatsApp, medidas",
       "Incluye un cupo mensual de conversaciones; te decimos cuál según tu volumen",
     ],
   },
@@ -75,8 +119,10 @@ export const PLANES: Plan[] = [
     incluye: [
       "Todo lo del plan Tienda + WhatsApp",
       "Kiosko de autoservicio: licencia para 1 pantalla (el equipo lo compras tú)",
-      "QR de mesa: tu cliente pide y paga desde la mesa",
+      "QR de mesa que cobra, incluido: tu cliente pide por rondas y paga desde la mesa",
       "Un cupo de conversaciones del asistente 3 veces mayor",
+      "Cobro con terminal POS en el kiosko",
+      "API y webhooks para conectar tus propios sistemas",
       "Atención prioritaria: te respondemos el mismo día hábil",
     ],
   },
@@ -145,3 +191,8 @@ export const CULQI_PORCENTAJE = 3.44;
 export const CULQI_FIJO_USD = 0.2;
 /** Tipo de cambio usado en las estimaciones (BCRP, 12-nov-2026). */
 export const SOLES_POR_DOLAR = 3.41;
+
+/** «+S/ 150 al mes» */
+export function precioComplemento(c: Complemento = COMPLEMENTO_MESA): string {
+  return `+${soles(c.precioMensual)} al mes`;
+}

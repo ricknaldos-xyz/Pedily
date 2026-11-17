@@ -54,12 +54,19 @@ export const WHATSAPP_TEL: string | null = WHATSAPP_NUMBER
  * Demostraciones públicas que el visitante puede tocar sin hablar con nadie.
  *
  * - `tiendaUrl`: tienda de ejemplo publicada (carta y pedido de prueba).
+ * - `kioskoUrl`: kiosko de ejemplo publicado (carta, carrito y pago).
  * - `botWhatsapp`: número del bot de demostración (sin «+»). Sin
  *   NEXT_PUBLIC_DEMO_BOT_WHATSAPP el botón «Prueba el bot por WhatsApp» no se
  *   pinta en ningún sitio.
  */
 export const DEMO = {
   tiendaUrl: "https://pedily-demo-web.vercel.app",
+  kioskoUrl: "https://pedily-demo-kiosko.vercel.app",
+  // Entradas directas (L-03, 16-nov): rutas reales de pedily-web
+  // (`app/menu/page.tsx`) y pedily-kiosk (`src/app/menu`), comprobadas con
+  // respuesta 200 en la demo publicada.
+  tiendaCartaUrl: "https://pedily-demo-web.vercel.app/menu",
+  kioskoCartaUrl: "https://pedily-demo-kiosko.vercel.app/menu",
   botWhatsapp: process.env.NEXT_PUBLIC_DEMO_BOT_WHATSAPP?.trim() || null,
   botMensaje: "Hola, quiero hacer un pedido",
 } as const;
@@ -105,4 +112,17 @@ export const FUNDADORES = {
   sinPermanencia: true,
   acompanamientoDirecto: true,
   aCambio: "nos das permiso para contar tu caso",
+} as const;
+
+/**
+ * Imagen para compartir (1200×630), generada por código con
+ * `scripts/generar-marca.cjs` (L-04). Cada página que define su propio
+ * `openGraph` debe incluirla: Next reemplaza el `openGraph` del layout entero
+ * y, sin esto, esa página se compartiría sin imagen.
+ */
+export const OG_IMAGEN = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Pedily: «Vende directo. La comisión se queda contigo.» WhatsApp que cobra, tienda web, kiosko, cocina, caja y boletas SUNAT en un solo panel, desde S/ 249 al mes con IGV",
 } as const;

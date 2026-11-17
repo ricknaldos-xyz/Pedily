@@ -28,11 +28,11 @@ interface Exito {
 }
 
 const campoBase =
-  "mt-1.5 block w-full rounded-xl border bg-white px-4 py-3 text-base transition-colors focus:outline-none focus:ring-2 sm:text-sm";
+  "mt-1.5 block w-full rounded-xl border-2 bg-white px-4 py-3 text-base transition-colors focus:outline-none focus:ring-2 sm:text-sm";
 const campoNormal =
-  "border-sand-200 focus:border-primary-500 focus:ring-primary-500/20";
+  "border-tinta/15 focus:border-chicha-600 focus:ring-chicha-600/20";
 const campoConError =
-  "border-accent-400 focus:border-accent-500 focus:ring-accent-500/20";
+  "border-rocoto-500 focus:border-rocoto-500 focus:ring-rocoto-500/20";
 
 function primerNombre(nombre: string): string {
   return nombre.split(/\s+/)[0] || nombre;
@@ -134,7 +134,7 @@ export function FormularioSolicitud({ waHref }: Props) {
 
   const mensajeError = (campo: CampoSolicitud) =>
     errores[campo] ? (
-      <p id={`${campo}-error`} className="mt-1.5 text-sm text-accent-600">
+      <p id={`${campo}-error`} className="mt-1.5 text-sm text-rocoto-600">
         {errores[campo]}
       </p>
     ) : null;
@@ -144,7 +144,7 @@ export function FormularioSolicitud({ waHref }: Props) {
       ref={formRef}
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-2xl border border-sand-200 bg-white p-5 sm:p-8"
+      className="rounded-3xl border-2 border-tinta bg-white p-5 shadow-[0_8px_0_0_#24102e] sm:p-8"
     >
       {/* Honeypot anti-spam (oculto) */}
       <input
@@ -157,12 +157,12 @@ export function FormularioSolicitud({ waHref }: Props) {
       />
 
       <fieldset>
-        <legend className="text-base font-bold text-sand-900">
+        <legend className="font-display text-xl font-extrabold text-tinta">
           Tu negocio
         </legend>
         <div className="mt-4 grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="negocio" className="block text-sm font-medium text-sand-700">
+            <label htmlFor="negocio" className="block text-sm font-semibold text-tinta">
               Nombre del negocio
             </label>
             <input
@@ -176,7 +176,7 @@ export function FormularioSolicitud({ waHref }: Props) {
             {mensajeError("negocio")}
           </div>
           <div>
-            <label htmlFor="nombre" className="block text-sm font-medium text-sand-700">
+            <label htmlFor="nombre" className="block text-sm font-semibold text-tinta">
               Tu nombre
             </label>
             <input
@@ -190,7 +190,7 @@ export function FormularioSolicitud({ waHref }: Props) {
             {mensajeError("nombre")}
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-sand-700">
+            <label htmlFor="email" className="block text-sm font-semibold text-tinta">
               Correo
             </label>
             <input
@@ -204,7 +204,7 @@ export function FormularioSolicitud({ waHref }: Props) {
             {mensajeError("email")}
           </div>
           <div>
-            <label htmlFor="whatsapp" className="block text-sm font-medium text-sand-700">
+            <label htmlFor="whatsapp" className="block text-sm font-semibold text-tinta">
               WhatsApp
             </label>
             <div className="relative">
@@ -228,7 +228,7 @@ export function FormularioSolicitud({ waHref }: Props) {
             {mensajeError("whatsapp")}
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="distrito" className="block text-sm font-medium text-sand-700">
+            <label htmlFor="distrito" className="block text-sm font-semibold text-tinta">
               Distrito del local
             </label>
             <select
@@ -263,11 +263,11 @@ export function FormularioSolicitud({ waHref }: Props) {
       {PREGUNTAS.map((pregunta) => (
         <fieldset
           key={pregunta.id}
-          className="mt-8 border-t border-sand-100 pt-6"
+          className="mt-8 border-t border-dashed border-tinta/20 pt-6"
           aria-describedby={errores[pregunta.id] ? `${pregunta.id}-error` : undefined}
         >
-          <legend className="float-left w-full text-base font-bold text-sand-900">
-            <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 text-xs font-bold text-primary-700">
+          <legend className="float-left w-full font-display text-lg font-bold leading-snug text-tinta">
+            <span className="mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-tinta bg-aji-500 font-mono text-xs font-bold text-tinta">
               {pregunta.numero}
             </span>
             {pregunta.titulo}
@@ -277,12 +277,12 @@ export function FormularioSolicitud({ waHref }: Props) {
               <label
                 key={opcion.valor}
                 className={clsx(
-                  "flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm text-sand-800 transition-colors",
-                  "has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:checked]:font-semibold has-[:checked]:text-primary-800",
-                  "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500/30",
+                  "flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3 text-sm text-sand-800 transition-colors",
+                  "has-[:checked]:border-tinta has-[:checked]:bg-aji-100 has-[:checked]:font-semibold has-[:checked]:text-tinta",
+                  "has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-chicha-600/30",
                   errores[pregunta.id]
-                    ? "border-accent-300"
-                    : "border-sand-200 hover:border-sand-300 hover:bg-sand-50"
+                    ? "border-rocoto-300"
+                    : "border-tinta/10 hover:border-tinta/30 hover:bg-papel"
                 )}
               >
                 <input
@@ -290,7 +290,7 @@ export function FormularioSolicitud({ waHref }: Props) {
                   name={pregunta.id}
                   value={opcion.valor}
                   onChange={() => limpiarError(pregunta.id)}
-                  className="h-4 w-4 shrink-0 accent-primary-600"
+                  className="h-4 w-4 shrink-0 accent-chicha-600"
                 />
                 {opcion.texto}
               </label>
@@ -300,8 +300,8 @@ export function FormularioSolicitud({ waHref }: Props) {
         </fieldset>
       ))}
 
-      <div className="mt-8 border-t border-sand-100 pt-6">
-        <label htmlFor="mensaje" className="block text-sm font-medium text-sand-700">
+      <div className="mt-8 border-t border-dashed border-tinta/20 pt-6">
+        <label htmlFor="mensaje" className="block text-sm font-semibold text-tinta">
           ¿Algo más que debamos saber? <span className="font-normal text-sand-400">(opcional)</span>
         </label>
         <textarea
@@ -320,14 +320,14 @@ export function FormularioSolicitud({ waHref }: Props) {
 
       <div aria-live="polite" className="mt-6 space-y-3 empty:hidden">
         {nErrores > 0 && (
-          <p className="rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-sm text-accent-700">
+          <p className="rounded-xl border-2 border-rocoto-300 bg-rocoto-50 px-4 py-3 text-sm text-rocoto-700">
             {nErrores === 1
               ? "Falta un dato: está marcado arriba."
               : `Faltan ${nErrores} datos: están marcados arriba.`}
           </p>
         )}
         {errorGeneral && nErrores === 0 && (
-          <p className="rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-sm text-accent-700">
+          <p className="rounded-xl border-2 border-rocoto-300 bg-rocoto-50 px-4 py-3 text-sm text-rocoto-700">
             {errorGeneral}
             {waHref && (
               <>
@@ -354,7 +354,7 @@ export function FormularioSolicitud({ waHref }: Props) {
               name="modo"
               value="tienda"
               disabled={enviando !== null}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-warm transition-all hover:bg-primary-700 hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl border-2 border-tinta bg-aji-500 px-6 text-base font-semibold text-tinta shadow-[0_4px_0_0_#24102e] transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#24102e] active:translate-y-0.5 active:shadow-[0_1px_0_0_#24102e] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {enviando === "tienda" ? (
                 <>
@@ -371,7 +371,7 @@ export function FormularioSolicitud({ waHref }: Props) {
               name="modo"
               value="demo"
               disabled={enviando !== null}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-sand-200 bg-white px-6 py-3.5 text-sm font-semibold text-sand-800 transition-all hover:bg-sand-50 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl border-2 border-tinta/15 bg-white px-6 text-base font-semibold text-tinta transition-all hover:border-tinta/40 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {enviando === "demo" ? (
                 <>
@@ -382,9 +382,9 @@ export function FormularioSolicitud({ waHref }: Props) {
               )}
             </button>
         </>
-        <p className="text-center text-xs text-sand-400">
+        <p className="text-center text-xs text-sand-700">
           Tratamos tus datos según nuestra{" "}
-          <Link href="/legal/privacidad" className="underline hover:text-sand-600">
+          <Link href="/legal/privacidad" className="font-semibold text-chicha-700 underline">
             política de privacidad
           </Link>
           .
@@ -433,16 +433,16 @@ function PantallaGracias({ exito }: { exito: Exito }) {
   return (
     <div
       role="status"
-      className="rounded-2xl border border-sand-200 bg-white p-6 py-12 text-center sm:p-10"
+      className="rounded-3xl border-2 border-tinta bg-white p-6 py-12 text-center shadow-[0_8px_0_0_#24102e] sm:p-10"
     >
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-100">
-        <CheckCircle2 className="h-8 w-8 text-primary-600" />
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-hierba-50">
+        <CheckCircle2 aria-hidden className="h-8 w-8 text-hierba-600" />
       </div>
-      <h2 className="mt-4 text-xl font-bold text-sand-900">{titulo}</h2>
-      <p className="mx-auto mt-3 max-w-md text-sand-500">{texto}</p>
+      <h2 className="mt-4 font-display text-2xl font-extrabold text-tinta">{titulo}</h2>
+      <p className="mx-auto mt-3 max-w-md text-sand-700">{texto}</p>
       <Link
         href="/"
-        className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-800"
+        className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-chicha-700 underline underline-offset-2"
       >
         Volver al inicio <ArrowRight className="h-4 w-4" />
       </Link>
