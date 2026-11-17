@@ -20,9 +20,9 @@ export function Asistente() {
     { ...PIEZA_MINIAPP, Icono: Smartphone },
   ];
   return (
-    <section className="relative overflow-hidden bg-tinta py-16 text-white sm:py-24">
+    <section className="relative overflow-hidden bg-tinta py-14 text-white sm:py-24">
       <div aria-hidden className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-chicha-600/40 blur-3xl" />
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 [&>*]:min-w-0 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 lg:gap-12 [&>*]:min-w-0 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
         <div>
           <Encabezado
             oscuro
@@ -41,7 +41,8 @@ export function Asistente() {
                   <span className="font-display text-xl font-bold">{nombre}</span>
                 </p>
                 <p className="mt-2 text-[0.95rem] leading-snug text-chicha-100">{bajada}</p>
-                <ul className="mt-3 space-y-2">
+                {/* En móvil la lista completa queda en la página del asistente (L-03). */}
+                <ul className="mt-3 hidden space-y-2 sm:block">
                   {items.map((p) => (
                     <li key={p.texto} className="flex gap-2 text-[0.93rem] leading-snug text-white">
                       <Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-aji-400" />

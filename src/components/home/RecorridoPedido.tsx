@@ -90,33 +90,47 @@ const PARADAS: Parada[] = [
   },
 ];
 
-/** «Un pedido, de punta a punta» (benchmark §5.3 n.º 4). */
+/**
+ * «Un pedido, de punta a punta» (benchmark §5.3 n.º 4). L-03 (auditoría L-01
+ * §4 P1-6): el pedido se cuenta una sola vez. En móvil, los 6 pasos son un
+ * carrusel «Paso n de 6» y los clips reales (kiosko, mesa y cocina) van en el
+ * mismo bloque, también deslizables; en escritorio, como antes.
+ */
 export function RecorridoPedido() {
   return (
-    <section id="como-funciona" className="scroll-mt-16 bg-white py-16 sm:py-24">
+    <section id="como-funciona" className="scroll-mt-16 bg-white py-14 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Encabezado
           etiqueta="Un pedido, de punta a punta"
           titulo="Así viaja un pedido, sin que nadie lo anote a mano"
-          bajada="Del «hola» del cliente a la boleta y de vuelta a tu tienda. Cada parada es una parte de Pedily."
+          bajada="Del primer mensaje del cliente a la boleta y de vuelta a tu tienda. Cada parada es una parte de Pedily."
         />
 
-        <ol className="relative mt-12 grid gap-6 lg:grid-cols-6 lg:gap-4">
-          {/* Riel punteado */}
-          <span aria-hidden className="riel-vertical absolute bottom-6 left-[1.05rem] top-6 text-tinta/25 lg:hidden" />
+        <ol
+          aria-label="Los 6 pasos de un pedido"
+          className="sin-barra relative -mx-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 lg:mx-0 lg:mt-12 lg:grid lg:grid-cols-6 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0"
+        >
           <span aria-hidden className="punteado absolute left-6 right-6 top-[1.05rem] hidden text-tinta/25 lg:block" />
           {PARADAS.map((p, i) => (
-            <li key={p.titulo} className="relative pl-12 lg:pl-0 lg:pt-12">
-              <span
-                aria-hidden
-                className={clsx(
-                  "absolute left-0 top-0 flex h-[2.1rem] w-[2.1rem] items-center justify-center rounded-full border-2 border-tinta font-mono text-sm font-bold",
-                  i === 0 ? "bg-aji-500" : "bg-papel"
-                )}
-              >
-                {i + 1}
+            <li
+              key={p.titulo}
+              className="relative w-[80%] max-w-[19rem] shrink-0 snap-start rounded-2xl border border-tinta/10 bg-papel p-4 lg:w-auto lg:max-w-none lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:pt-12"
+            >
+              <span className="flex items-center gap-2 lg:block">
+                <span
+                  aria-hidden
+                  className={clsx(
+                    "flex h-[2.1rem] w-[2.1rem] shrink-0 items-center justify-center rounded-full border-2 border-tinta font-mono text-sm font-bold lg:absolute lg:left-0 lg:top-0",
+                    i === 0 ? "bg-aji-500" : "bg-white lg:bg-papel"
+                  )}
+                >
+                  {i + 1}
+                </span>
+                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-humo lg:hidden">
+                  Paso {i + 1} de {PARADAS.length}
+                </span>
               </span>
-              <h3 className="font-display text-lg font-bold leading-tight text-tinta">{p.titulo}</h3>
+              <h3 className="mt-3 font-display text-lg font-bold leading-tight text-tinta lg:mt-0">{p.titulo}</h3>
               <p className="mt-1.5 text-[0.95rem] leading-relaxed text-sand-700">{p.texto}</p>
               <Ticket className="mt-4 max-w-xs">
                 {p.mini}
@@ -131,27 +145,30 @@ export function RecorridoPedido() {
             </li>
           ))}
         </ol>
+        <p aria-hidden className="mt-1 text-center font-mono text-[10px] uppercase tracking-wider text-humo lg:hidden">
+          Desliza para ver los 6 pasos →
+        </p>
 
-        {/* ── En video: el mismo pedido en otros canales ── */}
-        <div className="mt-16 rounded-3xl bg-papel p-5 sm:p-8">
+        {/* ── En video: el mismo recorrido en el producto real ── */}
+        <div className="mt-10 rounded-3xl bg-papel p-5 sm:p-8 lg:mt-16">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-chicha-700">Míralo funcionando</p>
           <p className="mt-2 max-w-2xl font-display text-2xl font-bold leading-tight text-tinta">
-            Del kiosko y la mesa a la cocina, en el producto real
+            Pasos 1 y 3 en el producto real: del kiosko y la mesa a la cocina
           </p>
-          <ul className="mt-8 grid items-end gap-8 sm:grid-cols-2 lg:grid-cols-[0.8fr_0.8fr_1.6fr]">
-            <li>
+          <ul className="sin-barra -mx-5 mt-6 flex snap-x snap-mandatory items-end gap-5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-8 sm:overflow-visible sm:px-0 lg:mt-8 lg:grid-cols-[0.8fr_0.8fr_1.6fr]">
+            <li className="w-[58%] shrink-0 snap-start sm:w-auto">
               <MarcoKiosko className="mx-auto max-w-[14rem]">
                 <Clip clave="kiosko" />
               </MarcoKiosko>
               <p className="mt-3 text-center text-sm text-sand-700">{CLIPS.kiosko.titulo}</p>
             </li>
-            <li>
+            <li className="w-[52%] shrink-0 snap-start sm:w-auto">
               <MarcoCelular className="mx-auto max-w-[13rem]">
                 <Clip clave="mesa" />
               </MarcoCelular>
               <p className="mt-3 text-center text-sm text-sand-700">{CLIPS.mesa.titulo}</p>
             </li>
-            <li className="sm:col-span-2 lg:col-span-1">
+            <li className="w-[88%] shrink-0 snap-start sm:col-span-2 sm:w-auto lg:col-span-1">
               <MarcoNavegador url="mirestaurante · panel/cocina" oscuro>
                 <Clip clave="cocina" />
               </MarcoNavegador>
