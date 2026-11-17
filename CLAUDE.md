@@ -13,7 +13,8 @@ Pedily Landing is the marketing website for Pedily, a B2B SaaS product for order
 - **Styling:** Tailwind CSS v4
 - **Animations:** CSS (sin librerías; `prefers-reduced-motion` las apaga)
 - **Icons:** Lucide React
-- **Capturas reales:** `scripts/copiar-capturas.sh` (LV2-C → `public/capturas`, `public/clips`), registro en `src/lib/capturas.ts`
+- **Capturas reales:** `scripts/copiar-capturas.sh` (LV2-C → `public/capturas`, `public/clips`) y `scripts/copiar-capturas-integraciones.sh` (fichas J → `public/capturas/integraciones`), registro en `src/lib/capturas.ts`
+- **Marca (og-image, favicon, iconos):** `scripts/generar-marca.cjs` (Playwright de otro repo, ver cabecera)
 - **Utilities:** clsx
 - **Package Manager:** pnpm
 

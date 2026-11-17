@@ -113,3 +113,16 @@ export const FUNDADORES = {
   acompanamientoDirecto: true,
   aCambio: "nos das permiso para contar tu caso",
 } as const;
+
+/**
+ * Imagen para compartir (1200×630), generada por código con
+ * `scripts/generar-marca.cjs` (L-04). Cada página que define su propio
+ * `openGraph` debe incluirla: Next reemplaza el `openGraph` del layout entero
+ * y, sin esto, esa página se compartiría sin imagen.
+ */
+export const OG_IMAGEN = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Pedily: «Vende directo. La comisión se queda contigo.» WhatsApp que cobra, tienda web, kiosko, cocina, caja y boletas SUNAT en un solo panel, desde S/ 249 al mes con IGV",
+} as const;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGEN } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clsx } from "clsx";
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: s.seo.titulo,
     description: s.seo.descripcion,
     alternates: { canonical: RUTA_SOLUCION(s.slug) },
-    openGraph: { title: s.seo.titulo, description: s.seo.descripcion, url: RUTA_SOLUCION(s.slug), locale: "es_PE", type: "website" },
+    openGraph: { title: s.seo.titulo, description: s.seo.descripcion, url: RUTA_SOLUCION(s.slug), locale: "es_PE", type: "website", images: [OG_IMAGEN] },
   };
 }
 

@@ -10,7 +10,7 @@ import { Personalizador } from "@/components/home/Personalizador";
 import { RecorridoGuiado } from "@/components/producto/RecorridoGuiado";
 import { TOTAL_PANTALLAS } from "@/lib/panel";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
-import { DEMO, demoBotLink } from "@/lib/site";
+import { DEMO, OG_IMAGEN, demoBotLink } from "@/lib/site";
 
 const TITULO = "Demo de Pedily: prueba la tienda, el kiosko y el panel";
 const DESCRIPCION =
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: "/demo" },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: "/demo", locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: "/demo", locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 /**

@@ -1,7 +1,24 @@
 import { clsx } from "clsx";
 import { Captura } from "@/components/marca/Captura";
 import { MarcoCelular, MarcoKiosko, MarcoNavegador } from "@/components/marca/Marcos";
-import { CAPTURAS, type ClaveCaptura } from "@/lib/capturas";
+import { CAPTURAS, infoCaptura, type ClaveCaptura } from "@/lib/capturas";
+
+/** Rótulo de la barra del navegador según dónde se ve la pantalla. */
+export function urlMarco(k: ClaveCaptura): string {
+  const d = infoCaptura(k).donde ?? "panel";
+  return { panel: "mirestaurante · panel", caja: "mirestaurante · caja", tienda: "mirestaurante · tienda", kiosko: "mirestaurante · kiosko" }[d];
+}
+
+/** Pie de una captura: lo que se ve y, si es de la demo, el proveedor simulado. */
+export function PieCaptura({ clave, className }: { clave: ClaveCaptura; className?: string }) {
+  const c = infoCaptura(clave);
+  return (
+    <figcaption className={clsx("text-sm leading-snug text-sand-700", className)}>
+      {c.alt}
+      {c.demo && <span className="mt-1 block font-mono text-[11px] uppercase tracking-wider text-humo">Modo demo · {c.demo}</span>}
+    </figcaption>
+  );
+}
 
 /**
  * «Así se ve»: capturas reales con su marco. Primero lo que ve el cliente
@@ -10,9 +27,10 @@ import { CAPTURAS, type ClaveCaptura } from "@/lib/capturas";
  * el panel en dos columnas (si sobra uno, va centrado y más ancho).
  */
 export function Galeria({ claves }: { claves: ClaveCaptura[] }) {
-  const equipos = claves.filter((k) => CAPTURAS[k].tipo !== "panel");
-  const paneles = claves.filter((k) => CAPTURAS[k].tipo === "panel");
-  const pie = (k: ClaveCaptura) => <figcaption className="mt-3 text-sm leading-snug text-sand-700">{CAPTURAS[k].alt}</figcaption>;
+  const enPantalla = (k: ClaveCaptura) => CAPTURAS[k].tipo === "panel" || CAPTURAS[k].tipo === "recorte";
+  const equipos = claves.filter((k) => !enPantalla(k));
+  const paneles = claves.filter(enPantalla);
+  const pie = (k: ClaveCaptura) => <PieCaptura clave={k} className="mt-3" />;
 
   return (
     <div className="space-y-10">
@@ -46,7 +64,7 @@ export function Galeria({ claves }: { claves: ClaveCaptura[] }) {
                 className={clsx("w-[84vw] shrink-0 snap-center sm:w-auto", sola && "sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-3xl")}
               >
                 <figure>
-                  <MarcoNavegador oscuro url="mirestaurante · panel">
+                  <MarcoNavegador oscuro={infoCaptura(k).donde !== "tienda" && infoCaptura(k).donde !== "kiosko"} url={urlMarco(k)}>
                     <Captura clave={k} sizes={sola ? "(max-width: 640px) 84vw, 768px" : "(max-width: 640px) 84vw, 620px"} decorativa />
                   </MarcoNavegador>
                   {pie(k)}

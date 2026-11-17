@@ -5,7 +5,7 @@ import { Sello } from "@/components/marca/Sello";
 import { WhatsAppGlyph } from "@/components/ui/WhatsAppGlyph";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
 import { MESES_PERMANENCIA_ALTA_GRATIS, PLANES, soles } from "@/lib/planes";
-import { CONTACT_EMAIL, CONTACT_LOCATION, DEMO, whatsappLink } from "@/lib/site";
+import { CONTACT_EMAIL, CONTACT_LOCATION, DEMO, OG_IMAGEN, whatsappLink } from "@/lib/site";
 import { FormularioSolicitud } from "./FormularioSolicitud";
 
 const TITULO = "Crea tu tienda con Pedily: cuéntanos de tu restaurante";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: "/contacto" },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: "/contacto", locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: "/contacto", locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 const GARANTIAS = [
