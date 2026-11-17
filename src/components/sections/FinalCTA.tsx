@@ -14,9 +14,12 @@ const GARANTIAS = [
 export function FinalCTA({
   titulo = "Tu próximo pedido puede llegar sin comisión",
   bajada = "Crea tu tienda hoy. El alta es gratis si te quedas 6 meses y te acompañamos en cada paso.",
+  secundario,
 }: {
   titulo?: string;
   bajada?: string;
+  /** Segundo botón fijo (p. ej. en /demo no tiene sentido «Ver la demo»). */
+  secundario?: { href: string; texto: string };
 }) {
   const bot = demoBotLink();
   return (
@@ -29,7 +32,11 @@ export function FinalCTA({
           <Boton href="/contacto" tam="lg" flecha>
             Crear mi tienda
           </Boton>
-          {bot ? (
+          {secundario ? (
+            <Boton href={secundario.href} variante="borde-claro" tam="lg">
+              {secundario.texto}
+            </Boton>
+          ) : bot ? (
             <a
               href={bot}
               target="_blank"

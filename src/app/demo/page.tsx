@@ -6,6 +6,9 @@ import { MarcoCelular, MarcoKiosko, MarcoNavegador } from "@/components/marca/Ma
 import { Clip } from "@/components/marca/Clip";
 import { WhatsAppGlyph } from "@/components/ui/WhatsAppGlyph";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { Personalizador } from "@/components/home/Personalizador";
+import { RecorridoGuiado } from "@/components/producto/RecorridoGuiado";
+import { TOTAL_PANTALLAS } from "@/lib/panel";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
 import { DEMO, demoBotLink } from "@/lib/site";
 
@@ -23,6 +26,9 @@ export const metadata: Metadata = {
 /**
  * Demos publicadas (Tramo D, 14-nov): tienda y kiosko con la carta de
  * «Restaurante Demo». El bot solo aparece con NEXT_PUBLIC_DEMO_BOT_WHATSAPP.
+ * L-03 (16-nov): entradas directas a la carta de cada demo, recorrido guiado
+ * del panel que se puede tocar (capturas reales, sin cuentas), el
+ * personalizador (antes en la home) y un CTA final sin «Ver la demo».
  */
 export default function Demo() {
   const bot = demoBotLink();
@@ -58,6 +64,9 @@ export default function Demo() {
             <Boton href={DEMO.tiendaUrl} externo variante="aji" ancho>
               Abrir la tienda
             </Boton>
+            <a href={DEMO.tiendaCartaUrl} target="_blank" rel="noopener noreferrer" className="mt-3 text-center text-sm font-semibold text-chicha-700 underline underline-offset-2">
+              Ir directo a la carta
+            </a>
           </article>
 
           <article className="flex flex-col rounded-3xl border border-tinta/10 bg-white p-6">
@@ -75,14 +84,17 @@ export default function Demo() {
             <Boton href={DEMO.kioskoUrl} externo variante="aji" ancho>
               Abrir el kiosko
             </Boton>
+            <a href={DEMO.kioskoCartaUrl} target="_blank" rel="noopener noreferrer" className="mt-3 text-center text-sm font-semibold text-chicha-700 underline underline-offset-2">
+              Ir directo a la carta del kiosko
+            </a>
           </article>
 
           <article className="flex flex-col rounded-3xl bg-tinta p-6 text-white">
             <LayoutDashboard aria-hidden className="h-7 w-7 text-aji-400" />
             <h2 className="mt-4 font-display text-2xl font-extrabold">El panel</h2>
             <p className="mt-2 flex-1 text-[0.98rem] leading-relaxed text-chicha-100">
-              Donde llega todo: pedidos en vivo, cocina, caja, inventario, clientes y reportes. Recórrelo pantalla por pantalla, con
-              datos de demostración.
+              Donde llega todo: pedidos en vivo, cocina, caja, inventario, clientes y reportes. Tócalo en el recorrido guiado o mira
+              sus {TOTAL_PANTALLAS} pantallas, con datos de demostración.
             </p>
             <figure className="my-6">
               <MarcoNavegador url="mirestaurante · panel" oscuro>
@@ -92,9 +104,12 @@ export default function Demo() {
                 Pedidos en vivo → reportes → finanzas
               </figcaption>
             </figure>
-            <Boton href="/panel" variante="aji" ancho flecha>
-              Recorrer el panel
+            <Boton href="#recorrido" variante="aji" ancho flecha>
+              Tocar el panel
             </Boton>
+            <a href="/panel" className="mt-3 text-center text-sm font-semibold text-aji-400 underline underline-offset-2">
+              Ver las {TOTAL_PANTALLAS} pantallas
+            </a>
           </article>
         </div>
 
@@ -121,7 +136,29 @@ export default function Demo() {
         )}
       </section>
 
-      <FinalCTA titulo="¿Te gustó? Ahora con tu carta" bajada="Crea tu tienda y te ayudamos a dejarla lista. El alta es gratis si te quedas 6 meses." />
+      <section id="recorrido" aria-labelledby="t-recorrido" className="scroll-mt-16 bg-[#160a1d] py-16 text-white sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-aji-400">Recorrido guiado · panel real con datos de la demo</p>
+          <h2 id="t-recorrido" className="mt-3 max-w-3xl font-display text-[1.9rem] font-extrabold leading-[1.05] tracking-[-0.025em] text-balance sm:text-5xl">
+            Toca el panel: de la alarma al cierre del mes
+          </h2>
+          <p className="mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-chicha-100">
+            Cinco pantallas del panel de la demo, en el orden en que las usa tu equipo. Toca el punto amarillo como si fuera el
+            panel de verdad.
+          </p>
+          <div className="mt-10">
+            <RecorridoGuiado />
+          </div>
+        </div>
+      </section>
+
+      <Personalizador />
+
+      <FinalCTA
+        titulo="¿Te gustó? Ahora con tu carta"
+        bajada="Crea tu tienda y te ayudamos a dejarla lista. El alta es gratis si te quedas 6 meses."
+        secundario={{ href: "/precios", texto: "Ver precios" }}
+      />
     </>
   );
 }

@@ -62,6 +62,11 @@ export const WHATSAPP_TEL: string | null = WHATSAPP_NUMBER
 export const DEMO = {
   tiendaUrl: "https://pedily-demo-web.vercel.app",
   kioskoUrl: "https://pedily-demo-kiosko.vercel.app",
+  // Entradas directas (L-03, 16-nov): rutas reales de pedily-web
+  // (`app/menu/page.tsx`) y pedily-kiosk (`src/app/menu`), comprobadas con
+  // respuesta 200 en la demo publicada.
+  tiendaCartaUrl: "https://pedily-demo-web.vercel.app/menu",
+  kioskoCartaUrl: "https://pedily-demo-kiosko.vercel.app/menu",
   botWhatsapp: process.env.NEXT_PUBLIC_DEMO_BOT_WHATSAPP?.trim() || null,
   botMensaje: "Hola, quiero hacer un pedido",
 } as const;
