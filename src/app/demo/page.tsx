@@ -58,7 +58,7 @@ export default function Demo() {
             </p>
             <div className="my-6">
               <MarcoCelular className="mx-auto w-full max-w-[14rem]">
-                <Captura clave="tienda-carta" sizes="240px" />
+                <Captura clave="tienda-carta" sizes="240px" prioridad />
               </MarcoCelular>
             </div>
             <Boton href={DEMO.tiendaUrl} externo variante="aji" ancho>
