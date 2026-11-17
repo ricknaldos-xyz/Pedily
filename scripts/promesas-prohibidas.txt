@@ -22,7 +22,8 @@ setup fees
 cancela cuando quieras
 
 # L-03 · pagos y kiosko
-izipay
+# 16-nov (L-02): «izipay» sale de la lista: Izipay como pasarela y el terminal
+# POS existen en main (PROMESAS filas 88 y 89, con su condición de activación).
 efectivo
 tablet
 android
@@ -47,12 +48,12 @@ audio
 
 # L-06 · mapa, exportación, API y multi-local
 dibuja
-excel
+# 16-nov (L-02): «excel» y «API pública» salen: el Excel del Registro de Ventas
+# y la API v1 existen en main (PROMESAS filas 92 y 96).
 tracking en vivo
 locales ilimitados
 multi-?(local|ruc|tenant)
 \+ ?API
-API p[uú]blica
 api\.pedily
 
 # L-07 · documentación pública (la ruta /docs de la landing, no URL ajenas)
@@ -70,10 +71,11 @@ sin que tu equipo
 un solo mensaje
 vende solo
 t[uú] solo supervisas
-PedidosYa y Rappi
-pedidos de Rappi y PedidosYa en
-marketplaces \(PedidosYa
-integraci[oó]n PedidosYa y Rappi
+# 16-nov (L-02): los pedidos de Rappi y PedidosYa en el panel existen en main
+# (PROMESAS filas 84 y 85): se quitan sus cuatro patrones. Lo contrario
+# («no recibe pedidos de Rappi») queda prohibido:
+no recibe pedidos de Rappi
+se siguen atendiendo en sus propias plataformas
 
 # G-08 (15-nov) · reglas del dueño: lo prometido se presenta como hecho, nada
 # de «único» (no comprobable) y el chat de ejemplo usa la carta de la demo.
