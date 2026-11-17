@@ -398,7 +398,7 @@ export const SOLUCIONES: Solucion[] = [
       },
       {
         item: "PC con Windows e impresora térmica, si quieres ticket",
-        detalle: "Para imprimir comanda y ticket desde el kiosko.",
+        detalle: "Para imprimir comanda y ticket desde el kiosko. Con una impresora Star o Epson compatible con impresión en la nube, no necesitas la PC.",
       },
       {
         item: "Tu cuenta Culqi y tu Nubefact",
@@ -414,7 +414,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Qué equipo necesito para el kiosko?",
         respuesta:
-          "Una pantalla táctil con navegador, que compras tú. Para imprimir comanda y ticket, además, un PC con Windows y una impresora térmica. En el alta del plan Completo te lo dejamos configurado en remoto.",
+          "Una pantalla táctil con navegador, que compras tú. Para imprimir comanda y ticket, además, un PC con Windows y una impresora térmica, o una impresora Star o Epson con impresión en la nube, sin PC. En el alta del plan Completo te lo dejamos configurado en remoto.",
       },
       {
         pregunta: "¿Qué pasa si un cliente deja el pedido a medias?",

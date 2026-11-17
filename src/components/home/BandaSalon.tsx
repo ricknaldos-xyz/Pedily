@@ -41,7 +41,7 @@ export function BandaSalon() {
               </span>
             </div>
           </div>
-          <div className="relative mx-auto w-[12rem] lg:mr-6">
+          <div className="relative mx-auto hidden w-[12rem] sm:block lg:mr-6">
             <MarcoCelular>
               <Captura clave="mesa-ronda" sizes="192px" decorativa />
             </MarcoCelular>

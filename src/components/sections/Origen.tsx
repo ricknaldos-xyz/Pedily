@@ -1,7 +1,13 @@
 import { Building2, ChefHat } from "lucide-react";
 import { EMPRESA, RESTAURANTE_ORIGEN } from "@/lib/site";
 
-/** Caso de origen (sin cifras, decisión del 15-nov) y quién está detrás. */
+/**
+ * Caso de origen (sin cifras, decisión del 15-nov) y quién está detrás.
+ * PENDIENTE (L-03, auditoría L-01 §4 P1-3a): una cita con nombre y foto del
+ * dueño del restaurante de origen iría aquí, pero falta su permiso por escrito.
+ * No se pone ni se inventa. El RUC y el domicilio salen solos cuando se
+ * carguen en `EMPRESA` (src/lib/site.ts); el dueño los deja para el final.
+ */
 export function Origen() {
   return (
     <section id="quien" className="scroll-mt-16 py-16 sm:py-24">

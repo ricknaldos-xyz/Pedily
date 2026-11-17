@@ -23,9 +23,14 @@ interface Props {
   sinTitulo?: boolean;
   /** En /precios el alta y los costos aparte tienen su propia sección. */
   soloPlanes?: boolean;
+  /**
+   * Home (L-03): en móvil, el alta y lo que pagas aparte se resumen en una
+   * línea que lleva a /precios, donde están completos; en escritorio, enteros.
+   */
+  resumenMovil?: boolean;
 }
 
-export function PricingTable({ sinTitulo = false, soloPlanes = false }: Props) {
+export function PricingTable({ sinTitulo = false, soloPlanes = false, resumenMovil = false }: Props) {
   const [anual, setAnual] = useState(false);
   // En móvil la lista de cada plan se abre a pedido; en escritorio siempre se ve.
   const [abiertos, setAbiertos] = useState<Record<string, boolean>>({});
@@ -144,8 +149,18 @@ export function PricingTable({ sinTitulo = false, soloPlanes = false }: Props) {
           ))}
         </div>
 
+        {resumenMovil && !soloPlanes && (
+          <p className="mx-auto mt-8 max-w-md text-center text-[0.95rem] leading-relaxed text-sand-700 lg:hidden">
+            <strong className="text-tinta">Alta gratis</strong> si te quedas {MESES_PERMANENCIA_ALTA_GRATIS} meses. Lo que
+            pagas aparte a Culqi, Nubefact y Meta, con su fuente:{" "}
+            <a href="/precios#pagas-aparte" className="font-semibold text-chicha-700 underline underline-offset-2">
+              ver precios completos
+            </a>
+            .
+          </p>
+        )}
         {!soloPlanes && (
-          <>
+          <div className={clsx(resumenMovil && "hidden lg:block")}>
             <div
               id="alta"
               className="mx-auto mt-10 max-w-3xl scroll-mt-20 text-center text-[0.95rem] leading-relaxed text-sand-700"
@@ -203,7 +218,7 @@ export function PricingTable({ sinTitulo = false, soloPlanes = false }: Props) {
                 </ul>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </section>

@@ -54,7 +54,7 @@ const jetbrains = localFont({
 const TITULO =
   "Pedily · Sistema para restaurantes: WhatsApp con IA, tienda web, cocina, caja y SUNAT";
 const DESCRIPCION =
-  "Todo tu restaurante en un sistema: asistente de WhatsApp que conversa y cobra, tienda web, kiosko y QR de mesa, cocina, caja, boletas SUNAT, inventario y reportes. Desde S/ 249 al mes con IGV, 0 % de comisión.";
+  "Vende directo y la comisión se queda contigo: asistente de WhatsApp que conversa y cobra, tienda web, kiosko y QR de mesa, cocina, caja, boletas SUNAT, inventario y reportes en un solo panel. Desde S/ 249 al mes con IGV, 0 % de comisión.";
 
 export const metadata: Metadata = {
   title: TITULO,
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Pedily: todo tu restaurante en un sistema, sin comisión",
+        alt: "Pedily: tu WhatsApp toma pedidos y tu web vende sin comisión, desde S/ 249 al mes con IGV",
       },
     ],
   },

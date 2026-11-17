@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mosaico } from "@/components/home/Mosaico";
+import { Dolor } from "@/components/home/Dolor";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { PaginaJsonLd } from "@/components/seo/JsonLd";
 
@@ -28,6 +29,7 @@ export default function Soluciones() {
           </p>
         </div>
       </section>
+      <Dolor />
       <Mosaico />
       <FinalCTA />
     </>

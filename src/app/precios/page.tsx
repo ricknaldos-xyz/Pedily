@@ -6,6 +6,8 @@ import { PricingTable } from "@/components/sections/PricingTable";
 import { Fundadores } from "@/components/sections/Fundadores";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ComparativaCanales } from "@/components/sections/ComparativaCanales";
+import { AbreTuTienda } from "@/components/sections/AbreTuTienda";
 import { Comparativa } from "@/components/precios/Comparativa";
 import { Alta, CostosAparte } from "@/components/precios/AltaYCostos";
 import { FAQPageJsonLd, PaginaJsonLd } from "@/components/seo/JsonLd";
@@ -103,6 +105,8 @@ export default function PreciosPage() {
       <h2 className="sr-only">Los tres planes</h2>
       <PricingTable sinTitulo soloPlanes />
       <Comparativa />
+      <ComparativaCanales />
+      <AbreTuTienda />
       <Alta />
       <Fundadores />
       <CostosAparte />

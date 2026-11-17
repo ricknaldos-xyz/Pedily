@@ -86,7 +86,7 @@ const ICONO: Record<Nota, { Icono: typeof Check; clase: string; etiqueta: string
 
 export function ComparativaCanales() {
   return (
-    <section id="comparativa" className="scroll-mt-16 py-16 sm:py-24">
+    <section id="canales" className="scroll-mt-16 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Encabezado
           etiqueta="Comparativa honesta"

@@ -114,6 +114,9 @@
 
   --animate-entra: entra 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   --animate-sello: sello 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  /* Burbujas del chat: solo escala, sin opacidad (L-03: el texto que entra
+     nunca queda medio transparente, así el contraste es siempre el final). */
+  --animate-burbuja: burbuja 0.45s cubic-bezier(0.3, 1.3, 0.5, 1) both;
 }
 
 html {
@@ -163,6 +166,15 @@ h3,
   to {
     opacity: 1;
     translate: 0 0;
+  }
+}
+
+@keyframes burbuja {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
   }
 }
 

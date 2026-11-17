@@ -11,7 +11,7 @@ import { CATEGORIAS, INTEGRACIONES, RUTA_INTEGRACIONES, integracionesDe } from "
  */
 export function BandaIntegraciones() {
   return (
-    <section id="integraciones" aria-labelledby="t-integraciones" className="scroll-mt-16 bg-white py-16 sm:py-24">
+    <section id="integraciones" aria-labelledby="t-integraciones" className="scroll-mt-16 bg-white py-14 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Encabezado
@@ -24,27 +24,27 @@ export function BandaIntegraciones() {
             Ver todas las integraciones
           </Boton>
         </div>
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 lg:grid-cols-4">
           {CATEGORIAS.map((c, i) => (
-            <li key={c.id} className={i === 0 ? "sm:col-span-2" : undefined}>
+            <li key={c.id} className={i === 0 ? "col-span-2" : undefined}>
               <Link
                 href={`${RUTA_INTEGRACIONES}#${c.id}`}
                 className={
                   i === 0
-                    ? "group flex h-full flex-col rounded-2xl border-2 border-tinta bg-aji-100 p-5 shadow-[0_6px_0_0_#24102e] transition-transform hover:-translate-y-0.5"
-                    : "group flex h-full flex-col rounded-2xl border border-tinta/10 bg-papel p-5 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                    ? "group flex h-full flex-col rounded-2xl border-2 border-tinta bg-aji-100 p-4 shadow-[0_6px_0_0_#24102e] transition-transform hover:-translate-y-0.5 sm:p-5"
+                    : "group flex h-full flex-col rounded-2xl border border-tinta/10 bg-papel p-3.5 transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:p-5"
                 }
               >
                 <span className="flex items-start justify-between">
                   <span className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-chicha-700">{c.nombre}</span>
                   <ArrowUpRight aria-hidden className="h-4 w-4 text-humo" />
                 </span>
-                <span className="mt-2 font-display text-lg font-bold leading-tight text-tinta">
+                <span className="mt-2 font-display text-[1rem] font-bold leading-tight text-tinta sm:text-lg">
                   {integracionesDe(c.id)
                     .map((it) => it.con)
                     .join(" · ")}
                 </span>
-                <span className="mt-1 text-sm leading-snug text-sand-700">{c.bajada}</span>
+                <span className={i === 0 ? "mt-1 text-sm leading-snug text-sand-700" : "mt-1 hidden text-sm leading-snug text-sand-700 sm:block"}>{c.bajada}</span>
               </Link>
             </li>
           ))}
