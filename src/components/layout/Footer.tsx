@@ -8,6 +8,7 @@ import { GRUPOS, RUTA_SOLUCION, solucionesDe } from "@/lib/soluciones";
 const PRODUCTO = [
   { href: "/panel", label: "El panel por dentro" },
   { href: "/soluciones", label: "Todas las soluciones" },
+  { href: "/integraciones", label: "Integraciones" },
   ...PAGINAS_PARA.map((p) => ({ href: RUTA_PARA(p.slug), label: `Para ${p.nombre.toLowerCase()}` })),
   { href: "/precios", label: "Precios" },
   { href: "/demo", label: "Demos para probar" },

@@ -1,4 +1,4 @@
-import { Bike, ChefHat, CreditCard, MessageCircle, MonitorSmartphone, QrCode, Receipt, Smartphone, Store, Wallet } from "lucide-react";
+import { Bike, ChefHat, CreditCard, MessageCircle, MonitorSmartphone, Plug, Printer, QrCode, Receipt, Smartphone, Store, Wallet } from "lucide-react";
 
 const ITEMS = [
   { i: MessageCircle, t: "WhatsApp con IA" },
@@ -10,7 +10,9 @@ const ITEMS = [
   { i: Wallet, t: "QR Yape o Plin" },
   { i: Receipt, t: "Boleta SUNAT" },
   { i: ChefHat, t: "Pantalla de cocina" },
-  { i: Bike, t: "PedidosYa Envíos" },
+  { i: Plug, t: "Rappi y PedidosYa" },
+  { i: Bike, t: "PedidosYa Envíos y Yango" },
+  { i: Printer, t: "Impresora y cajón" },
 ];
 
 /** Cinta de canales y pagos: reconocimiento inmediato, sin logos de terceros. */

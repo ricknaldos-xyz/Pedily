@@ -9,7 +9,8 @@
  * nace apagado lleva `opcion: true` y se presenta como «se enciende en tu
  * restaurante». Nada de cifras de clientes.
  */
-import { PREGUNTA_CARTA_QR, PREGUNTA_DESCARGAR, PREGUNTA_MESA_PRECIO, type Pregunta } from "./faq";
+import { PREGUNTA_CARTA_QR, PREGUNTA_DESCARGAR, PREGUNTA_MESA_PRECIO, PREGUNTA_RAPPI_PEDIDOSYA, type Pregunta } from "./faq";
+import type { IntegracionId } from "./integraciones";
 
 export type GrupoId = "vende" | "opera" | "vuelven";
 
@@ -47,7 +48,8 @@ export type Icono =
   | "moto"
   | "almacen"
   | "clientes"
-  | "reportes";
+  | "reportes"
+  | "enchufe";
 
 export interface Funcion {
   texto: string;
@@ -55,6 +57,11 @@ export interface Funcion {
   ref: string;
   /** Nace apagada: se enciende por restaurante. */
   opcion?: boolean;
+  /**
+   * Integración con un tercero (L-02, 16-nov): `ref` es «INT-<id>» y la
+   * página enlaza a /integraciones#<id>, donde está su condición de activación.
+   */
+  integracion?: IntegracionId;
 }
 
 export interface Solucion {
@@ -153,6 +160,9 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Modelo rápido para lo simple y uno más capaz para quejas o pedidos largos", ref: "2.29" },
       { texto: "Vale de compensación automático ante una queja", ref: "2.30", opcion: true },
       { texto: "Tope mensual de gasto con avisos al 50, 80 y 100 %", ref: "10.8–10.10", opcion: true },
+      { texto: "Tus platos del catálogo de Meta dentro del chat, al carrito de WhatsApp", ref: "INT-whatsapp-meta", opcion: true, integracion: "whatsapp-meta" },
+      { texto: "Formulario de pedido de WhatsApp (Flows) para quien prefiere tocar", ref: "INT-whatsapp-meta", opcion: true, integracion: "whatsapp-meta" },
+      { texto: "Las ventas de tus anuncios que abren WhatsApp, informadas a Meta", ref: "INT-whatsapp-meta", opcion: true, integracion: "whatsapp-meta" },
     ],
     necesitas: [
       {
@@ -274,6 +284,10 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Lista para Google: platos en el mapa del sitio y vista previa al compartir", ref: "1.25" },
       { texto: "Se instala como acceso directo en el celular", ref: "1.26" },
       { texto: "Tu logo, tus colores y tu tipografía, sin «Desarrollado por…»", ref: "16.1" },
+      { texto: "Botón «Pedir en línea» de Google: guía y comprobación desde el panel", ref: "INT-google", opcion: true, integracion: "google" },
+      { texto: "Google Analytics 4 y Tag Manager: producto visto, carrito y compra", ref: "INT-google", opcion: true, integracion: "google" },
+      { texto: "Píxel de Meta y de TikTok, y la compra enviada también desde el servidor", ref: "INT-meta-tiktok", opcion: true, integracion: "meta-tiktok" },
+      { texto: "Aviso de cookies: nada se mide hasta que el cliente acepta", ref: "INT-google", opcion: true, integracion: "google" },
     ],
     necesitas: [
       {
@@ -314,7 +328,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Mi tienda aparece en Google?",
         respuesta:
-          "Está preparada para eso: tiene mapa del sitio con tus platos, títulos por página y vista previa con foto cuando alguien comparte el enlace por WhatsApp.",
+          "Está preparada para eso: tiene mapa del sitio con tus platos, títulos por página y vista previa con foto cuando alguien comparte el enlace por WhatsApp. Además, el panel te guía para poner tu tienda en el botón «Pedir en línea» de tu Perfil de Empresa de Google y comprueba antes que Google puede abrir tu carta.",
       },
       {
         pregunta: "¿Puedo cobrar con el QR de mi Yape en la tienda web?",
@@ -368,6 +382,7 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Paga con tarjeta o Yape en la misma pantalla", ref: "4.5" },
       { texto: "Verificación del banco (3D Secure)", ref: "4.6", opcion: true },
       { texto: "«Pagar en caja»: entra al panel marcado «Por cobrar en caja»", ref: "4.7" },
+      { texto: "«Pagar con terminal»: el monto viaja solo a tu terminal POS", ref: "INT-terminal-pos", opcion: true, integracion: "terminal-pos" },
       { texto: "Cupones también en el kiosko", ref: "4.8" },
       { texto: "Boleta o factura con DNI o RUC desde la pantalla", ref: "4.9" },
       { texto: "Comanda y ticket en impresora térmica", ref: "4.10" },
@@ -408,7 +423,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿El cliente puede pagar con el cajero?",
         respuesta:
-          "Sí. Si elige «pagar en caja», el pedido entra al panel marcado «Por cobrar en caja» y tu cajero lo confirma al cobrar.",
+          "Sí. Si elige «pagar en caja», el pedido entra al panel marcado «Por cobrar en caja» y tu cajero lo confirma al cobrar. Con el terminal POS conectado, el kiosko muestra «Pagar con terminal» y el monto viaja solo al terminal; se conecta cuando tu proveedor, Izipay o Niubiz, habilita la integración de su terminal con Pedily.",
       },
       {
         pregunta: "¿El kiosko se entera si se acaba un plato?",
@@ -602,7 +617,7 @@ export const SOLUCIONES: Solucion[] = [
     plan: "tienda",
     titulo: "Todos tus pedidos en una pantalla, y una cocina sin papelitos",
     bajada:
-      "Web, WhatsApp, kiosko y mesa entran al mismo panel en vivo, con sonido. La alarma no para hasta que alguien atiende el pedido pagado, y cocina ve qué empezar con tamaño, cremas y minutos de espera.",
+      "Web, WhatsApp, kiosko, mesa, Rappi y PedidosYa entran al mismo panel en vivo, con sonido. La alarma no para hasta que alguien atiende el pedido, y cocina ve qué empezar con tamaño, cremas y minutos de espera.",
     definicion:
       "Una pantalla de cocina (KDS) reemplaza la comanda de papel: muestra cada pedido con sus platos y opciones, y el cocinero lo pasa de «por cocinar» a «en cocina» y a «listo».",
     escena: "cocina",
@@ -610,7 +625,7 @@ export const SOLUCIONES: Solucion[] = [
       {
         titulo: "Pedidos en vivo, de todos tus canales",
         texto:
-          "Tablero por columnas (por confirmar, en cocina, listo, en camino) con contadores del día, búsqueda por pedido, teléfono o nombre, y filtros por canal y medio de pago.",
+          "Tablero por columnas (por confirmar, en cocina, listo, en camino) con contadores del día, búsqueda por pedido, teléfono o nombre, y filtros por canal y medio de pago. Los pedidos de Rappi y PedidosYa entran aquí también, con su propia alarma.",
       },
       {
         titulo: "Una alarma que no se calla",
@@ -643,12 +658,22 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Escribir al cliente o rechazar el pedido con motivo", ref: "3.1 Pedidos" },
       { texto: "Pedir, reintentar o cancelar un motorizado de PedidosYa Envíos", ref: "3.1 Pedidos" },
       { texto: "Mesas abiertas con «llama al mozo» y «pide la cuenta»", ref: "3.1 Mesas", opcion: true },
+      { texto: "Pedidos de Rappi en el mismo panel, con alarma de 4 minutos y aceptación automática", ref: "INT-rappi", opcion: true, integracion: "rappi" },
+      { texto: "Pedidos de PedidosYa en el mismo panel y en cocina", ref: "INT-pedidosya", opcion: true, integracion: "pedidosya" },
+      { texto: "Asociar los productos de cada app con tu carta", ref: "INT-rappi", opcion: true, integracion: "rappi" },
+      { texto: "Impresora térmica por red y cajón que se abre desde el panel", ref: "INT-impresoras", opcion: true, integracion: "impresoras" },
+      { texto: "Vista previa de cada ticket en 58 y 80 mm", ref: "INT-impresoras", opcion: true, integracion: "impresoras" },
+      { texto: "Impresoras Star o Epson en la nube, sin PC en el local", ref: "INT-impresoras-nube", opcion: true, integracion: "impresoras-nube" },
     ],
     necesitas: [
       { item: "Una pantalla con navegador", detalle: "Computadora, laptop o pantalla de cocina: el panel funciona en el navegador." },
       {
         item: "PC con Windows e impresora térmica, para la comanda en papel",
-        detalle: "Opcional: la pantalla de cocina ya reemplaza el papel.",
+        detalle: "Opcional: la pantalla de cocina ya reemplaza el papel. Con una impresora Star o Epson compatible con impresión en la nube, no necesitas la PC.",
+      },
+      {
+        item: "Para Rappi y PedidosYa: tu local en cada app",
+        detalle: "Se conectan cuando cada app aprueba la integración de tu local. La carta de cada app se sigue editando en esa app.",
       },
     ],
     vecinos: ["asistente-whatsapp", "caja-y-pagos", "inventario-y-recetas", "reportes"],
@@ -656,8 +681,9 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Los pedidos de WhatsApp, web y kiosko llegan al mismo lugar?",
         respuesta:
-          "Sí. Todo entra al mismo panel, en vivo y con aviso sonoro, con una etiqueta del canal. Las rondas del QR de mesa entran con el nombre de la mesa.",
+          "Sí. Todo entra al mismo panel, en vivo y con aviso sonoro, con una etiqueta del canal. Las rondas del QR de mesa entran con el nombre de la mesa, y los pedidos de Rappi y PedidosYa, con el de su app.",
       },
+      PREGUNTA_RAPPI_PEDIDOSYA,
       {
         pregunta: "¿Y si nadie ve un pedido pagado?",
         respuesta: "La alarma sigue sonando hasta que alguien lo atiende. Además, los pedidos atascados salen resaltados.",
@@ -670,13 +696,13 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Necesito impresora?",
         respuesta:
-          "No es obligatoria: la pantalla de cocina reemplaza el papel. Si quieres comanda impresa automática, hace falta un PC con Windows y una impresora térmica.",
+          "No es obligatoria: la pantalla de cocina reemplaza el papel. Si quieres comanda impresa automática, sirve una impresora térmica por USB o por la red de tu local, con un PC con Windows, o una impresora Star o Epson compatible con impresión en la nube, sin PC. El cajón de dinero se abre desde el panel.",
       },
     ],
     seo: {
       titulo: "Pantalla de cocina y pedidos en vivo para restaurantes",
       descripcion:
-        "Todos tus canales en un panel en vivo, alarma hasta atender el pedido pagado, pantalla de cocina con cremas y tiempos, y comanda automática. En todos los planes de Pedily.",
+        "Todos tus canales en un panel en vivo, también Rappi y PedidosYa, alarma hasta atender el pedido, pantalla de cocina con cremas y tiempos, y comanda automática por USB, red o nube. En todos los planes de Pedily.",
     },
   },
   {
@@ -729,6 +755,9 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Cierre del día por medio de pago, con gastos y CSV", ref: "3.2 Caja" },
       { texto: "Cerrar y reabrir el día con motivo", ref: "3.2 Caja" },
       { texto: "0 % de comisión de Pedily por venta", ref: "7.16" },
+      { texto: "Número de operación del voucher de tu POS, guardado en el pedido y sin repetirse", ref: "INT-terminal-pos", integracion: "terminal-pos" },
+      { texto: "«Cobrar con terminal»: el monto viaja solo a tu POS y el pedido queda pagado al aprobarse", ref: "INT-terminal-pos", opcion: true, integracion: "terminal-pos" },
+      { texto: "Izipay como pasarela en vez de Culqi, si ya trabajas con Izipay", ref: "INT-izipay", opcion: true, integracion: "izipay" },
     ],
     necesitas: [
       {
@@ -738,6 +767,10 @@ export const SOLUCIONES: Solucion[] = [
       {
         item: "Tu QR de Yape o Plin",
         detalle: "Para cobrar en la tienda web, por WhatsApp y en la mesa sin pasar por Culqi; verificas el comprobante en el panel.",
+      },
+      {
+        item: "Si cobras con POS: tu terminal de Izipay o Niubiz",
+        detalle: "El número de operación lo anotas desde el primer día. El cobro con terminal se conecta cuando tu proveedor habilita la integración de su terminal con Pedily.",
       },
     ],
     vecinos: ["boletas-sunat", "cocina", "reportes", "tienda-web"],
@@ -755,6 +788,16 @@ export const SOLUCIONES: Solucion[] = [
       {
         pregunta: "¿Qué pasa si cancelo un pedido que ya se pagó?",
         respuesta: "La devolución a la tarjeta o al Yape del cliente sale sola, y queda registrada en el pedido.",
+      },
+      {
+        pregunta: "¿Funciona con el POS que ya tengo?",
+        respuesta:
+          "Sí. Al confirmar un cobro en caja anotas el número de operación del voucher y queda guardado en el pedido; Pedily no deja usar el mismo número dos veces. Con «Cobrar con terminal», el monto viaja solo al POS y el pedido queda pagado al aprobarse: se conecta cuando tu proveedor, Izipay o Niubiz, habilita la integración de su terminal con Pedily.",
+      },
+      {
+        pregunta: "¿Puedo cobrar en línea con Izipay en vez de Culqi?",
+        respuesta:
+          "Sí. Eliges la pasarela por restaurante. Izipay se conecta cuando afilia tu comercio y aprueba la integración con Pedily; mientras, cobras con Culqi o con el QR de tu Yape o Plin.",
       },
       {
         pregunta: "¿Cómo sé que un pago es real?",
@@ -811,6 +854,10 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "IGV reducido de restaurantes MYPE según la fecha de cobro", ref: "8.9", opcion: true },
       { texto: "Conectas tu Nubefact desde «Empezar»", ref: "8.10", opcion: true },
       { texto: "Comprobantes del mes con exportación, en Finanzas", ref: "3.2 Finanzas" },
+      { texto: "TXT del Registro de Ventas para SIRE, revisado campo por campo antes de descargar", ref: "INT-contador", opcion: true, integracion: "contador" },
+      { texto: "Las 33 columnas oficiales del Registro de Ventas en Excel y CSV", ref: "INT-contador", opcion: true, integracion: "contador" },
+      { texto: "Registro de Compras en CSV con las compras de tu inventario", ref: "INT-contador", opcion: true, integracion: "contador" },
+      { texto: "Asientos de ventas para Concar, Starsoft, Contasis o Siscont", ref: "INT-contador", opcion: true, integracion: "contador" },
     ],
     necesitas: [
       {
@@ -843,6 +890,11 @@ export const SOLUCIONES: Solucion[] = [
         pregunta: "¿Y si tengo que anular una venta?",
         respuesta: "Emites la nota de crédito desde el pedido en el panel, o la dejas automática al cancelar.",
       },
+      {
+        pregunta: "¿Qué le paso a mi contador?",
+        respuesta:
+          "Desde Finanzas descargas el TXT del Registro de Ventas para reemplazar la propuesta en SIRE, con el nombre oficial y revisado campo por campo, y las mismas 33 columnas en Excel y CSV. También el Registro de Compras y los asientos de ventas para Concar, Starsoft, Contasis o Siscont, que tu contador ajusta a sus cuentas antes de importarlos.",
+      },
     ],
     seo: {
       titulo: "Boletas y facturas electrónicas SUNAT automáticas para restaurantes",
@@ -854,12 +906,12 @@ export const SOLUCIONES: Solucion[] = [
     slug: "delivery",
     grupo: "opera",
     nombre: "Delivery y zonas",
-    linea: "Tus zonas y tarifas, y motorizado de PedidosYa Envíos",
+    linea: "Tus zonas y tarifas, y motorizado de PedidosYa Envíos o Yango",
     icono: "moto",
     plan: "tienda",
     titulo: "Reparto con tus zonas y tarifas, y motorizado cuando lo necesites",
     bajada:
-      "Defines hasta dónde llegas y cuánto cobras por zona. El cliente paga lo mismo en la web, en WhatsApp y en el panel. ¿Sin motorizado? Pides uno de PedidosYa Envíos desde el panel.",
+      "Defines hasta dónde llegas y cuánto cobras por zona. El cliente paga lo mismo en la web, en WhatsApp y en el panel. ¿Sin motorizado? Pides uno de PedidosYa Envíos o de Yango desde el panel, y Pedily elige el más barato.",
     definicion:
       "Las zonas de reparto son las áreas a las que entregas, por código postal o distrito, cada una con su tarifa y su tiempo estimado. Pedily usa la misma tarifa en todos tus canales.",
     escena: "delivery",
@@ -892,16 +944,17 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Enlace de seguimiento de PedidosYa al cliente por WhatsApp", ref: "11.7" },
       { texto: "Tiempo estimado de entrega por zona", ref: "11.8" },
       { texto: "Entrega en condominios con su tarifa", ref: "1.8", opcion: true },
+      { texto: "Motorizado de Yango Delivery: Pedily compara con PedidosYa Envíos y pide el más barato", ref: "INT-yango", opcion: true, integracion: "yango" },
+      { texto: "Un pedido de Rappi o PedidosYa nunca pide además tu motorizado", ref: "INT-pedidosya", opcion: true, integracion: "pedidosya" },
     ],
     necesitas: [
       { item: "Tus zonas y tarifas", detalle: "Las cargas en «Códigos postales» del panel." },
       {
-        item: "Tu propio repartidor o una cuenta de PedidosYa Envíos",
-        detalle: "Pedily no tiene flota propia: avisa a tu repartidor desde el panel o pide un motorizado de PedidosYa Envíos.",
+        item: "Tu propio repartidor o una cuenta de PedidosYa Envíos o de Yango Delivery",
+        detalle: "Pedily no tiene flota propia: avisa a tu repartidor desde el panel o pide un motorizado de PedidosYa Envíos o de Yango.",
       },
     ],
     noHace: [
-      "No recibe pedidos de Rappi ni del marketplace de PedidosYa: esos se atienden en sus plataformas.",
       "No tiene app de repartidor propia.",
     ],
     vecinos: ["tienda-web", "asistente-whatsapp", "cocina", "pedidos-programados"],
@@ -916,15 +969,16 @@ export const SOLUCIONES: Solucion[] = [
           "Por código postal o distrito, cada zona con su tarifa y su tiempo estimado, o por distancia en kilómetros desde tu local si encendiste esa opción.",
       },
       {
-        pregunta: "¿También recibe pedidos de Rappi o PedidosYa?",
+        pregunta: "¿Puedo usar Yango en vez de PedidosYa Envíos?",
         respuesta:
-          "No. Los pedidos de Rappi y PedidosYa se siguen atendiendo en sus propias plataformas. Pedily es para vender por tus canales propios sin comisión. Para el reparto sí puedes usar PedidosYa Envíos.",
+          "Sí, o los dos. Con tu cuenta de empresa de Yango Delivery, al pedir motorizado Pedily cotiza Yango y PedidosYa Envíos y pide el más barato; si Yango no puede tomar el viaje, lo pide a PedidosYa Envíos. Cada viaje lo cobra el proveedor, según tu contrato.",
       },
+      PREGUNTA_RAPPI_PEDIDOSYA,
     ],
     seo: {
       titulo: "Zonas de reparto y delivery para restaurantes",
       descripcion:
-        "Zonas por distrito o código postal con su tarifa, la misma en web y WhatsApp, y motorizado de PedidosYa Envíos desde el panel. En todos los planes de Pedily.",
+        "Zonas por distrito o código postal con su tarifa, la misma en web y WhatsApp, y motorizado de PedidosYa Envíos o Yango desde el panel. En todos los planes de Pedily.",
     },
   },
   {
@@ -1162,6 +1216,8 @@ export const SOLUCIONES: Solucion[] = [
       { texto: "Flujo de caja, cuentas por pagar y planilla", ref: "3.2 Finanzas" },
       { texto: "Analíticas del asistente: ventas, resueltos sin persona y costo de IA", ref: "3.7 Analíticas" },
       { texto: "Resultados de tus opciones: antes y después", ref: "9.11" },
+      { texto: "API de lectura de pedidos, ventas, comprobantes y productos, con llaves por restaurante", ref: "INT-api-webhooks", opcion: true, integracion: "api-webhooks" },
+      { texto: "Avisos firmados (webhooks) en cada pedido, pago, comprobante y stock bajo", ref: "INT-api-webhooks", opcion: true, integracion: "api-webhooks" },
     ],
     necesitas: [
       { item: "Nada extra para las ventas", detalle: "Se registran solas desde todos tus canales." },
@@ -1172,7 +1228,7 @@ export const SOLUCIONES: Solucion[] = [
     preguntas: [
       {
         pregunta: "¿Puedo pasarle los datos a mi contador?",
-        respuesta: "Sí. Los reportes se exportan en CSV y Finanzas tiene el estado de resultados y los comprobantes del mes con exportación.",
+        respuesta: "Sí. Los reportes se exportan en CSV, y Finanzas tiene el estado de resultados, los comprobantes del mes, el TXT del Registro de Ventas para SIRE, su versión en Excel y los asientos para el programa de tu contador.",
       },
       {
         pregunta: "¿Tengo que cargar algo para ver mis reportes?",
@@ -1187,7 +1243,7 @@ export const SOLUCIONES: Solucion[] = [
     seo: {
       titulo: "Reportes de ventas y finanzas para restaurantes",
       descripcion:
-        "Ventas por día, hora, canal y zona, mapa de calor, platos por margen, recompra, estado de resultados e impuestos. Exporta en CSV. En todos los planes de Pedily.",
+        "Ventas por día, hora, canal y zona, mapa de calor, platos por margen, recompra, estado de resultados e impuestos. Exporta en CSV; en el plan Completo, también por API y webhooks.",
     },
   },
 ];

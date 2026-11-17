@@ -15,6 +15,7 @@ import { PAGINAS_PARA, RUTA_PARA } from "@/lib/para";
 
 const ENLACES = [
   { href: "/panel", label: "Panel" },
+  { href: "/integraciones", label: "Integraciones" },
   { href: "/precios", label: "Precios" },
   { href: "/demo", label: "Demo" },
 ];

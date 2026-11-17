@@ -6,6 +6,7 @@ import {
   MessageCircle,
   MonitorSmartphone,
   Package,
+  Plug,
   QrCode,
   Receipt,
   Store,
@@ -28,6 +29,7 @@ export const ICONOS: Record<Icono, LucideIcon> = {
   almacen: Package,
   clientes: Users,
   reportes: BarChart3,
+  enchufe: Plug,
 };
 
 export function IconoSolucion({ icono, className }: { icono: Icono; className?: string }) {

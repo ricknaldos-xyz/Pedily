@@ -25,6 +25,12 @@
  *   complemento de +S/ 150 al mes en Tienda y Tienda + WhatsApp, e incluido en
  *   Completo. Precio por criterio del coordinador, revisable.
  *
+ * - 16-nov (L-02, PROPUESTA al coordinador): integraciones por plan según
+ *   `src/lib/integraciones.ts` (apps de delivery, reparto, pagos, impresoras,
+ *   contador, Google/Meta/TikTok desde Tienda; carta en el chat de WhatsApp y
+ *   anuncios que abren WhatsApp desde Tienda + WhatsApp; API y webhooks en
+ *   Completo).
+ *
  * Los costos de terceros son los precios públicos de cada proveedor, con su
  * fuente en `reports/Pedily revisión de propuestas.md` (14-nov-2026).
  */
@@ -79,6 +85,8 @@ export const PLANES: Plan[] = [
       "Pedidos programados para la hora que elija tu cliente",
       "Cupones, referidos y saldo a favor, si los enciendes",
       "Caja con cierre del día, inventario y recetas, y reportes",
+      "Pedidos de Rappi y PedidosYa en tu mismo panel, cuando cada app aprueba la integración de tu local",
+      "Integraciones: motorizado de PedidosYa Envíos o Yango, Izipay o tu terminal POS, impresoras en red o en la nube, SIRE para tu contador, Google, Meta y TikTok",
     ],
   },
   {
@@ -97,6 +105,7 @@ export const PLANES: Plan[] = [
       "Cobro en la mini-app con Yape o tarjeta, o con el QR de tu Yape o Plin",
       "Te pasa el chat cuando el cliente pide hablar con una persona",
       "Campañas por WhatsApp con plantillas, solo a quien dio su permiso",
+      "Tus platos del catálogo de Meta dentro del chat y las ventas de tus anuncios que abren WhatsApp, medidas",
       "Incluye un cupo mensual de conversaciones; te decimos cuál según tu volumen",
     ],
   },
@@ -112,6 +121,8 @@ export const PLANES: Plan[] = [
       "Kiosko de autoservicio: licencia para 1 pantalla (el equipo lo compras tú)",
       "QR de mesa que cobra, incluido: tu cliente pide por rondas y paga desde la mesa",
       "Un cupo de conversaciones del asistente 3 veces mayor",
+      "Cobro con terminal POS en el kiosko",
+      "API y webhooks para conectar tus propios sistemas",
       "Atención prioritaria: te respondemos el mismo día hábil",
     ],
   },
