@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGEN } from "@/lib/site";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { ArrowUpRight, Check, ChevronRight } from "lucide-react";
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: RUTA_SALON },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: RUTA_SALON, locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: RUTA_SALON, locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 const [TIENDA, WHATSAPP, COMPLETO] = PLANES;

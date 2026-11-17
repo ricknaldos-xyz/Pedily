@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGEN } from "@/lib/site";
 import { Check } from "lucide-react";
 import { Boton } from "@/components/marca/Boton";
 import { Sello } from "@/components/marca/Sello";
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: "/precios" },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: "/precios", locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: "/precios", locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 /** Preguntas de dinero de la FAQ general (mismo texto que el JSON-LD). */

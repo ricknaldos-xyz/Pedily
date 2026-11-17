@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGEN } from "@/lib/site";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { Download, KeyRound, Power, ShieldCheck } from "lucide-react";
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: "/panel" },
-  openGraph: { title: TITULO, description: DESCRIPCION, url: "/panel", locale: "es_PE", type: "website" },
+  openGraph: { title: TITULO, description: DESCRIPCION, url: "/panel", locale: "es_PE", type: "website", images: [OG_IMAGEN] },
 };
 
 const MOMENTOS = [
