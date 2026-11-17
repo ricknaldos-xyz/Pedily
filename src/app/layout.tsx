@@ -9,7 +9,7 @@ import {
   WebsiteJsonLd,
   SoftwareApplicationJsonLd,
 } from "@/components/seo/JsonLd";
-import { EMPRESA } from "@/lib/site";
+import { EMPRESA, OG_IMAGEN } from "@/lib/site";
 
 // Sistema «la comanda» (benchmark §5.6): Bricolage Grotesque para titulares,
 // Figtree para texto y JetBrains Mono para precios, números de pedido y horas.
@@ -63,10 +63,14 @@ export const metadata: Metadata = {
   creator: "Pedily",
   publisher: EMPRESA.razonSocial,
   metadataBase: new URL("https://pedily.vercel.app"),
+  // Marca «la comanda», generada con scripts/generar-marca.cjs (L-04).
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   openGraph: {
     title: TITULO,
@@ -75,20 +79,13 @@ export const metadata: Metadata = {
     locale: "es_PE",
     url: "https://pedily.vercel.app",
     siteName: "Pedily",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Pedily: tu WhatsApp toma pedidos y tu web vende sin comisión, desde S/ 249 al mes con IGV",
-      },
-    ],
+    images: [OG_IMAGEN],
   },
   twitter: {
     card: "summary_large_image",
     title: TITULO,
     description: DESCRIPCION,
-    images: ["/og-image.png"],
+    images: [{ url: OG_IMAGEN.url, alt: OG_IMAGEN.alt }],
   },
   robots: {
     index: true,
