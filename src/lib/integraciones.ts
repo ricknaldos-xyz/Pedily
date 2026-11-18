@@ -207,10 +207,11 @@ export const INTEGRACIONES: Integracion[] = [
     plan: "tienda",
     solucion: "caja-y-pagos",
     evidencia: [
-      "B:src/pagos/pasarela/pasarela-pagos.ts:23 (culqi | izipay)",
-      "B:src/pagos/pasarela/pasarelas.service.ts:6-7 (PASARELA_PAGOS + FEATURE_PASARELA_IZIPAY)",
+      "B:src/pagos/pasarela/pasarela-pagos.ts:22 (culqi | izipay)",
+      "B:src/pagos/pasarela/pasarelas.service.ts:26,31 (FEATURE_PASARELA_IZIPAY + PASARELA_PAGOS)",
       "B:src/pagos/pasarela/izipay/izipay.pasarela.ts:133 (adaptador: sesión, respuesta firmada, IPN, devolución, anulación)",
-      "Conexión al checkout web: ficha J-03 (PROMESAS fila 88, Parcial)",
+      "W:components/features/checkout/PaymentForm/PaymentForm.tsx:60-63; W:lib/pagos/izipay-checkout.ts:53; W:lib/backend/izipay.ts:34 (checkout web, J-03 d230034; simulado en la demo)",
+      "En real: trámite nº 4 + homologación de Izipay (PROMESAS fila 88)",
     ],
   },
   {
@@ -232,6 +233,7 @@ export const INTEGRACIONES: Integracion[] = [
     notaPlan: "En el kiosko, con el plan Completo",
     solucion: "caja-y-pagos",
     evidencia: [
+      "Plan: límite comercial; nada técnico ata el terminal del kiosko a Completo (P-07 S7, decisión del dueño pendiente)",
       "B:src/pagos/terminal/terminal-pago.ts:66 (interfaz), B:src/pagos/terminal/terminal-pago.service.ts:156 (iniciar), :5 (FEATURE_TERMINAL_PAGO)",
       "B:src/pagos/terminal/terminal-simulado.ts:29 (terminal implementado hoy: el simulado)",
       "B:src/order/order.service.ts:8130 (counterOperationNumber → posTransactionId)",
@@ -366,7 +368,8 @@ export const INTEGRACIONES: Integracion[] = [
     solucion: "tienda-web",
     evidencia: [
       "W:lib/medicion/cargador.ts:38-39 (Meta y TikTok, tras el consentimiento)",
-      "B:src/conversiones/conversiones.config.ts:18 (FEATURE_META_CAPI_WEB); B:src/conversiones/conversiones.service.ts:136 (reportarCompra)",
+      "B:src/conversiones/conversiones.config.ts:18 (FEATURE_META_CAPI_WEB); B:src/conversiones/conversiones.service.ts:158 (reportarCompra)",
+      "B:src/order/order.service.ts:8512,9810; B:src/order/system-event-emitter.service.ts:195 (Purchase también en cobros manuales y QR/Yape/Plin verificados, J-04 bf6e884)",
       "B:src/conversiones/meta-capi.builder.ts:6; B:src/conversiones/tiktok-events.builder.ts:13",
       "B:src/store/medicion/event-id.ts (event_id = número de pedido)",
     ],
@@ -417,7 +420,8 @@ export const INTEGRACIONES: Integracion[] = [
       "B:src/plataforma-abierta/public-api.controller.ts:84-91 (/api/v1/me, /orders…)",
       "B:src/plataforma-abierta/webhooks/eventos.ts:15-19; B:src/plataforma-abierta/webhooks/firma.ts:35",
       "B:src/plataforma-abierta/plataforma-publico.controller.ts:4,29 (OpenAPI y docs)",
-      "W:components/layout/Dashboard/PlataformaPage/PlataformaPage.tsx:72; B:integraciones/zapier/triggers.js:1",
+      "W:components/layout/Dashboard/PlataformaPage/PlataformaPage.tsx:81; B:integraciones/zapier/triggers.js:1",
+      "Plan Completo: límite comercial; el panel deja encender FEATURE_PUBLIC_API en cualquier plan (B:src/feature-flag/feature-flag.controller.ts:32; P-07 S7, decisión del dueño pendiente)",
     ],
   },
 ];

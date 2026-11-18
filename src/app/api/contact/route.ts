@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { CONTACT_EMAIL } from "@/lib/site";
-import { consolaSolicitudesUrl, enviarAConsola } from "@/lib/consola";
+import { consolaSolicitudesUrl, enviarAConsola, ipDelVisitante } from "@/lib/consola";
+import { PLANES } from "@/lib/planes";
 import {
   PREGUNTAS,
   textoRespuesta,
@@ -35,6 +36,8 @@ function armarCorreo(s: Solicitud, consola: EstadoConsola) {
     ["Correo", s.email],
     ["WhatsApp", `+51 ${s.whatsapp}`],
     ["Distrito", s.distrito],
+    ["Plan", s.plan ? PLANES.find((p) => p.id === s.plan)?.nombre ?? s.plan : "Aún no lo sabe"],
+    ["Pago", s.periodicidad === "anual" ? "Anual" : "Mensual"],
     ...PREGUNTAS.map(
       (p) => [`${p.numero}. ${p.titulo}`, textoRespuesta(p.id, s[p.id])] as [string, string]
     ),
@@ -137,7 +140,7 @@ export async function POST(request: Request) {
   let consolaOk = false;
   let estadoConsola: EstadoConsola = consolaUrl ? "no aplica" : "no configurada";
   if (solicitud.modo === "tienda" && consolaUrl) {
-    consolaOk = await enviarAConsola(consolaUrl, solicitud);
+    consolaOk = await enviarAConsola(consolaUrl, solicitud, ipDelVisitante(request.headers));
     estadoConsola = consolaOk ? "recibida" : "falló";
   }
 

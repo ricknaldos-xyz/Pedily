@@ -2,9 +2,46 @@
  * Solicitud «Quiero Pedily» (tarea L-13; diseño en el plan, D-alta-autonoma §2,
  * etapa 0). La usan a la vez el formulario de /contacto y la ruta
  * /api/contact, para que las dos validen exactamente lo mismo.
+ *
+ * Q-06 (17-nov): además lleva el plan y la periodicidad que eligió el
+ * restaurante (los ids de `PLANES`), que la consola de altas acepta como
+ * opcionales (`pedily-consola` `lib/solicitudes/esquema.ts`). Sin plan, la
+ * consola sugiere uno por la respuesta «prioridad».
  */
 
+import { PLANES, type Plan } from "./planes";
+
 export type ModoSolicitud = "tienda" | "demo";
+export type PlanId = Plan["id"];
+export type Periodicidad = "mensual" | "anual";
+
+const PLAN_IDS = new Set<string>(PLANES.map((p) => p.id));
+
+function esPlanId(valor: unknown): valor is PlanId {
+  return typeof valor === "string" && PLAN_IDS.has(valor);
+}
+
+/** Plan elegido o null (sin elegir o desconocido: no se inventa). */
+export function leerPlan(valor: unknown): PlanId | null {
+  return esPlanId(valor) ? valor : null;
+}
+
+/** «anual» o, para todo lo demás, «mensual». */
+export function leerPeriodicidad(valor: unknown): Periodicidad {
+  return valor === "anual" ? "anual" : "mensual";
+}
+
+/** Enlace de «Crear mi tienda» de un plan: /contacto lo trae elegido. */
+export function enlaceSolicitud(plan: PlanId, anual: boolean): string {
+  const q = new URLSearchParams({ plan, periodicidad: anual ? "anual" : "mensual" });
+  return `/contacto?${q.toString()}`;
+}
+
+/** Lee `?plan=` y `?periodicidad=` de /contacto (los arma `enlaceSolicitud`). */
+export function planDesdeUrl(search: string): { plan: PlanId | null; periodicidad: Periodicidad } {
+  const q = new URLSearchParams(search);
+  return { plan: leerPlan(q.get("plan")), periodicidad: leerPeriodicidad(q.get("periodicidad")) };
+}
 
 export interface Opcion {
   valor: string;
@@ -130,6 +167,9 @@ export interface Solicitud {
   prioridad: string;
   cuando: string;
   mensaje: string;
+  /** Plan que eligió (null: «aún no lo sé»). */
+  plan: PlanId | null;
+  periodicidad: Periodicidad;
 }
 
 export type CampoSolicitud = Exclude<keyof Solicitud, "modo">;
@@ -145,6 +185,8 @@ export const ORDEN_CAMPOS: readonly CampoSolicitud[] = [
   "canalHoy",
   "prioridad",
   "cuando",
+  "plan",
+  "periodicidad",
   "mensaje",
 ];
 
@@ -230,6 +272,8 @@ export function validarSolicitud(
       distrito,
       ...respuestas,
       mensaje,
+      plan: leerPlan(texto(entrada.plan)),
+      periodicidad: leerPeriodicidad(texto(entrada.periodicidad)),
     },
   };
 }

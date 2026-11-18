@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 import { Encabezado } from "@/components/ui/Encabezado";
 import { ArrowRight, Check, Info, Plus } from "lucide-react";
 import { FUNDADORES } from "@/lib/site";
+import { enlaceSolicitud } from "@/lib/solicitud";
 import {
   altaProporcional,
   COMPLEMENTO_MESA,
@@ -134,7 +135,7 @@ export function PricingTable({ sinTitulo = false, soloPlanes = false, resumenMov
                   )}
                 </ul>
                 <a
-                  href="/contacto"
+                  href={enlaceSolicitud(plan.id, anual)}
                   className={clsx(
                     "mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 px-5 text-[0.95rem] font-semibold transition-all",
                     plan.destacado
