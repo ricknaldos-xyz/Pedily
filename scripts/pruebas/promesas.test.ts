@@ -45,9 +45,14 @@ test("46: topes 10/30 y modo simulado de la lectura de carta", () => {
   assert.match(t, /30 en el alta/);
 });
 
-test("48 y 98: el límite por plan es comercial (sin límite técnico, decisión pendiente)", () => {
-  assert.match(fila(48).tarea, /comercial/);
-  assert.match(fila(98).tarea, /comercial/);
+test("48 y 98: el límite por plan es técnico (R-01) y cita el código", () => {
+  for (const n of [48, 98]) {
+    assert.match(fila(n).tarea, /Límite técnico \(R-01\)|límite técnico \(R-01\)/);
+    assert.doesNotMatch(fila(n).tarea, /límite comercial/i);
+    assert.match(fila(n).tarea, /B:src\/plan\/plan-matriz\.ts:\d+/);
+  }
+  assert.match(fila(48).tarea, /kiosko-licencia\.service\.ts/);
+  assert.match(fila(98).tarea, /PLAN_NO_INCLUYE/);
 });
 
 test("53: el plan llega a la instalación → Existe", () => {
