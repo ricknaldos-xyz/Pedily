@@ -233,7 +233,7 @@ export const INTEGRACIONES: Integracion[] = [
     notaPlan: "En el kiosko, con el plan Completo",
     solucion: "caja-y-pagos",
     evidencia: [
-      "Plan: límite comercial; nada técnico ata el terminal del kiosko a Completo (P-07 S7, decisión del dueño pendiente)",
+      "Plan: límite técnico (R-01); el terminal del kiosko solo cobra en Completo, B:src/plan/plan-matriz.ts:162 y B:src/pagos/pagos.controller.ts:106,112 (403 PLAN_NO_INCLUYE)",
       "B:src/pagos/terminal/terminal-pago.ts:66 (interfaz), B:src/pagos/terminal/terminal-pago.service.ts:156 (iniciar), :5 (FEATURE_TERMINAL_PAGO)",
       "B:src/pagos/terminal/terminal-simulado.ts:29 (terminal implementado hoy: el simulado)",
       "B:src/order/order.service.ts:8130 (counterOperationNumber → posTransactionId)",
@@ -421,7 +421,7 @@ export const INTEGRACIONES: Integracion[] = [
       "B:src/plataforma-abierta/webhooks/eventos.ts:15-19; B:src/plataforma-abierta/webhooks/firma.ts:35",
       "B:src/plataforma-abierta/plataforma-publico.controller.ts:4,29 (OpenAPI y docs)",
       "W:components/layout/Dashboard/PlataformaPage/PlataformaPage.tsx:81; B:integraciones/zapier/triggers.js:1",
-      "Plan Completo: límite comercial; el panel deja encender FEATURE_PUBLIC_API en cualquier plan (B:src/feature-flag/feature-flag.controller.ts:32; P-07 S7, decisión del dueño pendiente)",
+      "Plan Completo: límite técnico (R-01); fuera de Completo se leen apagadas y el panel no las enciende (B:src/plan/plan-matriz.ts:183-188; B:src/feature-flag/feature-flag.service.ts:161; B:src/feature-flag/feature-flag.controller.ts:122-123, 403 PLAN_NO_INCLUYE)",
     ],
   },
 ];
